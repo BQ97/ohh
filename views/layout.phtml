@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+
+</head>
+<body>
+
+    <?php $this->insert('header');?>
+
+    <?= $this->section('content')?>
+
+    <?php $this->insert('footer');?>
+
+
+</body>
+
+<script type="module">
+
+import User from '/medoo/static/model.js';
+
+console.log(User)
+
+let res = User.say();
+
+console.log(res)
+
+</script>
+
+
+</html>

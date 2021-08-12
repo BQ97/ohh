@@ -1,0 +1,29 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.7",
+        "symfony/dom-crawler": "^5.3",
+        "guzzlehttp/guzzle": "^7.0",
+        "mpdf/mpdf": "^8.0",
+        "swoole/library": "^0.1.0",
+        "catfan/medoo": "^2.0",
+        "league/plates": "^3.3",
+        "cakephp/chronos": "^2.0",
+        "symfony/var-dumper": "^5.2",
+        "symfony/event-dispatcher": "^5.2",
+        "webpatser/laravel-uuid": "^4.0",
+        "godruoyi/php-snowflake": "^1.0",
+        "phpoffice/phpword": "^0.18.1",
+        "psy/psysh": "^0.10.8",
+        "fakerphp/faker": "^1.15",
+        "league/flysystem": "^2.2",
+        "kosinix/grafika": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        },
+        "files": [
+            "helper.php"
+        ]
+    }
+}

@@ -1,0 +1,279 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App;
+
+use App\FileTool;
+
+class Cache
+{
+    /**
+     * @var static $instance 缓存实例
+     */
+    private static $instances = [];
+
+    /**
+     * 缓存目录
+     * @var string
+     */
+    private $prefix;
+
+    public function __construct($prefix = 'BoQing')
+    {
+        $this->prefix = $prefix;
+
+        static::$instances[$prefix] = $this;
+
+        FileTool::makeDir($prefix);
+    }
+
+    /**
+     * @param string $prefix 缓存目录
+     * @return Cache
+     */
+    public static function getInstance($prefix = 'BoQing'): Cache
+    {
+        if (empty(static::$instances[$prefix])) {
+
+            static::$instances[$prefix] = new static($prefix);
+        }
+
+        return static::$instances[$prefix];
+    }
+
+    /**
+     * 获取文件路径
+     * @param string $file key
+     * @return string
+     */
+    private function getFilePath(string $file): string
+    {
+        return $this->prefix . DS . $file . '.php';
+    }
+
+    /**
+     * 获取文件配置
+     * @param string $file
+     * @return array
+     */
+    private function getConfig(string $file): array
+    {
+        $filename = CACHE_PATH . $this->getFilePath($file);
+
+        if (file_exists($filename)) {
+
+            return require $filename;
+        }
+
+        return ['expire' => false, 'config' => null];
+    }
+
+    /**
+     * 写入文件
+     * @param string $file  key
+     * @param string|array $contents 数据
+     * @param int $expire 过期时间
+     * @return bool
+     */
+    private function write(string $file, $contents, $expire = 0): bool
+    {
+        $config = $this->getConfig($file);
+
+        if ($config['config']) {
+            if (is_array($contents)) {
+                $config['config'] = array_merge($config['config'], $contents);
+            } else {
+                $config['config'] = $contents;
+            }
+        } else {
+            $config['config'] = $contents;
+        }
+
+        $config['expire'] = $expire;
+
+        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config, true) . ';');
+    }
+
+    /**
+     * @param string $key
+     * @param string|array|mixed $default
+     * @return string|array|mixed
+     */
+    public function get(string $key, $default = null)
+    {
+        if ($this->has($key)) {
+            $data = $this->getConfig($key);
+
+            return unserialize($data['config']);
+        }
+
+        return $default;
+    }
+
+    /**
+     * 获取当前空间下所有配置
+     * @return array
+     */
+    public function all(): array
+    {
+        $files = FileTool::readDir($this->prefix)['f'];
+
+        if (!$files) {
+            return [];
+        }
+
+        $config = [];
+
+        foreach ($files as $file) {
+            $key = pathinfo($file, PATHINFO_FILENAME);
+            $config[$key] = $this->get($key);
+        }
+
+        return $config;
+    }
+
+    /**
+     * 获取过期时间
+     * @param string $key
+     * @return int|bool
+     */
+    public function getExpire(string $key)
+    {
+        $data = $this->getConfig($key);
+
+        if ($data['expire'] === false) {
+            return false;
+        }
+
+        if ($data['expire'] === 0) {
+            return 0;
+        }
+
+        $expire = $data['expire'] - time();
+        if ($expire > 0) {
+            return $expire;
+        }
+
+        $this->delete($key);
+
+        return false;
+    }
+
+    /**
+     * 设置过期时间
+     * @param string $key
+     * @param int $expire  0 永久储存
+     * @return int|bool
+     */
+    public function setExpire(string $key, int $expire)
+    {
+        if (!$this->has($key) || $expire < 0) {
+            return false;
+        }
+
+        return $this->set($key, $this->get($key), $expire);
+    }
+
+    /**
+     * 存储数据
+     * @param string $file  key
+     * @param string|array $value 数据
+     * @param int $expire 过期时间 0 永久储存
+     * @return int|bool
+     */
+    public function set(string $key, $value, int $expire = 0)
+    {
+        return $this->write($key, serialize($value), $expire > 0 ? $expire + time() : 0);
+    }
+
+    /**
+     * 判断缓存是否存在
+     * @access public
+     * @param  string $name 缓存变量名
+     * @return bool
+     */
+    public function has(string $name)
+    {
+        return false === $this->getExpire($name) ? false : true;
+    }
+
+    /**
+     * 自增缓存（针对数值缓存）
+     * @access public
+     * @param  string    $name 缓存变量名
+     * @param  int       $step 步长
+     * @return false|int
+     */
+    public function inc(string $name, int $step = 1)
+    {
+        if ($this->has($name)) {
+            $value  = $this->get($name) + $step;
+            $expire = $this->getExpire($name);
+        } else {
+            $value  = $step;
+            $expire = 0;
+        }
+
+        return $this->set($name, $value, $expire) ? $value : false;
+    }
+
+    /**
+     * 自减缓存（针对数值缓存）
+     * @access public
+     * @param  string    $name 缓存变量名
+     * @param  int       $step 步长
+     * @return false|int
+     */
+    public function dec(string $name, int $step = 1)
+    {
+        if ($this->has($name)) {
+            $value  = $this->get($name) - $step;
+            $expire = $this->getExpire($name);
+        } else {
+            $value  = -$step;
+            $expire = 0;
+        }
+
+        return $this->set($name, $value, $expire) ? $value : false;
+    }
+
+    /**
+     * 清空当前目录下所有数据
+     * @return bool
+     */
+    public function clear(): bool
+    {
+        return FileTool::clearDir($this->prefix);
+    }
+
+    /**
+     * 删除数据
+     * @param string $file  key
+     * @return bool
+     */
+    public function delete(string $key): bool
+    {
+        return FileTool::deleteFile($this->getFilePath($key));
+    }
+
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
+
+    public function __set($name, $value)
+    {
+        return $this->set($name, $value);
+    }
+
+    public function __isset($name)
+    {
+        return $this->has($name);
+    }
+
+    public function __unset($name)
+    {
+        return $this->delete($name);
+    }
+}
