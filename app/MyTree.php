@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -21,7 +22,7 @@ class MyTree
         $this->_child = $config['child'] ?? 'child';
     }
 
-    public function getHtmlOption($data, $id = 0, $parentId=-1, $selectId = null, $preFix = '|-')
+    public function getHtmlOption($data, $id = 0, $parentId = -1, $selectId = null, $preFix = '|-')
     {
         if (!$data || !is_array($data)) {
             return '';
@@ -35,9 +36,9 @@ class MyTree
                     $string .= ($value[$this->_id] == $selectId) ? ' selected="selected"' : '';
                 }
                 $string .= '>' . $preFix . $value[$this->_name] . '</option>';
-                $parentId=$id;
+                $parentId = $id;
             }
-            
+
             if ($value[$this->_parentId] == $parentId) {
                 $string .= '<option value=\'' . $value[$this->_id] . '\'';
                 if (!is_null($selectId)) {
@@ -56,59 +57,58 @@ class MyTree
         if (!$data || !is_array($data)) {
             return '';
         }
-        $data=$this->formatArray($data);
+        $data = $this->formatArray($data);
 
         foreach ($data as $item) {
             $data[$item[$this->_parentId]][$this->_child][] = &$data[$item[$this->_id]];
         }
-        $result=$data[$parentId];
+        $result = $data[$parentId];
         return $result;
     }
 
-    public function getTreeHtml($data, $url="", $parentId = 0)
+    public function getTreeHtml($data, $url = "", $parentId = 0)
     {
         if (!$data || !is_array($data)) {
             return '';
         }
 
-        $string="";
+        $string = "";
         foreach ($data as $key => $value) {
             if ($value[$this->_parentId] == $parentId) {
-                $string .= '<li>' . '<a href="' .$url.'/cid/'. $value[$this->_id] . '">' . $value[$this->_name] . '</a>';
-                $string .= $this->getTreeHtml($data, $url, $value[$this->_id]).'</li>';
+                $string .= '<li>' . '<a href="' . $url . '/cid/' . $value[$this->_id] . '">' . $value[$this->_name] . '</a>';
+                $string .= $this->getTreeHtml($data, $url, $value[$this->_id]) . '</li>';
             }
         }
-        if (!empty($string)&&$parentId!=0) {
-            $string = '<ul>'.$string.'</ul>';
+        if (!empty($string) && $parentId != 0) {
+            $string = '<ul>' . $string . '</ul>';
         }
         return $string;
     }
 
-    public function getChild($data, $id, $include=false)
+    public function getChild($data, $id, $include = false)
     {
         if (!$data || !is_array($data)) {
             return array();
         }
-        // $data=$this->formatArray($data);
 
         $tempArray = $this->getTree($data, $id);
-        $w='';
+        $w = '';
         if ($tempArray) {
-            if ($include&&$id!=0) {
-                $w.=$tempArray[$this->_id].',';
+            if ($include && $id != 0) {
+                $w .= $tempArray[$this->_id] . ',';
             }
 
             if (isset($tempArray[$this->_child])) {
                 foreach ($tempArray[$this->_child] as $e) {
                     if (isset($e[$this->_child])) {
-                        $w .= $e[$this->_id].','. $this->getChild($data, $e[$this->_id]).',';
+                        $w .= $e[$this->_id] . ',' . $this->getChild($data, $e[$this->_id]) . ',';
                     } else {
-                        $w.=$e[$this->_id].',';
+                        $w .= $e[$this->_id] . ',';
                     }
                 }
             }
         }
-        $r=rtrim($w, ',');
+        $r = rtrim($w, ',');
         return $r;
     }
 
@@ -117,7 +117,7 @@ class MyTree
         if (!$data || !is_array($data)) {
             return array();
         }
-        $data=$this->formatArray($data);
+        $data = $this->formatArray($data);
         $parentId = $data[$id][$this->_parentId];
         if ($parentId) {
             return $data[$parentId];
@@ -132,11 +132,11 @@ class MyTree
             return array();
         }
 
-        $data=$this->formatArray($data);
-        $breadcrumb=array();
-        while ($id!=0) {
-            $breadcrumb[]=$data[$id];
-            $id=$data[$id][$this->_parentId];
+        $data = $this->formatArray($data);
+        $breadcrumb = array();
+        while ($id != 0) {
+            $breadcrumb[] = $data[$id];
+            $id = $data[$id][$this->_parentId];
         }
 
         return $breadcrumb;
@@ -144,9 +144,9 @@ class MyTree
 
     private function formatArray($data)
     {
-        $index=array();
+        $index = array();
         foreach ($data as $value) {
-            $index[$value[$this->_id]]=$value;
+            $index[$value[$this->_id]] = $value;
         }
         return $index;
     }

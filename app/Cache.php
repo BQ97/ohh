@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App;
 
 use App\FileTool;
+use App\Utils;
+use ArrayAccess;
+use Psr\SimpleCache\CacheInterface;
 
-class Cache
+class Cache implements ArrayAccess, CacheInterface
 {
     /**
      * @var static $instance 缓存实例
@@ -92,7 +95,7 @@ class Cache
 
         $config['expire'] = $expire;
 
-        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config, true) . ';');
+        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . Utils::var_export($config) . ';');
     }
 
     /**
@@ -100,7 +103,7 @@ class Cache
      * @param string|array|mixed $default
      * @return string|array|mixed
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         if ($this->has($key)) {
             $data = $this->getConfig($key);
@@ -182,7 +185,7 @@ class Cache
      * @param int $expire 过期时间 0 永久储存
      * @return int|bool
      */
-    public function set(string $key, $value, int $expire = 0)
+    public function set($key, $value, $expire = 0)
     {
         return $this->write($key, serialize($value), $expire > 0 ? $expire + time() : 0);
     }
@@ -193,7 +196,7 @@ class Cache
      * @param  string $name 缓存变量名
      * @return bool
      */
-    public function has(string $name)
+    public function has($name)
     {
         return false === $this->getExpire($name) ? false : true;
     }
@@ -252,7 +255,7 @@ class Cache
      * @param string $file  key
      * @return bool
      */
-    public function delete(string $key): bool
+    public function delete($key): bool
     {
         return FileTool::deleteFile($this->getFilePath($key));
     }
@@ -275,5 +278,59 @@ class Cache
     public function __unset($name)
     {
         return $this->delete($name);
+    }
+
+    public function offsetExists($offset)
+    {
+        return $this->has($offset);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        return $this->set($offset, $value);
+    }
+
+    public function offsetUnset($offset)
+    {
+        return $this->delete($offset);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->all());
+    }
+
+    public function getMultiple($keys, $default = null)
+    {
+        $values = [];
+
+        foreach ($keys as $key) {
+            $values[$key] = $this->get($key, $default);
+        }
+
+        return $values;
+    }
+
+    public function setMultiple($values, $ttl = 0)
+    {
+        foreach ($values as $key => $value) {
+            $this->set($key, $value, $ttl);
+        }
+
+        return true;
+    }
+
+    public function deleteMultiple($keys)
+    {
+        foreach ($keys as $key) {
+            $this->delete($key);
+        }
+
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-<?php return array (
+<?php return [ 
   'expire' => 0,
-  'config' => 'i:6;',
-);
+  'config' => 'i:0;',
+];
