@@ -5,9 +5,11 @@ namespace App;
 
 use App\FileTool;
 use ArrayAccess;
+use ArrayIterator;
+use IteratorAggregate;
 use Psr\SimpleCache\CacheInterface;
 
-class Cache implements ArrayAccess, CacheInterface
+class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 {
     /**
      * @var static $instance 缓存实例
@@ -298,9 +300,9 @@ class Cache implements ArrayAccess, CacheInterface
         return $this->delete($offset);
     }
 
-    public function __toString()
+    public function getIterator()
     {
-        return json_encode($this->all());
+        return new ArrayIterator($this->all());
     }
 
     public function getMultiple($keys, $default = null)
