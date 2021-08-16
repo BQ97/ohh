@@ -93,7 +93,7 @@ class Cache implements ArrayAccess, CacheInterface
 
         $config['expire'] = $expire;
 
-        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config) . ';');
+        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config, true) . ';');
     }
 
     /**
