@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
@@ -257,10 +256,5 @@ class Utils
         }
 
         return $data;
-    }
-
-    public static function var_export(array $array)
-    {
-        return str_replace(["=> \n","array (\n", ')'], ['=> ', "[ \n", ']'], var_export($array, true));
     }
 }

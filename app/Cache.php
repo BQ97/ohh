@@ -1,11 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
 
 use App\FileTool;
-use App\Utils;
 use ArrayAccess;
 use Psr\SimpleCache\CacheInterface;
 
@@ -95,7 +93,7 @@ class Cache implements ArrayAccess, CacheInterface
 
         $config['expire'] = $expire;
 
-        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . Utils::var_export($config) . ';');
+        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config) . ';');
     }
 
     /**
