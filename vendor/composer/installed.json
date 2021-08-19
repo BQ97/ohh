@@ -772,17 +772,17 @@
         },
         {
             "name": "league/flysystem",
-            "version": "2.2.0",
-            "version_normalized": "2.2.0.0",
+            "version": "2.2.3",
+            "version_normalized": "2.2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "29a3ba148287db3142412ef34f6fdcbc22c957cd"
+                "reference": "811bdc2d52a07eafbb6cb68a7b368b0668b362c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/29a3ba148287db3142412ef34f6fdcbc22c957cd",
-                "reference": "29a3ba148287db3142412ef34f6fdcbc22c957cd",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/811bdc2d52a07eafbb6cb68a7b368b0668b362c8",
+                "reference": "811bdc2d52a07eafbb6cb68a7b368b0668b362c8",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -812,7 +812,7 @@
                 "phpunit/phpunit": "^8.5 || ^9.4",
                 "sabre/dav": "^4.1"
             },
-            "time": "2021-07-20T16:54:08+00:00",
+            "time": "2021-08-18T19:59:31+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -846,7 +846,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.2.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/2.2.3"
             },
             "funding": [
                 {
