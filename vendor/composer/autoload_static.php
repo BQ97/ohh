@@ -382,7 +382,6 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'App\\Env' => __DIR__ . '/../..' . '/app/Env.php',
         'App\\Excel' => __DIR__ . '/../..' . '/app/Excel.php',
         'App\\FileSystem' => __DIR__ . '/../..' . '/app/FileSystem.php',
-        'App\\FileTool' => __DIR__ . '/../..' . '/app/FileTool.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
         'App\\Request' => __DIR__ . '/../..' . '/app/Request.php',

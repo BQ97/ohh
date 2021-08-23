@@ -13,7 +13,6 @@ return array(
     'App\\Env' => $baseDir . '/app/Env.php',
     'App\\Excel' => $baseDir . '/app/Excel.php',
     'App\\FileSystem' => $baseDir . '/app/FileSystem.php',
-    'App\\FileTool' => $baseDir . '/app/FileTool.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\MyTree' => $baseDir . '/app/MyTree.php',
     'App\\Request' => $baseDir . '/app/Request.php',

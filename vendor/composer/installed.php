@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1e0afa727f1a4db5100f4c9dc863a7e5ea4fc506',
+        'reference' => 'ca2f6f5cad92557a65bff6dafa534fe84ad8309c',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1e0afa727f1a4db5100f4c9dc863a7e5ea4fc506',
+            'reference' => 'ca2f6f5cad92557a65bff6dafa534fe84ad8309c',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
