@@ -1,9 +1,21 @@
 <?php
 
-use League\Flysystem\Local\LocalFilesystemAdapter;
-use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
-use League\Flysystem\Filesystem;
+use App\Container;
 use App\Cache;
+
+if (!function_exists('app')) {
+    /**
+     * 快速获取容器中的实例 支持依赖注入
+     * @param string    $name 类名或标识 默认获取当前应用实例
+     * @param array     $args 参数
+     * @param bool      $newInstance    是否每次创建新的实例
+     * @return mixed|\App\Application
+     */
+    function app($name = 'app', $args = [], $newInstance = false)
+    {
+        return Container::get($name, $args, $newInstance);
+    }
+}
 
 if (!function_exists('cache')) {
     /**
@@ -24,30 +36,19 @@ if (!function_exists('fileSystem')) {
      */
     function fileSystem($path = CACHE_PATH)
     {
-        // The internal adapter
-        $adapter = new LocalFilesystemAdapter(
-            // Determine the root directory
-            $path,
-            // Customize how visibility is converted to unix permissions
-            PortableVisibilityConverter::fromArray([
-                'file' => [
-                    'public' => 0640,
-                    'private' => 0604,
-                ],
-                'dir' => [
-                    'public' => 0740,
-                    'private' => 7604,
-                ],
-            ]),
+        return app()->fileSystem($path);
+    }
+}
 
-            // Write flags
-            LOCK_EX,
-            // How to deal with links, either DISALLOW_LINKS or SKIP_LINKS
-            // Disallowing them causes exceptions when encountered
-            LocalFilesystemAdapter::DISALLOW_LINKS
-        );
-
-        // The FilesystemOperator
-        return new Filesystem($adapter);
+if (!function_exists('view')) {
+    /**
+     * Create a new template and render it.
+     * @param  string $name
+     * @param  array  $data
+     * @return string
+     */
+    function view(string $name, array $data = [])
+    {
+        return app()->render($name, $data);
     }
 }
