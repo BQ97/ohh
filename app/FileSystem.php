@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -6,6 +7,10 @@ namespace App;
 use League\Flysystem\FileAttributes;
 use League\Flysystem\DirectoryAttributes;
 use League\Flysystem\StorageAttributes;
+use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
+use League\Flysystem\Filesystem as File;
+use Exception;
 
 class FileSystem
 {
@@ -16,13 +21,43 @@ class FileSystem
      */
     private $handler;
 
-    public function __construct($path = CACHE_PATH)
+    public function __construct(string $path = CACHE_PATH)
     {
-        if (empty($instances[$path])) {
-            $this->instances[$path] = fileSystem($path);
+        if (!is_dir($path)) {
+            throw new Exception('目录不存在');
+        }
+
+        if (empty($this->instances[$path])) {
+            // The internal adapter
+            $adapter = new LocalFilesystemAdapter(
+                // Determine the root directory
+                $path,
+                // Customize how visibility is converted to unix permissions
+                PortableVisibilityConverter::fromArray([
+                    'file' => [
+                        'public' => 0640,
+                        'private' => 0604,
+                    ],
+                    'dir' => [
+                        'public' => 0740,
+                        'private' => 7604,
+                    ],
+                ]),
+
+                // Write flags
+                LOCK_EX,
+                // How to deal with links, either DISALLOW_LINKS or SKIP_LINKS
+                // Disallowing them causes exceptions when encountered
+                LocalFilesystemAdapter::DISALLOW_LINKS
+            );
+
+            // The FilesystemOperator
+            $this->instances[$path] = new File($adapter);
         }
 
         $this->handler = $this->instances[$path];
+
+        return true;
     }
 
     /**
@@ -58,8 +93,8 @@ class FileSystem
         $files  = [];
         $dirs = [];
 
-        /** 
-         * @var StorageAttributes $item 
+        /**
+         * @var StorageAttributes $item
          */
         foreach ($listing as $item) {
             $path = $item->path();

@@ -34,7 +34,6 @@ use League\Plates\Engine;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Godruoyi\Snowflake\Snowflake;
 use Psy\Shell;
-use App\FileTool;
 use App\Cache;
 use App\FileSystem;
 
@@ -53,7 +52,6 @@ use App\FileSystem;
  * @property \GuzzleHttp\Client     $httpClient
  * @property \Medoo\Medoo           $db
  * @property \App\Application       $app
- * @property \App\FileTool          $fileTool
  * @property \App\FileSystem        $fileSystem
  * @property \App\Cache             $cache
  * @property \Swoole\ArrayObject    $arrayObject
@@ -103,7 +101,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'Snowflake' => Snowflake::class,
         'model' => Model::class,
         'shell' => Shell::class,
-        'fileTool' => FileTool::class,
         'cache' => Cache::class,
         'fileSystem' => FileSystem::class
     ];

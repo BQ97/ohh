@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
 
-use App\FileTool;
 use ArrayAccess;
 use ArrayIterator;
 use IteratorAggregate;
@@ -22,13 +22,24 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     private $prefix;
 
+    /**
+     * @var \App\FileSystem
+     */
+    private $fileSystem;
+
     public function __construct($prefix = 'BoQing')
     {
+        $this->fileSystem = fileSystem();
+
         $this->prefix = $prefix;
 
-        static::$instances[$prefix] = $this;
+        if (empty(static::$instances[$prefix])) {
 
-        FileTool::makeDir($prefix);
+            static::$instances[$prefix] = $this;
+
+            $this->fileSystem->makeDir($prefix);
+
+        }
     }
 
     /**
@@ -74,28 +85,20 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
     /**
      * 写入文件
-     * @param string $file  key
-     * @param string|array $contents 数据
+     * @param string $key  key
+     * @param string|array $value 数据
      * @param int $expire 过期时间
      * @return bool
      */
-    private function write(string $file, $contents, $expire = 0): bool
+    private function write(string $key, $value, $expire = 0): bool
     {
-        $config = $this->getConfig($file);
+        $filePath = $this->getFilePath($key);
 
-        if ($config['config']) {
-            if (is_array($contents)) {
-                $config['config'] = array_merge($config['config'], $contents);
-            } else {
-                $config['config'] = $contents;
-            }
-        } else {
-            $config['config'] = $contents;
-        }
+        $expire = $expire > 0 ? $expire + time() : 0;
 
-        $config['expire'] = $expire;
+        $content = '<?php return ' . var_export(['config' => serialize($value), 'expire' => $expire], true) . ';';
 
-        return FileTool::writeFile($this->getFilePath($file), '<?php return ' . var_export($config, true) . ';');
+        return $this->fileSystem->writeFile($filePath, $content);
     }
 
     /**
@@ -120,7 +123,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function all(): array
     {
-        $files = FileTool::readDir($this->prefix)['f'];
+        $files = $this->fileSystem->readDir($this->prefix)['f'];
 
         if (!$files) {
             return [];
@@ -187,7 +190,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function set($key, $value, $expire = 0)
     {
-        return $this->write($key, serialize($value), $expire > 0 ? $expire + time() : 0);
+        return $this->write($key, $value, $expire);
     }
 
     /**
@@ -247,7 +250,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function clear(): bool
     {
-        return FileTool::clearDir($this->prefix);
+        return $this->fileSystem->clearDir($this->prefix);
     }
 
     /**
@@ -257,7 +260,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function delete($key): bool
     {
-        return FileTool::deleteFile($this->getFilePath($key));
+        return $this->fileSystem->deleteFile($this->getFilePath($key));
     }
 
     public function __get($name)

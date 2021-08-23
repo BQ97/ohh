@@ -17,7 +17,6 @@ namespace App;
  * @property \Mpdf\Mpdf         $mpdf
  * @property \App\MyTree        $tree
  * @property \App\Env           $env
- * @property \App\FileTool      $fileTool
  * @property \App\FileSystem    $fileSystem
  * @property \Faker\Generator   $faker
  * @property \Psy\Shell         $shell
@@ -99,7 +98,7 @@ class Application extends Container
      */
     public function cache(string $prefix = 'BoQing'): \App\Cache
     {
-        return cache($prefix);
+        return \App\Cache::getInstance($prefix);
     }
 
     /**
@@ -163,11 +162,11 @@ class Application extends Container
 
     /**
      * @param string $path  目录  默认 缓存目录
-     * @return \League\Flysystem\Filesystem
+     * @return \App\FileSystem
      */
-    public function fileSystem($path = CACHE_PATH) : \League\Flysystem\Filesystem
+    public function fileSystem($path = CACHE_PATH) : \App\FileSystem
     {
-        return fileSystem($path);
+        return $this->make('fileSystem', [$path], true);
     }
 
     public function __debugInfo()
