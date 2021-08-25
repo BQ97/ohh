@@ -32,7 +32,7 @@ if (!function_exists('cache')) {
 if (!function_exists('fileSystem')) {
     /**
      * @param string $path  目录  默认 缓存目录
-     * @return \League\Flysystem\Filesystem
+     * @return \App\Flysystem
      */
     function fileSystem($path = CACHE_PATH)
     {
