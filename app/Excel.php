@@ -16,25 +16,6 @@ use Exception;
 class Excel
 {
     /**
-     * 整理数组
-     * 把二维数组 改造成 excel 格式的 一维数组
-     */
-    private function setData(array $data)
-    {
-        $excel = [];
-        $j = 1;
-        foreach ($data as $item) {
-            $i = 65;
-            foreach ($item as $value) {
-                $excel[strtoupper(chr($i))."$j"] = $value;
-                $i++;
-            }
-            $j++;
-        }
-        return $excel;
-    }
-
-    /**
      *  php的日期值是    1970-01-01   开始计算       单位：秒
      *  EXCEL        是      1900-01-01   开始计算       单位：天
      *  25569是EXCEL的1970-01-01代表的数字
@@ -115,11 +96,7 @@ class Excel
 
         $title && $sheet->setTitle($title);
 
-        // 写入每一个单元格
-        $data = $this->setData($data);
-        foreach ($data as $cell => $value) {
-            $sheet->setCellValue($cell, $value);
-        }
+        $sheet->fromArray($data);
 
         $writer = new Writer($spreadsheet);
 
