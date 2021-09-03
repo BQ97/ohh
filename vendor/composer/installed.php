@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ccaa650d73b8db230e8578899634b2596ad2f8fd',
+        'reference' => 'fc1f088126fd67eea72305a654f843edec895945',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ccaa650d73b8db230e8578899634b2596ad2f8fd',
+            'reference' => 'fc1f088126fd67eea72305a654f843edec895945',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -101,21 +101,12 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(
-            'pretty_version' => '2.8.0',
-            'version' => '2.8.0.0',
+            'pretty_version' => '2.9.0',
+            'version' => '2.9.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-escaper',
             'aliases' => array(),
-            'reference' => '2d6dce99668b413610e9544183fa10392437f542',
-            'dev_requirement' => false,
-        ),
-        'laminas/laminas-zendframework-bridge' => array(
-            'pretty_version' => '1.3.0',
-            'version' => '1.3.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../laminas/laminas-zendframework-bridge',
-            'aliases' => array(),
-            'reference' => '13af2502d9bb6f7d33be2de4b51fb68c6cdb476e',
+            'reference' => '891ad70986729e20ed2e86355fcf93c9dc238a5f',
             'dev_requirement' => false,
         ),
         'league/flysystem' => array(
@@ -507,12 +498,6 @@
             'aliases' => array(),
             'reference' => 'df92ebbc5ea71ee9e0d6e2861178be42ef7eb330',
             'dev_requirement' => false,
-        ),
-        'zendframework/zend-escaper' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '^2.6.1',
-            ),
         ),
     ),
 );
