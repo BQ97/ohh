@@ -33,7 +33,8 @@ class Aes
      */
     public function encrypt(String $data)
     {
-        return bin2hex(openssl_encrypt($data, $this->cipher, $this->key, OPENSSL_RAW_DATA));
+        return base64_encode(openssl_encrypt($data, $this->cipher, $this->key, OPENSSL_RAW_DATA));
+        
     }
 
     /**
@@ -44,7 +45,7 @@ class Aes
      */
     public function decrypt(String $data)
     {
-        return openssl_decrypt(hex2bin($data), $this->cipher, $this->key, OPENSSL_RAW_DATA);
+        return openssl_decrypt(base64_decode($data, true), $this->cipher, $this->key, OPENSSL_RAW_DATA);
     }
 
     public function __debugInfo()
