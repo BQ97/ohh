@@ -27,9 +27,9 @@ use App\Aes;
 use Mpdf\Mpdf;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
-use Swoole\ArrayObject;
-use Swoole\StringObject;
-use Swoole\ObjectProxy;
+use App\ArrayObject;
+use App\StringObject;
+use App\ObjectProxy;
 use League\Plates\Engine;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Godruoyi\Snowflake\Snowflake;
@@ -54,9 +54,9 @@ use App\FileSystem;
  * @property \App\Application       $app
  * @property \App\FileSystem        $fileSystem
  * @property \App\Cache             $cache
- * @property \Swoole\ArrayObject    $arrayObject
- * @property \Swoole\StringObject   $stringObject
- * @property \Swoole\ObjectProxy    $objectProxy
+ * @property \App\ArrayObject    $arrayObject
+ * @property \App\StringObject   $stringObject
+ * @property \App\ObjectProxy    $objectProxy
  * @property \Symfony\Component\DomCrawler\Crawler $crawler
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
@@ -480,7 +480,8 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         foreach ($params as $param) {
             $name      = $param->getName();
             $lowerName = $this->parseName($name);
-            $class     = $param->getClass();
+            // $class     = $param->getClass();
+            $class = $param->getType() && !$param->getType()->isBuiltin() ? new ReflectionClass($param->getType()->getName()) : null;
 
             if ($class) {
                 $args[] = $this->getObjectParam($class->getName(), $vars);

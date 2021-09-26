@@ -115,27 +115,27 @@ class Application extends Container
 
     /**
      * @param array $array
-     * @return \Swoole\ArrayObject
+     * @return \App\ArrayObject
      */
-    public function array(array $array = []): \Swoole\ArrayObject
+    public function array(array $array = []): \App\ArrayObject
     {
         return $this->make('arrayObject', [$array], true);
     }
 
     /**
      * @param array $array
-     * @return \Swoole\StringObject
+     * @return \App\StringObject
      */
-    public function string(String $string = ''): \Swoole\StringObject
+    public function string(String $string = ''): \App\StringObject
     {
         return $this->make('stringObject', [$string], true);
     }
 
     /**
      * @param object object
-     * @return \Swoole\ObjectProxy
+     * @return \App\ObjectProxy
      */
-    public function objectProxy($object): \Swoole\ObjectProxy
+    public function objectProxy($object): \App\ObjectProxy
     {
         return $this->make('objectProxy', [$object], true);
     }

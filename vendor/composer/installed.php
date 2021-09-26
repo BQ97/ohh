@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4f42ed14b680d06d0c12f4ea8d8aa4399c373402',
+        'reference' => NULL,
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4f42ed14b680d06d0c12f4ea8d8aa4399c373402',
+            'reference' => NULL,
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -110,12 +110,12 @@
             'dev_requirement' => false,
         ),
         'league/flysystem' => array(
-            'pretty_version' => '2.2.3',
-            'version' => '2.2.3.0',
+            'pretty_version' => '2.3.0',
+            'version' => '2.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/flysystem',
             'aliases' => array(),
-            'reference' => '811bdc2d52a07eafbb6cb68a7b368b0668b362c8',
+            'reference' => '499313f8b65f9a4dae1c779cd974d59a6fcf0f15',
             'dev_requirement' => false,
         ),
         'league/mime-type-detection' => array(
@@ -164,12 +164,12 @@
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
-            'pretty_version' => 'v8.0.12',
-            'version' => '8.0.12.0',
+            'pretty_version' => 'v8.0.13',
+            'version' => '8.0.13.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../mpdf/mpdf',
             'aliases' => array(),
-            'reference' => '9d94344844c9daec7266eb6dd14448f728aeccb1',
+            'reference' => '42f145615cfe830fd432474da1d2e1f927efe402',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
@@ -194,12 +194,12 @@
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v4.12.0',
-            'version' => '4.12.0.0',
+            'pretty_version' => 'v4.13.0',
+            'version' => '4.13.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'reference' => '6608f01670c3cc5079e18c1dab1104e002579143',
+            'reference' => '50953a2691a922aa1769461637869a0a2faa3f53',
             'dev_requirement' => false,
         ),
         'paragonie/random_compat' => array(
@@ -347,15 +347,6 @@
             'install_path' => __DIR__ . '/../setasign/fpdi',
             'aliases' => array(),
             'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
-            'dev_requirement' => false,
-        ),
-        'swoole/library' => array(
-            'pretty_version' => 'v0.1.0',
-            'version' => '0.1.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../swoole/library',
-            'aliases' => array(),
-            'reference' => '50585ee60a5ac98d0f7d25cf7593cb238f649345',
             'dev_requirement' => false,
         ),
         'symfony/console' => array(

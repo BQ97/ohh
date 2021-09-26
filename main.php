@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-defined('SWOOLE_USE_SHORTNAME') || define('SWOOLE_USE_SHORTNAME', true);
-
 /**
  * @var string APP_PATH 项目目录
  */

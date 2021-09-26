@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
+class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -81,12 +81,6 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'eef6fa3879d3efa347cd24d5eb348f85' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operations/divideinto.php',
         '34122c0574b76bf21c9a8db62b5b9cf3' => __DIR__ . '/..' . '/cakephp/chronos/src/carbon_compat.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
-        '1352d79f309fb0ce5110f973736efe4c' => __DIR__ . '/..' . '/swoole/library/src/constants.php',
-        '0059c50b1e50b395050e13cfed3c20fc' => __DIR__ . '/..' . '/swoole/library/src/std/exec.php',
-        '14ed4c120aa176bdf1729ce95bb05d5f' => __DIR__ . '/..' . '/swoole/library/src/ext/curl.php',
-        'e7a3ca0480b5d06810fa37c4b1414724' => __DIR__ . '/..' . '/swoole/library/src/functions.php',
-        '55b71bcfd58af22544c577eb0df5b9be' => __DIR__ . '/..' . '/swoole/library/src/alias.php',
-        '9014ab75675af477eb5f639cc3b56167' => __DIR__ . '/..' . '/swoole/library/src/alias_ns.php',
         'b4546c0f2c36e376009e1ef09f264d2d' => __DIR__ . '/../..' . '/helper.php',
     );
 
@@ -94,6 +88,10 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         's' => 
         array (
             'setasign\\Fpdi\\' => 14,
+        ),
+        'm' => 
+        array (
+            'modules\\' => 8,
         ),
         'Z' => 
         array (
@@ -118,7 +116,6 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
             'Symfony\\Component\\Console\\' => 26,
-            'Swoole\\' => 7,
         ),
         'P' => 
         array (
@@ -179,6 +176,10 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
         ),
+        'modules\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules',
+        ),
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
@@ -238,10 +239,6 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
-        ),
-        'Swoole\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/swoole/library/src/core',
         ),
         'Psy\\' => 
         array (
@@ -371,6 +368,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
     public static $classMap = array (
         'App\\Aes' => __DIR__ . '/../..' . '/app/Aes.php',
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
+        'App\\ArrayObject' => __DIR__ . '/../..' . '/app/ArrayObject.php',
         'App\\Cache' => __DIR__ . '/../..' . '/app/Cache.php',
         'App\\Container' => __DIR__ . '/../..' . '/app/Container.php',
         'App\\Env' => __DIR__ . '/../..' . '/app/Env.php',
@@ -378,7 +376,9 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'App\\FileSystem' => __DIR__ . '/../..' . '/app/FileSystem.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
+        'App\\ObjectProxy' => __DIR__ . '/../..' . '/app/ObjectProxy.php',
         'App\\Request' => __DIR__ . '/../..' . '/app/Request.php',
+        'App\\StringObject' => __DIR__ . '/../..' . '/app/StringObject.php',
         'App\\Utils' => __DIR__ . '/../..' . '/app/Utils.php',
         'App\\Word' => __DIR__ . '/../..' . '/app/Word.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -2338,6 +2338,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'PhpParser\\Lexer\\TokenEmulator\\AttributeEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/AttributeEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\CoaleseEqualTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/CoaleseEqualTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\EnumTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/EnumTokenEmulator.php',
+        'PhpParser\\Lexer\\TokenEmulator\\ExplicitOctalEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ExplicitOctalEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\FlexibleDocStringEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/FlexibleDocStringEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\FnTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/FnTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\KeywordEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/KeywordEmulator.php',
@@ -2365,6 +2366,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'PhpParser\\Node\\Arg' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Arg.php',
         'PhpParser\\Node\\Attribute' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Attribute.php',
         'PhpParser\\Node\\AttributeGroup' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/AttributeGroup.php',
+        'PhpParser\\Node\\ComplexType' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/ComplexType.php',
         'PhpParser\\Node\\Const_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Const_.php',
         'PhpParser\\Node\\Expr' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr.php',
         'PhpParser\\Node\\Expr\\ArrayDimFetch' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/ArrayDimFetch.php',
@@ -2417,6 +2419,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'PhpParser\\Node\\Expr\\BinaryOp\\Spaceship' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/BinaryOp/Spaceship.php',
         'PhpParser\\Node\\Expr\\BitwiseNot' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/BitwiseNot.php',
         'PhpParser\\Node\\Expr\\BooleanNot' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/BooleanNot.php',
+        'PhpParser\\Node\\Expr\\CallLike' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/CallLike.php',
         'PhpParser\\Node\\Expr\\Cast' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast.php',
         'PhpParser\\Node\\Expr\\Cast\\Array_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast/Array_.php',
         'PhpParser\\Node\\Expr\\Cast\\Bool_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/Cast/Bool_.php',
@@ -2463,6 +2466,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'PhpParser\\Node\\Expr\\Yield_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Expr/Yield_.php',
         'PhpParser\\Node\\FunctionLike' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/FunctionLike.php',
         'PhpParser\\Node\\Identifier' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Identifier.php',
+        'PhpParser\\Node\\IntersectionType' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/IntersectionType.php',
         'PhpParser\\Node\\MatchArm' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/MatchArm.php',
         'PhpParser\\Node\\Name' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Name.php',
         'PhpParser\\Node\\Name\\FullyQualified' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Name/FullyQualified.php',
@@ -2536,6 +2540,7 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'PhpParser\\Node\\Stmt\\While_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/Stmt/While_.php',
         'PhpParser\\Node\\UnionType' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/UnionType.php',
         'PhpParser\\Node\\VarLikeIdentifier' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/VarLikeIdentifier.php',
+        'PhpParser\\Node\\VariadicPlaceholder' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Node/VariadicPlaceholder.php',
         'PhpParser\\Parser' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser.php',
         'PhpParser\\ParserAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/ParserAbstract.php',
         'PhpParser\\ParserFactory' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/ParserFactory.php',
@@ -2727,28 +2732,6 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'Swoole\\ArrayObject' => __DIR__ . '/..' . '/swoole/library/src/core/ArrayObject.php',
-        'Swoole\\ConnectionPool' => __DIR__ . '/..' . '/swoole/library/src/core/ConnectionPool.php',
-        'Swoole\\Constant' => __DIR__ . '/..' . '/swoole/library/src/core/Constant.php',
-        'Swoole\\Coroutine\\Server' => __DIR__ . '/..' . '/swoole/library/src/core/Coroutine/Server.php',
-        'Swoole\\Coroutine\\Server\\Connection' => __DIR__ . '/..' . '/swoole/library/src/core/Coroutine/Server/Connection.php',
-        'Swoole\\Coroutine\\WaitGroup' => __DIR__ . '/..' . '/swoole/library/src/core/Coroutine/WaitGroup.php',
-        'Swoole\\Curl\\Exception' => __DIR__ . '/..' . '/swoole/library/src/core/Curl/Exception.php',
-        'Swoole\\Curl\\Handler' => __DIR__ . '/..' . '/swoole/library/src/core/Curl/Handler.php',
-        'Swoole\\Database\\MysqliConfig' => __DIR__ . '/..' . '/swoole/library/src/core/Database/MysqliConfig.php',
-        'Swoole\\Database\\MysqliException' => __DIR__ . '/..' . '/swoole/library/src/core/Database/MysqliException.php',
-        'Swoole\\Database\\MysqliPool' => __DIR__ . '/..' . '/swoole/library/src/core/Database/MysqliPool.php',
-        'Swoole\\Database\\MysqliProxy' => __DIR__ . '/..' . '/swoole/library/src/core/Database/MysqliProxy.php',
-        'Swoole\\Database\\MysqliStatementProxy' => __DIR__ . '/..' . '/swoole/library/src/core/Database/MysqliStatementProxy.php',
-        'Swoole\\Database\\PDOConfig' => __DIR__ . '/..' . '/swoole/library/src/core/Database/PDOConfig.php',
-        'Swoole\\Database\\PDOPool' => __DIR__ . '/..' . '/swoole/library/src/core/Database/PDOPool.php',
-        'Swoole\\Database\\PDOProxy' => __DIR__ . '/..' . '/swoole/library/src/core/Database/PDOProxy.php',
-        'Swoole\\Database\\PDOStatementProxy' => __DIR__ . '/..' . '/swoole/library/src/core/Database/PDOStatementProxy.php',
-        'Swoole\\Database\\RedisConfig' => __DIR__ . '/..' . '/swoole/library/src/core/Database/RedisConfig.php',
-        'Swoole\\Database\\RedisPool' => __DIR__ . '/..' . '/swoole/library/src/core/Database/RedisPool.php',
-        'Swoole\\Http\\Status' => __DIR__ . '/..' . '/swoole/library/src/core/Http/Status.php',
-        'Swoole\\ObjectProxy' => __DIR__ . '/..' . '/swoole/library/src/core/ObjectProxy.php',
-        'Swoole\\StringObject' => __DIR__ . '/..' . '/swoole/library/src/core/StringObject.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',
         'Symfony\\Component\\Console\\CI\\GithubActionReporter' => __DIR__ . '/..' . '/symfony/console/CI/GithubActionReporter.php',
@@ -2981,6 +2964,9 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
         'ZipStream\\Option\\Version' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Option/Version.php',
         'ZipStream\\Stream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Stream.php',
         'ZipStream\\ZipStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/ZipStream.php',
+        'modules\\cms\\Base' => __DIR__ . '/../..' . '/modules/cms/Base.php',
+        'modules\\cms\\Entrust' => __DIR__ . '/../..' . '/modules/cms/Entrust.php',
+        'modules\\cms\\Lessee' => __DIR__ . '/../..' . '/modules/cms/Lessee.php',
         'setasign\\Fpdi\\FpdfTpl' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTpl.php',
         'setasign\\Fpdi\\FpdfTplTrait' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTplTrait.php',
         'setasign\\Fpdi\\Fpdi' => __DIR__ . '/..' . '/setasign/fpdi/src/Fpdi.php',
@@ -3033,10 +3019,10 @@ class ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit5bc47b01c99a14610420f4bccc5a5dfe::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit55ea5d3908558f51600f3aa8914d742c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit55ea5d3908558f51600f3aa8914d742c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit55ea5d3908558f51600f3aa8914d742c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit55ea5d3908558f51600f3aa8914d742c::$classMap;
 
         }, null, ClassLoader::class);
     }

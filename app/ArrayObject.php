@@ -1,6 +1,6 @@
 <?php
 
-namespace Swoole;
+namespace App;
 
 use ArrayAccess;
 use Countable;

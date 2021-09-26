@@ -80,11 +80,5 @@ return array(
     'eef6fa3879d3efa347cd24d5eb348f85' => $vendorDir . '/markbaker/matrix/classes/src/Operations/divideinto.php',
     '34122c0574b76bf21c9a8db62b5b9cf3' => $vendorDir . '/cakephp/chronos/src/carbon_compat.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
-    '1352d79f309fb0ce5110f973736efe4c' => $vendorDir . '/swoole/library/src/constants.php',
-    '0059c50b1e50b395050e13cfed3c20fc' => $vendorDir . '/swoole/library/src/std/exec.php',
-    '14ed4c120aa176bdf1729ce95bb05d5f' => $vendorDir . '/swoole/library/src/ext/curl.php',
-    'e7a3ca0480b5d06810fa37c4b1414724' => $vendorDir . '/swoole/library/src/functions.php',
-    '55b71bcfd58af22544c577eb0df5b9be' => $vendorDir . '/swoole/library/src/alias.php',
-    '9014ab75675af477eb5f639cc3b56167' => $vendorDir . '/swoole/library/src/alias_ns.php',
     'b4546c0f2c36e376009e1ef09f264d2d' => $baseDir . '/helper.php',
 );
