@@ -983,6 +983,7 @@ return array(
     'League\\MimeTypeDetection\\FinfoMimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/FinfoMimeTypeDetector.php',
     'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
     'League\\MimeTypeDetection\\MimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/MimeTypeDetector.php',
+    'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
     'League\\Plates\\Engine' => $vendorDir . '/league/plates/src/Engine.php',
     'League\\Plates\\Extension\\Asset' => $vendorDir . '/league/plates/src/Extension/Asset.php',
     'League\\Plates\\Extension\\ExtensionInterface' => $vendorDir . '/league/plates/src/Extension/ExtensionInterface.php',
