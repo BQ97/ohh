@@ -6,7 +6,7 @@ namespace App;
 /**
  * @desc：php aes加密解密类
  */
-class Aes
+class Encrypter
 {
     /**
      * @var string 加密方式
@@ -34,7 +34,7 @@ class Aes
     public function encrypt(String $data)
     {
         return base64_encode(openssl_encrypt($data, $this->cipher, $this->key, OPENSSL_RAW_DATA));
-        
+
     }
 
     /**

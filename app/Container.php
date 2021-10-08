@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -17,46 +18,52 @@ use ArrayIterator;
 use Medoo\Medoo;
 use App\Application;
 use App\Request;
-use App\Excel;
+use App\File\Excel;
 use App\Model;
-use App\Word;
+use App\File\Word;
 use App\Utils;
 use App\MyTree;
 use App\Env;
-use App\Aes;
+use App\Encrypter;
 use Mpdf\Mpdf;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
-use App\ArrayObject;
-use App\StringObject;
-use App\ObjectProxy;
+use App\Proxy\Arr;
+use App\Proxy\Str;
+use App\Proxy\Obj;
 use League\Plates\Engine;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Godruoyi\Snowflake\Snowflake;
 use Psy\Shell;
-use App\Cache;
-use App\FileSystem;
+use App\File\Cache;
+use App\File\FileSystem;
+use App\Hash;
+use App\File\Csv;
+use App\Xml;
 
 /**
  * @name 容器
  * @property \App\Request           $request
- * @property \App\Excel             $excel
- * @property \App\Word              $word
+ * @property \App\Hash              $hash
+ * @property \App\File\Excel        $excel
+ * @property \App\File\Word         $word
+ * @property \App\File\Csv          $csv
  * @property \App\Model             $model
  * @property \App\Utils             $utils
  * @property \Mpdf\Mpdf             $mpdf
- * @property \App\Aes               $aes
+ * @property \App\Encrypter         $aes
  * @property \App\MyTree            $tree
  * @property \App\Env               $env
+ * @property \App\Xml               $xml
  * @property \Psy\Shell             $shell
  * @property \GuzzleHttp\Client     $httpClient
  * @property \Medoo\Medoo           $db
  * @property \App\Application       $app
- * @property \App\FileSystem        $fileSystem
- * @property \App\Cache             $cache
- * @property \App\ArrayObject    $arrayObject
- * @property \App\StringObject   $stringObject
- * @property \App\ObjectProxy    $objectProxy
+ * @property \App\File\FileSystem   $fileSystem
+ * @property \App\File\Cache        $cache
+ * @property \App\Proxy\Arr         $arr
+ * @property \App\Proxy\Str         $str
+ * @property \App\Proxy\Obj         $obj
  * @property \Symfony\Component\DomCrawler\Crawler $crawler
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
@@ -91,18 +98,21 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'tree' => MyTree::class,
         'httpClient' => Client::class,
         'crawler' => Crawler::class,
-        'arrayObject' => ArrayObject::class,
-        'stringObject' => StringObject::class,
-        'objectProxy' => ObjectProxy::class,
+        'arr' => Arr::class,
+        'str' => Str::class,
+        'obj' => Obj::class,
         'templates' => Engine::class,
         'env' => Env::class,
-        'aes' => Aes::class,
+        'aes' => Encrypter::class,
         'eventDispatcher' => EventDispatcher::class,
         'Snowflake' => Snowflake::class,
         'model' => Model::class,
         'shell' => Shell::class,
         'cache' => Cache::class,
-        'fileSystem' => FileSystem::class
+        'fileSystem' => FileSystem::class,
+        'hash' => Hash::class,
+        'csv' => Csv::class,
+        'xml' => Xml::class
     ];
 
     /**

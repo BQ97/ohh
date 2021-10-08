@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App;
+namespace App\Proxy;
 
 use TypeError;
 
-class ObjectProxy
+class Obj
 {
     /** @var object */
     protected $__object;

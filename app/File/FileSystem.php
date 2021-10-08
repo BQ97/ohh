@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\File;
 
 use League\Flysystem\FileAttributes;
 use League\Flysystem\DirectoryAttributes;

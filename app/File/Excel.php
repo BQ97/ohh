@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App;
+namespace App\File;
 
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx as Reader;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx as Writer;
@@ -31,7 +32,7 @@ class Excel
             $time = ($time - 25569) * 24 * 60 * 60;
             $time = $format ? date($format, $time) : $time;
         } else {
-            $time ='';
+            $time = '';
         }
 
         return $time;
@@ -78,18 +79,6 @@ class Excel
      */
     public function write(string $fileName, array $data, string $title = '', bool $preCalculateFormulas = false, bool $office2003Compatibility = false)
     {
-        try {
-            if (empty($data)) {
-                throw new Exception('没有数据');
-            }
-
-            if (stripos($fileName, '.xlsx') === false) {
-                $fileName .= '.xlsx';
-            }
-        } catch (Exception $e) {
-            exit($e->getMessage());
-        }
-
         $spreadsheet = new Spreadsheet();
 
         $sheet = $spreadsheet->getActiveSheet();
@@ -104,6 +93,12 @@ class Excel
 
         $writer->setOffice2003Compatibility($office2003Compatibility);
 
-        return $writer->save($fileName);
+        fileSystem(UPLOAD_PATH)->makeDir(date('Ymd'));
+
+        $path = UPLOAD_PATH . date('Ymd') . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx';
+
+        $writer->save($path);
+
+        return $path;
     }
 }

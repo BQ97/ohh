@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App;
+namespace App\File;
 
 use PhpOffice\PhpWord\Reader\Word2007;
 use PhpOffice\PhpWord\Element\TextRun;

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -7,20 +8,24 @@ namespace App;
  * Class Application.
  *
  * 应用核心
- * @property \Medoo\Medoo       $db
- * @property \App\Aes           $aes
- * @property \App\Request       $request
- * @property \App\Excel         $excel
- * @property \App\Word          $word
- * @property \App\Model         $model
- * @property \App\Utils         $utils
- * @property \Mpdf\Mpdf         $mpdf
- * @property \App\MyTree        $tree
- * @property \App\Env           $env
- * @property \App\FileSystem    $fileSystem
- * @property \Faker\Generator   $faker
- * @property \Psy\Shell         $shell
- * @property \GuzzleHttp\Client $httpClient
+ * @property \Medoo\Medoo           $db
+ * @property \App\Encrypter         $aes
+ * @property \App\Request           $request
+ * @property \App\File\Excel        $excel
+ * @property \App\File\Word         $word
+ * @property \App\Model             $model
+ * @property \App\Utils             $utils
+ * @property \Mpdf\Mpdf             $mpdf
+ * @property \App\MyTree            $tree
+ * @property \App\Env               $env
+ * @property \App\Xml               $xml
+ * @property \App\File\FileSystem   $fileSystem
+ * @property \App\File\Cache        $cache
+ * @property \Faker\Generator       $faker
+ * @property \Psy\Shell             $shell
+ * @property \App\Hash              $hash
+ * @property \GuzzleHttp\Client     $httpClient
+ * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  */
@@ -29,15 +34,16 @@ class Application extends Container
     public function __construct()
     {
         $this->make('db', [[
-            'database_type' => $this->env->get('DB_CONNECTION', 'mysql'),
-            'database_name' => $this->env->get('DB_DATABASE', ''),
-            'server'        => $this->env->get('DB_HOST', 'myweb'),
-            'charset'       => 'utf8',
-            'port'          => $this->env->get('DB_PORT', 3306),
-            'prefix'        => $this->env->get('DB_PRIFIX', ''),
-            'username'      => $this->env->get('DB_USERNAME', 'root'),
-            'password'      => $this->env->get('DB_PASSWORD', ''),
-            'option'        => [
+            'type'      => $this->env->get('DB_CONNECTION', 'mysql'),
+            'database'  => $this->env->get('DB_DATABASE', ''),
+            'host'      => $this->env->get('DB_HOST', 'localhost'),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_general_ci',
+            'port'      => $this->env->get('DB_PORT', 3306),
+            'prefix'    => $this->env->get('DB_PRIFIX', ''),
+            'username'  => $this->env->get('DB_USERNAME', 'root'),
+            'password'  => $this->env->get('DB_PASSWORD', ''),
+            'option'    => [
                 \PDO::ATTR_STRINGIFY_FETCHES => false,
                 \PDO::ATTR_EMULATE_PREPARES => false
             ],
@@ -96,9 +102,9 @@ class Application extends Container
      * @param string $prefix 缓存空间 默认 app
      * @return \App\Cache
      */
-    public function cache(string $prefix = 'BoQing'): \App\Cache
+    public function cache(string $prefix = 'BoQing'): \App\File\Cache
     {
-        return \App\Cache::getInstance($prefix);
+        return \App\File\Cache::getInstance($prefix);
     }
 
     /**
@@ -117,34 +123,34 @@ class Application extends Container
      * @param array $array
      * @return \App\ArrayObject
      */
-    public function array(array $array = []): \App\ArrayObject
+    public function array(array $array = []): \App\Proxy\Arr
     {
-        return $this->make('arrayObject', [$array], true);
+        return $this->make('arr', [$array], true);
     }
 
     /**
      * @param array $array
      * @return \App\StringObject
      */
-    public function string(String $string = ''): \App\StringObject
+    public function string(String $string = ''): \App\Proxy\Str
     {
-        return $this->make('stringObject', [$string], true);
+        return $this->make('str', [$string], true);
     }
 
     /**
      * @param object object
      * @return \App\ObjectProxy
      */
-    public function objectProxy($object): \App\ObjectProxy
+    public function object($object): \App\Proxy\Obj
     {
-        return $this->make('objectProxy', [$object], true);
+        return $this->make('obj', [$object], true);
     }
 
     /**
      * @param string $key
      * @return \App\Aes
      */
-    public function aes(String $key): \App\Aes
+    public function aes(String $key): \App\Encrypter
     {
         return $this->make('aes', [$key], true);
     }
@@ -162,9 +168,9 @@ class Application extends Container
 
     /**
      * @param string $path  目录  默认 缓存目录
-     * @return \App\FileSystem
+     * @return \App\File\FileSystem
      */
-    public function fileSystem($path = CACHE_PATH) : \App\FileSystem
+    public function fileSystem($path = CACHE_PATH): \App\File\FileSystem
     {
         return $this->make('fileSystem', [$path], true);
     }

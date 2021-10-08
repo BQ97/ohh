@@ -1,7 +1,7 @@
 <?php
 
 use App\Container;
-use App\Cache;
+use App\File\Cache;
 
 if (!function_exists('app')) {
     /**
@@ -32,7 +32,7 @@ if (!function_exists('cache')) {
 if (!function_exists('fileSystem')) {
     /**
      * @param string $path  目录  默认 缓存目录
-     * @return \App\Flysystem
+     * @return \App\File\Flysystem
      */
     function fileSystem($path = CACHE_PATH)
     {

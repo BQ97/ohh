@@ -1,8 +1,11 @@
 <?php
+declare(strict_types=1);
 
-namespace App;
+namespace App\Proxy;
 
-class StringObject
+use App\Proxy\Arr;
+
+class Str
 {
     /**
      * @var string
@@ -10,7 +13,6 @@ class StringObject
     protected $string;
 
     /**
-     * StringObject constructor.
      * @param $string
      */
     public function __construct(string $string = '')
@@ -175,9 +177,9 @@ class StringObject
     /**
      * @param string $delimiter
      * @param int $limit
-     * @return ArrayObject
+     * @return Arr
      */
-    public function split(string $delimiter, int $limit = PHP_INT_MAX): ArrayObject
+    public function split(string $delimiter, int $limit = PHP_INT_MAX): Arr
     {
         return static::detectArrayType(explode($delimiter, $this->string, $limit));
     }
@@ -203,9 +205,9 @@ class StringObject
 
     /**
      * @param int $splitLength
-     * @return ArrayObject
+     * @return Arr
      */
-    public function chunk($splitLength = 1): ArrayObject
+    public function chunk($splitLength = 1): Arr
     {
         return static::detectArrayType(str_split($this->string, $splitLength));
     }
@@ -228,10 +230,10 @@ class StringObject
 
     /**
      * @param array $value
-     * @return ArrayObject
+     * @return Arr
      */
-    protected static function detectArrayType(array $value): ArrayObject
+    protected static function detectArrayType(array $value) : Arr
     {
-        return new ArrayObject($value);
+        return new Arr($value);
     }
 }

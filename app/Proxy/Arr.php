@@ -1,14 +1,16 @@
 <?php
+declare(strict_types=1);
 
-namespace App;
+namespace App\Proxy;
 
 use ArrayAccess;
 use Countable;
 use Iterator;
 use RuntimeException;
 use Serializable;
+use App\Proxy\Str;
 
-class ArrayObject implements ArrayAccess, Serializable, Countable, Iterator
+class Arr implements ArrayAccess, Serializable, Countable, Iterator
 {
     /**
      * @var array
@@ -237,17 +239,17 @@ class ArrayObject implements ArrayAccess, Serializable, Countable, Iterator
 
     /**
      * @param string $glue
-     * @return StringObject
+     * @return Str
      */
-    public function join(string $glue = ''): StringObject
+    public function join(string $glue = ''): Str
     {
         return static::detectStringType(implode($glue, $this->array));
     }
 
     /**
-     * @return StringObject
+     * @return Str
      */
-    public function serialize(): StringObject
+    public function serialize(): Str
     {
         return static::detectStringType(serialize($this->array));
     }
@@ -647,11 +649,11 @@ class ArrayObject implements ArrayAccess, Serializable, Countable, Iterator
 
     /**
      * @param string $value
-     * @return StringObject
+     * @return Str
      */
-    protected static function detectStringType(string $value): StringObject
+    protected static function detectStringType(string $value): Str
     {
-        return new StringObject($value);
+        return new Str($value);
     }
 
     /**

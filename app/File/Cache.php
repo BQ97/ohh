@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\File;
 
 use ArrayAccess;
 use ArrayIterator;
@@ -23,7 +23,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
     private $prefix;
 
     /**
-     * @var \App\FileSystem
+     * @var \App\File\FileSystem
      */
     private $fileSystem;
 

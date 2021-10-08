@@ -27,6 +27,11 @@ const ENV_PATH = APP_PATH . DS . '.env';
  */
 const CACHE_PATH = APP_PATH . DS . 'cache' . DS;
 
+/**
+ * @var string UPLOAD_PATH
+ */
+const UPLOAD_PATH = APP_PATH . DS . 'uploads' . DS;
+
 require APP_PATH . DS . 'vendor' . DS . 'autoload.php';
 
 /**
