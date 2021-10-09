@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 /**
- * @var string APP_PATH 项目目录
- */
-const APP_PATH = __DIR__;
-
-/**
  * @var string DS 系统分隔符 等价于 DIRECTORY_SEPARATOR
  */
 const DS = DIRECTORY_SEPARATOR;
+
+/**
+ * @var string APP_PATH 项目目录
+ */
+const APP_PATH = __DIR__ . DS;
 
 /**
  * @var string VIEW_PATH 视图目录
