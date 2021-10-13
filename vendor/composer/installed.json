@@ -70,17 +70,17 @@
         },
         {
             "name": "catfan/medoo",
-            "version": "v2.1.2",
-            "version_normalized": "2.1.2.0",
+            "version": "v2.1.3",
+            "version_normalized": "2.1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "96c66aee57c0840b560f5c2546df5a5f25534045"
+                "reference": "bf7d672e9b5384f375249d5ba2783ee7bee08138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/96c66aee57c0840b560f5c2546df5a5f25534045",
-                "reference": "96c66aee57c0840b560f5c2546df5a5f25534045",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/bf7d672e9b5384f375249d5ba2783ee7bee08138",
+                "reference": "bf7d672e9b5384f375249d5ba2783ee7bee08138",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -104,7 +104,7 @@
                 "ext-pdo_sqlite": "For SQLite database",
                 "ext-pdo_sqlsrv": "For MSSQL database on both Window/Liunx platform"
             },
-            "time": "2021-07-27T11:03:44+00:00",
+            "time": "2021-10-09T08:31:11+00:00",
             "type": "framework",
             "installation-source": "dist",
             "autoload": {
@@ -142,6 +142,10 @@
                 "source": "https://github.com/catfan/Medoo"
             },
             "funding": [
+                {
+                    "url": "https://paypal.me/AngelaonLai",
+                    "type": "custom"
+                },
                 {
                     "url": "https://opencollective.com/medoo",
                     "type": "open_collective"
@@ -2315,17 +2319,17 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.8",
-            "version_normalized": "0.10.8.0",
+            "version": "v0.10.9",
+            "version_normalized": "0.10.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3"
+                "reference": "01281336c4ae557fe4a994544f30d3a1bc204375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e4573f47750dd6c92dca5aee543fa77513cbd8d3",
-                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/01281336c4ae557fe4a994544f30d3a1bc204375",
+                "reference": "01281336c4ae557fe4a994544f30d3a1bc204375",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2353,7 +2357,7 @@
                 "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
                 "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
             },
-            "time": "2021-04-10T16:23:39+00:00",
+            "time": "2021-10-10T13:37:39+00:00",
             "bin": [
                 "bin/psysh"
             ],
@@ -2393,7 +2397,7 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.10.8"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.9"
             },
             "install-path": "../psy/psysh"
         },

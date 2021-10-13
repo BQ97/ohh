@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * The Lightweight PHP Database Framework to Accelerate Development.
  *
- * @version 2.1.2
+ * @version 2.1.3
  * @author Angel Lai
  * @package Medoo
  * @copyright Copyright 2021 Medoo Project, Angel Lai.
@@ -856,7 +856,7 @@ class Medoo
             $isIndex = is_int($key);
 
             preg_match(
-                '/([\p{L}_][\p{L}\p{N}@$#\-_\.]*)(\[(?<operator>\>\=?|\<\=?|\!|\<\>|\>\<|\!?~|REGEXP)\])?([\p{L}_][\p{L}\p{N}@$#\-_\.]*)?/u',
+                '/([\p{L}_][\p{L}\p{N}@$#\-_\.]*)(\[(?<operator>\>\=?|\<\=?|\=|\!\=?|\<\>|\>\<|\!?~|REGEXP)\])?([\p{L}_][\p{L}\p{N}@$#\-_\.]*)?/u',
                 $isIndex ? $value : $key,
                 $match
             );
@@ -937,7 +937,7 @@ class Medoo
                     foreach ($value as $index => $item) {
                         $item = strval($item);
 
-                        if (!preg_match('/((?<!\\\)\[.+(?<!\\\)\]|(?<!\\\)[\*\?\!\%\-#^_]|%.+|.+%)/', $item)) {
+                        if (!preg_match('/((?<!\\\)\[.+(?<!\\\)\]|(?<!\\\)[\*\?\!\%#^_]|%.+|.+%)/', $item)) {
                             $item = '%' . $item . '%';
                         }
 
@@ -1828,10 +1828,10 @@ class Medoo
      * Delete data from the table.
      *
      * @param string $table
-     * @param array $where
+     * @param array|Raw $where
      * @return \PDOStatement|null
      */
-    public function delete(string $table, array $where): ?PDOStatement
+    public function delete(string $table, $where): ?PDOStatement
     {
         $map = [];
 
