@@ -15,24 +15,24 @@ const APP_PATH = __DIR__ . DS;
 /**
  * @var string VIEW_PATH 视图目录
  */
-const VIEW_PATH = APP_PATH . DS . 'views' . DS;
+const VIEW_PATH = APP_PATH . 'views' . DS;
 
 /**
  * @var string ENV_PATH ENV配置目录
  */
-const ENV_PATH = APP_PATH . DS . '.env';
+const ENV_PATH = APP_PATH . '.env';
 
 /**
  * @var string CACHE_PATH 缓存目录
  */
-const CACHE_PATH = APP_PATH . DS . 'cache' . DS;
+const CACHE_PATH = APP_PATH . 'cache' . DS;
 
 /**
  * @var string UPLOAD_PATH
  */
-const UPLOAD_PATH = APP_PATH . DS . 'uploads' . DS;
+const UPLOAD_PATH = APP_PATH . 'uploads' . DS;
 
-require APP_PATH . DS . 'vendor' . DS . 'autoload.php';
+require APP_PATH . 'vendor' . DS . 'autoload.php';
 
 /**
  * @var \App\Application
