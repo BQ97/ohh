@@ -12,6 +12,7 @@ namespace App;
  * @property \App\Encrypter         $aes
  * @property \App\Request           $request
  * @property \App\File\Excel        $excel
+ * @property \App\File\Xls          $xls
  * @property \App\File\Word         $word
  * @property \App\Model             $model
  * @property \App\Utils             $utils

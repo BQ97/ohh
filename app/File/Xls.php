@@ -44,14 +44,14 @@ class Xls
         $excel = new Excel($config);
 
         if (!$fileName) {
-            $fileName =  Utils::Uuid() . '.xlsx';
+            $fileName =  strtoupper(Utils::Uuid() . '.xlsx');
         }
 
         foreach ($data as $key => $value) {
             $data[$key] = array_values($value);
         }
 
-        $filePath = $excel->fileName($fileName)->header($header)->data($data)->output();
+        $filePath = $excel->fileName($fileName)->header($header)->data($data)->protection('123456')->output();
 
         return [
             'filepath' => $filePath,

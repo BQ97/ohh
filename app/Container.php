@@ -40,6 +40,7 @@ use App\File\FileSystem;
 use App\Hash;
 use App\File\Csv;
 use App\Xml;
+use App\File\Xls;
 
 /**
  * @name 容器
@@ -48,6 +49,7 @@ use App\Xml;
  * @property \App\File\Excel        $excel
  * @property \App\File\Word         $word
  * @property \App\File\Csv          $csv
+ * @property \App\File\Xls          $xls
  * @property \App\Model             $model
  * @property \App\Utils             $utils
  * @property \Mpdf\Mpdf             $mpdf
@@ -112,7 +114,8 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'fileSystem' => FileSystem::class,
         'hash' => Hash::class,
         'csv' => Csv::class,
-        'xml' => Xml::class
+        'xml' => Xml::class,
+        'xls' => Xls::class
     ];
 
     /**
