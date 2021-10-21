@@ -2610,6 +2610,7 @@ return array(
     'ZipStream\\Option\\Version' => $vendorDir . '/maennchen/zipstream-php/src/Option/Version.php',
     'ZipStream\\Stream' => $vendorDir . '/maennchen/zipstream-php/src/Stream.php',
     'ZipStream\\ZipStream' => $vendorDir . '/maennchen/zipstream-php/src/ZipStream.php',
+    'modules\\WaterMark' => $baseDir . '/modules/WaterMark.php',
     'modules\\ams\\Base' => $baseDir . '/modules/ams/Base.php',
     'modules\\ams\\Entrust' => $baseDir . '/modules/ams/Entrust.php',
     'modules\\ams\\Lessee' => $baseDir . '/modules/ams/Lessee.php',

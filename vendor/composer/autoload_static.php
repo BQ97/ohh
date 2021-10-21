@@ -2970,6 +2970,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'ZipStream\\Option\\Version' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Option/Version.php',
         'ZipStream\\Stream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Stream.php',
         'ZipStream\\ZipStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/ZipStream.php',
+        'modules\\WaterMark' => __DIR__ . '/../..' . '/modules/WaterMark.php',
         'modules\\ams\\Base' => __DIR__ . '/../..' . '/modules/ams/Base.php',
         'modules\\ams\\Entrust' => __DIR__ . '/../..' . '/modules/ams/Entrust.php',
         'modules\\ams\\Lessee' => __DIR__ . '/../..' . '/modules/ams/Lessee.php',
