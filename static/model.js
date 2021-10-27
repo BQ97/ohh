@@ -1,10 +1,11 @@
 export default {
-    username : 'user1',
-    age : 19,
+    Bitwise: {
+        insert: (rowInt, ...items) => items.reduce((carry, item) => carry | item, rowInt),
 
-    password :'123',
+        delete: (rowInt, ...items) => items.reduce((carry, item) => carry & (~item), rowInt),
 
-    say() {
-        return 'my name is ' + this.username;
+        check: (rowInt, item) => (rowInt & item) === item,
+
+        decbin: (rowInt) => rowInt.toString(2),
     }
 }
