@@ -43,8 +43,9 @@ class Bitwise
         return ($rowInt & $item) === $item;
     }
 
-    public static function decbin(int $rowInt): string
+    public static function decbin(int $rowInt): array
     {
-        return decbin($rowInt);
+        $row = decbin($rowInt);
+        return ['row' => $row, 'arr' => str_split($row, 1)];
     }
 }

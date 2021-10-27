@@ -6,6 +6,12 @@ export default {
 
         check: (rowInt, item) => (rowInt & item) === item,
 
-        decbin: (rowInt) => rowInt.toString(2),
+        decbin: (rowInt) => {
+            let row = rowInt.toString(2);
+            return {
+                row,
+                arr: row.split('')
+            };
+        }
     }
 }
