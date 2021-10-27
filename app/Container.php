@@ -41,6 +41,7 @@ use App\Hash;
 use App\File\Csv;
 use App\Xml;
 use App\File\Xls;
+use App\Bitwise;
 
 /**
  * @name 容器
@@ -70,6 +71,7 @@ use App\File\Xls;
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
+ * @property \App\Bitwise           $bitwise
  */
 class Container implements ArrayAccess, IteratorAggregate, Countable
 {
@@ -115,7 +117,8 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'hash' => Hash::class,
         'csv' => Csv::class,
         'xml' => Xml::class,
-        'xls' => Xls::class
+        'xls' => Xls::class,
+        'bitwise' => Bitwise::class
     ];
 
     /**

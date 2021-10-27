@@ -29,6 +29,7 @@ namespace App;
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
+ * @property \App\Bitwise           $bitwise
  */
 class Application extends Container
 {
