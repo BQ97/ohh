@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\File;
@@ -26,7 +27,14 @@ class Csv
         while (($data = fgetcsv($handle, 0, ',')) !== false) {
             $num = count($data);
             for ($i = 0; $i < $num; $i++) {
-                $outputArray[$row][$i] = iconv('GB18030', 'UTF-8', trim($data[$i]));
+                $from_encoding = mb_detect_encoding($data[$i], mb_detect_order(), true);
+                if ($from_encoding === 'UTF-8') {
+                    $outputArray[$row][$i] = $data[$i];
+                } elseif ($from_encoding === false) {
+                    $outputArray[$row][$i] = iconv('GB18030', 'UTF-8', trim($data[$i]));
+                } else {
+                    $outputArray[$row][$i] = mb_convert_encoding($data[$i], 'UTF-8', $from_encoding);
+                }
             }
             $row++;
         }
