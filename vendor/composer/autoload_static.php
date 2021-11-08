@@ -3091,8 +3091,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\ams\\Base' => __DIR__ . '/../..' . '/modules/ams/Base.php',
         'modules\\ams\\Entrust' => __DIR__ . '/../..' . '/modules/ams/Entrust.php',
         'modules\\ams\\Lessee' => __DIR__ . '/../..' . '/modules/ams/Lessee.php',
-        'modules\\axSign\\Client' => __DIR__ . '/../..' . '/modules/axSign/Client.php',
-        'modules\\axSign\\Sign' => __DIR__ . '/../..' . '/modules/axSign/Sign.php',
         'setasign\\Fpdi\\FpdfTpl' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTpl.php',
         'setasign\\Fpdi\\FpdfTplTrait' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTplTrait.php',
         'setasign\\Fpdi\\Fpdi' => __DIR__ . '/..' . '/setasign/fpdi/src/Fpdi.php',

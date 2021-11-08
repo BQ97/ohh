@@ -12,34 +12,22 @@ class Csv
      */
     public static function read(string $fileName)
     {
-        //参数分析
-        if (!$fileName) {
+        if (!file_exists($fileName)) {
             return false;
         }
 
-        setlocale(LC_ALL, 'en_US.UTF-8');
+        return array_map(function ($string) {
 
-        //读取csv文件内容
-        $handle = fopen($fileName, 'r');
+            $from_encoding = mb_detect_encoding($string, mb_detect_order(), true);
 
-        $outputArray  = [];
-        $row = 0;
-        while (($data = fgetcsv($handle, 0, ',')) !== false) {
-            $num = count($data);
-            for ($i = 0; $i < $num; $i++) {
-                $from_encoding = mb_detect_encoding($data[$i], mb_detect_order(), true);
-                if ($from_encoding === 'UTF-8') {
-                    $outputArray[$row][$i] = $data[$i];
-                } elseif ($from_encoding === false) {
-                    $outputArray[$row][$i] = iconv('GB18030', 'UTF-8', trim($data[$i]));
-                } else {
-                    $outputArray[$row][$i] = mb_convert_encoding($data[$i], 'UTF-8', $from_encoding);
-                }
+            if ($from_encoding === false) {
+                $string = iconv('GB18030', 'UTF-8', $string);
+            } else {
+                $string = mb_convert_encoding($string, 'UTF-8', $from_encoding);
             }
-            $row++;
-        }
-        fclose($handle);
-        return $outputArray;
+
+            return str_getcsv($string);
+        }, file($fileName, FILE_USE_INCLUDE_PATH | FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES));
     }
 
     /**
@@ -52,25 +40,22 @@ class Csv
     {
         $fileName = pathinfo($fileName, PATHINFO_FILENAME) . '.csv';
 
-        $content = '';
-        foreach ($data as $lines) {
-            if ($lines && is_array($lines)) {
-                foreach ($lines as $key => $value) {
-                    if (is_string($value)) {
-                        $lines[$key] = '"' . iconv('UTF-8', 'GB18030', $value) . '"';
-                    }
-                }
-                $content .= implode(',', $lines) . "\n";
-            }
-        }
+        $content = array_reduce($data, function ($current, $items) {
+
+            $lines = array_map(function ($string) {
+                return '"' . $string . '"';
+            }, $items);
+
+            return $current . implode(',', $lines) . PHP_EOL;
+        }, '');
 
         if ($download) {
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            header("Expires:0");
-            header("Pragma:public");
-            header("Cache-Control: public");
-            header("Content-type:text/csv");
-            header("Content-Disposition:attachment;filename=" . $fileName);
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Expires:0');
+            header('Pragma:public');
+            header('Cache-Control: public');
+            header('Content-type:text/csv');
+            header('Content-Disposition:attachment;filename=' . $fileName);
 
             echo $content;
         } else {
