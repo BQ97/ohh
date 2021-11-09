@@ -2760,6 +2760,8 @@ return array(
     'modules\\ams\\Base' => $baseDir . '/modules/ams/Base.php',
     'modules\\ams\\Entrust' => $baseDir . '/modules/ams/Entrust.php',
     'modules\\ams\\Lessee' => $baseDir . '/modules/ams/Lessee.php',
+    'modules\\axSign\\Client' => $baseDir . '/modules/axSign/Client.php',
+    'modules\\axSign\\Sign' => $baseDir . '/modules/axSign/Sign.php',
     'setasign\\Fpdi\\FpdfTpl' => $vendorDir . '/setasign/fpdi/src/FpdfTpl.php',
     'setasign\\Fpdi\\FpdfTplTrait' => $vendorDir . '/setasign/fpdi/src/FpdfTplTrait.php',
     'setasign\\Fpdi\\Fpdi' => $vendorDir . '/setasign/fpdi/src/Fpdi.php',
