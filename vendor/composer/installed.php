@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8ebd490a9cc4b42fb1bc5eff8997217066f8c953',
+        'reference' => '73e65cdcb57da369063c63efb74d9fb2bd387dc7',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8ebd490a9cc4b42fb1bc5eff8997217066f8c953',
+            'reference' => '73e65cdcb57da369063c63efb74d9fb2bd387dc7',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -164,12 +164,12 @@
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
-            'pretty_version' => 'v8.0.14',
-            'version' => '8.0.14.0',
+            'pretty_version' => 'v8.0.15',
+            'version' => '8.0.15.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../mpdf/mpdf',
             'aliases' => array(),
-            'reference' => 'ab362c8b11667813487be5d3da64b31c89d9d826',
+            'reference' => 'd8a5294a6cc2e814c4157aecc8d7ac25014b18ed',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
