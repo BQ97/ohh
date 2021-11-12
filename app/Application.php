@@ -30,6 +30,7 @@ namespace App;
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  * @property \App\Bitwise           $bitwise
+ * @property \App\Pipeline          $pipeline
  */
 class Application extends Container
 {

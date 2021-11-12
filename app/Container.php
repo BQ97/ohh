@@ -42,6 +42,7 @@ use App\File\Csv;
 use App\Xml;
 use App\File\Xls;
 use App\Bitwise;
+use App\Pipeline;
 
 /**
  * @name 容器
@@ -72,6 +73,7 @@ use App\Bitwise;
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  * @property \App\Bitwise           $bitwise
+ * @property \App\Pipeline          $pipeline
  */
 class Container implements ArrayAccess, IteratorAggregate, Countable
 {
@@ -118,7 +120,8 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'csv' => Csv::class,
         'xml' => Xml::class,
         'xls' => Xls::class,
-        'bitwise' => Bitwise::class
+        'bitwise' => Bitwise::class,
+        'pipeline' => Pipeline::class,
     ];
 
     /**
