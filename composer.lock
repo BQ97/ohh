@@ -1640,16 +1640,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "3.3.2",
+            "version": "3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "06bb38a3a5afb3619a81794c78f0add604ed6826"
+                "reference": "4c142a48c1063dfba4afefe57f8f6e640101f3dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/06bb38a3a5afb3619a81794c78f0add604ed6826",
-                "reference": "06bb38a3a5afb3619a81794c78f0add604ed6826",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/4c142a48c1063dfba4afefe57f8f6e640101f3dd",
+                "reference": "4c142a48c1063dfba4afefe57f8f6e640101f3dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1700,15 +1700,15 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/3.3.2"
+                "source": "https://github.com/overtrue/socialite/tree/3.3.3"
             },
             "funding": [
                 {
-                    "url": "https://www.patreon.com/overtrue",
-                    "type": "patreon"
+                    "url": "https://github.com/overtrue",
+                    "type": "github"
                 }
             ],
-            "time": "2021-10-17T16:08:30+00:00"
+            "time": "2021-11-10T13:27:32+00:00"
         },
         {
             "name": "paragonie/random_compat",

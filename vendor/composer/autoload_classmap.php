@@ -20,6 +20,7 @@ return array(
     'App\\Hash' => $baseDir . '/app/Hash.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\MyTree' => $baseDir . '/app/MyTree.php',
+    'App\\Pipeline' => $baseDir . '/app/Pipeline.php',
     'App\\Proxy\\Arr' => $baseDir . '/app/Proxy/Arr.php',
     'App\\Proxy\\Obj' => $baseDir . '/app/Proxy/Obj.php',
     'App\\Proxy\\Str' => $baseDir . '/app/Proxy/Str.php',

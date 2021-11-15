@@ -351,6 +351,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\Hash' => __DIR__ . '/../..' . '/app/Hash.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
+        'App\\Pipeline' => __DIR__ . '/../..' . '/app/Pipeline.php',
         'App\\Proxy\\Arr' => __DIR__ . '/../..' . '/app/Proxy/Arr.php',
         'App\\Proxy\\Obj' => __DIR__ . '/../..' . '/app/Proxy/Obj.php',
         'App\\Proxy\\Str' => __DIR__ . '/../..' . '/app/Proxy/Str.php',
