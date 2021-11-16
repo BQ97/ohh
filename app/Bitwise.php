@@ -43,6 +43,20 @@ class Bitwise
         return ($rowInt & $item) === $item;
     }
 
+    /**
+     * @param int $rowInt
+     * @param int[] $items
+     * 
+     * @return array
+     */
+    public static function checkMultiple(int $rowInt, array $items)
+    {
+        return array_reduce($items, function ($carry, $item) use ($rowInt) {
+            $carry[$item] = static::check($rowInt, $item);
+            return $carry;
+        }, []);
+    }
+
     public static function decbin(int $rowInt): array
     {
         $row = decbin($rowInt);
