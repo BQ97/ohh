@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '17f981a553028e2ff74f0ef0ffb411c3b418ce92',
+        'reference' => '8a91220ac68f66fb1f7bf7e779d166aa18658374',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '17f981a553028e2ff74f0ef0ffb411c3b418ce92',
+            'reference' => '8a91220ac68f66fb1f7bf7e779d166aa18658374',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -119,12 +119,12 @@
             'dev_requirement' => false,
         ),
         'league/mime-type-detection' => array(
-            'pretty_version' => '1.8.0',
-            'version' => '1.8.0.0',
+            'pretty_version' => '1.9.0',
+            'version' => '1.9.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/mime-type-detection',
             'aliases' => array(),
-            'reference' => 'b38b25d7b372e9fddb00335400467b223349fd7e',
+            'reference' => 'aa70e813a6ad3d1558fc927863d47309b4c23e69',
             'dev_requirement' => false,
         ),
         'league/plates' => array(
