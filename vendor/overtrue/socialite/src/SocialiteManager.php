@@ -31,6 +31,8 @@ class SocialiteManager implements FactoryInterface
         Providers\Facebook::NAME => Providers\Facebook::class,
         Providers\DingTalk::NAME => Providers\DingTalk::class,
         Providers\OpenWeWork::NAME => Providers\OpenWeWork::class,
+        Providers\Line::NAME => Providers\Line::class,
+        Providers\Gitee::NAME => Providers\Gitee::class,
     ];
 
     public function __construct(array $config)

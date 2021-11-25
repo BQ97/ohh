@@ -3,8 +3,6 @@
 <a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/v/unstable.svg" alt="Latest Unstable Version"></a>
 <a href="https://scrutinizer-ci.com/g/overtrue/socialite/build-status/master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/build.png?b=master" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/overtrue/socialite/?branch=master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/overtrue/socialite/?branch=master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/coverage.png?b=master" alt="Code Coverage"></a>
 <a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/license" alt="License"></a>
 </p>
@@ -12,11 +10,9 @@
 
 <p align="center">Socialite is an <a href="https://oauth.net/2/">OAuth2</a>  Authentication tool. It is inspired by <a href="https://github.com/laravel/socialite">laravel/socialite</a>, You can easily use it in any PHP project.       <a href="/README_CN.md">中文文档</a></p>
 
-<p align="center">This tool now supports platforms such as Facebook, GitHub, Google, LinkedIn, Outlook, QQ, Tapd, Alipay, Taobao, Baidu, DingTalk, Weibo, WeChat, Douyin, Feishu, Douban, WeWork, Tencent Cloud.</p>
+<p align="center">This tool now supports platforms such as Facebook, GitHub, Google, LinkedIn, Outlook, QQ, Tapd, Alipay, Taobao, Baidu, DingTalk, Weibo, WeChat, Douyin, Feishu, Douban, WeWork, Tencent Cloud, Line, Gitee.</p>
 
-## :heart: Sponsor me 
-
-If you like the work I do and want to support it, [you know what to do :heart:](https://github.com/sponsors/overtrue)
+[![Sponsor me](https://raw.githubusercontent.com/overtrue/overtrue/master/sponsor-me-button-s.svg)](https://github.com/sponsors/overtrue)
 
 如果你喜欢我的项目并想支持它，[点击这里 :heart:](https://github.com/sponsors/overtrue)
 
@@ -569,18 +565,27 @@ $user = $socialite->userFromToken($accessToken);
 - [Facebook - Graph API](https://developers.facebook.com/docs/graph-api)
 - [Linkedin - Authenticating with OAuth 2.0](https://developer.linkedin.com/docs/oauth2)
 - [微博 - OAuth 2.0 授权机制说明](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
-- [QQ - OAuth 2.0 登录QQ](http://wiki.connect.qq.com/oauth2-0%E7%AE%80%E4%BB%8B)
+- [QQ - OAuth 2.0 登录 QQ](http://wiki.connect.qq.com/oauth2-0%E7%AE%80%E4%BB%8B)
 - [腾讯云 - OAuth2.0](https://cloud.tencent.com/document/product/306/37730#.E6.8E.A5.E5.85.A5.E8.85.BE.E8.AE.AF.E4.BA.91-oauth)
-- [微信公众平台 - OAuth文档](http://mp.weixin.qq.com/wiki/9/01f711493b5a02f24b04365ac5d8fd95.html)
+- [微信公众平台 - OAuth 文档](http://mp.weixin.qq.com/wiki/9/01f711493b5a02f24b04365ac5d8fd95.html)
 - [微信开放平台 - 网站应用微信登录开发指南](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN)
 - [微信开放平台 - 代公众号发起网页授权](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419318590&token=&lang=zh_CN)
-- [企业微信 - OAuth文档](https://open.work.weixin.qq.com/api/doc/90000/90135/91020)
-- [企业微信第三方应用 - OAuth文档](https://open.work.weixin.qq.com/api/doc/90001/90143/91118)
+- [企业微信 - OAuth 文档](https://open.work.weixin.qq.com/api/doc/90000/90135/91020)
+- [企业微信第三方应用 - OAuth 文档](https://open.work.weixin.qq.com/api/doc/90001/90143/91118)
 - [豆瓣 - OAuth 2.0 授权机制说明](http://developers.douban.com/wiki/?title=oauth2)
 - [抖音 - 网站应用开发指南](http://open.douyin.com/platform/doc)
 - [飞书 - 授权说明](https://open.feishu.cn/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM)
 - [Tapd - 用户授权说明](https://www.tapd.cn/help/show#1120003271001000093)
+- [Line - OAuth 2.0](https://developers.line.biz/en/docs/line-login/integrate-line-login/)
+- [Gitee - OAuth文档](https://gitee.com/api/v5/oauth_doc#/)
 
+[![Sponsor me](https://raw.githubusercontent.com/overtrue/overtrue/master/sponsor-me.svg)](https://github.com/sponsors/overtrue)
+
+## Project supported by JetBrains
+
+Many thanks to Jetbrains for kindly providing a license for me to work on this and other open-source projects.
+
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
 
 
 # PHP 扩展包开发
