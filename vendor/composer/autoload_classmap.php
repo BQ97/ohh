@@ -2763,8 +2763,6 @@ return array(
     'modules\\ams\\Base' => $baseDir . '/modules/ams/Base.php',
     'modules\\ams\\Entrust' => $baseDir . '/modules/ams/Entrust.php',
     'modules\\ams\\Lessee' => $baseDir . '/modules/ams/Lessee.php',
-    'modules\\axSign\\Client' => $baseDir . '/modules/axSign/Client.php',
-    'modules\\axSign\\Sign' => $baseDir . '/modules/axSign/Sign.php',
     'modules\\middleware\\A' => $baseDir . '/modules/middleware/A.php',
     'modules\\middleware\\B' => $baseDir . '/modules/middleware/B.php',
     'modules\\middleware\\C' => $baseDir . '/modules/middleware/C.php',

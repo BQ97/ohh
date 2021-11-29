@@ -3094,8 +3094,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\ams\\Base' => __DIR__ . '/../..' . '/modules/ams/Base.php',
         'modules\\ams\\Entrust' => __DIR__ . '/../..' . '/modules/ams/Entrust.php',
         'modules\\ams\\Lessee' => __DIR__ . '/../..' . '/modules/ams/Lessee.php',
-        'modules\\axSign\\Client' => __DIR__ . '/../..' . '/modules/axSign/Client.php',
-        'modules\\axSign\\Sign' => __DIR__ . '/../..' . '/modules/axSign/Sign.php',
         'modules\\middleware\\A' => __DIR__ . '/../..' . '/modules/middleware/A.php',
         'modules\\middleware\\B' => __DIR__ . '/../..' . '/modules/middleware/B.php',
         'modules\\middleware\\C' => __DIR__ . '/../..' . '/modules/middleware/C.php',

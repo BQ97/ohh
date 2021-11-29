@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use ArrayAccess;
+use Traversable;
 use IteratorAggregate;
 use Countable;
 use ReflectionFunction;
@@ -208,7 +209,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
      * @param  mixed         $concrete    要绑定的类、闭包或者实例
      * @return $this
      */
-    public function bindTo($abstract, $concrete = null)
+    public function bindTo($abstract, $concrete = null): Container
     {
         if (is_array($abstract)) {
             $this->bind = array_merge($this->bind, $abstract);
@@ -254,7 +255,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
      * @param  string    $abstract    类名或者标识
      * @return bool
      */
-    public function bound($abstract)
+    public function bound($abstract): bool
     {
         return isset($this->bind[$abstract]) || isset($this->instances[$abstract]);
     }
@@ -333,7 +334,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
      * @param  string|array    $abstract    类名或者标识
      * @return void
      */
-    public function delete($abstract)
+    public function delete($abstract): void
     {
         foreach ((array) $abstract as $name) {
             $name = isset($this->name[$name]) ? $this->name[$name] : $name;
@@ -563,7 +564,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         return $result;
     }
 
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         $this->bindTo($name, $value);
     }
@@ -573,17 +574,17 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         return $this->make($name);
     }
 
-    public function __isset($name)
+    public function __isset($name): bool
     {
         return $this->bound($name);
     }
 
-    public function __unset($name)
+    public function __unset($name): void
     {
         $this->delete($name);
     }
 
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return $this->__isset($key);
     }
@@ -593,24 +594,23 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         return $this->__get($key);
     }
 
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->__set($key, $value);
     }
 
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         $this->__unset($key);
     }
 
-    //Countable
-    public function count()
+    public function count(): int
     {
         return count($this->instances);
     }
 
     //IteratorAggregate
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->instances);
     }
