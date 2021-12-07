@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -12,11 +13,11 @@ class Request
      *
      * @return array
      */
-    private function input()
+    private static function input()
     {
         $content = file_get_contents('php://input');
 
-        if (false !== strpos($this->server('CONTENT_TYPE', ''), 'application/json') || 0 === strpos($content, '{"')) {
+        if (false !== strpos(static::server('CONTENT_TYPE', ''), 'application/json') || 0 === strpos($content, '{"')) {
             return json_decode($content, true);
         } elseif (strpos($content, '=')) {
             parse_str($content, $data);
@@ -30,7 +31,7 @@ class Request
      * @param string
      * @return string|array
      */
-    public function server(String $key = '', $default = null)
+    public static function server(String $key = '', $default = null)
     {
         return Utils::getData($_SERVER, $key, $default);
     }
@@ -39,7 +40,7 @@ class Request
      * @param string
      * @return string|array
      */
-    public function getRequest(String $key = '', $default = null)
+    public static function getRequest(String $key = '', $default = null)
     {
         return Utils::getData($_REQUEST, $key, $default);
     }
@@ -48,16 +49,16 @@ class Request
      * @param string
      * @return string|array
      */
-    public function post(String $key = '', $default = null)
+    public static function post(String $key = '', $default = null)
     {
-        return Utils::getData(empty($_POST) ? $this->input() : $_POST, $key, $default);
+        return Utils::getData(empty($_POST) ? static::input() : $_POST, $key, $default);
     }
 
     /**
      * @param string
      * @return string|array
      */
-    public function get(String $key = '', $default = null)
+    public static function get(String $key = '', $default = null)
     {
         return Utils::getData($_GET, $key, $default);
     }
@@ -66,7 +67,7 @@ class Request
      * @param string
      * @return string|array
      */
-    public function files(String $key = '', $default = null)
+    public static function files(String $key = '', $default = null)
     {
         return Utils::getData($_FILES, $key, $default);
     }
