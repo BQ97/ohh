@@ -38,7 +38,6 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
             static::$instances[$prefix] = $this;
 
             $this->fileSystem->makeDir($prefix);
-
         }
     }
 
@@ -129,14 +128,13 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
             return [];
         }
 
-        $config = [];
-
-        foreach ($files as $file) {
+        return array_reduce($files, function ($config, $file) {
             $key = pathinfo($file, PATHINFO_FILENAME);
-            $config[$key] = $this->get($key);
-        }
 
-        return $config;
+            $config[$key] = $this->get($key);
+
+            return $config;
+        }, []);
     }
 
     /**
@@ -283,7 +281,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
         return $this->delete($name);
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->has($offset);
     }
@@ -293,17 +291,17 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
         return $this->get($offset);
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
-        return $this->set($offset, $value);
+        $this->set($offset, $value);
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
-        return $this->delete($offset);
+        $this->delete($offset);
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->all());
     }
