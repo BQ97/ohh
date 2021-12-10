@@ -18,7 +18,9 @@
         "kosinix/grafika": "^2.0",
         "overtrue/socialite": "^3.3",
         "overtrue/pinyin": "^4.0",
-        "overtrue/chinese-calendar": "^1.0"
+        "overtrue/chinese-calendar": "^1.0",
+        "league/uri": "^6.5",
+        "league/route": "^5.1"
     },
     "autoload": {
         "psr-4": {

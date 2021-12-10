@@ -146,6 +146,10 @@ class Utils
 
     public static function getData(array $data, string $name, $default = null)
     {
+        if (!$name) {
+            return $data;
+        }
+
         return array_reduce(explode('.', $name), function ($data, $key) use ($default) {
             return isset($data[$key]) ? $data[$key] : $default;
         }, $data);
