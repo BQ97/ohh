@@ -2,10 +2,50 @@
 
 declare(strict_types=1);
 
+use League\Route\Router;
+use League\Route\Strategy\ApplicationStrategy;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Laminas\Diactoros\ServerRequestFactory;
+use Laminas\Diactoros\ResponseFactory;
+use League\Route\Strategy\JsonStrategy;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+
 /**
  * @var \App\Application
  */
 $app = require_once '../main.php';
+
+$request = $app->request->createServerRequest();
+
+$responseFactory = new ResponseFactory();
+
+$strategy = new JsonStrategy($responseFactory);
+
+$router = new Router();
+
+$router->setStrategy($strategy);
+
+$router->get('/test', function (ServerRequestInterface $request) : array {
+    return [
+        'ret' => 200,
+        'data' => [
+
+            'test' => '123'
+        ],
+        'msg' => 'ok'
+    ];
+});
+
+$response = $router->dispatch($request);
+
+
+$sapiEmitter = new SapiEmitter;
+
+$sapiEmitter->emit($response);
+
+
+exit;
 
 $pathInfo = $app->request->server('PATH_INFO', $app->request->server('argv.1'));
 

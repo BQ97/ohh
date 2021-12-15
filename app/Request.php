@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Utils;
+use Laminas\Diactoros\ServerRequestFactory;
 
 class Request
 {
@@ -34,6 +35,15 @@ class Request
     public static function server(String $key = '', $default = null)
     {
         return Utils::getData($_SERVER, $key, $default);
+    }
+
+    /**
+     * @param string
+     * @return string|array
+     */
+    public static function cookie(String $key = '', $default = null)
+    {
+        return Utils::getData($_COOKIE, $key, $default);
     }
 
     /**
@@ -70,5 +80,19 @@ class Request
     public static function files(String $key = '', $default = null)
     {
         return Utils::getData($_FILES, $key, $default);
+    }
+
+    /**
+     * @return \Laminas\Diactoros\ServerRequest
+     */
+    public static function createServerRequest()
+    {
+        return ServerRequestFactory::fromGlobals(
+            static::server(),
+            static::get(),
+            static::post(),
+            static::cookie(),
+            static::files()
+        );
     }
 }

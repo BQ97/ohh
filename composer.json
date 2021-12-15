@@ -20,7 +20,9 @@
         "overtrue/pinyin": "^4.0",
         "overtrue/chinese-calendar": "^1.0",
         "league/uri": "^6.5",
-        "league/route": "^5.1"
+        "league/route": "^5.1",
+        "laminas/laminas-diactoros": "^2.8",
+        "laminas/laminas-httphandlerrunner": "^2.1"
     },
     "autoload": {
         "psr-4": {
