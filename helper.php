@@ -13,7 +13,7 @@ if (!function_exists('app')) {
      */
     function app($name = 'app', $args = [], $newInstance = false)
     {
-        return Container::get($name, $args, $newInstance);
+        return Container::getInstance()->make($name, $args, $newInstance);
     }
 }
 
