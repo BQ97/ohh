@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use Psr\Container\ContainerInterface;
 use ArrayAccess;
 use Traversable;
 use IteratorAggregate;
@@ -76,7 +77,7 @@ use App\Pipeline;
  * @property \App\Bitwise           $bitwise
  * @property \App\Pipeline          $pipeline
  */
-class Container implements ArrayAccess, IteratorAggregate, Countable
+class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerInterface
 {
     /**
      * 容器对象实例
@@ -160,13 +161,11 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
      * 获取容器中的对象实例
      * @access public
      * @param  string        $abstract       类名或者标识
-     * @param  array|true    $vars           变量
-     * @param  bool          $newInstance    是否每次创建新的实例
      * @return object
      */
-    public static function get($abstract, $vars = [], $newInstance = false)
+    public function get(string $name)
     {
-        return static::getInstance()->make($abstract, $vars, $newInstance);
+        return $this->make($name);
     }
 
     /**
