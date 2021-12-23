@@ -79,7 +79,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
             'Symfony\\Component\\DomCrawler\\' => 29,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
-            'SuperClosure\\' => 13,
         ),
         'P' => 
         array (
@@ -224,10 +223,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Symfony\\Bridge\\PsrHttpMessage\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
-        ),
-        'SuperClosure\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/jeremeamia/superclosure/src',
         ),
         'Psy\\' => 
         array (
@@ -2989,20 +2984,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'SuperClosure\\Analyzer\\AstAnalyzer' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/AstAnalyzer.php',
-        'SuperClosure\\Analyzer\\ClosureAnalyzer' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/ClosureAnalyzer.php',
-        'SuperClosure\\Analyzer\\Token' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/Token.php',
-        'SuperClosure\\Analyzer\\TokenAnalyzer' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/TokenAnalyzer.php',
-        'SuperClosure\\Analyzer\\Visitor\\ClosureLocatorVisitor' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/Visitor/ClosureLocatorVisitor.php',
-        'SuperClosure\\Analyzer\\Visitor\\MagicConstantVisitor' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/Visitor/MagicConstantVisitor.php',
-        'SuperClosure\\Analyzer\\Visitor\\ThisDetectorVisitor' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Analyzer/Visitor/ThisDetectorVisitor.php',
-        'SuperClosure\\Exception\\ClosureAnalysisException' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Exception/ClosureAnalysisException.php',
-        'SuperClosure\\Exception\\ClosureSerializationException' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Exception/ClosureSerializationException.php',
-        'SuperClosure\\Exception\\ClosureUnserializationException' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Exception/ClosureUnserializationException.php',
-        'SuperClosure\\Exception\\SuperClosureException' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Exception/SuperClosureException.php',
-        'SuperClosure\\SerializableClosure' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/SerializableClosure.php',
-        'SuperClosure\\Serializer' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/Serializer.php',
-        'SuperClosure\\SerializerInterface' => __DIR__ . '/..' . '/jeremeamia/superclosure/src/SerializerInterface.php',
         'Symfony\\Bridge\\PsrHttpMessage\\ArgumentValueResolver\\PsrServerRequestResolver' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/ArgumentValueResolver/PsrServerRequestResolver.php',
         'Symfony\\Bridge\\PsrHttpMessage\\EventListener\\PsrResponseListener' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/EventListener/PsrResponseListener.php',
         'Symfony\\Bridge\\PsrHttpMessage\\Factory\\HttpFoundationFactory' => __DIR__ . '/..' . '/symfony/psr-http-message-bridge/Factory/HttpFoundationFactory.php',
