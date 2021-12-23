@@ -144,6 +144,49 @@ class Utils
         return Uuid::generate(4)->hex;
     }
 
+    /**
+     * 增加工作日，过滤掉周六周日
+     * @param string $start  开始日期
+     * @param int $workDay 增加几个工作日
+     * @return string|bool
+     */
+    public static function addWorkDays(string $start, int $workDay = 1)
+    {
+        if (strtotime($start) === false) {
+            return false;
+        }
+
+        $startTimeStamp = strtotime($start) + 86400;
+
+        $week2 = [2, 1, 1, 1, 1, 1, 2];
+
+        $w1 = (int)date('w', $startTimeStamp);
+
+        $w2 = [...array_slice($week2, $w1), ...array_slice($week2, 0, $w1)];
+
+        $weeks = floor($workDay / 7);
+
+        $arr = [];
+
+        if ($weeks) {
+            for ($i = 0; $i < $weeks; $i++) {
+                $arr = array_merge($arr, $w2);
+            }
+        }
+
+        $after = ($workDay % 7);
+
+        $afterWeeks = array_slice($w2, 0, $after);
+
+        $result = [...$arr, ...$afterWeeks];
+
+        $days = array_sum($result);
+
+        $days = $days + $week2[$after];
+
+        return date('Y-m-d', $startTimeStamp + 86400 * $days);
+    }
+
     public static function getData(array $data, string $name, $default = null)
     {
         if (!$name) {
