@@ -45,10 +45,12 @@ if (!function_exists('view')) {
     /**
      * @param  string $name
      * @param  array  $data
-     * @param  bool  $return
+     * @param  int  $status
+     * @param  array  $headers
+     * 
      * @return \Laminas\Diactoros\Response\HtmlResponse
      */
-    function view(string $name, array $data = [], $status = 200, $headers = [])
+    function view(string $name, array $data = [], int $status = 200, array $headers = [])
     {
         return new HtmlResponse(app()->render($name, $data, true), $status, $headers);
     }
