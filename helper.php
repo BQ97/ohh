@@ -35,7 +35,7 @@ if (!function_exists('fileSystem')) {
      * @param string $path  目录  默认 缓存目录
      * @return \App\File\Flysystem
      */
-    function fileSystem($path = CACHE_PATH)
+    function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
     {
         return app()->fileSystem($path);
     }
@@ -50,7 +50,7 @@ if (!function_exists('view')) {
      * 
      * @return \Laminas\Diactoros\Response\HtmlResponse
      */
-    function view(string $name, array $data = [], int $status = 200, array $headers = [])
+    function view(string $name, array $data = [], int $status = 200, array $headers = []): \Laminas\Diactoros\Response\HtmlResponse
     {
         return new HtmlResponse(app()->render($name, $data, true), $status, $headers);
     }
@@ -60,7 +60,7 @@ if (!function_exists('router')) {
     /**
      * @return \App\Router\Router
      */
-    function router()
+    function router(): \App\Router\Router
     {
         return app('\\App\\Router\\Router');
     }
