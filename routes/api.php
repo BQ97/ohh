@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use League\Route\RouteGroup;
+use Laminas\Diactoros\ResponseFactory;
+use League\Route\Strategy\JsonStrategy;
 
-router()->jsonStrategy()->group('/api', function (RouteGroup $route) {
+router()->group('/api', function (RouteGroup $route) {
     $route->get('/', '\\modules\\Index::indexAction');
 
     $route->get('/index', '\\modules\\Index::indexAction');
@@ -28,4 +30,4 @@ router()->jsonStrategy()->group('/api', function (RouteGroup $route) {
 
         return app($class)->$action();
     });
-});
+})->setStrategy(new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE));

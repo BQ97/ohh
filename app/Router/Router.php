@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace App\Router;
 
 use App\Request;
-use League\Route\Strategy\ApplicationStrategy;
 use League\Route\Router as BaseRouter;
 use App\Router\middleware\web\Base as WebMiddleware;
 use App\Router\middleware\json\Base as JsonMiddleware;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
-use Laminas\Diactoros\ResponseFactory;
-use League\Route\Strategy\JsonStrategy;
 
 class Router
 {
@@ -40,30 +37,6 @@ class Router
      */
     public function handler()
     {
-        return $this->handler;
-    }
-
-    /**
-     * @return \League\Route\Router
-     */
-    public function applicationStrategy()
-    {
-        $this->handler->setStrategy(new ApplicationStrategy);
-
-        return $this->handler;
-    }
-
-    /**
-     * @return \League\Route\Router
-     */
-    public function jsonStrategy()
-    {
-        $responseFactory = new ResponseFactory();
-
-        $strategy = new JsonStrategy($responseFactory, JSON_UNESCAPED_UNICODE);
-
-        $this->handler->setStrategy($strategy);
-
         return $this->handler;
     }
 

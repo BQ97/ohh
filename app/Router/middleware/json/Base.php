@@ -14,14 +14,18 @@ class Base implements MiddlewareInterface
     {
         $response = $handler->handle($request);
 
-        $stream = $response->getBody();
+        if (in_array('application/json', $response->getHeader('content-type'), true)) {
+            $stream = $response->getBody();
 
-        $data = json_decode($stream, true);
+            $data = json_decode($stream, true);
 
-        return new JsonResponse([
-            'ret' => $data[0],
-            'data' => $data[1],
-            'msg' => 'ok'
-        ], $response->getStatusCode(), $response->getHeaders(), JSON_UNESCAPED_UNICODE);
+            return new JsonResponse([
+                'ret' => $data[0],
+                'data' => $data[1],
+                'msg' => 'ok'
+            ], $response->getStatusCode(), $response->getHeaders(), JSON_UNESCAPED_UNICODE);
+        } else {
+            return $response;
+        }
     }
 }
