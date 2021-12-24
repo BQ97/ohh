@@ -34,6 +34,10 @@ class Router
         $this->handler = new BaseRouter();
 
         $this->middlewares();
+
+        $this->registerWebRoute();
+
+        $this->registerApiRoute();
     }
 
     /**
@@ -52,11 +56,8 @@ class Router
         return array_reduce($this->middlewares, fn (BaseRouter $router, String $middleware) => $router->middleware(new $middleware), $this->handler);
     }
 
-    public function send()
+    private function registerWebRoute()
     {
-        // 没有虚拟主机的情况下需要将 PATH_INFO 赋给 REQUEST_URI
-        $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
-
         $this->handler()->group('/', function (RouteGroup $route) {
 
             $webRoutes = require_once ROUTE_PATH . 'web.php';
@@ -65,7 +66,10 @@ class Router
                 $route->map(...$item);
             }
         })->setStrategy(new ApplicationStrategy);
+    }
 
+    private function registerApiRoute()
+    {
         $this->handler()->group('/api', function (RouteGroup $route) {
             $apiRoutes = require_once ROUTE_PATH . 'api.php';
 
@@ -73,6 +77,12 @@ class Router
                 $route->map(...$item);
             }
         })->setStrategy(new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE));
+    }
+
+    public function send()
+    {
+        // 没有虚拟主机的情况下需要将 PATH_INFO 赋给 REQUEST_URI
+        $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
 
         $response = $this->handler()->handle(Request::createServerRequest());
 
