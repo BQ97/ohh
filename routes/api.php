@@ -2,32 +2,33 @@
 
 declare(strict_types=1);
 
-use League\Route\RouteGroup;
-use Laminas\Diactoros\ResponseFactory;
-use League\Route\Strategy\JsonStrategy;
+return [
+    [
+        'GET', '/', '\\modules\\Index::indexAction',
+    ],
+    [
+        'GET', '/index', '\\modules\\Index::indexAction'
+    ],
+    [
+        'GET', '/test', '\\modules\Index::testAction'
+    ],
+    [
+        'GET', '/{module}/{class}/{action}', function ($request, $args) {
+            $module = $args['module'];
+            $class = ucfirst($args['class']);
+            $action = $args['action'];
 
-router()->group('/api', function (RouteGroup $route) {
-    $route->get('/', '\\modules\\Index::indexAction');
+            $class = "\\modules\\{$module}\\{$class}";
 
-    $route->get('/index', '\\modules\\Index::indexAction');
+            if (!class_exists($class)) {
+                return [404, 'not found'];
+            }
 
-    $route->get('/test', '\\modules\Index::testAction');
+            if (!method_exists($class, $action)) {
+                return [404, 'not found'];
+            }
 
-    $route->get('/{module}/{class}/{action}', function ($request, $args) {
-        $module = $args['module'];
-        $class = ucfirst($args['class']);
-        $action = $args['action'];
-
-        $class = "\\modules\\{$module}\\{$class}";
-
-        if (!class_exists($class)) {
-            return [404, 'not found'];
+            return app($class)->$action();
         }
-
-        if (!method_exists($class, $action)) {
-            return [404, 'not found'];
-        }
-
-        return app($class)->$action();
-    });
-})->setStrategy(new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE));
+    ]
+];

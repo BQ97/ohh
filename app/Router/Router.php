@@ -9,6 +9,10 @@ use League\Route\Router as BaseRouter;
 use App\Router\middleware\web\Base as WebMiddleware;
 use App\Router\middleware\json\Base as JsonMiddleware;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+use League\Route\RouteGroup;
+use Laminas\Diactoros\ResponseFactory;
+use League\Route\Strategy\JsonStrategy;
+use League\Route\Strategy\ApplicationStrategy;
 
 class Router
 {
@@ -50,6 +54,25 @@ class Router
 
     public function send()
     {
+        $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
+
+        $this->handler()->group('/', function (RouteGroup $route) {
+
+            $webRoutes = require_once ROUTE_PATH . 'web.php';
+
+            foreach ($webRoutes as $item) {
+                $route->map(...$item);
+            }
+        })->setStrategy(new ApplicationStrategy);
+
+        $this->handler()->group('/api', function (RouteGroup $route) {
+            $apiRoutes = require_once ROUTE_PATH . 'api.php';
+
+            foreach ($apiRoutes as $item) {
+                $route->map(...$item);
+            }
+        })->setStrategy(new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE));
+
         $response = $this->handler()->handle(Request::createServerRequest());
 
         $sapiEmitter = new SapiEmitter;
