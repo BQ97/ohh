@@ -2,6 +2,7 @@
 
 use App\Container;
 use App\File\Cache;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
     /**
@@ -42,15 +43,14 @@ if (!function_exists('fileSystem')) {
 
 if (!function_exists('view')) {
     /**
-     * Create a new template and render it.
      * @param  string $name
      * @param  array  $data
      * @param  bool  $return
-     * @return string
+     * @return \Laminas\Diactoros\Response\HtmlResponse
      */
-    function view(string $name, array $data = [], bool $return = true)
+    function view(string $name, array $data = [], $status = 200, $headers = [])
     {
-        return app()->render($name, $data, $return);
+        return new HtmlResponse(app()->render($name, $data, true), $status, $headers);
     }
 }
 
