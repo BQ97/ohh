@@ -474,7 +474,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
 
             return $reflect->newInstanceArgs($args);
         } catch (ReflectionException $e) {
-            throw new Exception('class not exists: ' . $class, $class);
+            throw new Exception('class not exists: ' . $class);
         }
     }
 

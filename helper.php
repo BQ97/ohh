@@ -45,10 +45,11 @@ if (!function_exists('view')) {
      * Create a new template and render it.
      * @param  string $name
      * @param  array  $data
+     * @param  bool  $return
      * @return string
      */
-    function view(string $name, array $data = [])
+    function view(string $name, array $data = [], bool $return = true)
     {
-        return app()->render($name, $data);
+        return app()->render($name, $data, $return);
     }
 }

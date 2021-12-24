@@ -162,11 +162,18 @@ class Application extends Container
      * Create a new template and render it.
      * @param  string $name
      * @param  array  $data
+     * @param  bool  $return
      * @return string
      */
-    public function render($name, array $data = array())
+    public function render($name, array $data = array(), bool $return = true)
     {
-        echo $this->templates->render($name, $data);
+        $result = $this->templates->render($name, $data);
+
+        if ($return) {
+            return $result;
+        }
+
+        echo $result;
     }
 
     /**
