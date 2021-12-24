@@ -35,9 +35,7 @@ class Router
 
         $this->middlewares();
 
-        $this->registerWebRoute();
-
-        $this->registerApiRoute();
+        $this->registerRoutes();
     }
 
     /**
@@ -56,27 +54,34 @@ class Router
         return array_reduce($this->middlewares, fn (BaseRouter $router, String $middleware) => $router->middleware(new $middleware), $this->handler);
     }
 
-    private function registerWebRoute()
+    private function registerRoutes()
     {
-        $this->handler()->group('/', function (RouteGroup $route) {
+        $routes = [
+            [
+                'group' => '/',
+                'file' => 'web.php',
+                'strategy' => new ApplicationStrategy
+            ],
+            [
+                'group' => '/api',
+                'file' => 'api.php',
+                'strategy' => new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE)
+            ]
+        ];
 
-            $webRoutes = require_once ROUTE_PATH . 'web.php';
-
-            foreach ($webRoutes as $item) {
-                $route->map(...$item);
-            }
-        })->setStrategy(new ApplicationStrategy);
+        foreach ($routes as $item) {
+            $this->handler()->group($item['group'], $this->loadRouteFile($item['file']))->setStrategy($item['strategy']);
+        }
     }
 
-    private function registerApiRoute()
+    private function loadRouteFile(string $file)
     {
-        $this->handler()->group('/api', function (RouteGroup $route) {
-            $apiRoutes = require_once ROUTE_PATH . 'api.php';
-
-            foreach ($apiRoutes as $item) {
-                $route->map(...$item);
-            }
-        })->setStrategy(new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE));
+        return function (RouteGroup $route) use ($file) {
+            array_reduce(requireFile(ROUTE_PATH . $file), function (RouteGroup $route, array $params) {
+                $route->map(...$params);
+                return $route;
+            }, $route);
+        };
     }
 
     public function send()

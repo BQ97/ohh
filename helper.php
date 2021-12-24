@@ -65,3 +65,18 @@ if (!function_exists('router')) {
         return app('\\App\\Router\\Router');
     }
 }
+
+if (!function_exists('requireFile')) {
+    /**
+     * @param string $path
+     * @return mixed
+     */
+    function requireFile(String $path)
+    {
+        if (!file_exists($path)) {
+            return null;
+        }
+
+        return require_once $path;
+    }
+}
