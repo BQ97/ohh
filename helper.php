@@ -53,3 +53,13 @@ if (!function_exists('view')) {
         return app()->render($name, $data, $return);
     }
 }
+
+if (!function_exists('router')) {
+    /**
+     * @return \App\Router\Router
+     */
+    function router()
+    {
+        return app('\\App\\Router\\Router');
+    }
+}

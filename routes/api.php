@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Router\Json;
 use League\Route\RouteGroup;
 
-Json::group('/api', function (RouteGroup $route) {
-
+router()->jsonStrategy()->group('/api', function (RouteGroup $route) {
     $route->get('/', '\\modules\\Index::indexAction');
 
     $route->get('/index', '\\modules\\Index::indexAction');

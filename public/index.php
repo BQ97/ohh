@@ -10,4 +10,4 @@ $app = require_once '../main.php';
 require_once '../routes/web.php';
 require_once '../routes/api.php';
 
-App\Router\Web::send();
+router()->send();
