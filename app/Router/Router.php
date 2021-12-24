@@ -54,6 +54,7 @@ class Router
 
     public function send()
     {
+        // 没有虚拟主机的情况下需要将 PATH_INFO 赋给 REQUEST_URI
         $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
 
         $this->handler()->group('/', function (RouteGroup $route) {
