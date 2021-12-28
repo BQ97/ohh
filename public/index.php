@@ -4,4 +4,4 @@ declare(strict_types=1);
 
 require_once '../main.php';
 
-router()->send();
+return $app->router->send();

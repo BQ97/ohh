@@ -69,8 +69,10 @@ class Router
             ]
         ];
 
+        $container = app();
+
         foreach ($routes as $item) {
-            $item['strategy']->setContainer(app());
+            $item['strategy']->setContainer($container);
 
             $this->handler()->group($item['group'], $this->loadRouteFile($item['file']))->setStrategy($item['strategy']);
         }
