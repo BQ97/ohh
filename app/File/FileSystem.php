@@ -61,6 +61,15 @@ class FileSystem
     }
 
     /**
+     * @param string $path
+     * @return self
+     */
+    public static function getInstance(string $path = CACHE_PATH): FileSystem
+    {
+        return new static($path);
+    }
+
+    /**
      * 分析目标目录的读写权限
      *
      * @access public

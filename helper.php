@@ -33,11 +33,11 @@ if (!function_exists('cache')) {
 if (!function_exists('fileSystem')) {
     /**
      * @param string $path  目录  默认 缓存目录
-     * @return \App\File\Flysystem
+     * @return \App\File\FileSystem
      */
     function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
     {
-        return app()->fileSystem($path);
+        return \App\File\FileSystem::getInstance($path);
     }
 }
 
@@ -52,7 +52,7 @@ if (!function_exists('view')) {
      */
     function view(string $name, array $data = [], int $status = 200, array $headers = []): \Laminas\Diactoros\Response\HtmlResponse
     {
-        return new HtmlResponse(app()->render($name, $data, true), $status, $headers);
+        return new HtmlResponse(app()->render($name, $data), $status, $headers);
     }
 }
 

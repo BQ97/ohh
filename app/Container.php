@@ -45,6 +45,7 @@ use App\Xml;
 use App\File\Xls;
 use App\Bitwise;
 use App\Pipeline;
+use App\Router\Router;
 
 /**
  * @name 容器
@@ -76,6 +77,7 @@ use App\Pipeline;
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  * @property \App\Bitwise           $bitwise
  * @property \App\Pipeline          $pipeline
+ * @property \App\Router\Router     $router
  */
 class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerInterface
 {
@@ -124,6 +126,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
         'xls' => Xls::class,
         'bitwise' => Bitwise::class,
         'pipeline' => Pipeline::class,
+        'router' => Router::class
     ];
 
     /**

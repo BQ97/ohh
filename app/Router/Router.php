@@ -70,10 +70,16 @@ class Router
         ];
 
         foreach ($routes as $item) {
+            $item['strategy']->setContainer(app());
+
             $this->handler()->group($item['group'], $this->loadRouteFile($item['file']))->setStrategy($item['strategy']);
         }
     }
 
+    /**
+     * @param string
+     * @return \Closure
+     */
     private function loadRouteFile(string $file)
     {
         return function (RouteGroup $route) use ($file) {

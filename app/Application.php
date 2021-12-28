@@ -31,6 +31,7 @@ namespace App;
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  * @property \App\Bitwise           $bitwise
  * @property \App\Pipeline          $pipeline
+ * @property \App\Router\Router     $router
  */
 class Application extends Container
 {
@@ -165,15 +166,9 @@ class Application extends Container
      * @param  bool  $return
      * @return string
      */
-    public function render($name, array $data = array(), bool $return = true)
+    public function render($name, array $data = array())
     {
-        $result = $this->templates->render($name, $data);
-
-        if ($return) {
-            return $result;
-        }
-
-        echo $result;
+        return $this->templates->render($name, $data);
     }
 
     /**
@@ -182,7 +177,7 @@ class Application extends Container
      */
     public function fileSystem($path = CACHE_PATH): \App\File\FileSystem
     {
-        return $this->make('fileSystem', [$path], true);
+        return fileSystem($path);
     }
 
     public function __debugInfo()
