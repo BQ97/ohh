@@ -100,7 +100,7 @@ class Model
      */
     private function formatQueryFields()
     {
-        $fields = array_column($this->getAllFields(), 'Field');
+        $fields = array_column($this->getAllFields(), 'field');
 
         $decodeFields = $this->decodeFields;
 
@@ -169,10 +169,10 @@ class Model
 
         $data = [];
         foreach ($fields as $key => $value) {
+            $value = array_change_key_case($value);
+            $value['type'] = explode('(', $value['type'])[0];
 
-            $value['Type'] = explode('(', $value['Type'])[0];
-
-            $data[$value['Field']] = $value;
+            $data[$value['field']] = $value;
         }
 
         return $data;
@@ -192,21 +192,21 @@ class Model
         $encodeFields = $this->encodeFields;
 
         foreach ($fields as $key => $value) {
-            if ($value['Key'] === 'PRI') {
+            if ($value['key'] === 'PRI') {
                 continue;
             }
 
-            if ($value['Extra'] === 'auto_increment') {
+            if ($value['extra'] === 'auto_increment') {
                 continue;
             }
 
-            if (empty($param[$value['Field']])) {
-                $data[$value['Field']] = $value['Default'];
+            if (empty($param[$value['field']])) {
+                $data[$value['field']] = $value['default'];
             } else {
-                if (isset($encodeFields[$value['Field']])) {
-                    $data[$encodeFields[$value['Field']]] = $param[$value['Field']];
+                if (isset($encodeFields[$value['field']])) {
+                    $data[$encodeFields[$value['field']]] = $param[$value['field']];
                 } else {
-                    $data[$value['Field']] = $param[$value['Field']];
+                    $data[$value['field']] = $param[$value['field']];
                 }
             }
         }
