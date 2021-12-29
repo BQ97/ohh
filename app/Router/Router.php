@@ -63,11 +63,6 @@ class Router
                 'strategy' => new ApplicationStrategy
             ],
             [
-                'group' => '/api',
-                'file' => 'api.php',
-                'strategy' => new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE)
-            ],
-            [
                 'group' => '/api/',
                 'file' => 'api.php',
                 'strategy' => new JsonStrategy(new ResponseFactory(), JSON_UNESCAPED_UNICODE)
