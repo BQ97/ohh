@@ -9,22 +9,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\Response\JsonResponse;
-use League\Route\Http\Exception\BadRequestException;
-use League\Route\Http\Exception\UnauthorizedException;
-use League\Route\Http\Exception\ForbiddenException;
-use League\Route\Http\Exception\NotFoundException;
-use League\Route\Http\Exception\MethodNotAllowedException;
-use League\Route\Http\Exception\NotAcceptableException;
-use League\Route\Http\Exception\ConflictException;
-use League\Route\Http\Exception\GoneException;
-use League\Route\Http\Exception\LengthRequiredException;
-use League\Route\Http\Exception\PreconditionFailedException;
-use League\Route\Http\Exception\UnsupportedMediaException;
-use League\Route\Http\Exception\ExpectationFailedException;
-use League\Route\Http\Exception\ImATeapotException;
-use League\Route\Http\Exception\PreconditionRequiredException;
-use League\Route\Http\Exception\TooManyRequestsException;
-use League\Route\Http\Exception\UnavailableForLegalReasonsException;
 
 class Base implements MiddlewareInterface
 {
@@ -33,22 +17,22 @@ class Base implements MiddlewareInterface
      * @var array 异常列表
      */
     protected $exceptions = [
-        400 => BadRequestException::class,
-        401 => UnauthorizedException::class,
-        403 => ForbiddenException::class,
-        404 => NotFoundException::class,
-        405 => MethodNotAllowedException::class,
-        406 => NotAcceptableException::class,
-        409 => ConflictException::class,
-        410 => GoneException::class,
-        411 => LengthRequiredException::class,
-        412 => PreconditionFailedException::class,
-        415 => UnsupportedMediaException::class,
-        417 => ExpectationFailedException::class,
-        418 => ImATeapotException::class,
-        428 => PreconditionRequiredException::class,
-        429 => TooManyRequestsException::class,
-        451 => UnavailableForLegalReasonsException::class,
+        400 => \League\Route\Http\Exception\BadRequestException::class,
+        401 => \League\Route\Http\Exception\UnauthorizedException::class,
+        403 => \League\Route\Http\Exception\ForbiddenException::class,
+        404 => \League\Route\Http\Exception\NotFoundException::class,
+        405 => \League\Route\Http\Exception\MethodNotAllowedException::class,
+        406 => \League\Route\Http\Exception\NotAcceptableException::class,
+        409 => \League\Route\Http\Exception\ConflictException::class,
+        410 => \League\Route\Http\Exception\GoneException::class,
+        411 => \League\Route\Http\Exception\LengthRequiredException::class,
+        412 => \League\Route\Http\Exception\PreconditionFailedException::class,
+        415 => \League\Route\Http\Exception\UnsupportedMediaException::class,
+        417 => \League\Route\Http\Exception\ExpectationFailedException::class,
+        418 => \League\Route\Http\Exception\ImATeapotException::class,
+        428 => \League\Route\Http\Exception\PreconditionRequiredException::class,
+        429 => \League\Route\Http\Exception\TooManyRequestsException::class,
+        451 => \League\Route\Http\Exception\UnavailableForLegalReasonsException::class,
     ];
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
