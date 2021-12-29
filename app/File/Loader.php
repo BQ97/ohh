@@ -6,8 +6,14 @@ namespace App\File;
 
 class Loader
 {
+    /**
+     * @var array 已经加载的文件
+     */
     private static $files = [];
 
+    /**
+     * @var array 允许加载的文件夹
+     */
     private static $folders = [
         ROUTE_PATH,
         CONFIG_PATH
@@ -19,9 +25,7 @@ class Loader
             return [];
         }
 
-        if (!array_filter(static::$folders, function ($path) use ($filePath) {
-            return strpos($filePath, $path) !== false;
-        }, ARRAY_FILTER_USE_BOTH)) {
+        if (!array_filter(static::$folders, fn ($path) => strpos($filePath, $path) !== false, ARRAY_FILTER_USE_BOTH)) {
             return [];
         }
 
