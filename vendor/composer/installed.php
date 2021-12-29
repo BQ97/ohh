@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '72c23023e6fa55292f0a7f4279b97ca866b802ed',
+        'reference' => 'e6ba3bed5db62627e95469f2a2e10554bcbd6b28',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '72c23023e6fa55292f0a7f4279b97ca866b802ed',
+            'reference' => 'e6ba3bed5db62627e95469f2a2e10554bcbd6b28',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -38,12 +38,12 @@
             'dev_requirement' => false,
         ),
         'ezyang/htmlpurifier' => array(
-            'pretty_version' => 'v4.13.0',
-            'version' => '4.13.0.0',
+            'pretty_version' => 'v4.14.0',
+            'version' => '4.14.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
-            'reference' => '08e27c97e4c6ed02f37c5b2b20488046c8d90d75',
+            'reference' => '12ab42bd6e742c70c0a52f7b82477fcd44e64b75',
             'dev_requirement' => false,
         ),
         'fakerphp/faker' => array(
