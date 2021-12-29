@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -26,6 +27,11 @@ class Encrypter
         $this->key = $key;
     }
 
+    public static function getInstance(String $key)
+    {
+        return new static($key);
+    }
+
     /**
      * 加密
      * @param string $data Input data
@@ -34,7 +40,6 @@ class Encrypter
     public function encrypt(String $data)
     {
         return base64_encode(openssl_encrypt($data, $this->cipher, $this->key, OPENSSL_RAW_DATA));
-
     }
 
     /**

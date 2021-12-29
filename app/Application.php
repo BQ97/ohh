@@ -60,22 +60,13 @@ class Application extends Container
     }
 
     /**
-     * @param array config
-     * @return MyTree
-     */
-    public function tree(array $config): \App\MyTree
-    {
-        return $this->make('tree', [$config], true);
-    }
-
-    /**
      * GuzzleHttp
      * @param array $option
      * @return \GuzzleHttp\Client
      */
     public function httpClient(array $option = []): \GuzzleHttp\Client
     {
-        return $this->make('httpClient', [$option], true);
+        return Utils::httpClient($option);
     }
 
     /**
@@ -84,9 +75,9 @@ class Application extends Container
      * @param string data
      * @return \Symfony\Component\DomCrawler\Crawler
      */
-    public function crawler(String $data): \Symfony\Component\DomCrawler\Crawler
+    public function crawler($node = null, string $uri = null, string $baseHref = null): \Symfony\Component\DomCrawler\Crawler
     {
-        return $this->make('crawler', [$data], true);
+        return Utils::crawler($node, $uri, $baseHref);
     }
 
     /**
@@ -120,7 +111,7 @@ class Application extends Container
      */
     public function snow(Int $datacenter = null, Int $workerid = null): \Godruoyi\Snowflake\Snowflake
     {
-        return $this->make('Snowflake', [$datacenter, $workerid], true);
+        return Utils::snow($datacenter, $workerid);
     }
 
     /**
@@ -148,15 +139,6 @@ class Application extends Container
     public function object($object): \App\Proxy\Obj
     {
         return $this->make('obj', [$object], true);
-    }
-
-    /**
-     * @param string $key
-     * @return \App\Aes
-     */
-    public function aes(String $key): \App\Encrypter
-    {
-        return $this->make('aes', [$key], true);
     }
 
     /**

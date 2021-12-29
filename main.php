@@ -37,6 +37,11 @@ const UPLOAD_PATH = APP_PATH . 'uploads' . DS;
  */
 const ROUTE_PATH = APP_PATH . 'routes' . DS;
 
+/**
+ * @var string ROUTE_PATH
+ */
+const CONFIG_PATH = APP_PATH . 'config' . DS;
+
 require APP_PATH . 'vendor' . DS . 'autoload.php';
 
 /**

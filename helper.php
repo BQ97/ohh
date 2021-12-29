@@ -2,6 +2,7 @@
 
 use App\Container;
 use App\File\Cache;
+use App\File\Loader;
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
@@ -47,7 +48,7 @@ if (!function_exists('view')) {
      * @param  array  $data
      * @param  int  $status
      * @param  array  $headers
-     * 
+     *
      * @return \Laminas\Diactoros\Response\HtmlResponse
      */
     function view(string $name, array $data = [], int $status = 200, array $headers = []): \Laminas\Diactoros\Response\HtmlResponse
@@ -62,7 +63,7 @@ if (!function_exists('router')) {
      */
     function router(): \App\Router\Router
     {
-        return app('\\App\\Router\\Router');
+        return app('router');
     }
 }
 
@@ -73,10 +74,6 @@ if (!function_exists('requireFile')) {
      */
     function requireFile(String $path)
     {
-        if (!file_exists($path)) {
-            return null;
-        }
-
-        return require_once $path;
+        return Loader::loadFile($path);
     }
 }

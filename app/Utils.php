@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App;
 
 use Exception;
+use Godruoyi\Snowflake\Snowflake;
+use GuzzleHttp\Client;
+use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
 
 class Utils
@@ -186,6 +189,50 @@ class Utils
 
         return date('Y-m-d', $startTimeStamp + 86400 * $days);
     }
+
+    /**
+     * @param \DOMNodeList|\DOMNode|\DOMNode[]|string|null $node A Node to use as the base for the crawling
+     */
+    public static function crawler($node = null, string $uri = null, string $baseHref = null)
+    {
+        return new Crawler($node, $uri, $baseHref);
+    }
+
+    public static function httpClient(array $config = [])
+    {
+        return new Client($config);
+    }
+
+    /**
+     * 雪花算法
+     *
+     * @param int $datacenter
+     * @param int $workerid
+     * @return \Godruoyi\Snowflake\Snowflake
+     */
+    public static function snow(Int $datacenter = null, Int $workerid = null): \Godruoyi\Snowflake\Snowflake
+    {
+        return new Snowflake($datacenter, $workerid);
+    }
+
+    /**
+     * @param string $key
+     * @return \App\Encrypter
+     */
+    public static function aes(String $key): \App\Encrypter
+    {
+        return Encrypter::getInstance($key);
+    }
+
+    /**
+     * @param string $key
+     * @return \App\MyTree
+     */
+    public static function tree(array $config = []): \App\MyTree
+    {
+        return MyTree::getInstance($config);
+    }
+
 
     public static function getData(array $data, string $name, $default = null)
     {

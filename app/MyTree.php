@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -19,6 +20,15 @@ class MyTree
         $this->_id = $config['id'] ?? 'id';
         $this->_name = $config['name'] ?? 'name';
         $this->_child = $config['child'] ?? 'child';
+    }
+
+    /**
+     * @param array config
+     * @return \App\MyTree
+     */
+    public static function getInstance(array $config = [])
+    {
+        return new static($config);
     }
 
     public function getHtmlOption($data, $id = 0, $parentId = -1, $selectId = null, $preFix = '|-')
