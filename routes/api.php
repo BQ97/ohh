@@ -13,7 +13,7 @@ return [
         'GET', '/test', '\\modules\Index::testAction'
     ],
     [
-        'GET', '/{module}/{class}/{action}', function ($request, $args) {
+        '*', '/{module}/{class}/{action}', function ($request, $args) {
             $module = $args['module'];
             $class = ucfirst($args['class']);
             $action = $args['action'];
@@ -21,11 +21,11 @@ return [
             $class = "\\modules\\{$module}\\{$class}";
 
             if (!class_exists($class)) {
-                return [404, 'not found'];
+                return [404, 'not found' . $class];
             }
 
             if (!method_exists($class, $action)) {
-                return [404, 'not found'];
+                return [404, 'not found' . $class . '::' . $action];
             }
 
             return app($class)->$action();

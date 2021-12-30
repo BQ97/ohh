@@ -12,7 +12,7 @@ use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Route\RouteGroup;
 use Laminas\Diactoros\ResponseFactory;
 use League\Route\Strategy\JsonStrategy;
-use League\Route\Strategy\ApplicationStrategy;
+use App\Router\Strategy\WebStrategy;
 
 class Router
 {
@@ -60,7 +60,7 @@ class Router
             [
                 'group' => '/',
                 'file' => 'web.php',
-                'strategy' => new ApplicationStrategy
+                'strategy' => new WebStrategy
             ],
             [
                 'group' => '/api',
