@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Container;
 use App\File\Cache;
 use App\File\Loader;

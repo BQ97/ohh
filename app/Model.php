@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -70,7 +71,7 @@ class Model
      *
      * @return \App\Model
      */
-    public function fieldEncode(Array $fields)
+    public function fieldEncode(array $fields)
     {
         $this->encodeFields = $fields;
 
@@ -87,7 +88,7 @@ class Model
      *
      * @return \App\Model
      */
-    public function fieldDecode(Array $fields)
+    public function fieldDecode(array $fields)
     {
         $this->decodeFields = $fields;
 
@@ -183,7 +184,7 @@ class Model
      * @param array $param
      * @return array
      */
-    private function filter(Array $param)
+    private function filter(array $param)
     {
         $fields = $this->getAllFields();
 
@@ -219,7 +220,7 @@ class Model
      * @param array $data
      * @return int  影响行数
      */
-    public function save(Array $data)
+    public function save(array $data)
     {
         $saveData = $this->filter($data);
 

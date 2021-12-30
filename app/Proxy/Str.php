@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Proxy;
@@ -232,7 +233,7 @@ class Str
      * @param array $value
      * @return Arr
      */
-    protected static function detectArrayType(array $value) : Arr
+    protected static function detectArrayType(array $value): Arr
     {
         return new Arr($value);
     }
