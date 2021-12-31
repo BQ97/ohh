@@ -94,11 +94,14 @@ class Router
 
     public function send()
     {
-        $response = $this->handler()->handle(Request::createServerRequest());
+        try {
+            $response = $this->handler()->handle(Request::createServerRequest());
 
-        $sapiEmitter = new SapiEmitter;
+            $sapiEmitter = new SapiEmitter;
 
-        return $sapiEmitter->emit($response);
+            return $sapiEmitter->emit($response);
+        } catch (\Throwable $th) {
+        }
     }
 
     public function __call($name, $arguments)
