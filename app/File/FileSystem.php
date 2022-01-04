@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use League\Flysystem\FileAttributes;
-use League\Flysystem\DirectoryAttributes;
-use League\Flysystem\StorageAttributes;
-use League\Flysystem\Local\LocalFilesystemAdapter;
-use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
-use League\Flysystem\Filesystem as File;
+use League\Flysystem\{
+    FileAttributes,
+    DirectoryAttributes,
+    StorageAttributes,
+    Local\LocalFilesystemAdapter,
+    UnixVisibility\PortableVisibilityConverter,
+    Filesystem as File
+};
+
 use Exception;
 
 class FileSystem
@@ -281,6 +284,24 @@ class FileSystem
         }
 
         return round($bytes, $dec) . ' ' . $unitPow[$pos];
+    }
+
+    /**
+     * Create a symlink to the target file or directory. On Windows, a hard link is created if the target is a file.
+     *
+     * @param  string  $target
+     * @param  string  $link
+     * @return void
+     */
+    public function link($target, $link)
+    {
+        if (PHP_OS_FAMILY !== 'Windows') {
+            return symlink($target, $link);
+        }
+
+        $mode = is_dir($target) ? 'J' : 'H';
+
+        exec("mklink /{$mode} " . escapeshellarg($link) . ' ' . escapeshellarg($target));
     }
 
     public function __call($name, $arguments)

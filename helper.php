@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Container;
-use App\File\Cache;
-use App\File\Loader;
+use App\{File\Cache, File\Loader , Container};
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {

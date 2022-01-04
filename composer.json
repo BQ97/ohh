@@ -22,7 +22,8 @@
         "league/uri": "^6.5",
         "league/route": "^5.1",
         "laminas/laminas-diactoros": "^2.8",
-        "laminas/laminas-httphandlerrunner": "^2.1"
+        "laminas/laminas-httphandlerrunner": "^2.1",
+        "monolog/monolog": "^2.3"
     },
     "autoload": {
         "psr-4": {

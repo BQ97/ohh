@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use PhpOffice\PhpWord\Reader\Word2007;
-use PhpOffice\PhpWord\Element\TextRun;
-use PhpOffice\PhpWord\Element\Text;
-use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\{Reader\Word2007, Element\Text, Element\Table, Element\TextRun};
 use Exception;
 
 /**

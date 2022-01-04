@@ -18,34 +18,16 @@ use InvalidArgumentException;
 use Exception;
 use ArrayIterator;
 use Medoo\Medoo;
-use App\Application;
-use App\Request;
-use App\File\Excel;
-use App\Model;
-use App\File\Word;
-use App\Utils;
-use App\MyTree;
-use App\Env;
-use App\Encrypter;
 use Mpdf\Mpdf;
 use GuzzleHttp\Client;
-use Symfony\Component\DomCrawler\Crawler;
-use App\Proxy\Arr;
-use App\Proxy\Str;
-use App\Proxy\Obj;
 use League\Plates\Engine;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\{DomCrawler\Crawler, EventDispatcher\EventDispatcher};
 use Godruoyi\Snowflake\Snowflake;
 use Psy\Shell;
-use App\File\Cache;
-use App\File\FileSystem;
-use App\Hash;
-use App\File\Csv;
-use App\Xml;
-use App\File\Xls;
-use App\Bitwise;
-use App\Pipeline;
 use App\Router\Router;
+use App\{Application, Request, Model, Utils, MyTree, Env, Encrypter, Hash, Bitwise, Pipeline, Xml};
+use App\Proxy\{Arr, Str, Obj};
+use App\File\{Cache, Csv, Xls, FileSystem};
 
 /**
  * @name 容器
@@ -283,7 +265,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  string    $name    类名或者标识
      * @return bool
      */
-    public function has(string $name) : bool
+    public function has(string $name): bool
     {
         return $this->bound($name);
     }

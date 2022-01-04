@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Router\middleware\json;
 
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\{MiddlewareInterface, RequestHandlerInterface};
+use Psr\Http\Message\{ServerRequestInterface, ResponseInterface};
 use Laminas\Diactoros\Response\JsonResponse;
 
 class Base implements MiddlewareInterface

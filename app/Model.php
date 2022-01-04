@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use Medoo\Raw;
-use Medoo\Medoo;
+use Medoo\{Medoo, Raw};
 use PDO;
 
 /**

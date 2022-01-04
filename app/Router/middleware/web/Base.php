@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Router\middleware\web;
 
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\{MiddlewareInterface, RequestHandlerInterface};
+use Psr\Http\Message\{ServerRequestInterface, ResponseInterface};
 
 class Base implements MiddlewareInterface
 {

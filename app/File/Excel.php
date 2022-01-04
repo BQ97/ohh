@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx as Reader;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx as Writer;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\{Reader\Xlsx as Reader, Writer\Xlsx as Writer, Spreadsheet};
 use Exception;
 
 /**
