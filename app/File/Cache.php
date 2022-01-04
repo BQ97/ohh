@@ -76,7 +76,8 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
         if (file_exists($filename)) {
 
-            return require $filename;
+            return Loader::loadFile($filename);
+
         }
 
         return ['expire' => false, 'config' => null];

@@ -233,6 +233,31 @@ class Utils
         return MyTree::getInstance($config);
     }
 
+    /**
+     * @param string $source
+     * @param string $table
+     * 
+     * @return string $path
+     */
+    public static function getTableByAllSql(string $source, string $table)
+    {
+        if (!file_exists($source)) {
+            return false;
+        }
+
+        $sqlArr = array_filter(explode(';', file_get_contents($source)), function ($item) use ($table) {
+            return strpos($item, "`{$table}`") !== false;
+        }, ARRAY_FILTER_USE_BOTH);
+
+        $tableSql = join(';', $sqlArr) . ';';
+
+        $fileName = date('Ymd') . DS . "{$table}.sql";
+
+        fileSystem(UPLOAD_PATH)->writeFile($fileName, $tableSql);
+
+        return UPLOAD_PATH . $fileName;
+    }
+
 
     public static function getData(array $data, string $name, $default = null)
     {

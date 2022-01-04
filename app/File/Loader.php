@@ -16,6 +16,7 @@ class Loader
      */
     private static $folders = [
         ROUTE_PATH,
+        CACHE_PATH,
         CONFIG_PATH
     ];
 
