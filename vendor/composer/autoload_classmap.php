@@ -3062,7 +3062,6 @@ return array(
     'modules\\Index' => $baseDir . '/modules/Index.php',
     'modules\\WaterMark' => $baseDir . '/modules/WaterMark.php',
     'modules\\ams2\\BaseModel' => $baseDir . '/modules/ams2/BaseModel.php',
-    'modules\\ams2\\CalcModel' => $baseDir . '/modules/ams2/CalcModel.php',
     'modules\\ams2\\CalculationModel' => $baseDir . '/modules/ams2/CalculationModel.php',
     'modules\\ams2\\EntrustModel' => $baseDir . '/modules/ams2/EntrustModel.php',
     'modules\\ams2\\LesseeModel' => $baseDir . '/modules/ams2/LesseeModel.php',

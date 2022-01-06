@@ -3453,7 +3453,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\Index' => __DIR__ . '/../..' . '/modules/Index.php',
         'modules\\WaterMark' => __DIR__ . '/../..' . '/modules/WaterMark.php',
         'modules\\ams2\\BaseModel' => __DIR__ . '/../..' . '/modules/ams2/BaseModel.php',
-        'modules\\ams2\\CalcModel' => __DIR__ . '/../..' . '/modules/ams2/CalcModel.php',
         'modules\\ams2\\CalculationModel' => __DIR__ . '/../..' . '/modules/ams2/CalculationModel.php',
         'modules\\ams2\\EntrustModel' => __DIR__ . '/../..' . '/modules/ams2/EntrustModel.php',
         'modules\\ams2\\LesseeModel' => __DIR__ . '/../..' . '/modules/ams2/LesseeModel.php',
