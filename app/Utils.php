@@ -245,9 +245,7 @@ class Utils
             return false;
         }
 
-        $sqlArr = array_filter(explode(';', file_get_contents($source)), function ($item) use ($table) {
-            return strpos($item, "`{$table}`") !== false;
-        }, ARRAY_FILTER_USE_BOTH);
+        $sqlArr = array_filter(explode(';', file_get_contents($source)), fn ($item) => strpos($item, "`{$table}`") !== false, ARRAY_FILTER_USE_BOTH);
 
         $tableSql = join(';', $sqlArr) . ';';
 
