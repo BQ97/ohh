@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use PhpOffice\PhpSpreadsheet\{Reader\Xlsx as Reader, Writer\Xlsx as Writer, Spreadsheet};
-use Exception;
+use PhpOffice\PhpSpreadsheet\{IOFactory, Spreadsheet};
 
 /**
  * PHPExcel
@@ -24,7 +23,7 @@ class Excel
      *
      * @return {string} 时间
      */
-    public function getExcelTime($time, $format = '')
+    public static function getExcelTime($time, $format = '')
     {
         if ($time > 25569) {
             $time = ($time - 25569) * 24 * 60 * 60;
@@ -38,58 +37,60 @@ class Excel
 
     /**
      * 读取 Excel 文件
-     * @param boolean   dataOnly 	仅读取数据
-     * @param array 	sheetOnly 	仅阅读特定表格
+     * @param string   $fileName 	文件名
+     * @param string   $sheet 	    工作铺
      *
      * @return array
      */
-    public function read($fileName, $dataOnly = true, $sheetsOnly = [])
+    public static function read(string $fileName, string $sheet = null)
     {
-        try {
-            if (stripos($fileName, '.xlsx') === false) {
-                $fileName .= '.xlsx';
+        $spreadsheet = IOFactory::load($fileName);
+
+        $worksheet = $spreadsheet->getActiveSheet();
+
+        if ($sheet) {
+
+            if (!$spreadsheet->sheetNameExists($sheet)) {
+                return [];
             }
 
-            if (!file_exists($fileName)) {
-                throw new Exception('文件不存在');
-            }
-        } catch (Exception $e) {
-            exit($e->getMessage());
+            $worksheet = $spreadsheet->getSheetByName($sheet);
         }
 
-        $reader = new Reader();
-
-        $reader->setReadDataOnly($dataOnly);
-
-        if ($sheetsOnly) {
-            $reader->setLoadSheetsOnly($sheetsOnly);
-        }
-
-        return $reader->load($fileName)->getActiveSheet()->toArray();
+        return $worksheet->toArray(null, true, true, true);
     }
 
     /**
      * 写入 Excel 文件
-     * @param boolean 	preCalculateFormulas			公式预先运算
-     * @param boolean 	office2003Compatibility			Office 2003兼容包
+     * @param array[] 	$options  配置
+     * @param string 	$fileName  文件名字
      *
-     * @return void
+     * @return string
      */
-    public function write(string $fileName, array $data, string $title = '', bool $preCalculateFormulas = false, bool $office2003Compatibility = false)
+    public static function write(array $options, string $fileName = null)
     {
         $spreadsheet = new Spreadsheet();
 
-        $sheet = $spreadsheet->getActiveSheet();
+        foreach ($options as $key => $value) {
 
-        $title && $sheet->setTitle($title);
+            if ($key == 0) {
+                $sheet = $spreadsheet->getActiveSheet();
+            } else {
+                $sheet = $spreadsheet->createSheet();
+            }
 
-        $sheet->fromArray($data);
+            if (!empty($value['title'])) {
+                $sheet->setTitle($value['title']);
+            }
 
-        $writer = new Writer($spreadsheet);
+            if (!empty($value['data'])) {
+                $sheet->fromArray($value['data']);
+            }
+        }
 
-        $writer->setPreCalculateFormulas($preCalculateFormulas);
+        $fileName = $fileName ?: \App\Utils::Uuid();
 
-        $writer->setOffice2003Compatibility($office2003Compatibility);
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
         fileSystem(UPLOAD_PATH)->makeDir(date('Ymd'));
 
