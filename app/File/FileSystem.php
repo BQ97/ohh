@@ -237,10 +237,9 @@ class FileSystem
      *
      * @return string
      */
-    public function formatBytes(string $bytes, int $dec = 2)
+    public static function formatBytes(string $bytes, int $dec = 2)
     {
-
-        $unitPow = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+        $unitPow = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
         $pos = 0;
         while ($bytes >= 1024) {
             $bytes /= 1024;
@@ -257,7 +256,7 @@ class FileSystem
      * @param  string  $link
      * @return void
      */
-    public function link($target, $link)
+    public static function link($target, $link)
     {
         if (PHP_OS_FAMILY !== 'Windows') {
             return symlink($target, $link);

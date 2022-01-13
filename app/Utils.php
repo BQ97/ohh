@@ -10,6 +10,7 @@ use Godruoyi\Snowflake\Snowflake;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
+use ZipArchive;
 
 class Utils
 {
@@ -257,7 +258,74 @@ class Utils
         return UPLOAD_PATH . $fileName;
     }
 
+    /**
+     * @param string $sourceDir
+     * @param string $zip
+     * 
+     * @return bool|string
+     */
+    public static function zip(string $sourceDir, string $zip = null)
+    {
+        $files = FileSystem::getInstance($sourceDir)->ls('/', true)['f'];
 
+        $zipname = pathinfo($zip ?: static::Uuid(), PATHINFO_FILENAME) . '.zip';
+
+        $destDir = UPLOAD_PATH . date('Ymd') . DS;
+
+        FileSystem::getInstance(UPLOAD_PATH)->mkdir(date('Ymd'));
+
+        $ZipArchive = new ZipArchive;
+
+        if ($ZipArchive->open($destDir . $zipname, \ZipArchive::CREATE) === TRUE) {
+            foreach ($files as $path) {
+                $ZipArchive->addFile($sourceDir . DS . $path, $path);
+            }
+
+            $ZipArchive->close();
+
+            return $destDir . $zipname;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $zip
+     * @param string $dest
+     * 
+     * @return bool|string
+     */
+    public static function unzip(string $zip, string $dest = null)
+    {
+        $ZipArchive = new ZipArchive;
+
+        if ($ZipArchive->open($zip) === TRUE) {
+
+            if ($dest) {
+                if (!file_exists($dest)) {
+                    return false;
+                }
+            } else {
+                $dest = UPLOAD_PATH . date('Ymd') . DS . static::Uuid() . DS;
+            }
+
+            $ZipArchive->extractTo($dest);
+
+            $ZipArchive->close();
+
+            return $dest;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param array $data
+     * @param string $name
+     * @param mixed $default
+     * 
+     * @return mixed
+     */
     public static function getData(array $data, string $name, $default = null)
     {
         if (!$name) {
