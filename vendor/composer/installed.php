@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bc7dcef6801db868b3bfd1a7326d9dd63003f92c',
+        'reference' => '68277c85cb5ac0fd6b62aea33df6513793522d88',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bc7dcef6801db868b3bfd1a7326d9dd63003f92c',
+            'reference' => '68277c85cb5ac0fd6b62aea33df6513793522d88',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -161,6 +161,15 @@
             'install_path' => __DIR__ . '/../league/route',
             'aliases' => array(),
             'reference' => 'adf9b961dc5ffdbcffb2b8d7963c7978f2794c92',
+            'dev_requirement' => false,
+        ),
+        'league/tactician' => array(
+            'pretty_version' => 'v1.1.0',
+            'version' => '1.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/tactician',
+            'aliases' => array(),
+            'reference' => 'e79f763170f3d5922ec29e85cffca0bac5cd8975',
             'dev_requirement' => false,
         ),
         'league/uri' => array(

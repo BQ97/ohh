@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\Loader , Container};
+use App\{File\Cache, File\Loader, File\FileSystem, Container};
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
@@ -38,7 +38,7 @@ if (!function_exists('fileSystem')) {
      */
     function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
     {
-        return \App\File\FileSystem::getInstance($path);
+        return FileSystem::getInstance($path);
     }
 }
 

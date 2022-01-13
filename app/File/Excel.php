@@ -92,7 +92,7 @@ class Excel
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
-        fileSystem(UPLOAD_PATH)->makeDir(date('Ymd'));
+        FileSystem::getInstance(UPLOAD_PATH)->mkDir(date('Ymd'));
 
         $path = UPLOAD_PATH . date('Ymd') . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx';
 

@@ -46,6 +46,7 @@ return array(
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'League\\Uri\\' => array($vendorDir . '/league/uri/src', $vendorDir . '/league/uri-interfaces/src'),
+    'League\\Tactician\\' => array($vendorDir . '/league/tactician/src'),
     'League\\Route\\' => array($vendorDir . '/league/route/src'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),

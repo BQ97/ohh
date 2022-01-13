@@ -62,7 +62,7 @@ class Csv
 
             $fileName = date('Ymd') . DS . $fileName;
 
-            fileSystem(UPLOAD_PATH)->writeFile($fileName, $content);
+            FileSystem::getInstance(UPLOAD_PATH)->write($fileName, $content);
 
             return UPLOAD_PATH . $fileName;
         }

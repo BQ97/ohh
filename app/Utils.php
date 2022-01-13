@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\File\FileSystem;
 use Exception;
 use Godruoyi\Snowflake\Snowflake;
 use GuzzleHttp\Client;
@@ -251,7 +252,7 @@ class Utils
 
         $fileName = date('Ymd') . DS . "{$table}.sql";
 
-        fileSystem(UPLOAD_PATH)->writeFile($fileName, $tableSql);
+        FileSystem::getInstance(UPLOAD_PATH)->write($fileName, $tableSql);
 
         return UPLOAD_PATH . $fileName;
     }

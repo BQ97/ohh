@@ -73,15 +73,13 @@ class FileSystem
     }
 
     /**
-     * 分析目标目录的读写权限
-     *
      * @access public
      *
      * @param string $dirPath 目标目录
      *
      * @return boolean
      */
-    public function makeDir(string $dirPath)
+    public function mkDir(string $dirPath)
     {
         $this->handler->createDirectory($dirPath);
 
@@ -98,7 +96,7 @@ class FileSystem
      *
      * @return array
      */
-    public function readDir(string $dirPath, $recursive = false)
+    public function ls(string $dirPath, bool $recursive = false)
     {
         $listing = $this->handler->listContents($dirPath, $recursive);
 
@@ -135,7 +133,7 @@ class FileSystem
      *
      * @return boolean
      */
-    public function copyDir(string $source, string $dest)
+    public function cp(string $source, string $dest)
     {
         $this->handler->copy($source, $dest);
 
@@ -152,7 +150,7 @@ class FileSystem
      *
      * @return boolean
      */
-    public function moveDir(string $source, string $dest)
+    public function mv(string $source, string $dest)
     {
         $this->handler->move($source, $dest);
 
@@ -168,9 +166,9 @@ class FileSystem
      *
      * @return boolean
      */
-    public function deleteDir(string $dirPath)
+    public function rmDir(string $dirPath)
     {
-        $result = $this->readDir($dirPath);
+        $result = $this->ls($dirPath);
         if ($result['d'] || $result['f']) {
             return false;
         }
@@ -189,7 +187,7 @@ class FileSystem
      *
      * @return boolean
      */
-    public function clearDir(string $dirPath)
+    public function rmRf(string $dirPath)
     {
         $this->handler->deleteDirectory($dirPath);
 
@@ -206,43 +204,9 @@ class FileSystem
      *
      * @return boolean|int
      */
-    public function writeFile(string $filePath, string $content)
+    public function write(string $filePath, string $content)
     {
         $this->handler->write($filePath, $content);
-
-        return true;
-    }
-
-    /**
-     * 文件复制
-     *
-     * @access public
-     *
-     * @param string $sourceFile 源文件(被复制的文件)
-     * @param string $destFile 所要复制的文件
-     *
-     * @return boolean
-     */
-    public function copyFile(string $sourceFile, string $destFile)
-    {
-        $this->copyDir($sourceFile, $destFile);
-
-        return true;
-    }
-
-    /**
-     * 文件重命名或移动文件
-     *
-     * @access public
-     *
-     * @param string $sourceFile 源文件
-     * @param string $destFile 新文件名或路径
-     *
-     * @return boolean
-     */
-    public function moveFile(string $sourceFile, string $destFile)
-    {
-        $this->moveDir($sourceFile, $destFile);
 
         return true;
     }
@@ -256,7 +220,7 @@ class FileSystem
      *
      * @return boolean
      */
-    public function deleteFile(string $filePath)
+    public function rm(string $filePath)
     {
         $this->handler->delete($filePath);
 

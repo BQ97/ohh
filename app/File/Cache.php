@@ -29,7 +29,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
     public function __construct($prefix = 'BoQing')
     {
-        $this->fileSystem = fileSystem();
+        $this->fileSystem = FileSystem::getInstance(CACHE_PATH);
 
         $this->prefix = $prefix;
 
@@ -37,7 +37,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
             static::$instances[$prefix] = $this;
 
-            $this->fileSystem->makeDir($prefix);
+            $this->fileSystem->mkDir($prefix);
         }
     }
 
@@ -77,7 +77,6 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
         if (file_exists($filename)) {
 
             return Loader::loadFile($filename);
-
         }
 
         return ['expire' => false, 'config' => null];
@@ -98,7 +97,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
         $content = '<?php return ' . var_export(['config' => serialize($value), 'expire' => $expire], true) . ';';
 
-        return $this->fileSystem->writeFile($filePath, $content);
+        return $this->fileSystem->write($filePath, $content);
     }
 
     /**
@@ -123,7 +122,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function all(): array
     {
-        $files = $this->fileSystem->readDir($this->prefix)['f'];
+        $files = $this->fileSystem->ls($this->prefix)['f'];
 
         if (!$files) {
             return [];
@@ -249,7 +248,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function clear(): bool
     {
-        return $this->fileSystem->clearDir($this->prefix);
+        return $this->fileSystem->rmRf($this->prefix);
     }
 
     /**
@@ -259,7 +258,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function delete($key): bool
     {
-        return $this->fileSystem->deleteFile($this->getFilePath($key));
+        return $this->fileSystem->rm($this->getFilePath($key));
     }
 
     public function __get($name)
