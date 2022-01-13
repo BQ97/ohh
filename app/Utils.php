@@ -320,6 +320,26 @@ class Utils
     }
 
     /**
+     * @param string $zip
+     * 
+     * @return \Generator|bool
+     */
+    public static function getZipFiles(string $zip)
+    {
+        $ZipArchive = new ZipArchive;
+
+        if ($ZipArchive->open($zip) === TRUE) {
+            for ($i = 0; $i < $ZipArchive->count(); $i++) {
+                yield $i => $ZipArchive->getNameIndex($i);
+            }
+
+            $ZipArchive->close();
+        }
+
+        return false;
+    }
+
+    /**
      * @param array $data
      * @param string $name
      * @param mixed $default
