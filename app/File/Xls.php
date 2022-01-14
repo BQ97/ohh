@@ -9,28 +9,43 @@ use Vtiful\Kernel\Excel;
 
 class Xls
 {
+    const TYPE_INT = Excel::TYPE_INT;
+
+    const TYPE_DOUBLE = Excel::TYPE_DOUBLE;
+
+    const TYPE_STRING = Excel::TYPE_STRING;
+
+    const TYPE_TIMESTAMP = Excel::TYPE_TIMESTAMP;
+
     /**
      * @param string filename   文件名
-     * @param bool  uploadFile  是否为上传文件
      * @return array 第一个工作表的内容
      */
-    public static function read(String $fileName, bool $isUploadFile = false, String $sheet = null)
+    public static function read(String $fileName, String $sheet = null, array $rowOption = [])
     {
-        if ($isUploadFile) {
-            $config['path'] = '/';
-        } else {
-            $config['path'] = UPLOAD_PATH;
-        }
+        $config['path'] = DS;
 
         if (!file_exists($config['path'] . $fileName)) {
-            return false;
+            return [];
         }
 
         $excel = new Excel($config);
 
         $sheetList = $excel->openFile($fileName)->sheetList();
 
-        return $excel->openSheet($sheet ? $sheet : $sheetList[0])->setSkipRows(1)->getSheetData();
+        $sheet = $sheet ?: $sheetList[0];
+
+        if (!$excel->existSheet($sheet)) {
+            return [];
+        }
+
+        $excel = $excel->openSheet($sheet, Excel::SKIP_EMPTY_ROW);
+
+        while (($row = $excel->nextRow($rowOption)) !== NULL) {
+            yield $row;
+        }
+
+        return [];
     }
 
     /**
@@ -39,7 +54,7 @@ class Xls
      */
     public static function write(array $data, array $header = [], $fileName = null)
     {
-        $config['path'] = UPLOAD_PATH;
+        $config['path'] = DS;
 
         $excel = new Excel($config);
 
@@ -67,7 +82,7 @@ class Xls
     public static function writeMultipleSheetExcel(String $fileName, array $data)
     {
         $excel = new Excel([
-            'path' => UPLOAD_PATH
+            'path' => DS
         ]);
 
         $sheet1 = $data[0];
