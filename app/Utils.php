@@ -261,10 +261,11 @@ class Utils
     /**
      * @param string $sourceDir
      * @param string $zip
+     * @param string $password
      * 
      * @return bool|string
      */
-    public static function zip(string $sourceDir, string $zip = null)
+    public static function zip(string $sourceDir, string $zip = null, string $password = '12345678')
     {
         $files = FileSystem::getInstance($sourceDir)->ls('/', true)['f'];
 
@@ -276,9 +277,10 @@ class Utils
 
         $ZipArchive = new ZipArchive;
 
-        if ($ZipArchive->open($destDir . $zipname, \ZipArchive::CREATE) === TRUE) {
+        if ($ZipArchive->open($destDir . $zipname, ZipArchive::CREATE) === TRUE) {
             foreach ($files as $path) {
                 $ZipArchive->addFile($sourceDir . DS . $path, $path);
+                $ZipArchive->setEncryptionName($path, ZipArchive::EM_AES_256, $password);
             }
 
             $ZipArchive->close();
@@ -294,13 +296,15 @@ class Utils
      * 
      * @return bool|string
      */
-    public static function unzip(string $zip)
+    public static function unzip(string $zip, string $password = '12345678')
     {
         $ZipArchive = new ZipArchive;
 
         if ($ZipArchive->open($zip) === TRUE) {
 
             $dest = UPLOAD_PATH . date('Ymd') . DS . static::Uuid() . DS;
+
+            $ZipArchive->setPassword($password);
 
             $ZipArchive->extractTo($dest);
 
@@ -317,16 +321,60 @@ class Utils
      * 
      * @return \Generator|bool
      */
-    public static function getZipFiles(string $zip)
+    public static function getZipFiles(string $zip, string $password = '12345678')
     {
         $ZipArchive = new ZipArchive;
 
         if ($ZipArchive->open($zip) === TRUE) {
+            $ZipArchive->setPassword($password);
             for ($i = 0; $i < $ZipArchive->count(); $i++) {
                 yield $i => $ZipArchive->getNameIndex($i);
             }
 
             $ZipArchive->close();
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $zip
+     * @param string $name
+     * @param string $password
+     * 
+     * @return string|bool 
+     */
+    public static function getZipContent(string $zip, string $name, string $password = '12345678')
+    {
+        $ZipArchive = new ZipArchive;
+
+        if ($ZipArchive->open($zip) === TRUE) {
+            $ZipArchive->setPassword($password);
+            $content = $ZipArchive->getFromName($name);
+            $ZipArchive->close();
+            return $content;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $zip
+     * @param string $name
+     * @param string $password
+     * 
+     * @return string
+     */
+    public static function saveZipFileToLocal(string $zip, string $name, string $password = '12345678')
+    {
+        $content = static::getZipContent($zip, $name, $password);
+
+        if ($content) {
+            $fileName = date('Ymd') . DS . $name;
+
+            FileSystem::getInstance(UPLOAD_PATH)->write($fileName, $content);
+
+            return UPLOAD_PATH . $fileName;
         }
 
         return false;

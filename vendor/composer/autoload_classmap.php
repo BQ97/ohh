@@ -18,6 +18,7 @@ return array(
     'App\\File\\Loader' => $baseDir . '/app/File/Loader.php',
     'App\\File\\Word' => $baseDir . '/app/File/Word.php',
     'App\\File\\Xls' => $baseDir . '/app/File/Xls.php',
+    'App\\File\\Zip' => $baseDir . '/app/File/Zip.php',
     'App\\Hash' => $baseDir . '/app/Hash.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\MyTree' => $baseDir . '/app/MyTree.php',

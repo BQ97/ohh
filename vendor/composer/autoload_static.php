@@ -414,6 +414,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\File\\Loader' => __DIR__ . '/../..' . '/app/File/Loader.php',
         'App\\File\\Word' => __DIR__ . '/../..' . '/app/File/Word.php',
         'App\\File\\Xls' => __DIR__ . '/../..' . '/app/File/Xls.php',
+        'App\\File\\Zip' => __DIR__ . '/../..' . '/app/File/Zip.php',
         'App\\Hash' => __DIR__ . '/../..' . '/app/Hash.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
