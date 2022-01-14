@@ -14,9 +14,7 @@ class Bitwise
      */
     public static function insert(int $rowInt, int ...$items): int
     {
-        return array_reduce($items, function ($carry, $item) {
-            return $carry | $item;
-        }, $rowInt);
+        return array_reduce($items, fn ($carry, $item) => $carry | $item, $rowInt);
     }
 
     /**
@@ -27,9 +25,7 @@ class Bitwise
      */
     public static function delete(int $rowInt, int ...$items): int
     {
-        return array_reduce($items, function ($carry, $item) {
-            return $carry & (~$item);
-        }, $rowInt);
+        return array_reduce($items, fn ($carry, $item) => $carry & (~$item), $rowInt);
     }
 
     /**

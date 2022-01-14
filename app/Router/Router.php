@@ -86,7 +86,7 @@ class Router
     {
         return function (RouteGroup $route) use ($file) {
             array_reduce(requireFile(ROUTE_PATH . $file), function (RouteGroup $route, array $params) {
-                $route->map(...$params);
+                call_user_func_array([$route, 'map'], $params);
                 return $route;
             }, $route);
         };

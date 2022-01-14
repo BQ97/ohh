@@ -71,20 +71,20 @@ class Excel
     {
         $spreadsheet = new Spreadsheet();
 
-        foreach ($options as $key => $value) {
+        foreach ($options as $key => $item) {
 
-            if ($key == 0) {
-                $sheet = $spreadsheet->getActiveSheet();
+            $sheet = $key ? $spreadsheet->createSheet() : $spreadsheet->getActiveSheet();
+
+            if (is_callable($item)) {
+                call_user_func($item, $sheet);
             } else {
-                $sheet = $spreadsheet->createSheet();
-            }
+                if (!empty($item['title'])) {
+                    $sheet->setTitle($item['title']);
+                }
 
-            if (!empty($value['title'])) {
-                $sheet->setTitle($value['title']);
-            }
-
-            if (!empty($value['data'])) {
-                $sheet->fromArray($value['data']);
+                if (!empty($item['data'])) {
+                    $sheet->fromArray($item['data']);
+                }
             }
         }
 

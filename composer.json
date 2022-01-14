@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpoffice/phpspreadsheet": "^1.7",
+        "phpoffice/phpspreadsheet": "^1.20.0",
         "symfony/dom-crawler": "^5.3",
         "guzzlehttp/guzzle": "^7.0",
         "mpdf/mpdf": "^8.0",
@@ -14,7 +14,7 @@
         "phpoffice/phpword": "^0.18.1",
         "psy/psysh": "^0.10.8",
         "fakerphp/faker": "^1.15",
-        "league/flysystem": "^2.2",
+        "league/flysystem": "^2.3.2",
         "kosinix/grafika": "^2.0",
         "overtrue/socialite": "^3.3",
         "overtrue/pinyin": "^4.0",
@@ -25,6 +25,9 @@
         "laminas/laminas-httphandlerrunner": "^2.1",
         "monolog/monolog": "^2.3",
         "league/tactician": "^1.1"
+    },
+    "require-dev": {
+        "viest/php-ext-xlswriter-ide-helper": "dev-master"
     },
     "autoload": {
         "psr-4": {

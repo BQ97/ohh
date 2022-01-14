@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '68277c85cb5ac0fd6b62aea33df6513793522d88',
+        'reference' => '6fef743321ff21c2792c1147b612f22953f1bef5',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '68277c85cb5ac0fd6b62aea33df6513793522d88',
+            'reference' => '6fef743321ff21c2792c1147b612f22953f1bef5',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -637,6 +637,17 @@
             'aliases' => array(),
             'reference' => '1b56c32c3679002b3a42384a580e16e2600f41c1',
             'dev_requirement' => false,
+        ),
+        'viest/php-ext-xlswriter-ide-helper' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../viest/php-ext-xlswriter-ide-helper',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => 'dd8163a36602835a5375e5dcb61bbda2515b8874',
+            'dev_requirement' => true,
         ),
         'webpatser/laravel-uuid' => array(
             'pretty_version' => '4.0.1',

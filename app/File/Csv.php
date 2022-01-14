@@ -42,9 +42,7 @@ class Csv
 
         $content = array_reduce($data, function ($current, $items) {
 
-            $lines = array_map(function ($string) {
-                return '"' . $string . '"';
-            }, $items);
+            $lines = array_map(fn ($string) => '"' . $string . '"', $items);
 
             return $current . implode(',', $lines) . PHP_EOL;
         }, '');

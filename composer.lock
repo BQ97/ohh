@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1970e95d601d3180cd07abe548792989",
+    "content-hash": "d68b536a62be2a50e74361638f9275ab",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -987,16 +987,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "2.4.0",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f"
+                "reference": "4b6da3e75b5e8eee53bb5ee46ded15a532843f80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
-                "reference": "4a6f9f7d7b97c938f2fd25aeb9ff9a6a34c79f2f",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4b6da3e75b5e8eee53bb5ee46ded15a532843f80",
+                "reference": "4b6da3e75b5e8eee53bb5ee46ded15a532843f80",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1058,7 +1058,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.4.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/2.3.2"
             },
             "funding": [
                 {
@@ -1074,7 +1074,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-04T17:09:29+00:00"
+            "time": "2021-11-28T20:19:08+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2507,16 +2507,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.21.0",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "1a359d2ccbb89c05f5dffb32711a95f4afc67964"
+                "reference": "44436f270bb134b4a94670f3d020a85dfa0a3c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/1a359d2ccbb89c05f5dffb32711a95f4afc67964",
-                "reference": "1a359d2ccbb89c05f5dffb32711a95f4afc67964",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/44436f270bb134b4a94670f3d020a85dfa0a3c02",
+                "reference": "44436f270bb134b4a94670f3d020a85dfa0a3c02",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2611,9 +2611,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.21.0"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.20.0"
             },
-            "time": "2022-01-06T11:10:08+00:00"
+            "time": "2021-11-23T15:23:42+00:00"
         },
         {
             "name": "phpoffice/phpword",
@@ -4929,10 +4929,60 @@
             "time": "2021-03-09T07:19:24+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "viest/php-ext-xlswriter-ide-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/viest/php-ext-xlswriter-ide-helper.git",
+                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/viest/php-ext-xlswriter-ide-helper/zipball/dd8163a36602835a5375e5dcb61bbda2515b8874",
+                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vtiful\\Kernel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "viest",
+                    "email": "wjx@php.net"
+                }
+            ],
+            "description": "PHP Extension Xlswriter IDE Helper",
+            "support": {
+                "issues": "https://github.com/viest/php-ext-xlswriter-ide-helper/issues",
+                "source": "https://github.com/viest/php-ext-xlswriter-ide-helper/tree/master"
+            },
+            "time": "2021-12-17T02:02:20+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "viest/php-ext-xlswriter-ide-helper": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
