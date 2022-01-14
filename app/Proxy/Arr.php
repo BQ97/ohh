@@ -67,20 +67,14 @@ class Arr implements ArrayAccess, Serializable, Countable, Iterator
         return array_key_exists($this->key(), $this->array);
     }
 
-    /**
-     * @return mixed
-     */
-    public function rewind()
+    public function rewind(): void
     {
-        return reset($this->array);
+        reset($this->array);
     }
 
-    /**
-     * @return mixed
-     */
-    public function next()
+    public function next(): void
     {
-        return next($this->array);
+        next($this->array);
     }
 
     /**

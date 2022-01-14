@@ -291,23 +291,16 @@ class Utils
 
     /**
      * @param string $zip
-     * @param string $dest
      * 
      * @return bool|string
      */
-    public static function unzip(string $zip, string $dest = null)
+    public static function unzip(string $zip)
     {
         $ZipArchive = new ZipArchive;
 
         if ($ZipArchive->open($zip) === TRUE) {
 
-            if ($dest) {
-                if (!file_exists($dest)) {
-                    return false;
-                }
-            } else {
-                $dest = UPLOAD_PATH . date('Ymd') . DS . static::Uuid() . DS;
-            }
+            $dest = UPLOAD_PATH . date('Ymd') . DS . static::Uuid() . DS;
 
             $ZipArchive->extractTo($dest);
 
