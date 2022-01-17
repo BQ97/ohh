@@ -62,7 +62,7 @@ class Zip
     public function open(string $filename, int $flags = null)
     {
         if (call_user_func_array([$this->handler, 'open'], func_get_args()) === true) {
-            $this->handler->setPassword($this->password);
+            $this->password && $this->handler->setPassword($this->password);
             return $this;
         }
 
@@ -83,7 +83,7 @@ class Zip
         array_reduce($files, function (ZipArchive $zip, string $path) use ($sourceDir) {
 
             $zip->addFile($sourceDir . DS . $path, $path);
-            $zip->setEncryptionName($path, ZipArchive::EM_AES_256, $this->password);
+            $this->password && $zip->setEncryptionName($path, ZipArchive::EM_AES_256, $this->password);
 
             return $zip;
         }, $this->open($file, ZipArchive::CREATE)->getHandler());
