@@ -122,7 +122,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public function all(): array
     {
-        $files = $this->fileSystem->ls($this->prefix)['f'];
+        $files = $this->fileSystem->ls($this->prefix, false, FileSystem::LS_FILE_OPTION);
 
         if (!$files) {
             return [];

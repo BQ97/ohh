@@ -238,7 +238,7 @@ class Utils
     /**
      * @param string $source
      * @param string $table
-     * 
+     *
      * @return string $path
      */
     public static function getTableByAllSql(string $source, string $table)
@@ -262,12 +262,12 @@ class Utils
      * @param string $sourceDir
      * @param string $zip
      * @param string $password
-     * 
+     *
      * @return bool|string
      */
     public static function zip(string $sourceDir, string $zip = null, string $password = '12345678')
     {
-        $files = FileSystem::getInstance($sourceDir)->ls('/', true)['f'];
+        $files = FileSystem::getInstance($sourceDir)->ls('/', true, FileSystem::LS_FILE_OPTION);
 
         $zipname = pathinfo($zip ?: static::Uuid(), PATHINFO_FILENAME) . '.zip';
 
@@ -293,7 +293,7 @@ class Utils
 
     /**
      * @param string $zip
-     * 
+     *
      * @return bool|string
      */
     public static function unzip(string $zip, string $password = '12345678')
@@ -318,7 +318,7 @@ class Utils
 
     /**
      * @param string $zip
-     * 
+     *
      * @return \Generator|bool
      */
     public static function getZipFiles(string $zip, string $password = '12345678')
@@ -341,8 +341,8 @@ class Utils
      * @param string $zip
      * @param string $name
      * @param string $password
-     * 
-     * @return string|bool 
+     *
+     * @return string|bool
      */
     public static function getZipContent(string $zip, string $name, string $password = '12345678')
     {
@@ -362,7 +362,7 @@ class Utils
      * @param string $zip
      * @param string $name
      * @param string $password
-     * 
+     *
      * @return string
      */
     public static function saveZipFileToLocal(string $zip, string $name, string $password = '12345678')
@@ -384,7 +384,7 @@ class Utils
      * @param array $data
      * @param string $name
      * @param mixed $default
-     * 
+     *
      * @return mixed
      */
     public static function getData(array $data, string $name, $default = null)

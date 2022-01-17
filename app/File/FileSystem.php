@@ -19,6 +19,10 @@ class FileSystem
 {
     private $instances;
 
+    const LS_DIR_OPTION = 'd';
+
+    const LS_FILE_OPTION = 'f';
+
     /**
      * @var \League\Flysystem\Filesystem
      */
@@ -96,7 +100,7 @@ class FileSystem
      *
      * @return array
      */
-    public function ls(string $dirPath, bool $recursive = false)
+    public function ls(string $dirPath, bool $recursive = false, string $option = null)
     {
         $listing = $this->handler->listContents($dirPath, $recursive);
 
@@ -120,7 +124,17 @@ class FileSystem
             }
         }
 
-        return ['d' => $dirs, 'f' => $files];
+        switch ($option) {
+            case static::LS_DIR_OPTION:
+                return $dirs;
+
+            case static::LS_FILE_OPTION:
+                return $files;
+
+            default:
+                # 默认所有
+                return [static::LS_DIR_OPTION => $dirs, static::LS_FILE_OPTION => $files];
+        }
     }
 
     /**
@@ -169,7 +183,7 @@ class FileSystem
     public function rmDir(string $dirPath)
     {
         $result = $this->ls($dirPath);
-        if ($result['d'] || $result['f']) {
+        if ($result[static::LS_DIR_OPTION] || $result[static::LS_FILE_OPTION]) {
             return false;
         }
 
