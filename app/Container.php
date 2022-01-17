@@ -25,25 +25,18 @@ use Symfony\Component\{DomCrawler\Crawler, EventDispatcher\EventDispatcher};
 use Godruoyi\Snowflake\Snowflake;
 use Psy\Shell;
 use App\Router\Router;
-use App\{Application, Request, Model, Utils, MyTree, Env, Encrypter, Hash, Bitwise, Pipeline, Xml};
+use App\{Application, Model, MyTree, Env, Encrypter, Pipeline};
 use App\Proxy\{Arr, Str, Obj};
-use App\File\{Cache, Csv, Xls, FileSystem};
+use App\File\{Cache, FileSystem, Zip};
 
 /**
  * @name 容器
- * @property \App\Request           $request
- * @property \App\Hash              $hash
- * @property \App\File\Excel        $excel
- * @property \App\File\Word         $word
- * @property \App\File\Csv          $csv
- * @property \App\File\Xls          $xls
+ * @property \App\File\Zip          $zip
  * @property \App\Model             $model
- * @property \App\Utils             $utils
  * @property \Mpdf\Mpdf             $mpdf
  * @property \App\Encrypter         $aes
  * @property \App\MyTree            $tree
  * @property \App\Env               $env
- * @property \App\Xml               $xml
  * @property \Psy\Shell             $shell
  * @property \GuzzleHttp\Client     $httpClient
  * @property \Medoo\Medoo           $db
@@ -57,7 +50,6 @@ use App\File\{Cache, Csv, Xls, FileSystem};
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
- * @property \App\Bitwise           $bitwise
  * @property \App\Pipeline          $pipeline
  * @property \App\Router\Router     $router
  */
@@ -82,10 +74,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
     protected $bind = [
         'db' => Medoo::class,
         'app' => Application::class,
-        'request' => Request::class,
-        'excel' => Excel::class,
-        'word' => Word::class,
-        'utils' => Utils::class,
         'mpdf' => Mpdf::class,
         'tree' => MyTree::class,
         'httpClient' => Client::class,
@@ -102,13 +90,9 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
         'shell' => Shell::class,
         'cache' => Cache::class,
         'fileSystem' => FileSystem::class,
-        'hash' => Hash::class,
-        'csv' => Csv::class,
-        'xml' => Xml::class,
-        'xls' => Xls::class,
-        'bitwise' => Bitwise::class,
         'pipeline' => Pipeline::class,
-        'router' => Router::class
+        'router' => Router::class,
+        'zip' => Zip::class
     ];
 
     /**

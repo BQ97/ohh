@@ -8,28 +8,24 @@ namespace App;
  * Class Application.
  *
  * 应用核心
- * @property \Medoo\Medoo           $db
- * @property \App\Encrypter         $aes
- * @property \App\Request           $request
- * @property \App\File\Excel        $excel
- * @property \App\File\Xls          $xls
- * @property \App\File\Word         $word
+ * @property \App\File\Zip          $zip
  * @property \App\Model             $model
- * @property \App\Utils             $utils
  * @property \Mpdf\Mpdf             $mpdf
+ * @property \App\Encrypter         $aes
  * @property \App\MyTree            $tree
  * @property \App\Env               $env
- * @property \App\Xml               $xml
+ * @property \Psy\Shell             $shell
+ * @property \GuzzleHttp\Client     $httpClient
+ * @property \Medoo\Medoo           $db
  * @property \App\File\FileSystem   $fileSystem
  * @property \App\File\Cache        $cache
- * @property \Faker\Generator       $faker
- * @property \Psy\Shell             $shell
- * @property \App\Hash              $hash
- * @property \GuzzleHttp\Client     $httpClient
+ * @property \App\Proxy\Arr         $arr
+ * @property \App\Proxy\Str         $str
+ * @property \App\Proxy\Obj         $obj
+ * @property \Symfony\Component\DomCrawler\Crawler $crawler
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
  * @property \Godruoyi\Snowflake\Snowflake $Snowflake
- * @property \App\Bitwise           $bitwise
  * @property \App\Pipeline          $pipeline
  * @property \App\Router\Router     $router
  */

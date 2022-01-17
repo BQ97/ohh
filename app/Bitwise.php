@@ -8,7 +8,7 @@ class Bitwise
 {
     /**
      * @param int $rowInt
-     * @param int $items
+     * @param int[] $items
      * 
      * @return int
      */
@@ -19,7 +19,7 @@ class Bitwise
 
     /**
      * @param int $rowInt
-     * @param int $items
+     * @param int[] $items
      * 
      * @return int
      */
@@ -53,6 +53,10 @@ class Bitwise
         }, []);
     }
 
+    /**
+     * @param int $rowInt
+     * @return array
+     */
     public static function decbin(int $rowInt): array
     {
         $row = decbin($rowInt);

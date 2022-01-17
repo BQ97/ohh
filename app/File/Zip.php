@@ -146,6 +146,6 @@ class Zip
 
     public function __destruct()
     {
-        $this->handler->close();
+        $this->handler->filename && $this->handler->close();
     }
 }
