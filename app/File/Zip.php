@@ -82,7 +82,7 @@ class Zip
 
         array_reduce($files, function (ZipArchive $zip, string $path) use ($sourceDir) {
 
-            $zip->addFile($sourceDir . DS . $path, $path);
+            file_exists($sourceDir . DS . $path) &&  $zip->addFile($sourceDir . DS . $path, $path);
             $this->password && $zip->setEncryptionName($path, ZipArchive::EM_AES_256, $this->password);
 
             return $zip;
