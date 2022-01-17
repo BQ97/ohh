@@ -10,7 +10,6 @@ use Godruoyi\Snowflake\Snowflake;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
-use ZipArchive;
 
 class Utils
 {
@@ -259,128 +258,6 @@ class Utils
     }
 
     /**
-     * @param string $sourceDir
-     * @param string $zip
-     * @param string $password
-     *
-     * @return bool|string
-     */
-    public static function zip(string $sourceDir, string $zip = null, string $password = '12345678')
-    {
-        $files = FileSystem::getInstance($sourceDir)->ls('/', true, FileSystem::LS_FILE_OPTION);
-
-        $zipname = pathinfo($zip ?: static::Uuid(), PATHINFO_FILENAME) . '.zip';
-
-        $destDir = UPLOAD_PATH . date('Ymd') . DS;
-
-        FileSystem::getInstance(UPLOAD_PATH)->mkdir(date('Ymd'));
-
-        $ZipArchive = new ZipArchive;
-
-        if ($ZipArchive->open($destDir . $zipname, ZipArchive::CREATE) === TRUE) {
-            foreach ($files as $path) {
-                $ZipArchive->addFile($sourceDir . DS . $path, $path);
-                $ZipArchive->setEncryptionName($path, ZipArchive::EM_AES_256, $password);
-            }
-
-            $ZipArchive->close();
-
-            return $destDir . $zipname;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string $zip
-     *
-     * @return bool|string
-     */
-    public static function unzip(string $zip, string $password = '12345678')
-    {
-        $ZipArchive = new ZipArchive;
-
-        if ($ZipArchive->open($zip) === TRUE) {
-
-            $dest = UPLOAD_PATH . date('Ymd') . DS . static::Uuid() . DS;
-
-            $ZipArchive->setPassword($password);
-
-            $ZipArchive->extractTo($dest);
-
-            $ZipArchive->close();
-
-            return $dest;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string $zip
-     *
-     * @return \Generator|bool
-     */
-    public static function getZipFiles(string $zip, string $password = '12345678')
-    {
-        $ZipArchive = new ZipArchive;
-
-        if ($ZipArchive->open($zip) === TRUE) {
-            $ZipArchive->setPassword($password);
-            for ($i = 0; $i < $ZipArchive->count(); $i++) {
-                yield $i => $ZipArchive->getNameIndex($i);
-            }
-
-            $ZipArchive->close();
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string $zip
-     * @param string $name
-     * @param string $password
-     *
-     * @return string|bool
-     */
-    public static function getZipContent(string $zip, string $name, string $password = '12345678')
-    {
-        $ZipArchive = new ZipArchive;
-
-        if ($ZipArchive->open($zip) === TRUE) {
-            $ZipArchive->setPassword($password);
-            $content = $ZipArchive->getFromName($name);
-            $ZipArchive->close();
-            return $content;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string $zip
-     * @param string $name
-     * @param string $password
-     *
-     * @return string
-     */
-    public static function saveZipFileToLocal(string $zip, string $name, string $password = '12345678')
-    {
-        $content = static::getZipContent($zip, $name, $password);
-
-        if ($content) {
-            $fileName = date('Ymd') . DS . $name;
-
-            FileSystem::getInstance(UPLOAD_PATH)->write($fileName, $content);
-
-            return UPLOAD_PATH . $fileName;
-        }
-
-        return false;
-    }
-
-    /**
      * @param array $data
      * @param string $name
      * @param mixed $default
@@ -389,12 +266,6 @@ class Utils
      */
     public static function getData(array $data, string $name, $default = null)
     {
-        if (!$name) {
-            return $data;
-        }
-
-        return array_reduce(explode('.', $name), function ($data, $key) use ($default) {
-            return isset($data[$key]) ? $data[$key] : $default;
-        }, $data);
+        return array_reduce(explode('.', $name), fn ($data, $key) => $data[$key] ?? $default, $data);
     }
 }
