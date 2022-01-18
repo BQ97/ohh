@@ -22,6 +22,11 @@ class DownloadResponse extends Response
         parent::__construct($body, 200, $headers);
     }
 
+    protected function notFoundResponse()
+    {
+        parent::__construct(new Stream('php://temp', 'r'), 404);
+    }
+
     protected function injectDownloadHeader(string $filename, array $headers = [])
     {
         $headers = $this->injectContentType(MineType::from($filename), $headers);
