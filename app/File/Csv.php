@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\File;
 
+use App\Response\DownloadResponse;
+
 class Csv
 {
     /**
@@ -48,14 +50,8 @@ class Csv
         }, '');
 
         if ($download) {
-            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-            header('Expires:0');
-            header('Pragma:public');
-            header('Cache-Control: public');
-            header('Content-type:text/csv');
-            header('Content-Disposition:attachment;filename=' . $fileName);
 
-            echo $content;
+            return new DownloadResponse($content, $fileName);
         } else {
 
             $fileName = date('Ymd') . DS . $fileName;
