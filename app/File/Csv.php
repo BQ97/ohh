@@ -36,7 +36,8 @@ class Csv
      * @param  string	$fileName
      * @param  array	$data
      * @param  boolean	$download
-     * @return string
+     * 
+     * @return string|DownloadResponse
      */
     public static function write(string $fileName, array $data, bool $download = true)
     {
