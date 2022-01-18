@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\Loader, File\FileSystem, Container};
+use App\{File\Cache, Utils, Container};
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
@@ -27,7 +27,7 @@ if (!function_exists('cache')) {
      */
     function cache(string $prefix = 'BoQing'): Cache
     {
-        return Cache::getInstance($prefix);
+        return Utils::cache($prefix);
     }
 }
 
@@ -38,7 +38,7 @@ if (!function_exists('fileSystem')) {
      */
     function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
     {
-        return FileSystem::getInstance($path);
+        return Utils::fileSystem($path);
     }
 }
 
@@ -49,31 +49,10 @@ if (!function_exists('view')) {
      * @param  int  $status
      * @param  array  $headers
      *
-     * @return \Laminas\Diactoros\Response\HtmlResponse
+     * @return HtmlResponse
      */
-    function view(string $name, array $data = [], int $status = 200, array $headers = []): \Laminas\Diactoros\Response\HtmlResponse
+    function view(string $name, array $data = [], int $status = 200, array $headers = []): HtmlResponse
     {
         return new HtmlResponse(app()->render($name, $data), $status, $headers);
-    }
-}
-
-if (!function_exists('router')) {
-    /**
-     * @return \App\Router\Router
-     */
-    function router(): \App\Router\Router
-    {
-        return app('router');
-    }
-}
-
-if (!function_exists('requireFile')) {
-    /**
-     * @param string $path
-     * @return mixed
-     */
-    function requireFile(String $path)
-    {
-        return Loader::loadFile($path);
     }
 }

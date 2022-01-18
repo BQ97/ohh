@@ -13,6 +13,7 @@ use League\Route\RouteGroup;
 use Laminas\Diactoros\ResponseFactory;
 use League\Route\Strategy\JsonStrategy;
 use App\Router\Strategy\WebStrategy;
+use App\File\Loader;
 
 class Router
 {
@@ -85,7 +86,7 @@ class Router
     private function loadRouteFile(string $file)
     {
         return function (RouteGroup $route) use ($file) {
-            array_reduce(requireFile(ROUTE_PATH . $file), function (RouteGroup $route, array $params) {
+            array_reduce(Loader::loadFile(ROUTE_PATH . $file), function (RouteGroup $route, array $params) {
                 call_user_func_array([$route, 'map'], $params);
                 return $route;
             }, $route);

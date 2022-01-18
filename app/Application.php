@@ -4,30 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
+use Faker\Factory;
+use PDO;
+
 /**
  * Class Application.
- *
- * 应用核心
- * @property \App\File\Zip          $zip
- * @property \App\Model             $model
- * @property \Mpdf\Mpdf             $mpdf
- * @property \App\Encrypter         $aes
- * @property \App\MyTree            $tree
- * @property \App\Env               $env
- * @property \Psy\Shell             $shell
- * @property \GuzzleHttp\Client     $httpClient
- * @property \Medoo\Medoo           $db
- * @property \App\File\FileSystem   $fileSystem
- * @property \App\File\Cache        $cache
- * @property \App\Proxy\Arr         $arr
- * @property \App\Proxy\Str         $str
- * @property \App\Proxy\Obj         $obj
- * @property \Symfony\Component\DomCrawler\Crawler $crawler
- * @property \League\Plates\Engine $templates
- * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
- * @property \Godruoyi\Snowflake\Snowflake $Snowflake
- * @property \App\Pipeline          $pipeline
- * @property \App\Router\Router     $router
  */
 class Application extends Container
 {
@@ -44,36 +25,15 @@ class Application extends Container
             'username'  => $this->env->get('DB_USERNAME', 'root'),
             'password'  => $this->env->get('DB_PASSWORD', ''),
             'option'    => [
-                \PDO::ATTR_STRINGIFY_FETCHES => false,
-                \PDO::ATTR_EMULATE_PREPARES => false
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+                PDO::ATTR_EMULATE_PREPARES => false
             ],
             'logging' => true
         ]]);
 
         $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
 
-        $this->bindTo('faker', \Faker\Factory::create('zh_CN'));
-    }
-
-    /**
-     * GuzzleHttp
-     * @param array $option
-     * @return \GuzzleHttp\Client
-     */
-    public function httpClient(array $option = []): \GuzzleHttp\Client
-    {
-        return Utils::httpClient($option);
-    }
-
-    /**
-     * 网页爬虫
-     *
-     * @param string data
-     * @return \Symfony\Component\DomCrawler\Crawler
-     */
-    public function crawler($node = null, string $uri = null, string $baseHref = null): \Symfony\Component\DomCrawler\Crawler
-    {
-        return Utils::crawler($node, $uri, $baseHref);
+        $this->bindTo('faker', Factory::create('zh_CN'));
     }
 
     /**
@@ -89,73 +49,15 @@ class Application extends Container
     }
 
     /**
-     * 文件缓存
-     * @param string $prefix 缓存空间 默认 app
-     * @return \App\Cache
-     */
-    public function cache(string $prefix = 'BoQing'): \App\File\Cache
-    {
-        return \App\File\Cache::getInstance($prefix);
-    }
-
-    /**
-     * 雪花算法
-     *
-     * @param int $datacenter
-     * @param int $workerid
-     * @return \Godruoyi\Snowflake\Snowflake
-     */
-    public function snow(Int $datacenter = null, Int $workerid = null): \Godruoyi\Snowflake\Snowflake
-    {
-        return Utils::snow($datacenter, $workerid);
-    }
-
-    /**
-     * @param array $array
-     * @return \App\ArrayObject
-     */
-    public function array(array $array = []): \App\Proxy\Arr
-    {
-        return $this->make('arr', [$array], true);
-    }
-
-    /**
-     * @param array $array
-     * @return \App\StringObject
-     */
-    public function string(String $string = ''): \App\Proxy\Str
-    {
-        return $this->make('str', [$string], true);
-    }
-
-    /**
-     * @param object object
-     * @return \App\ObjectProxy
-     */
-    public function object($object): \App\Proxy\Obj
-    {
-        return $this->make('obj', [$object], true);
-    }
-
-    /**
      * Create a new template and render it.
      * @param  string $name
      * @param  array  $data
      * @param  bool  $return
      * @return string
      */
-    public function render($name, array $data = array())
+    public function render($name, array $data = []): string
     {
         return $this->templates->render($name, $data);
-    }
-
-    /**
-     * @param string $path  目录  默认 缓存目录
-     * @return \App\File\FileSystem
-     */
-    public function fileSystem($path = CACHE_PATH): \App\File\FileSystem
-    {
-        return fileSystem($path);
     }
 
     public function __debugInfo()

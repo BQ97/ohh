@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\File;
 
+use App\Utils;
 use PhpOffice\PhpSpreadsheet\{IOFactory, Spreadsheet};
 
 /**
@@ -88,15 +89,13 @@ class Excel
             }
         }
 
-        $fileName = $fileName ?: \App\Utils::Uuid();
+        $fileName = $fileName ?: Utils::Uuid();
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
         FileSystem::getInstance(UPLOAD_PATH)->mkDir(date('Ymd'));
 
-        $path = UPLOAD_PATH . date('Ymd') . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx';
-
-        $writer->save($path);
+        $writer->save($path = UPLOAD_PATH . date('Ymd') . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx');
 
         return $path;
     }
