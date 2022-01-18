@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Response;
 
-use App\Response\DownloadResponse;
-
 class FileResponse extends DownloadResponse
 {
     public function __construct(string $file, string $name = null, array $headers = [])
