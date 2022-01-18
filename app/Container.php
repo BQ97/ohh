@@ -22,34 +22,24 @@ use Mpdf\Mpdf;
 use GuzzleHttp\Client;
 use League\Plates\Engine;
 use Symfony\Component\{DomCrawler\Crawler, EventDispatcher\EventDispatcher};
-use Godruoyi\Snowflake\Snowflake;
 use Psy\Shell;
 use App\Router\Router;
-use App\{Application, Model, MyTree, Env, Encrypter, Pipeline};
-use App\Proxy\{Arr, Str, Obj};
-use App\File\{Cache, FileSystem, Zip};
+use App\{Application, Model, Env, Pipeline};
+use App\File\Zip;
 
 /**
  * @name 容器
  * @property \App\File\Zip          $zip
  * @property \App\Model             $model
  * @property \Mpdf\Mpdf             $mpdf
- * @property \App\Encrypter         $aes
- * @property \App\MyTree            $tree
  * @property \App\Env               $env
  * @property \Psy\Shell             $shell
  * @property \GuzzleHttp\Client     $httpClient
  * @property \Medoo\Medoo           $db
  * @property \App\Application       $app
- * @property \App\File\FileSystem   $fileSystem
- * @property \App\File\Cache        $cache
- * @property \App\Proxy\Arr         $arr
- * @property \App\Proxy\Str         $str
- * @property \App\Proxy\Obj         $obj
  * @property \Symfony\Component\DomCrawler\Crawler $crawler
  * @property \League\Plates\Engine $templates
  * @property \Symfony\Component\EventDispatcher\EventDispatcher $eventDispatcher
- * @property \Godruoyi\Snowflake\Snowflake $Snowflake
  * @property \App\Pipeline          $pipeline
  * @property \App\Router\Router     $router
  */
@@ -75,21 +65,13 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
         'db' => Medoo::class,
         'app' => Application::class,
         'mpdf' => Mpdf::class,
-        'tree' => MyTree::class,
         'httpClient' => Client::class,
         'crawler' => Crawler::class,
-        'arr' => Arr::class,
-        'str' => Str::class,
-        'obj' => Obj::class,
         'templates' => Engine::class,
         'env' => Env::class,
-        'aes' => Encrypter::class,
         'eventDispatcher' => EventDispatcher::class,
-        'Snowflake' => Snowflake::class,
         'model' => Model::class,
         'shell' => Shell::class,
-        'cache' => Cache::class,
-        'fileSystem' => FileSystem::class,
         'pipeline' => Pipeline::class,
         'router' => Router::class,
         'zip' => Zip::class
