@@ -98,9 +98,7 @@ class Zip
      */
     public function unPack(string $zip)
     {
-        $path = $this->exportPath . Utils::Uuid() . DS;
-
-        $this->open($zip)->getHandler()->extractTo($path);
+        $this->open($zip)->getHandler()->extractTo($path = $this->exportPath . Utils::Uuid() . DS);
 
         return $path;
     }
