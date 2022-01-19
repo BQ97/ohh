@@ -1,5 +1,8 @@
 {
     "require": {
+        "php": "^7.3 || ^8.0",
+        "ext-fileinfo": "*",
+        "ext-seaslog": "*",
         "phpoffice/phpspreadsheet": "^1.20.0",
         "symfony/dom-crawler": "^5.3",
         "guzzlehttp/guzzle": "^7.0",
@@ -23,7 +26,6 @@
         "league/route": "^5.1",
         "laminas/laminas-diactoros": "^2.8",
         "laminas/laminas-httphandlerrunner": "^2.1",
-        "monolog/monolog": "^2.3",
         "league/tactician": "^1.1"
     },
     "require-dev": {
@@ -32,7 +34,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app",
-            "modules\\":"modules"
+            "modules\\": "modules"
         },
         "files": [
             "helper.php"

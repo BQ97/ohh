@@ -43,7 +43,6 @@ return array(
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
-    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'League\\Uri\\' => array($vendorDir . '/league/uri/src', $vendorDir . '/league/uri-interfaces/src'),

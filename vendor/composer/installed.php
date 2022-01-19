@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ba860d72c1678915c32445e8c5d0f5cc0c6910b1',
+        'reference' => '0dd6a6c047429f0c35bfa5d741c698efa3a33712',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ba860d72c1678915c32445e8c5d0f5cc0c6910b1',
+            'reference' => '0dd6a6c047429f0c35bfa5d741c698efa3a33712',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -215,15 +215,6 @@
             'install_path' => __DIR__ . '/../markbaker/matrix',
             'aliases' => array(),
             'reference' => 'c66aefcafb4f6c269510e9ac46b82619a904c576',
-            'dev_requirement' => false,
-        ),
-        'monolog/monolog' => array(
-            'pretty_version' => '2.3.5',
-            'version' => '2.3.5.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../monolog/monolog',
-            'aliases' => array(),
-            'reference' => 'fd4380d6fc37626e2f799f29d91195040137eba9',
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
@@ -448,8 +439,7 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-                1 => '1.0|2.0',
+                0 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(

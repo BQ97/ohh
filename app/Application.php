@@ -6,6 +6,7 @@ namespace App;
 
 use Faker\Factory;
 use PDO;
+use App\Logger;
 
 /**
  * Class Application.
@@ -34,6 +35,8 @@ class Application extends Container
         $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
 
         $this->bindTo('faker', Factory::create('zh_CN'));
+
+        Logger::setBasePath(LOG_PATH);
     }
 
     /**

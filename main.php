@@ -52,6 +52,11 @@ const CONFIG_PATH = APP_PATH . 'config' . DS;
  */
 const PUBLIC_PATH = APP_PATH . 'public' . DS;
 
+/**
+ * @var string LOG_PATH
+ */
+const LOG_PATH = APP_PATH . 'logs' . DS;
+
 require APP_PATH . 'vendor' . DS . 'autoload.php';
 
 /**
