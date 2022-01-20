@@ -34,6 +34,11 @@ namespace App;
  */
 class Logger
 {
+    public function __call($name, $arguments)
+    {
+        return static::__callStatic($name, $arguments);
+    }
+
     public static function __callStatic($name, $arguments)
     {
         return call_user_func_array("SeasLog::{$name}", $arguments);
