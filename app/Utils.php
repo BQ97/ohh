@@ -68,7 +68,7 @@ class Utils
      * @param \DOMNodeList|\DOMNode|\DOMNode[]|string|null $node A Node to use as the base for the crawling
      * @return \Symfony\Component\DomCrawler\Crawler
      */
-    public static function crawler($node = null, string $uri = null, string $baseHref = null)
+    public static function crawler($node = null, string $uri = null, string $baseHref = null): Crawler
     {
         return new Crawler($node, $uri, $baseHref);
     }
@@ -99,7 +99,7 @@ class Utils
      * @param int $workerid
      * @return \Godruoyi\Snowflake\Snowflake
      */
-    public static function snow(Int $datacenter = null, Int $workerid = null): \Godruoyi\Snowflake\Snowflake
+    public static function snow(Int $datacenter = null, Int $workerid = null): Snowflake
     {
         return new Snowflake($datacenter, $workerid);
     }
@@ -117,7 +117,7 @@ class Utils
      * @param string $key
      * @return \App\MyTree
      */
-    public static function tree(array $config = []): \App\MyTree
+    public static function tree(array $config = []): MyTree
     {
         return MyTree::getInstance($config);
     }
@@ -126,7 +126,7 @@ class Utils
      * @param string $path  目录  默认 缓存目录
      * @return \App\File\FileSystem
      */
-    public static function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
+    public static function fileSystem(string $path = CACHE_PATH): FileSystem
     {
         return FileSystem::getInstance($path);
     }

@@ -13,7 +13,24 @@ use App\Logger;
  */
 class Application extends Container
 {
+    /**
+     * 初始化应用
+     */
     public function __construct()
+    {
+        $this->initLogger();
+
+        $this->initDb();
+
+        $this->initFaker();
+
+        $this->initTemplate();
+    }
+
+    /**
+     * 启动数据库
+     */
+    private function initDb()
     {
         $this->make('db', [[
             'type'      => $this->env->get('DB_CONNECTION', 'mysql'),
@@ -31,12 +48,30 @@ class Application extends Container
             ],
             'logging' => true
         ]]);
+    }
 
-        $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
-
+    /**
+     * 启动Faker
+     */
+    private function initFaker()
+    {
         $this->bindTo('faker', Factory::create('zh_CN'));
+    }
 
+    /**
+     * 启动 Logger
+     */
+    private function initLogger()
+    {
         Logger::setBasePath(LOG_PATH);
+    }
+
+    /**
+     * 启动模板引擎
+     */
+    private function initTemplate()
+    {
+        $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
     }
 
     /**
@@ -60,7 +95,12 @@ class Application extends Container
      */
     public function render($name, array $data = []): string
     {
-        return $this->templates->render($name, $data);
+        if ($this->templates->exists($name)) {
+
+            return $this->templates->render($name, $data);
+        }
+
+        return $this->templates->render('not-found', ['name' => $name]);
     }
 
     public function __debugInfo()

@@ -5,18 +5,25 @@ declare(strict_types=1);
 namespace App\Router;
 
 use App\Request;
-use League\Route\Router as BaseRouter;
-use App\Router\middleware\web\Base as WebMiddleware;
-use App\Router\middleware\json\Base as JsonMiddleware;
-use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
-use League\Route\RouteGroup;
-use Laminas\Diactoros\ResponseFactory;
-use League\Route\Strategy\JsonStrategy;
-use App\Router\Strategy\WebStrategy;
 use App\File\Loader;
+use League\Route\{
+    RouteGroup,
+    Router as BaseRouter,
+    Strategy\JsonStrategy,
+    Strategy\ApplicationStrategy
+};
+use App\Router\middleware\{
+    Exception,
+    web\Base as WebMiddleware,
+    json\Base as JsonMiddleware
+};
+use Laminas\Diactoros\ResponseFactory;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 
 class Router
 {
+    use \App\Router\traits\ExceptionTrait;
+
     /**
      * @var \League\Route\Router
      */
@@ -26,6 +33,7 @@ class Router
      * @var array $middlewares
      */
     protected $middlewares = [
+        Exception::class,
         WebMiddleware::class,
         JsonMiddleware::class,
     ];
@@ -61,7 +69,7 @@ class Router
             [
                 'group' => '/',
                 'file' => 'web.php',
-                'strategy' => new WebStrategy
+                'strategy' => new ApplicationStrategy
             ],
             [
                 'group' => '/api',
@@ -95,13 +103,19 @@ class Router
 
     public function send()
     {
+        $serverRequest = Request::createServerRequest();
+
         try {
-            $response = $this->handler()->handle(Request::createServerRequest());
+
+            $response = $this->handler()->handle($serverRequest);
+        } catch (\Throwable $th) {
+
+            $response = $this->getExceptionResponse($th, $serverRequest);
+        } finally {
 
             $sapiEmitter = new SapiEmitter;
 
             return $sapiEmitter->emit($response);
-        } catch (\Throwable $th) {
         }
     }
 

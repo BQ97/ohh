@@ -803,7 +803,7 @@ class MineType
      */
     public static function get($extension = null)
     {
-        return isset($extension) ? self::getMimeTypeFromExtension($extension) : self::$mimes;
+        return isset($extension) ? static::getMimeTypeFromExtension($extension) : static::$mimes;
     }
 
     /**

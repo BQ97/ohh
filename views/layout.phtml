@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>测试</title>
+    <title><?= $title ?: 'Document' ?></title>
 
+    <link rel="stylesheet" href="/static/pico/css/pico.min.css">
 </head>
+
 <body>
 
-    <?php $this->insert('header');?>
+    <article>
+        <header>
+            <?php $this->insert('header', ['title' => $title ?: 'Document']); ?>
+        </header>
 
-    <?= $this->section('content')?>
+        <section>
+            <?= $this->section('content') ?>
+        </section>
 
-    <?php $this->insert('footer');?>
-
-
+        <footer>
+            <?php $this->insert('footer'); ?>
+        </footer>
+    </article>
 </body>
 
 <script type="module">
+    import model from '/static/model.js';
 
-import User from '/medoo/static/model.js';
-
-console.log(User)
-
-let res = User.say();
-
-console.log(res)
-
+    console.log(model)
 </script>
 
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, Utils, Container};
+use App\{File\Cache, File\FileSystem, Container};
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
@@ -13,7 +13,7 @@ if (!function_exists('app')) {
      * @param bool      $newInstance    是否每次创建新的实例
      * @return mixed|\App\Application
      */
-    function app($name = 'app', $args = [], $newInstance = false)
+    function app(string $name = 'app', array $args = [], bool $newInstance = false)
     {
         return Container::getInstance()->make($name, $args, $newInstance);
     }
@@ -23,11 +23,11 @@ if (!function_exists('cache')) {
     /**
      * 文件缓存
      * @param string $prefix 缓存空间 默认 app
-     * @return Cache
+     * @return \App\File\Cache
      */
     function cache(string $prefix = 'BoQing'): Cache
     {
-        return Utils::cache($prefix);
+        return Cache::getInstance($prefix);
     }
 }
 
@@ -36,9 +36,9 @@ if (!function_exists('fileSystem')) {
      * @param string $path  目录  默认 缓存目录
      * @return \App\File\FileSystem
      */
-    function fileSystem(string $path = CACHE_PATH): \App\File\FileSystem
+    function fileSystem(string $path = CACHE_PATH): FileSystem
     {
-        return Utils::fileSystem($path);
+        return FileSystem::getInstance($path);
     }
 }
 
@@ -49,7 +49,7 @@ if (!function_exists('view')) {
      * @param  int  $status
      * @param  array  $headers
      *
-     * @return HtmlResponse
+     * @return \Laminas\Diactoros\Response\HtmlResponse
      */
     function view(string $name, array $data = [], int $status = 200, array $headers = []): HtmlResponse
     {
