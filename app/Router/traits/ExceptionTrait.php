@@ -6,12 +6,15 @@ namespace App\Router\traits;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Laminas\Diactoros\Response\JsonResponse;
+use App\Logger;
 
 trait ExceptionTrait
 {
     protected function getExceptionResponse(\Throwable $e, ServerRequestInterface $request)
     {
         $exceptionInfos = $this->getExceptionInfos($e);
+
+        Logger::error(json_encode($exceptionInfos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
         if (in_array('application/json', $request->getHeader('expect'), true)) {
             return new JsonResponse($exceptionInfos, 500, [], JSON_UNESCAPED_UNICODE);
