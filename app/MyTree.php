@@ -6,10 +6,25 @@ namespace App;
 
 class MyTree
 {
-    private $_parentId;
-    private $_id;
-    private $_name;
-    private $_child;
+    /**
+     * @var string
+     */
+    private $_parentId = 'pid';
+
+    /**
+     * @var string
+     */
+    private $_id = 'id';
+
+    /**
+     * @var string
+     */
+    private $_name = 'name';
+
+    /**
+     * @var array
+     */
+    private $_child = 'child';
 
     /**
      * @param array config
@@ -24,44 +39,15 @@ class MyTree
 
     /**
      * @param array config
-     * @return \App\MyTree
+     * @return MyTree
      */
     public static function getInstance(array $config = [])
     {
         return new static($config);
     }
 
-    public function getHtmlOption($data, $id = 0, $parentId = -1, $selectId = null, $preFix = '|-')
-    {
-        if (!$data || !is_array($data)) {
-            return '';
-        }
 
-        $string = '';
-        foreach ($data as $key => $value) {
-            if ($value[$this->_id] == $id) {
-                $string .= '<option value=\'' . $value[$this->_id] . '\'';
-                if (!is_null($selectId)) {
-                    $string .= ($value[$this->_id] == $selectId) ? ' selected="selected"' : '';
-                }
-                $string .= '>' . $preFix . $value[$this->_name] . '</option>';
-                $parentId = $id;
-            }
-
-            if ($value[$this->_parentId] == $parentId) {
-                $string .= '<option value=\'' . $value[$this->_id] . '\'';
-                if (!is_null($selectId)) {
-                    $string .= ($value[$this->_id] == $selectId) ? ' selected="selected"' : '';
-                }
-                $string .= '>' . '&nbsp;&nbsp;' . $preFix . $value[$this->_name] . '</option>';
-                $string .= $this->getHtmlOption($data, -1, $value[$this->_id], $selectId, '&nbsp;&nbsp;' . $preFix);
-            }
-        }
-        return $string;
-    }
-
-
-    public function getTree($data, $parentId = 0)
+    public function getTree(array $data, $parentId = 0)
     {
         if (!$data || !is_array($data)) {
             return '';
@@ -75,26 +61,28 @@ class MyTree
         return $result;
     }
 
-    public function getTreeHtml($data, $url = "", $parentId = 0)
+    public function getListByTree(array $tree, $parentId = '')
     {
-        if (!$data || !is_array($data)) {
-            return '';
-        }
+        return array_reduce($tree, function ($carry, $item) use ($parentId) {
+            if ($item[$this->_parentId] == $parentId) {
 
-        $string = "";
-        foreach ($data as $key => $value) {
-            if ($value[$this->_parentId] == $parentId) {
-                $string .= '<li>' . '<a href="' . $url . '/cid/' . $value[$this->_id] . '">' . $value[$this->_name] . '</a>';
-                $string .= $this->getTreeHtml($data, $url, $value[$this->_id]) . '</li>';
+                $children = $item[$this->_child] ?? [];
+
+                unset($item[$this->_child]);
+
+                $carry[] = $item;
+
+                if ($children) {
+
+                    $carry = array_merge($carry, $this->getListByTree($children, $item[$this->_id]));
+                }
             }
-        }
-        if (!empty($string) && $parentId != 0) {
-            $string = '<ul>' . $string . '</ul>';
-        }
-        return $string;
+
+            return $carry;
+        }, []);
     }
 
-    public function getChild($data, $id, $include = false)
+    public function getChild(array $data, $id, bool $include = false)
     {
         if (!$data || !is_array($data)) {
             return array();
@@ -121,7 +109,7 @@ class MyTree
         return $r;
     }
 
-    public function getParent($data, $id)
+    public function getParent(array $data, $id)
     {
         if (!$data || !is_array($data)) {
             return array();
@@ -135,14 +123,14 @@ class MyTree
         }
     }
 
-    public function breadcrumbNavigation($data, $id)
+    public function getBreadCrumb(array $data, $id)
     {
         if (!$data || !is_array($data)) {
-            return array();
+            return [];
         }
 
         $data = $this->formatArray($data);
-        $breadcrumb = array();
+        $breadcrumb = [];
         while ($id != 0) {
             $breadcrumb[] = $data[$id];
             $id = $data[$id][$this->_parentId];
@@ -151,9 +139,9 @@ class MyTree
         return $breadcrumb;
     }
 
-    private function formatArray($data)
+    private function formatArray(array $data)
     {
-        $index = array();
+        $index = [];
         foreach ($data as $value) {
             $index[$value[$this->_id]] = $value;
         }
