@@ -163,4 +163,19 @@ class Utils
     {
         return array_reduce(explode('.', $name), fn ($data, $key) => $data[$key] ?? $default, $data);
     }
+
+    public static function downloadResource($url)
+    {
+        $date = date('Ymd');
+
+        static::fileSystem(UPLOAD_PATH)->mkDir($date);
+
+        $path = UPLOAD_PATH . $date . DS .  pathinfo($url, PATHINFO_BASENAME);
+
+        static::httpClient()->get($url, [
+            'sink' => $path
+        ]);
+
+        return $path;
+    }
 }

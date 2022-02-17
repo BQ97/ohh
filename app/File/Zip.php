@@ -137,9 +137,17 @@ class Zip
      */
     public function saveFileToLocal(string $zip, string $name)
     {
-        FileSystem::getInstance($this->exportPath)->write($name, $this->getContent($zip, $name));
+        $contents = $this->getContent($zip, $name);
 
-        return $this->exportPath . $name;
+        if (!$contents) {
+            return false;
+        }
+
+        $md5File = md5($contents) . '.' . pathinfo($name, PATHINFO_EXTENSION);
+
+        FileSystem::getInstance($this->exportPath)->write($md5File, $contents);
+
+        return $this->exportPath . $md5File;
     }
 
     public function __destruct()
