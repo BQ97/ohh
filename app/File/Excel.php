@@ -43,7 +43,7 @@ class Excel
      *
      * @return array
      */
-    public static function read(string $fileName, string $sheet = null)
+    public static function read(string $fileName, string $sheet = null, $nullValue = null, $calculateFormulas = true, $formatData = true, $returnCellRef = false)
     {
         $spreadsheet = IOFactory::load($fileName);
 
@@ -57,8 +57,8 @@ class Excel
 
             $worksheet = $spreadsheet->getSheetByName($sheet);
         }
-
-        return $worksheet->toArray(null, true, true, true);
+        
+        return $worksheet->toArray($nullValue, $calculateFormulas, $formatData, $returnCellRef);
     }
 
     /**
