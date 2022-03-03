@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a242161146a65ff23b028d9898afc579c0aecd0b',
+        'reference' => '351789864361dfb50cc1a8425c49e1308b089e8a',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a242161146a65ff23b028d9898afc579c0aecd0b',
+            'reference' => '351789864361dfb50cc1a8425c49e1308b089e8a',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -227,16 +227,13 @@
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
-            'pretty_version' => '1.10.2',
-            'version' => '1.10.2.0',
+            'pretty_version' => '1.10.3',
+            'version' => '1.10.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
-            'reference' => '776f831124e9c62e1a2c601ecc52e776d8bb7220',
+            'reference' => 'c6a951b75d684fd43fbbd69617488e1e2e8924ba',
             'dev_requirement' => false,
-            'replaced' => array(
-                0 => '1.10.2',
-            ),
         ),
         'myclabs/php-enum' => array(
             'pretty_version' => '1.8.3',
