@@ -3516,6 +3516,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\middleware\\C' => __DIR__ . '/../..' . '/modules/middleware/C.php',
         'modules\\middleware\\D' => __DIR__ . '/../..' . '/modules/middleware/D.php',
         'modules\\middleware\\MiddlewareInterface' => __DIR__ . '/../..' . '/modules/middleware/MiddlewareInterface.php',
+        'modules\\orders\\Index' => __DIR__ . '/../..' . '/modules/orders/Index.php',
         'modules\\wbzp\\Clean' => __DIR__ . '/../..' . '/modules/wbzp/Clean.php',
         'modules\\wbzp\\Room' => __DIR__ . '/../..' . '/modules/wbzp/Room.php',
         'setasign\\Fpdi\\FpdfTpl' => __DIR__ . '/..' . '/setasign/fpdi/src/FpdfTpl.php',

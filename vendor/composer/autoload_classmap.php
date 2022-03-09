@@ -3117,6 +3117,7 @@ return array(
     'modules\\middleware\\C' => $baseDir . '/modules/middleware/C.php',
     'modules\\middleware\\D' => $baseDir . '/modules/middleware/D.php',
     'modules\\middleware\\MiddlewareInterface' => $baseDir . '/modules/middleware/MiddlewareInterface.php',
+    'modules\\orders\\Index' => $baseDir . '/modules/orders/Index.php',
     'modules\\wbzp\\Clean' => $baseDir . '/modules/wbzp/Clean.php',
     'modules\\wbzp\\Room' => $baseDir . '/modules/wbzp/Room.php',
     'setasign\\Fpdi\\FpdfTpl' => $vendorDir . '/setasign/fpdi/src/FpdfTpl.php',
