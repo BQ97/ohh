@@ -108,6 +108,7 @@ class Application extends Container
         return [
             'app_name' => $this->env->get('APP_NAME'),
             'version' => '1.0.0',
+            'PHP_VERSION_ID' => PHP_VERSION_ID,
             'date' => date('Y-m-d H:i:s'),
             'container' => parent::__debugInfo(),
         ];
