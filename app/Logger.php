@@ -41,6 +41,6 @@ class Logger
 
     public static function __callStatic($name, $arguments)
     {
-        return call_user_func_array("SeasLog::{$name}", $arguments);
+        return call_user_func_array(['SeasLog', $name], $arguments);
     }
 }
