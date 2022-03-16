@@ -25,6 +25,11 @@ class Router
     use \App\Router\traits\ExceptionTrait;
 
     /**
+     * @var \App\Application 
+     */
+    private $container;
+
+    /**
      * @var \League\Route\Router
      */
     private $handler;
@@ -38,13 +43,28 @@ class Router
         JsonMiddleware::class,
     ];
 
-    public function __construct()
+    public function __construct(\App\Application $app)
     {
+        $this->container = $app;
+
+        $this->initEnv();
+
         $this->handler = new BaseRouter();
 
         $this->middlewares();
 
         $this->registerRoutes();
+    }
+
+    /**
+     * 判断env配置
+     */
+    private function initEnv()
+    {
+        if ($this->container->env->get('APP_ENV', 'dev') === 'dev') {
+            // 在本地如果没有打开虚拟主机，就需要把 PATH_INFO 的值 付给 REQUEST_URI
+            isset($_SERVER['PATH_INFO']) && $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
+        }
     }
 
     /**
@@ -78,10 +98,8 @@ class Router
             ]
         ];
 
-        $container = app();
-
         foreach ($routes as $item) {
-            $item['strategy']->setContainer($container);
+            $item['strategy']->setContainer($this->container);
 
             $this->handler()->group($item['group'], $this->loadRouteFile($item['file']))->setStrategy($item['strategy']);
         }
