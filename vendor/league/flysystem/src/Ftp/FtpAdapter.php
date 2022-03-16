@@ -80,10 +80,7 @@ class FtpAdapter implements FilesystemAdapter
      */
     private $mimeTypeDetector;
 
-    /**
-     * @var null|string
-     */
-    private $rootDirectory = null;
+    private ?string $rootDirectory = null;
 
     public function __construct(
         FtpConnectionOptions $connectionOptions,
@@ -211,7 +208,7 @@ class FtpAdapter implements FilesystemAdapter
         if ( ! $result) {
             fclose($stream);
 
-            throw UnableToReadFile::fromLocation($path);
+            throw UnableToReadFile::fromLocation($path, error_get_last()['message'] ?? '');
         }
 
         rewind($stream);
@@ -268,7 +265,7 @@ class FtpAdapter implements FilesystemAdapter
 
     public function createDirectory(string $path, Config $config): void
     {
-        $this->ensureDirectoryExists($path, $config->get('visibility'));
+        $this->ensureDirectoryExists($path, $config->get('directory_visibility', $config->get('visibility')));
     }
 
     public function setVisibility(string $path, string $visibility): void
@@ -632,6 +629,13 @@ class FtpAdapter implements FilesystemAdapter
     private function hasFtpConnection(): bool
     {
         return $this->connection instanceof \FTP\Connection || is_resource($this->connection);
+    }
+
+    public function directoryExists(string $path): bool
+    {
+        $connection = $this->connection();
+
+        return @ftp_chdir($connection, $path) === true;
     }
 
     /**

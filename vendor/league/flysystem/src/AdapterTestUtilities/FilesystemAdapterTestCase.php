@@ -19,6 +19,8 @@ use League\Flysystem\Visibility;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 use function file_get_contents;
+use function is_resource;
+use function iterator_to_array;
 
 /**
  * @codeCoverageIgnore
@@ -35,7 +37,7 @@ abstract class FilesystemAdapterTestCase extends TestCase
     /**
      * @var bool
      */
-    private $isUsingCustomAdapter = false;
+    protected $isUsingCustomAdapter = false;
 
     public static function clearFilesystemAdapterCache(): void
     {
@@ -77,8 +79,8 @@ abstract class FilesystemAdapterTestCase extends TestCase
      */
     public function cleanupAdapter(): void
     {
-        $this->clearStorage();
         $this->clearCustomAdapter();
+        $this->clearStorage();
     }
 
     public function clearStorage(): void
@@ -144,7 +146,11 @@ abstract class FilesystemAdapterTestCase extends TestCase
             $writeStream = stream_with_contents('contents');
 
             $adapter->writeStream('path.txt', $writeStream, new Config());
-            fclose($writeStream);
+
+            if (is_resource($writeStream)) {
+                fclose($writeStream);
+            }
+
             $fileExists = $adapter->fileExists('path.txt');
 
             $this->assertTrue($fileExists);
@@ -195,7 +201,11 @@ abstract class FilesystemAdapterTestCase extends TestCase
             $writeStream = stream_with_contents('');
 
             $adapter->writeStream('path.txt', $writeStream, new Config());
-            fclose($writeStream);
+
+            if (is_resource($writeStream)) {
+                fclose($writeStream);
+            }
+
             $fileExists = $adapter->fileExists('path.txt');
 
             $this->assertTrue($fileExists);
@@ -295,6 +305,45 @@ abstract class FilesystemAdapterTestCase extends TestCase
             $this->assertEquals('some/1-nested', $items[$directoryIndex]->path());
             $this->assertTrue($items[$fileIndex]->isFile());
             $this->assertTrue($items[$directoryIndex]->isDir());
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function checking_if_a_non_existing_directory_exists(): void
+    {
+        $this->runScenario(function () {
+            $adapter = $this->adapter();
+            self::assertFalse($adapter->directoryExists('this-does-not-exist.php'));
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function checking_if_a_directory_exists_after_writing_a_file(): void
+    {
+        $this->runScenario(function () {
+            $adapter = $this->adapter();
+            $this->givenWeHaveAnExistingFile('existing-directory/file.txt');
+            self::assertTrue($adapter->directoryExists('existing-directory'));
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function checking_if_a_directory_exists_after_creating_it(): void
+    {
+        $this->runScenario(function () {
+            $adapter = $this->adapter();
+            $adapter->createDirectory('explicitly-created-directory', new Config());
+            self::assertTrue($adapter->directoryExists('explicitly-created-directory'));
+            $adapter->deleteDirectory('explicitly-created-directory');
+            $l = iterator_to_array($adapter->listContents('/', false), false);
+            self::assertEquals([], $l);
+            self::assertFalse($adapter->directoryExists('explicitly-created-directory'));
         });
     }
 
@@ -625,7 +674,7 @@ abstract class FilesystemAdapterTestCase extends TestCase
      */
     public function checking_if_files_exist(): void
     {
-        $this->runScenario(function() {
+        $this->runScenario(function () {
             $adapter = $this->adapter();
             $fileExistsBefore = $adapter->fileExists('some/path.txt');
             $adapter->write('some/path.txt', 'contents', new Config());
@@ -682,17 +731,18 @@ abstract class FilesystemAdapterTestCase extends TestCase
         $this->runScenario(function () {
             $adapter = $this->adapter();
 
-            $adapter->createDirectory('path', new Config());
+            $adapter->createDirectory('creating_a_directory/path', new Config());
 
             // Creating a directory should be idempotent.
-            $adapter->createDirectory('path', new Config());
+            $adapter->createDirectory('creating_a_directory/path', new Config());
 
-            $contents = iterator_to_array($adapter->listContents('', false));
+            $contents = iterator_to_array($adapter->listContents('creating_a_directory', false));
             $this->assertCount(1, $contents, $this->formatIncorrectListingCount($contents));
             /** @var DirectoryAttributes $directory */
             $directory = $contents[0];
             $this->assertInstanceOf(DirectoryAttributes::class, $directory);
-            $this->assertEquals('path', $directory->path());
+            $this->assertEquals('creating_a_directory/path', $directory->path());
+            $adapter->deleteDirectory('creating_a_directory/path');
         });
     }
 

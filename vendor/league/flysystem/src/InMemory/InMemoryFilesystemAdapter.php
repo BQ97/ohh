@@ -17,6 +17,10 @@ use League\Flysystem\Visibility;
 use League\MimeTypeDetection\FinfoMimeTypeDetector;
 use League\MimeTypeDetection\MimeTypeDetector;
 
+use function array_keys;
+use function rtrim;
+use function strpos;
+
 class InMemoryFilesystemAdapter implements FilesystemAdapter
 {
     const DUMMY_FILE_FOR_FORCED_LISTING_IN_FLYSYSTEM_TEST = '______DUMMY_FILE_FOR_FORCED_LISTING_IN_FLYSYSTEM_TEST';
@@ -105,6 +109,20 @@ class InMemoryFilesystemAdapter implements FilesystemAdapter
     {
         $filePath = rtrim($path, '/') . '/' . self::DUMMY_FILE_FOR_FORCED_LISTING_IN_FLYSYSTEM_TEST;
         $this->write($filePath, '', $config);
+    }
+
+    public function directoryExists(string $path): bool
+    {
+        $prefix = $this->preparePath($path);
+        $prefix = rtrim($prefix, '/') . '/';
+
+        foreach (array_keys($this->files) as $path) {
+            if (strpos($path, $prefix) === 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function setVisibility(string $path, string $visibility): void

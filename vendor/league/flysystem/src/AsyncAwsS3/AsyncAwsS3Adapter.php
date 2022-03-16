@@ -19,6 +19,7 @@ use League\Flysystem\FileAttributes;
 use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\PathPrefixer;
 use League\Flysystem\StorageAttributes;
+use League\Flysystem\UnableToCheckDirectoryExistence;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToCopyFile;
 use League\Flysystem\UnableToDeleteFile;
@@ -30,6 +31,8 @@ use League\Flysystem\Visibility;
 use League\MimeTypeDetection\FinfoMimeTypeDetector;
 use League\MimeTypeDetection\MimeTypeDetector;
 use Throwable;
+
+use function trim;
 
 class AsyncAwsS3Adapter implements FilesystemAdapter
 {
@@ -63,7 +66,7 @@ class AsyncAwsS3Adapter implements FilesystemAdapter
     /**
      * @var string[]
      */
-    private const EXTRA_METADATA_FIELDS = [
+    protected const EXTRA_METADATA_FIELDS = [
         'Metadata',
         'StorageClass',
         'ETag',
@@ -186,7 +189,8 @@ class AsyncAwsS3Adapter implements FilesystemAdapter
 
     public function createDirectory(string $path, Config $config): void
     {
-        $config = $config->withDefaults(['visibility' => $this->visibility->defaultForDirectories()]);
+        $defaultVisibility = $config->get('directory_visibility', $this->visibility->defaultForDirectories());
+        $config = $config->withDefaults(['visibility' => $defaultVisibility]);
         $this->upload(rtrim($path, '/') . '/', '', $config);
     }
 
@@ -252,6 +256,18 @@ class AsyncAwsS3Adapter implements FilesystemAdapter
         }
 
         return $attributes;
+    }
+
+    public function directoryExists(string $path): bool
+    {
+        try {
+            $prefix = $this->prefixer->prefixDirectoryPath($path);
+            $options = ['Bucket' => $this->bucket, 'Prefix' => $prefix, 'MaxKeys' => 1, 'Delimiter' => '/'];
+
+            return $this->client->listObjectsV2($options)->getKeyCount() > 0;
+        } catch (Throwable $exception) {
+            throw UnableToCheckDirectoryExistence::forLocation($path, $exception);
+        }
     }
 
     public function listContents(string $path, bool $deep): iterable

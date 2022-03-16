@@ -14,8 +14,10 @@ use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\FilesystemOperationFailed;
 use League\Flysystem\PathPrefixer;
 use League\Flysystem\StorageAttributes;
+use League\Flysystem\UnableToCheckDirectoryExistence;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToCopyFile;
+use League\Flysystem\UnableToCreateDirectory;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\UnableToMoveFile;
 use League\Flysystem\UnableToReadFile;
@@ -27,6 +29,8 @@ use League\MimeTypeDetection\FinfoMimeTypeDetector;
 use League\MimeTypeDetection\MimeTypeDetector;
 use Psr\Http\Message\StreamInterface;
 use Throwable;
+
+use function trim;
 
 class AwsS3V3Adapter implements FilesystemAdapter
 {
@@ -56,6 +60,16 @@ class AwsS3V3Adapter implements FilesystemAdapter
         'StorageClass',
         'Tagging',
         'WebsiteRedirectLocation',
+    ];
+    /**
+     * @var string[]
+     */
+    public const MUP_AVAILABLE_OPTIONS = [
+        'before_upload',
+        'concurrency',
+        'mup_threshold',
+        'params',
+        'part_size',
     ];
 
     /**
@@ -130,6 +144,20 @@ class AwsS3V3Adapter implements FilesystemAdapter
         }
     }
 
+    public function directoryExists(string $path): bool
+    {
+        try {
+            $prefix = $this->prefixer->prefixDirectoryPath($path);
+            $options = ['Bucket' => $this->bucket, 'Prefix' => $prefix, 'MaxKeys' => 1, 'Delimiter' => '/'];
+            $command = $this->client->getCommand('ListObjects', $options);
+            $result = $this->client->execute($command);
+
+            return $result->hasKey('Contents') || $result->hasKey('CommonPrefixes');
+        } catch (Throwable $exception) {
+            throw UnableToCheckDirectoryExistence::forLocation($path, $exception);
+        }
+    }
+
     public function write(string $path, string $contents, Config $config): void
     {
         $this->upload($path, $contents, $config);
@@ -144,15 +172,15 @@ class AwsS3V3Adapter implements FilesystemAdapter
     {
         $key = $this->prefixer->prefixPath($path);
         $options = $this->createOptionsFromConfig($config);
-        $acl = $options['ACL'] ?? $this->determineAcl($config);
-        $shouldDetermineMimetype = $body !== '' && ! array_key_exists('ContentType', $options);
+        $acl = $options['params']['ACL'] ?? $this->determineAcl($config);
+        $shouldDetermineMimetype = $body !== '' && ! array_key_exists('ContentType', $options['params']);
 
         if ($shouldDetermineMimetype && $mimeType = $this->mimeTypeDetector->detectMimeType($key, $body)) {
-            $options['ContentType'] = $mimeType;
+            $options['params']['ContentType'] = $mimeType;
         }
 
         try {
-            $this->client->upload($this->bucket, $key, $body, $acl, ['params' => $options]);
+            $this->client->upload($this->bucket, $key, $body, $acl, $options);
         } catch (Throwable $exception) {
             throw UnableToWriteFile::atLocation($path, '', $exception);
         }
@@ -167,13 +195,22 @@ class AwsS3V3Adapter implements FilesystemAdapter
 
     private function createOptionsFromConfig(Config $config): array
     {
-        $options = [];
+        $config = $config->withDefaults($this->options);
+        $options = ['params' => []];
 
         if ($mimetype = $config->get('mimetype')) {
-            $options['ContentType'] = $mimetype;
+            $options['params']['ContentType'] = $mimetype;
         }
 
         foreach (static::AVAILABLE_OPTIONS as $option) {
+            $value = $config->get($option, '__NOT_SET__');
+
+            if ($value !== '__NOT_SET__') {
+                $options['params'][$option] = $value;
+            }
+        }
+
+        foreach (static::MUP_AVAILABLE_OPTIONS as $option) {
             $value = $config->get($option, '__NOT_SET__');
 
             if ($value !== '__NOT_SET__') {
@@ -181,7 +218,7 @@ class AwsS3V3Adapter implements FilesystemAdapter
             }
         }
 
-        return $options + $this->options;
+        return $options;
     }
 
     public function writeStream(string $path, $contents, Config $config): void
@@ -220,12 +257,18 @@ class AwsS3V3Adapter implements FilesystemAdapter
     {
         $prefix = $this->prefixer->prefixPath($path);
         $prefix = ltrim(rtrim($prefix, '/') . '/', '/');
-        $this->client->deleteMatchingObjects($this->bucket, $prefix);
+
+        try {
+            $this->client->deleteMatchingObjects($this->bucket, $prefix);
+        } catch (Throwable $exception) {
+            throw UnableToCreateDirectory::dueToFailure($path, $exception);
+        }
     }
 
     public function createDirectory(string $path, Config $config): void
     {
-        $config = $config->withDefaults(['visibility' => $this->visibility->defaultForDirectories()]);
+        $defaultVisibility = $config->get('directory_visibility', $this->visibility->defaultForDirectories());
+        $config = $config->withDefaults(['visibility' => $defaultVisibility]);
         $this->upload(rtrim($path, '/') . '/', '', $config);
     }
 
@@ -410,7 +453,7 @@ class AwsS3V3Adapter implements FilesystemAdapter
                 $this->bucket,
                 $this->prefixer->prefixPath($destination),
                 $this->visibility->visibilityToAcl($visibility),
-                $this->createOptionsFromConfig($config)
+                $this->createOptionsFromConfig($config)['params']
             );
         } catch (Throwable $exception) {
             throw UnableToCopyFile::fromLocationTo($source, $destination, $exception);

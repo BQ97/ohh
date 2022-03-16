@@ -1,4 +1,97 @@
-# Version 2.x Changelog
+# Changelog
+
+## 3.0.11 - 2022-03-04
+
+### Fixed
+
+- [AWS S3] Use globally configured options.
+
+## 3.0.10 - 2022-02-26
+
+### Fixed
+
+- [AWS S3] fix detecting directories that only contain other directories but no files.
+- [AWS S3] when checking for directory existence, limit the result set (perf)
+- [AWS S3] throw interface exception when failing to delete directory
+- [Async AWS S3] when checking for directory existence, limit the result set (perf)
+
+## 3.0.9 - 2022-02-22
+
+### Fixed
+
+- [AWS S3] support setting an ACL as a direct option instead of using visibility.
+
+## 3.0.8 - 2022-02-16
+
+### Fixed
+
+- [AWS S3] Set ContentType when mime-type config option is set during writes, like in v1.
+
+## 3.0.7 - 2022-02-14
+
+### Fixed
+
+- [WebDAV] added missing composer.json for sub-split
+
+## 3.0.6 - 2022-02-14
+
+### Added
+
+- [WebDAV] new adapter added
+
+### Fixed
+
+- [Core] Trim slashed uniformly in the attribute classes.
+- [Core] Uniformly use directory_visibility over visibility for directory usage.
+- [FTP] export-ignore the test case.
+
+## 3.0.5 - 2022-02-12
+
+### Added
+
+- [AzureBlobStorage] New adapter added
+
+### Fixed
+
+- [AsyncAwsS3] Make EXTRA_METADATA_FIELDS protected to prevent error when extending the class
+
+## 3.0.4 - 2022-02-10
+
+### Fixed
+
+- [FTP] Do not require setting of the root directory, use '' by default.
+
+## 3.0.3 - 2022-01-31
+
+### Fixed
+
+- [FTP] Made connection resolving lazy again (#1414)
+
+## 3.0.2 - 2022-01-30
+
+### Fixes
+
+* [FTP] Support relative or empty connection root directories (#1410)
+
+## 3.0.1 - 2022-01-15
+
+### Fixes
+
+* [ZipArchive] delete top-level directory too when deleting a directory
+* [GoogleCloudStorage] Use listing to check for directory existence (consistency)
+* [GoogleCloudStorage] Fixed bug where exceptions were not thrown 
+* [AwsS3V3] Allow passing options for controlling multi-upload options (#1396)
+* [Local] Convert windows-style directory separator to unix-style (#1398)
+
+## 3.0.0 - 2022-01-13
+
+### Added
+
+* FilesystemReader::has to check for directory or file existence
+* FilesystemReader::directoryExists to check for directory existence
+* FilesystemReader::fileExists to check for file existence
+* FilesystemAdapter::directoryExists to check for directory existence
+* FilesystemAdapter::fileExists to check for file existence
 
 ## 2.4.3 - 2022-02-16
 

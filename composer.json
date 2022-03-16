@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^8.0",
         "ext-fileinfo": "*",
         "ext-seaslog": "*",
         "phpoffice/phpspreadsheet": "^1.20.0",
@@ -17,7 +17,7 @@
         "phpoffice/phpword": "^0.18.1",
         "psy/psysh": "^0.10.8",
         "fakerphp/faker": "^1.15",
-        "league/flysystem": "^2.3.2",
+        "league/flysystem": "^3.0.10",
         "kosinix/grafika": "^2.0",
         "overtrue/socialite": "^3.3",
         "overtrue/pinyin": "^4.0",
