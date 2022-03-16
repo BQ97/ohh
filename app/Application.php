@@ -67,7 +67,7 @@ class Application extends Container
     {
         if ($this->env->get('APP_ENV', 'dev') === 'dev') {
             // 在本地如果没有打开虚拟主机，就需要把 PATH_INFO 的值 付给 REQUEST_URI
-            $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
+            isset($_SERVER['PATH_INFO']) && $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
         }
     }
 

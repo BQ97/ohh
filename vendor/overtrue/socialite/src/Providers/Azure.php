@@ -7,20 +7,25 @@ use JetBrains\PhpStorm\Pure;
 use Overtrue\Socialite\Contracts\UserInterface;
 use Overtrue\Socialite\User;
 
-class Outlook extends Base
+class Azure extends Base
 {
-    public const NAME = 'outlook';
+    public const NAME = 'azure';
     protected array $scopes = ['User.Read'];
     protected string $scopeSeparator = ' ';
 
     protected function getAuthUrl(): string
     {
-        return $this->buildAuthUrlFromBase('https://login.microsoftonline.com/common/oauth2/v2.0/authorize');
+        return $this->buildAuthUrlFromBase($this->getBaseUrl() . '/oauth2/v2.0/authorize');
+    }
+
+    protected function getBaseUrl(): string
+    {
+        return 'https://login.microsoftonline.com/'.$this->config["tenant"];
     }
 
     protected function getTokenUrl(): string
     {
-        return 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
+        return $this->getBaseUrl() . '/oauth2/v2.0/token';
     }
 
     /**

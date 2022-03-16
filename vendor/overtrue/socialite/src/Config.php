@@ -7,9 +7,6 @@ use InvalidArgumentException;
 
 class Config implements ArrayAccess, \JsonSerializable
 {
-    /**
-     * @var array
-     */
     protected array $config;
 
     /**
@@ -20,19 +17,9 @@ class Config implements ArrayAccess, \JsonSerializable
         $this->config = $config;
     }
 
-    /**
-     * @param string $key
-     * @param mixed  $default
-     *
-     * @return mixed
-     */
-    public function get(string $key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         $config = $this->config;
-
-        if (is_null($key)) {
-            return $config;
-        }
 
         if (isset($config[$key])) {
             return $config[$key];
@@ -48,18 +35,8 @@ class Config implements ArrayAccess, \JsonSerializable
         return $config;
     }
 
-    /**
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return array
-     */
-    public function set(string $key, $value)
+    public function set(string $key, $value): mixed
     {
-        if (is_null($key)) {
-            throw new InvalidArgumentException('Invalid config key.');
-        }
-
         $keys = explode('.', $key);
         $config = &$this->config;
 
@@ -76,41 +53,32 @@ class Config implements ArrayAccess, \JsonSerializable
         return $config;
     }
 
-    /**
-     * @param string $key
-     *
-     * @return bool
-     */
     public function has(string $key): bool
     {
         return (bool) $this->get($key);
     }
 
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->config);
     }
 
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
     }
 
-    #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, $value): void
     {
         $this->set($offset, $value);
     }
 
-    #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         $this->set($offset, null);
     }
 
-    #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->config;
     }

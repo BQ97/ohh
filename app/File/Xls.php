@@ -7,6 +7,9 @@ namespace App\File;
 use App\Utils;
 use Vtiful\Kernel\Excel;
 
+/**
+ * @deprecated 今后不在使用该类库，请使用 \App\File\Excel代替
+ */
 class Xls
 {
     const TYPE_INT = Excel::TYPE_INT;
@@ -18,6 +21,7 @@ class Xls
     const TYPE_TIMESTAMP = Excel::TYPE_TIMESTAMP;
 
     /**
+     * @deprecated 今后不在使用该方法 请使用 \App\File\Excel::read()代替
      * @param string filename   文件名
      * @return array 第一个工作表的内容
      */
@@ -49,6 +53,7 @@ class Xls
     }
 
     /**
+     * @deprecated 今后不在使用该方法 请使用 \App\File\Excel::write()代替
      * @param array data 必须是干干净净的 二维数组
      * @return array  filepath（路径）filename（文件名）
      */
@@ -76,6 +81,7 @@ class Xls
 
     /**
      * 写入多个工作蒲
+     * @deprecated 今后不在使用该类库
      * @param string $fileName
      * @param array $data
      */
@@ -108,27 +114,5 @@ class Xls
         }
 
         return $fileObject->output();
-    }
-
-    /**
-     *  php的日期值是    1970-01-01   开始计算       单位：秒
-     *  EXCEL        是      1900-01-01   开始计算       单位：天
-     *  25569是EXCEL的1970-01-01代表的数字
-     *
-     * @param int time excel的时间
-     * @param string format  格式化，不填就转化成时间戳
-     *
-     * @return string 时间
-     */
-    public static function getExcelTime(int $time, string $format = '')
-    {
-        if ($time > 25569) {
-            $time = ($time - 25569) * 24 * 60 * 60;
-            $time = $format ? date($format, $time) : $time;
-        } else {
-            $time = $format ? '1970-01-01 08:00:00' : 0;
-        }
-
-        return $time;
     }
 }
