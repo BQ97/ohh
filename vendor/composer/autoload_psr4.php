@@ -10,7 +10,6 @@ return array(
     'modules\\' => array($baseDir . '/modules'),
     'ZipStream\\' => array($vendorDir . '/maennchen/zipstream-php/src'),
     'Webpatser\\Uuid\\' => array($vendorDir . '/webpatser/laravel-uuid/src/Webpatser/Uuid'),
-    'Vtiful\\Kernel\\' => array($vendorDir . '/viest/php-ext-xlswriter-ide-helper/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),

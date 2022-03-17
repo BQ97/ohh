@@ -28,9 +28,6 @@
         "laminas/laminas-httphandlerrunner": "^2.1",
         "league/tactician": "^1.1"
     },
-    "require-dev": {
-        "viest/php-ext-xlswriter-ide-helper": "dev-master"
-    },
     "autoload": {
         "psr-4": {
             "App\\": "app",

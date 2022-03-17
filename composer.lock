@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a25d1c98963c620d9afed1b52bebb53",
+    "content-hash": "12e3eb1b305ab29467e00ed9c92fb6b1",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -4847,60 +4847,10 @@
             "time": "2021-03-09T07:19:24+00:00"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "viest/php-ext-xlswriter-ide-helper",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/viest/php-ext-xlswriter-ide-helper.git",
-                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/viest/php-ext-xlswriter-ide-helper/zipball/dd8163a36602835a5375e5dcb61bbda2515b8874",
-                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=7"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Vtiful\\Kernel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "viest",
-                    "email": "wjx@php.net"
-                }
-            ],
-            "description": "PHP Extension Xlswriter IDE Helper",
-            "support": {
-                "issues": "https://github.com/viest/php-ext-xlswriter-ide-helper/issues",
-                "source": "https://github.com/viest/php-ext-xlswriter-ide-helper/tree/master"
-            },
-            "time": "2021-12-17T02:02:20+00:00"
-        }
-    ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "viest/php-ext-xlswriter-ide-helper": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

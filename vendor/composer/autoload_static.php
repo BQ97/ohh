@@ -62,10 +62,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             'Webpatser\\Uuid\\' => 15,
         ),
-        'V' => 
-        array (
-            'Vtiful\\Kernel\\' => 14,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -168,10 +164,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Webpatser\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid',
-        ),
-        'Vtiful\\Kernel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -416,7 +408,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\File\\FileSystem' => __DIR__ . '/../..' . '/app/File/FileSystem.php',
         'App\\File\\Loader' => __DIR__ . '/../..' . '/app/File/Loader.php',
         'App\\File\\Word' => __DIR__ . '/../..' . '/app/File/Word.php',
-        'App\\File\\Xls' => __DIR__ . '/../..' . '/app/File/Xls.php',
         'App\\File\\Zip' => __DIR__ . '/../..' . '/app/File/Zip.php',
         'App\\Hash' => __DIR__ . '/../..' . '/app/Hash.php',
         'App\\Logger' => __DIR__ . '/../..' . '/app/Logger.php',
@@ -3475,10 +3466,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-        'Vtiful\\Kernel\\Chart' => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src/Chart.php',
-        'Vtiful\\Kernel\\Excel' => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src/Excel.php',
-        'Vtiful\\Kernel\\Format' => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src/Format.php',
-        'Vtiful\\Kernel\\Validation' => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src/Validation.php',
         'Webpatser\\Uuid\\Uuid' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/Uuid.php',
         'Webpatser\\Uuid\\UuidServiceProvider' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/UuidServiceProvider.php',
         'ZipStream\\Bigint' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Bigint.php',

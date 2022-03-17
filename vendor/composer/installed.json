@@ -4963,56 +4963,6 @@
             "install-path": "../symfony/var-dumper"
         },
         {
-            "name": "viest/php-ext-xlswriter-ide-helper",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/viest/php-ext-xlswriter-ide-helper.git",
-                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/viest/php-ext-xlswriter-ide-helper/zipball/dd8163a36602835a5375e5dcb61bbda2515b8874",
-                "reference": "dd8163a36602835a5375e5dcb61bbda2515b8874",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=7"
-            },
-            "time": "2021-12-17T02:02:20+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Vtiful\\Kernel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "viest",
-                    "email": "wjx@php.net"
-                }
-            ],
-            "description": "PHP Extension Xlswriter IDE Helper",
-            "support": {
-                "issues": "https://github.com/viest/php-ext-xlswriter-ide-helper/issues",
-                "source": "https://github.com/viest/php-ext-xlswriter-ide-helper/tree/master"
-            },
-            "install-path": "../viest/php-ext-xlswriter-ide-helper"
-        },
-        {
             "name": "webpatser/laravel-uuid",
             "version": "4.0.1",
             "version_normalized": "4.0.1.0",
@@ -5081,7 +5031,5 @@
         }
     ],
     "dev": true,
-    "dev-package-names": [
-        "viest/php-ext-xlswriter-ide-helper"
-    ]
+    "dev-package-names": []
 }
