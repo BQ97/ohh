@@ -9,12 +9,12 @@ class Loader
     /**
      * @var array 已经加载的文件
      */
-    private static $files = [];
+    private static array $files = [];
 
     /**
      * @var array 允许加载的文件夹
      */
-    private static $folders = [
+    private static array $folders = [
         ROUTE_PATH,
         CACHE_PATH,
         CONFIG_PATH

@@ -21,18 +21,18 @@ use PDO;
  */
 class Model
 {
-    private $primarykey = 'id';
+    private string $primarykey = 'id';
 
-    private $table;
+    private string $table;
 
-    private $encodeFields = [];
+    private array $encodeFields = [];
 
-    private $decodeFields = [];
+    private array $decodeFields = [];
 
     /**
-     * @var \Medoo\Medoo $medoo
+     * @var Medoo
      */
-    private $medoo;
+    private Medoo $medoo;
 
     public function __construct(Medoo $medoo)
     {
@@ -124,7 +124,7 @@ class Model
      * @param array $where
      * @return array
      */
-    public function fetch($where = [])
+    public function fetch(array $where = [])
     {
         $fields = $this->formatQueryFields();
 
@@ -139,7 +139,7 @@ class Model
      *
      * @return array
      */
-    public function fetchList($where = [], $page = 1, $pageNum = 10)
+    public function fetchList(array $where = [], int $page = 1, int $pageNum = 10)
     {
         $total = $this->count($this->table, $this->primarykey, $where);
         if ($total == 0) {

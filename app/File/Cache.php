@@ -14,18 +14,18 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
     /**
      * @var static $instance 缓存实例
      */
-    private static $instances = [];
+    private static array $instances = [];
 
     /**
      * 缓存目录
      * @var string
      */
-    private $prefix;
+    private string $prefix;
 
     /**
      * @var \App\File\FileSystem
      */
-    private $fileSystem;
+    private FileSystem $fileSystem;
 
     public function __construct($prefix = 'BoQing')
     {
@@ -45,7 +45,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      * @param string $prefix 缓存目录
      * @return Cache
      */
-    public static function getInstance($prefix = 'BoQing'): Cache
+    public static function getInstance(string $prefix = 'BoQing'): Cache
     {
         if (empty(static::$instances[$prefix])) {
 
@@ -89,7 +89,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      * @param int $expire 过期时间
      * @return bool
      */
-    private function write(string $key, $value, $expire = 0): bool
+    private function write(string $key, $value, int $expire = 0): bool
     {
         $filePath = $this->getFilePath($key);
 

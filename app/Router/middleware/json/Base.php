@@ -14,7 +14,7 @@ class Base implements MiddlewareInterface
      * @see https://route.thephpleague.com/5.x/strategies/
      * @var array 异常列表
      */
-    protected $exceptions = [
+    protected array $exceptions = [
         400 => \League\Route\Http\Exception\BadRequestException::class,
         401 => \League\Route\Http\Exception\UnauthorizedException::class,
         403 => \League\Route\Http\Exception\ForbiddenException::class,

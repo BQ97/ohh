@@ -9,22 +9,22 @@ class MyTree
     /**
      * @var string
      */
-    private $_parentId = 'pid';
+    private string $_parentId = 'pid';
 
     /**
      * @var string
      */
-    private $_id = 'id';
+    private string $_id = 'id';
 
     /**
      * @var string
      */
-    private $_name = 'name';
+    private string $_name = 'name';
 
     /**
      * @var array
      */
-    private $_child = 'child';
+    private string $_child = 'child';
 
     /**
      * @param array config
@@ -45,7 +45,6 @@ class MyTree
     {
         return new static($config);
     }
-
 
     public function getTree(array $data, $parentId = 0)
     {

@@ -9,7 +9,7 @@ class Env
      * 环境变量数据
      * @var array
      */
-    protected $data = [];
+    protected array $data = [];
 
     public function __construct()
     {
@@ -23,7 +23,7 @@ class Env
      * @param  string    $file  环境变量定义文件
      * @return void
      */
-    public function load($file)
+    public function load(string $file)
     {
         $env = parse_ini_file($file, true);
         $this->set($env);
@@ -36,7 +36,7 @@ class Env
      * @param  mixed     $default  默认值
      * @return mixed
      */
-    public function get($name = null, $default = null, $php_prefix = true)
+    public function get(string $name = null, $default = null, bool $php_prefix = true)
     {
         if (is_null($name)) {
             return $this->data;
@@ -51,7 +51,7 @@ class Env
         return $this->getEnv($name, $default, $php_prefix);
     }
 
-    protected function getEnv($name, $default = null, $php_prefix = true)
+    protected function getEnv(string $name, $default = null, bool $php_prefix = true)
     {
         if ($php_prefix) {
             $name = 'PHP_' . $name;

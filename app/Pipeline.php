@@ -14,9 +14,9 @@ class Pipeline
     /**
      * The container implementation.
      *
-     * @var \App\Application
+     * @var Application
      */
-    protected $app;
+    protected Application $app;
 
     /**
      * The object being passed through the pipeline.
@@ -30,14 +30,14 @@ class Pipeline
      *
      * @var array
      */
-    protected $pipes = [];
+    protected array $pipes = [];
 
     /**
      * The method to call on each pipe.
      *
      * @var string
      */
-    protected $method = 'handle';
+    protected string $method = 'handle';
 
     /**
      * Create a new class instance.
@@ -82,7 +82,7 @@ class Pipeline
      * @param  string  $method
      * @return $this
      */
-    public function via($method)
+    public function via(string $method)
     {
         $this->method = $method;
 
@@ -185,7 +185,7 @@ class Pipeline
      * @param  string  $pipe
      * @return array
      */
-    protected function parsePipeString($pipe)
+    protected function parsePipeString(string $pipe)
     {
         [$name, $parameters] = array_pad(explode(':', $pipe, 2), 2, []);
 

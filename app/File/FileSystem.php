@@ -17,16 +17,16 @@ use Exception;
 
 class FileSystem
 {
-    private $instances;
+    private array $instances;
 
     const LS_DIR_OPTION = 'd';
 
     const LS_FILE_OPTION = 'f';
 
     /**
-     * @var \League\Flysystem\Filesystem
+     * @var File
      */
-    private $handler;
+    private File $handler;
 
     public function __construct(string $path = CACHE_PATH)
     {

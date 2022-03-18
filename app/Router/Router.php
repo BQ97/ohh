@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Router;
 
 use App\Request;
+use App\Application;
 use App\File\Loader;
 use League\Route\{
     RouteGroup,
@@ -19,31 +20,32 @@ use App\Router\middleware\{
 };
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+use App\Router\traits\ExceptionTrait;
 
 class Router
 {
-    use \App\Router\traits\ExceptionTrait;
+    use ExceptionTrait;
 
     /**
-     * @var \App\Application 
+     * @var Application
      */
-    private $container;
+    private Application $container;
 
     /**
-     * @var \League\Route\Router
+     * @var BaseRouter
      */
-    private $handler;
+    private BaseRouter $handler;
 
     /**
      * @var array $middlewares
      */
-    protected $middlewares = [
+    protected array $middlewares = [
         Exception::class,
         WebMiddleware::class,
         JsonMiddleware::class,
     ];
 
-    public function __construct(\App\Application $app)
+    public function __construct(Application $app)
     {
         $this->container = $app;
 
@@ -68,7 +70,7 @@ class Router
     }
 
     /**
-     * @return \League\Route\Router
+     * @return BaseRouter
      */
     public function handler()
     {
@@ -76,7 +78,7 @@ class Router
     }
 
     /**
-     * @return \League\Route\Router
+     * @return BaseRouter
      */
     public function middlewares()
     {

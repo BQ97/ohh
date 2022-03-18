@@ -12,12 +12,12 @@ class Encrypter
     /**
      * @var string 加密方式
      */
-    protected $cipher = 'aes-128-ecb';
+    protected string $cipher = 'aes-128-ecb';
 
     /**
      * @var string 加密KEY
      */
-    protected $key;
+    protected string $key;
 
     /**
      * @param string $key Configuration parameter

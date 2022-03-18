@@ -12,7 +12,7 @@ class MineType
      *
      * @var array
      */
-    protected static $mimes = [
+    protected static array $mimes = [
         'ez' => 'application/andrew-inset',
         'aw' => 'application/applixware',
         'atom' => 'application/atom+xml',
@@ -788,7 +788,7 @@ class MineType
      * @param  string  $filename
      * @return string
      */
-    public static function from($filename)
+    public static function from(string $filename)
     {
         $extension = strtok(pathinfo($filename, PATHINFO_EXTENSION), '?');
 
@@ -801,7 +801,7 @@ class MineType
      * @param  string  $extension
      * @return string|array
      */
-    public static function get($extension = null)
+    public static function get(string $extension = null)
     {
         return isset($extension) ? static::getMimeTypeFromExtension($extension) : static::$mimes;
     }
@@ -812,7 +812,7 @@ class MineType
      * @param  string  $extension
      * @return string
      */
-    protected static function getMimeTypeFromExtension($extension)
+    protected static function getMimeTypeFromExtension(string $extension)
     {
         return static::$mimes[$extension] ?? 'application/octet-stream';
     }

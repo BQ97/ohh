@@ -12,17 +12,17 @@ class Zip
     /**
      * @var ZipArchive
      */
-    private $handler;
+    private ZipArchive $handler;
 
     /**
      * @var string
      */
-    private $password = '12345678';
+    private string $password = '12345678';
 
     /**
      * @var string
      */
-    private $exportPath;
+    private string $exportPath;
 
     public function __construct()
     {

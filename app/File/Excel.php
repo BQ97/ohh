@@ -19,12 +19,12 @@ class Excel
      *  EXCEL        是      1900-01-01   开始计算       单位：天
      *  25569是EXCEL的1970-01-01代表的数字
      *
-     * @param {number} time excel的时间
-     * @param {string} format  格式化，不填就转化成时间戳
+     * @param int $time excel的时间
+     * @param string $format  格式化，不填就转化成时间戳
      *
-     * @return {string} 时间
+     * @return string 时间
      */
-    public static function getExcelTime($time, $format = '')
+    public static function getExcelTime(int $time, string $format = '')
     {
         if ($time > 25569) {
             $time = ($time - 25569) * 24 * 60 * 60;
@@ -57,7 +57,7 @@ class Excel
 
             $worksheet = $spreadsheet->getSheetByName($sheet);
         }
-        
+
         return $worksheet->toArray($nullValue, $calculateFormulas, $formatData, $returnCellRef);
     }
 

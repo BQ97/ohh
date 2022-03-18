@@ -55,13 +55,13 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * 容器中的对象实例
      * @var array
      */
-    protected $instances = [];
+    protected array $instances = [];
 
     /**
      * 容器绑定标识
      * @var array
      */
-    protected $bind = [
+    protected array $bind = [
         'db' => Medoo::class,
         'app' => Application::class,
         'mpdf' => Mpdf::class,
@@ -81,7 +81,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * 容器标识别名
      * @var array
      */
-    protected $name = [];
+    protected array $name = [];
 
     /**
      * 获取当前容器的实例（单例）
@@ -103,7 +103,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  object        $instance
      * @return void
      */
-    public static function setInstance($instance)
+    public static function setInstance(Container $instance)
     {
         static::$instance = $instance;
     }
@@ -405,7 +405,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  array     $vars  参数
      * @return mixed
      */
-    public function invokeClass($class, $vars = [])
+    public function invokeClass(string $class, array $vars = [])
     {
         try {
             $reflect = new ReflectionClass($class);
@@ -436,7 +436,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  array                                 $vars    参数
      * @return array
      */
-    protected function bindParams($reflect, $vars = [])
+    protected function bindParams($reflect, array $vars = [])
     {
         if ($reflect->getNumberOfParameters() == 0) {
             return [];
@@ -480,7 +480,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  bool    $ucfirst 首字母是否大写（驼峰规则）
      * @return string
      */
-    public function parseName($name, $type = 0, $ucfirst = true)
+    public function parseName(string $name, int $type = 0, bool $ucfirst = true)
     {
         if ($type) {
             $name = preg_replace_callback('/_([a-zA-Z])/', function ($match) {
@@ -499,7 +499,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  array    $vars       参数
      * @return mixed
      */
-    protected function getObjectParam($className, &$vars)
+    protected function getObjectParam(string $className, array &$vars)
     {
         $array = $vars;
         $value = array_shift($array);
