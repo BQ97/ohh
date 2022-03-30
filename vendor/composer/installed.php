@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '822428404fdff7c7cbe74428221886b0840f049d',
+        'reference' => 'cc878fc401290da6b915e18acf34c7449f96a522',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '822428404fdff7c7cbe74428221886b0840f049d',
+            'reference' => 'cc878fc401290da6b915e18acf34c7449f96a522',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -101,12 +101,12 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-diactoros' => array(
-            'pretty_version' => '2.8.0',
-            'version' => '2.8.0.0',
+            'pretty_version' => '2.9.0',
+            'version' => '2.9.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-diactoros',
             'aliases' => array(),
-            'reference' => '0c26ef1d95b6d7e6e3943a243ba3dc0797227199',
+            'reference' => '954e2dcfb1607681be44599faac10fc63bb6925a',
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(
