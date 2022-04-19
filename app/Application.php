@@ -7,6 +7,7 @@ namespace App;
 use Faker\Factory;
 use PDO;
 use App\Logger;
+use Medoo\Medoo;
 
 /**
  * Class Application.
@@ -32,7 +33,7 @@ class Application extends Container
      */
     private function initDb()
     {
-        $this->make('db', [[
+        $this->bindTo('db', new Medoo([
             'type'      => $this->env->get('DB_CONNECTION', 'mysql'),
             'database'  => $this->env->get('DB_DATABASE', ''),
             'host'      => $this->env->get('DB_HOST', 'localhost'),
@@ -47,7 +48,7 @@ class Application extends Container
                 PDO::ATTR_EMULATE_PREPARES => false
             ],
             'logging' => true
-        ]]);
+        ]));
     }
 
     /**

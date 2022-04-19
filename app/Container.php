@@ -252,12 +252,10 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
             $vars        = [];
         }
 
-        $serializeVars = $vars ? serialize($vars) : '';
-
         $abstract = isset($this->name[$abstract]) ? $this->name[$abstract] : $abstract;
 
-        if (isset($this->instances[$abstract . $serializeVars]) && !$newInstance) {
-            return $this->instances[$abstract . $serializeVars];
+        if (isset($this->instances[$abstract]) && !$newInstance) {
+            return $this->instances[$abstract];
         }
 
         if (isset($this->bind[$abstract])) {
@@ -274,7 +272,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
         }
 
         if (!$newInstance) {
-            $this->instances[$abstract . $serializeVars] = $object;
+            $this->instances[$abstract] = $object;
         }
 
         return $object;
