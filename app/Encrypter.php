@@ -29,7 +29,7 @@ class Encrypter
 
     public static function getInstance(String $key)
     {
-        return new static($key);
+        return app(static::class, func_get_args());
     }
 
     /**

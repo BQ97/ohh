@@ -70,7 +70,7 @@ class Utils
      */
     public static function crawler($node = null, string $uri = null, string $baseHref = null): Crawler
     {
-        return new Crawler($node, $uri, $baseHref);
+        return app(Crawler::class, func_get_args());
     }
 
     /**
@@ -79,7 +79,7 @@ class Utils
      */
     public static function httpClient(array $config = [])
     {
-        return new Client($config);
+        return app(Client::class, func_get_args());
     }
 
     /**
@@ -101,7 +101,7 @@ class Utils
      */
     public static function snow(Int $datacenter = null, Int $workerid = null): Snowflake
     {
-        return new Snowflake($datacenter, $workerid);
+        return app(Snowflake::class, func_get_args());
     }
 
     /**

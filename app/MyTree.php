@@ -43,7 +43,7 @@ class MyTree
      */
     public static function getInstance(array $config = [])
     {
-        return new static($config);
+        return app(static::class, func_get_args());
     }
 
     public function getTree(array $data, $parentId = 0)
