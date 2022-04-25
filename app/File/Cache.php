@@ -27,7 +27,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     private FileSystem $fileSystem;
 
-    public function __construct($prefix = 'BoQing')
+    public function __construct(string $prefix = 'BoQing')
     {
         $this->fileSystem = FileSystem::getInstance(CACHE_PATH);
 

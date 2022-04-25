@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9152483b6c60a45b4b4f1b3e3f3d58125dd26aaa',
+        'reference' => '247f756ff838f878485fbaa0b6fd969290fb1bbf',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9152483b6c60a45b4b4f1b3e3f3d58125dd26aaa',
+            'reference' => '247f756ff838f878485fbaa0b6fd969290fb1bbf',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -329,12 +329,12 @@
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(
-            'pretty_version' => '1.22.0',
-            'version' => '1.22.0.0',
+            'pretty_version' => '1.23.0',
+            'version' => '1.23.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
-            'reference' => '3a9e29b4f386a08a151a33578e80ef1747037a48',
+            'reference' => '21e4cf62699eebf007db28775f7d1554e612ed9e',
             'dev_requirement' => false,
         ),
         'phpoffice/phpword' => array(

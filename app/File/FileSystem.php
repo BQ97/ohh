@@ -270,7 +270,7 @@ class FileSystem
      * @param  string  $link
      * @return void
      */
-    public static function link($target, $link)
+    public static function link(string $target, string $link)
     {
         if (PHP_OS_FAMILY !== 'Windows') {
             return symlink($target, $link);

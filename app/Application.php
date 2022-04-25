@@ -94,7 +94,7 @@ class Application extends Container
      * @param  bool  $return
      * @return string
      */
-    public function render($name, array $data = []): string
+    public function render(string $name, array $data = []): string
     {
         if ($this->templates->exists($name)) {
 

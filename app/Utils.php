@@ -167,7 +167,7 @@ class Utils
         return array_reduce(explode('.', $name), fn ($data, $key) => $data[$key] ?? $default, $data);
     }
 
-    public static function downloadResource($url)
+    public static function downloadResource(string $url)
     {
         $date = date('Ymd');
 

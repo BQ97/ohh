@@ -46,7 +46,7 @@ class MyTree
         return app(static::class, func_get_args());
     }
 
-    public function getTree(array $data, $parentId = 0)
+    public function getTree(array $data, int|string $parentId = 0)
     {
         if (!$data || !is_array($data)) {
             return '';
@@ -60,7 +60,7 @@ class MyTree
         return $result;
     }
 
-    public function getListByTree(array $tree, $parentId = '')
+    public function getListByTree(array $tree, int|string $parentId = '')
     {
         return array_reduce($tree, function ($carry, $item) use ($parentId) {
             if ($item[$this->_parentId] == $parentId) {
@@ -81,7 +81,7 @@ class MyTree
         }, []);
     }
 
-    public function getChild(array $data, $id, bool $include = false)
+    public function getChild(array $data, int|string $id, bool $include = false)
     {
         if (!$data || !is_array($data)) {
             return array();
@@ -108,7 +108,7 @@ class MyTree
         return $r;
     }
 
-    public function getParent(array $data, $id)
+    public function getParent(array $data, int|string $id)
     {
         if (!$data || !is_array($data)) {
             return array();
@@ -122,7 +122,7 @@ class MyTree
         }
     }
 
-    public function getBreadCrumb(array $data, $id)
+    public function getBreadCrumb(array $data, int|string $id)
     {
         if (!$data || !is_array($data)) {
             return [];

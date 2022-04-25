@@ -88,7 +88,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @access public
      * @return static
      */
-    public static function getInstance()
+    public static function getInstance(): static
     {
         if (is_null(static::$instance)) {
             static::$instance = new static;
@@ -114,7 +114,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  string        $abstract       类名或者标识
      * @return object
      */
-    public function get(string $name)
+    public function get(string $name): object
     {
         return $this->make($name);
     }
@@ -123,10 +123,10 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * 绑定一个类、闭包、实例、接口实现到容器
      * @access public
      * @param  string  $abstract    类标识、接口
-     * @param  mixed   $concrete    要绑定的类、闭包或者实例
+     * @param  object|array|string|null   $concrete    要绑定的类、闭包或者实例
      * @return Container
      */
-    public static function set($abstract, $concrete = null)
+    public static function set(string $abstract, object|array|string|null $concrete = null): Container
     {
         return static::getInstance()->bindTo($abstract, $concrete);
     }
@@ -134,10 +134,10 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
     /**
      * 移除容器中的对象实例
      * @access public
-     * @param  string  $abstract    类标识、接口
+     * @param  string|array  $abstract    类标识、接口
      * @return void
      */
-    public static function remove($abstract)
+    public static function remove(string|array $abstract)
     {
         return static::getInstance()->delete($abstract);
     }
@@ -156,10 +156,10 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * 绑定一个类、闭包、实例、接口实现到容器
      * @access public
      * @param  string|array  $abstract    类标识、接口
-     * @param  mixed         $concrete    要绑定的类、闭包或者实例
+     * @param  object|array|string|null   $concrete    要绑定的类、闭包或者实例
      * @return $this
      */
-    public function bindTo($abstract, $concrete = null): Container
+    public function bindTo(string|array $abstract, object|array|string|null $concrete = null): Container
     {
         if (is_array($abstract)) {
             $this->bind = array_merge($this->bind, $abstract);
@@ -184,7 +184,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  object|\Closure  $instance    类的实例
      * @return $this
      */
-    public function instance($abstract, $instance)
+    public function instance(string $abstract, object $instance): Container
     {
         if ($instance instanceof \Closure) {
             $this->bind[$abstract] = $instance;
@@ -205,7 +205,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  string    $abstract    类名或者标识
      * @return bool
      */
-    public function bound($abstract): bool
+    public function bound(string $abstract): bool
     {
         return isset($this->bind[$abstract]) || isset($this->instances[$abstract]);
     }
@@ -216,7 +216,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  string    $abstract    类名或者标识
      * @return bool
      */
-    public function exists($abstract)
+    public function exists(string $abstract): bool
     {
         if (isset($this->bind[$abstract])) {
             $abstract = $this->bind[$abstract];
@@ -244,7 +244,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  bool          $newInstance    是否每次创建新的实例
      * @return object
      */
-    public function make($abstract, $vars = [], $newInstance = false)
+    public function make(string $abstract, array|bool $vars = [], bool $newInstance = false): object
     {
         if (true === $vars) {
             // 总是创建新的实例化对象
@@ -284,7 +284,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  string|array    $abstract    类名或者标识
      * @return void
      */
-    public function delete($abstract): void
+    public function delete(string|array $abstract): void
     {
         foreach ((array) $abstract as $name) {
             $name = isset($this->name[$name]) ? $this->name[$name] : $name;
@@ -320,11 +320,11 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
     /**
      * 执行函数或者闭包方法 支持参数调用
      * @access public
-     * @param  mixed  $function 函数或者闭包
+     * @param  Closure|string  $function 函数或者闭包
      * @param  array  $vars     参数
      * @return mixed
      */
-    public function invokeFunction($function, $vars = [])
+    public function invokeFunction(Closure|string $function, array $vars = [])
     {
         try {
             $reflect = new ReflectionFunction($function);
@@ -340,11 +340,11 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
     /**
      * 调用反射执行类的方法 支持参数绑定
      * @access public
-     * @param  mixed   $method 方法
+     * @param  object|string|array   $method 方法
      * @param  array   $vars   参数
      * @return mixed
      */
-    public function invokeMethod($method, $vars = [])
+    public function invokeMethod(object|string|array $method, array $vars = [])
     {
         try {
             if (is_array($method)) {
@@ -371,11 +371,11 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * 调用反射执行类的方法 支持参数绑定
      * @access public
      * @param  object  $instance 对象实例
-     * @param  mixed   $reflect 反射类
+     * @param  ReflectionMethod|ReflectionFunction   $reflect 反射类
      * @param  array   $vars   参数
      * @return mixed
      */
-    public function invokeReflectMethod($instance, $reflect, $vars = [])
+    public function invokeReflectMethod(object $instance, ReflectionMethod|ReflectionFunction $reflect, array $vars = [])
     {
         $args = $this->bindParams($reflect, $vars);
 
@@ -389,7 +389,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  array $vars   参数
      * @return mixed
      */
-    public function invoke($callable, $vars = [])
+    public function invoke(object|string|array $callable, array $vars = [])
     {
         if ($callable instanceof Closure) {
             return $this->invokeFunction($callable, $vars);
@@ -432,11 +432,11 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
     /**
      * 绑定参数
      * @access protected
-     * @param  \ReflectionMethod|\ReflectionFunction $reflect 反射类
+     * @param  ReflectionMethod|ReflectionFunction $reflect 反射类
      * @param  array                                 $vars    参数
      * @return array
      */
-    protected function bindParams($reflect, array $vars = [])
+    protected function bindParams(ReflectionMethod|ReflectionFunction $reflect, array $vars = []): array
     {
         if ($reflect->getNumberOfParameters() == 0) {
             return [];
@@ -480,7 +480,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      * @param  bool    $ucfirst 首字母是否大写（驼峰规则）
      * @return string
      */
-    public function parseName(string $name, int $type = 0, bool $ucfirst = true)
+    public function parseName(string $name, int $type = 0, bool $ucfirst = true): string
     {
         if ($type) {
             $name = preg_replace_callback('/_([a-zA-Z])/', function ($match) {
