@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6c0c6321488c89006317c152123e39bdbe1fc2a2',
+        'reference' => '8e1de2098a21610ed5cb80adba2dd8332ec0f0d3',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6c0c6321488c89006317c152123e39bdbe1fc2a2',
+            'reference' => '8e1de2098a21610ed5cb80adba2dd8332ec0f0d3',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -445,7 +445,7 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
+                0 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -458,12 +458,12 @@
             'dev_requirement' => false,
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.10.12',
-            'version' => '0.10.12.0',
+            'pretty_version' => 'v0.11.2',
+            'version' => '0.11.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
-            'reference' => 'a0d9981aa07ecfcbea28e4bfa868031cca121e7d',
+            'reference' => '7f7da640d68b9c9fec819caae7c744a213df6514',
             'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
@@ -485,12 +485,12 @@
             'dev_requirement' => false,
         ),
         'symfony/console' => array(
-            'pretty_version' => 'v5.4.8',
-            'version' => '5.4.8.0',
+            'pretty_version' => 'v6.0.8',
+            'version' => '6.0.8.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
-            'reference' => 'ffe3aed36c4d60da2cf1b0a1cee6b8f2e5fa881b',
+            'reference' => '0d00aa289215353aa8746a31d101f8e60826285c',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(
@@ -580,24 +580,6 @@
             'reference' => '0abb51d2f102e00a4eefcf46ba7fec406d245825',
             'dev_requirement' => false,
         ),
-        'symfony/polyfill-php73' => array(
-            'pretty_version' => 'v1.25.0',
-            'version' => '1.25.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-php73',
-            'aliases' => array(),
-            'reference' => 'cc5db0e22b3cb4111010e48785a97f670b350ca5',
-            'dev_requirement' => false,
-        ),
-        'symfony/polyfill-php80' => array(
-            'pretty_version' => 'v1.25.0',
-            'version' => '1.25.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/polyfill-php80',
-            'aliases' => array(),
-            'reference' => '4407588e0d3f1f52efb65fbe92babe41f37fe50c',
-            'dev_requirement' => false,
-        ),
         'symfony/psr-http-message-bridge' => array(
             'pretty_version' => 'v2.1.2',
             'version' => '2.1.2.0',
@@ -626,12 +608,12 @@
             'dev_requirement' => false,
         ),
         'symfony/var-dumper' => array(
-            'pretty_version' => 'v5.4.8',
-            'version' => '5.4.8.0',
+            'pretty_version' => 'v6.0.8',
+            'version' => '6.0.8.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
-            'reference' => 'cdcadd343d31ad16fc5e006b0de81ea307435053',
+            'reference' => 'fa61dfb4bd3068df2492013dc65f3190e9f550c0',
             'dev_requirement' => false,
         ),
         'webpatser/laravel-uuid' => array(
