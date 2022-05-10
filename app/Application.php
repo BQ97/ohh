@@ -11,6 +11,7 @@ use Medoo\Medoo;
 
 /**
  * Class Application.
+ * @property \Faker\Generator  $faker
  */
 class Application extends Container
 {
