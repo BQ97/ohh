@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6863ebb5291a8e3227de0186a1ba1d6fcbc64ef6',
+        'reference' => '5f12c2984166a4330f70f50b5e8e288de6582e45',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6863ebb5291a8e3227de0186a1ba1d6fcbc64ef6',
+            'reference' => '5f12c2984166a4330f70f50b5e8e288de6582e45',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'catfan/medoo' => array(
-            'pretty_version' => 'v2.1.5',
-            'version' => '2.1.5.0',
+            'pretty_version' => 'v2.1.6',
+            'version' => '2.1.6.0',
             'type' => 'framework',
             'install_path' => __DIR__ . '/../catfan/medoo',
             'aliases' => array(),
-            'reference' => '16ea318e28a590173bded3e9379d2d1ccff5d046',
+            'reference' => '86ac2b376303f6c3c8e915be9051599b67a8a09e',
             'dev_requirement' => false,
         ),
         'ezyang/htmlpurifier' => array(

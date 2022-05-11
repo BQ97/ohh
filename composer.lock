@@ -73,16 +73,16 @@
         },
         {
             "name": "catfan/medoo",
-            "version": "v2.1.5",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "16ea318e28a590173bded3e9379d2d1ccff5d046"
+                "reference": "86ac2b376303f6c3c8e915be9051599b67a8a09e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/16ea318e28a590173bded3e9379d2d1ccff5d046",
-                "reference": "16ea318e28a590173bded3e9379d2d1ccff5d046",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/86ac2b376303f6c3c8e915be9051599b67a8a09e",
+                "reference": "86ac2b376303f6c3c8e915be9051599b67a8a09e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -151,7 +151,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2022-05-04T10:31:29+00:00"
+            "time": "2022-05-10T02:47:28+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
