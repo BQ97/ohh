@@ -2283,16 +2283,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "f1ad926caced4227e97e2bb3459d4b5f0683dcca"
+                "reference": "9d71cbd56dcb6c97da41d3483b198d853434a63c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/f1ad926caced4227e97e2bb3459d4b5f0683dcca",
-                "reference": "f1ad926caced4227e97e2bb3459d4b5f0683dcca",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/9d71cbd56dcb6c97da41d3483b198d853434a63c",
+                "reference": "9d71cbd56dcb6c97da41d3483b198d853434a63c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2344,7 +2344,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.1.0"
+                "source": "https://github.com/overtrue/socialite/tree/4.2.1"
             },
             "funding": [
                 {
@@ -2352,7 +2352,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-04T15:11:07+00:00"
+            "time": "2022-05-14T13:52:10+00:00"
         },
         {
             "name": "paragonie/random_compat",

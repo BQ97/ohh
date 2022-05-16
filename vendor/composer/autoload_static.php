@@ -1872,6 +1872,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Overtrue\\Socialite\\Providers\\Douban' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/Douban.php',
         'Overtrue\\Socialite\\Providers\\Facebook' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/Facebook.php',
         'Overtrue\\Socialite\\Providers\\FeiShu' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/FeiShu.php',
+        'Overtrue\\Socialite\\Providers\\Figma' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/Figma.php',
         'Overtrue\\Socialite\\Providers\\GitHub' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/GitHub.php',
         'Overtrue\\Socialite\\Providers\\Gitee' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/Gitee.php',
         'Overtrue\\Socialite\\Providers\\Google' => __DIR__ . '/..' . '/overtrue/socialite/src/Providers/Google.php',

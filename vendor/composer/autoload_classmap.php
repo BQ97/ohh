@@ -1485,6 +1485,7 @@ return array(
     'Overtrue\\Socialite\\Providers\\Douban' => $vendorDir . '/overtrue/socialite/src/Providers/Douban.php',
     'Overtrue\\Socialite\\Providers\\Facebook' => $vendorDir . '/overtrue/socialite/src/Providers/Facebook.php',
     'Overtrue\\Socialite\\Providers\\FeiShu' => $vendorDir . '/overtrue/socialite/src/Providers/FeiShu.php',
+    'Overtrue\\Socialite\\Providers\\Figma' => $vendorDir . '/overtrue/socialite/src/Providers/Figma.php',
     'Overtrue\\Socialite\\Providers\\GitHub' => $vendorDir . '/overtrue/socialite/src/Providers/GitHub.php',
     'Overtrue\\Socialite\\Providers\\Gitee' => $vendorDir . '/overtrue/socialite/src/Providers/Gitee.php',
     'Overtrue\\Socialite\\Providers\\Google' => $vendorDir . '/overtrue/socialite/src/Providers/Google.php',
