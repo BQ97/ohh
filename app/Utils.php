@@ -181,4 +181,19 @@ class Utils
 
         return $path;
     }
+
+    public static function getElementAttrs(string $html, string $elementName)
+    {
+        $xpath = '//' . strtolower($elementName);
+
+        $crawler = new Crawler($html);
+
+        return $crawler->filterXPath($xpath)->each(function (Crawler $node) {
+            $data = [];
+            foreach ($node->getNode(0)->attributes as $attr) {
+                $data[$attr->name] = $attr->value;
+            }
+            return $data;
+        });
+    }
 }
