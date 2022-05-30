@@ -4,60 +4,67 @@ declare(strict_types=1);
 
 namespace App;
 
-use Faker\Factory;
-use PDO;
-use App\Logger;
-use Medoo\Medoo;
+use App\Providers\CommonProvider;
+use App\Providers\DbProvider;
+use App\Providers\FakerProvider;
+use App\Providers\RouterProvider;
+use League\Container\Container;
+use League\Container\ReflectionContainer;
+use Psr\Container\ContainerInterface;
 
 /**
- * Class Application.
- * @property \Faker\Generator  $faker
+ * @name 容器
+ * @property \App\File\Zip          $zip
+ * @property \Mpdf\Mpdf             $mpdf
+ * @property \App\Env               $env
+ * @property \Psy\Shell             $shell
+ * @property \GuzzleHttp\Client     $httpClient
+ * @property \Medoo\Medoo           $db
+ * @property \League\Plates\Engine  $templates
+ * @property \App\Router\Router     $router
  */
-class Application extends Container
+class Application implements ContainerInterface
 {
-    /**
-     * 初始化应用
-     */
+    private Container $container;
+
+    private array $providers = [
+        DbProvider::class,
+        CommonProvider::class,
+        FakerProvider::class,
+        RouterProvider::class
+    ];
+
+    private static $instance;
+
+    public static function getInstance()
+    {
+        if (!(static::$instance instanceof static)) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
+
     public function __construct()
     {
         $this->initLogger();
 
-        $this->initDb();
+        $this->container = new Container();
 
-        $this->initFaker();
+        $this->container->delegate(new ReflectionContainer(true));
+
+        $this->container->defaultToShared();
+
+        $this->registerProviders();
 
         $this->initTemplate();
+
+        static::$instance = $this;
     }
 
-    /**
-     * 启动数据库
-     */
-    private function initDb()
+    public function getContainer()
     {
-        $this->bindTo('db', new Medoo([
-            'type'      => $this->env->get('DB_CONNECTION', 'mysql'),
-            'database'  => $this->env->get('DB_DATABASE', ''),
-            'host'      => $this->env->get('DB_HOST', 'localhost'),
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_general_ci',
-            'port'      => $this->env->get('DB_PORT', 3306),
-            'prefix'    => $this->env->get('DB_PRIFIX', ''),
-            'username'  => $this->env->get('DB_USERNAME', 'root'),
-            'password'  => $this->env->get('DB_PASSWORD', ''),
-            'option'    => [
-                PDO::ATTR_STRINGIFY_FETCHES => false,
-                PDO::ATTR_EMULATE_PREPARES => false
-            ],
-            'logging' => true
-        ]));
-    }
-
-    /**
-     * 启动Faker
-     */
-    private function initFaker()
-    {
-        $this->bindTo('faker', Factory::create('zh_CN'));
+        return $this->container;
     }
 
     /**
@@ -77,18 +84,6 @@ class Application extends Container
     }
 
     /**
-     * 获取model
-     * @param string $name 表名
-     * @param string $pk  主键
-     *
-     * @return \App\Model
-     */
-    public function model(String $name, String $pk = 'id'): \App\Model
-    {
-        return $this->model->setTable($name)->setPk($pk);
-    }
-
-    /**
      * Create a new template and render it.
      * @param  string $name
      * @param  array  $data
@@ -98,21 +93,48 @@ class Application extends Container
     public function render(string $name, array $data = []): string
     {
         if ($this->templates->exists($name)) {
-
             return $this->templates->render($name, $data);
         }
 
         return $this->templates->render('not-found', ['name' => $name]);
     }
 
+    private function registerProviders()
+    {
+        return array_reduce($this->providers, fn (Container $container, string $class) => $container->addServiceProvider(new $class), $this->container);
+    }
+
+    public function has(string $id): bool
+    {
+        return $this->container->has($id);
+    }
+
+    public function get(string $id)
+    {
+        if (in_array($id, ['app', static::class])) {
+            return $this;
+        }
+
+        return $this->container->get($id);
+    }
+
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
+
+    public function __isset($name)
+    {
+        return $this->has($name);
+    }
+
     public function __debugInfo()
     {
         return [
             'app_name' => $this->env->get('APP_NAME'),
-            'version' => '1.0.0',
+            'version' => '2.0.1',
             'PHP_VERSION_ID' => PHP_VERSION_ID,
             'date' => date('Y-m-d H:i:s'),
-            'container' => parent::__debugInfo(),
         ];
     }
 }

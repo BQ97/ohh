@@ -29,6 +29,7 @@ use App\File\Zip;
 
 /**
  * @name 容器
+ * @deprecated 已弃用，请使用 League/Container 代替
  * @property \App\File\Zip          $zip
  * @property \App\Model             $model
  * @property \Mpdf\Mpdf             $mpdf
@@ -90,6 +91,8 @@ class Container implements ArrayAccess, IteratorAggregate, Countable, ContainerI
      */
     public static function getInstance(): static
     {
+        throw new Exception("class App\Container has Deprecated, please use League/Container instead");
+
         if (is_null(static::$instance)) {
             static::$instance = new static;
         }

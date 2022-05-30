@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Router;
 
 use App\Request;
-use App\Application;
 use App\File\Loader;
 use League\Route\{
     RouteGroup,
@@ -21,15 +20,16 @@ use App\Router\middleware\{
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use App\Router\traits\ExceptionTrait;
+use Psr\Container\ContainerInterface;
 
 class Router
 {
     use ExceptionTrait;
 
     /**
-     * @var Application
+     * @var ContainerInterface
      */
-    private Application $container;
+    private ContainerInterface $container;
 
     /**
      * @var BaseRouter
@@ -45,7 +45,7 @@ class Router
         JsonMiddleware::class,
     ];
 
-    public function __construct(Application $app)
+    public function __construct(ContainerInterface $app)
     {
         $this->container = $app;
 
@@ -63,7 +63,9 @@ class Router
      */
     private function initEnv()
     {
-        if ($this->container->env->get('APP_ENV', 'dev') === 'dev') {
+        $env = $this->container->get('env');
+
+        if ($env->get('APP_ENV', 'dev') === 'dev') {
             // 在本地如果没有打开虚拟主机，就需要把 PATH_INFO 的值 付给 REQUEST_URI
             isset($_SERVER['PATH_INFO']) && $_SERVER['REQUEST_URI'] = $_SERVER['PATH_INFO'];
         }

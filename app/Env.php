@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -9,24 +10,12 @@ class Env
      * 环境变量数据
      * @var array
      */
-    protected array $data = [];
+    private array $data = [];
 
     public function __construct()
     {
         $this->data = $_ENV;
-        $this->load(ENV_PATH);
-    }
-
-    /**
-     * 读取环境变量定义文件
-     * @access public
-     * @param  string    $file  环境变量定义文件
-     * @return void
-     */
-    public function load(string $file)
-    {
-        $env = parse_ini_file($file, true);
-        $this->set($env);
+        $this->set(parse_ini_file(ENV_PATH, true));
     }
 
     /**
@@ -83,7 +72,7 @@ class Env
      * @param  mixed         $value  值
      * @return void
      */
-    public function set($env, $value = null)
+    public function set(string|array $env, $value = null)
     {
         if (is_array($env)) {
             $env = array_change_key_case($env, CASE_UPPER);
@@ -102,10 +91,5 @@ class Env
 
             $this->data[$name] = $value;
         }
-    }
-
-    public function __debugInfo()
-    {
-        return [];
     }
 }

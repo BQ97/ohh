@@ -2,20 +2,18 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\FileSystem, Container};
+use App\{File\Cache, File\FileSystem, Application};
 use Laminas\Diactoros\Response\HtmlResponse;
 
 if (!function_exists('app')) {
+
     /**
-     * 快速获取容器中的实例 支持依赖注入
-     * @param string    $name 类名或标识 默认获取当前应用实例
-     * @param array     $args 参数
-     * @param bool      $newInstance    是否每次创建新的实例
-     * @return mixed|\App\Application
+     * @param string $name
+     * @return mixed|Application
      */
-    function app(string $name = 'app', array $args = [], bool $newInstance = false)
+    function app(string $name = 'app')
     {
-        return Container::getInstance()->make($name, $args, $newInstance);
+        return Application::getInstance()->get($name);
     }
 }
 
