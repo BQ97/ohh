@@ -47,7 +47,8 @@ class Application implements ContainerInterface
 
     public function __construct()
     {
-        $this->initLogger();
+        // 启动 Logger
+        Logger::setBasePath(LOG_PATH);
 
         $this->container = new Container();
 
@@ -57,7 +58,8 @@ class Application implements ContainerInterface
 
         $this->registerProviders();
 
-        $this->initTemplate();
+        // 启动模板引擎
+        $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
 
         static::$instance = $this;
     }
@@ -65,22 +67,6 @@ class Application implements ContainerInterface
     public function getContainer()
     {
         return $this->container;
-    }
-
-    /**
-     * 启动 Logger
-     */
-    private function initLogger()
-    {
-        Logger::setBasePath(LOG_PATH);
-    }
-
-    /**
-     * 启动模板引擎
-     */
-    private function initTemplate()
-    {
-        $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
     }
 
     /**
