@@ -400,7 +400,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
     public static $classMap = array (
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
         'App\\Bitwise' => __DIR__ . '/../..' . '/app/Bitwise.php',
-        'App\\Container' => __DIR__ . '/../..' . '/app/Container.php',
         'App\\Encrypter' => __DIR__ . '/../..' . '/app/Encrypter.php',
         'App\\Enum' => __DIR__ . '/../..' . '/app/Enum.php',
         'App\\Env' => __DIR__ . '/../..' . '/app/Env.php',

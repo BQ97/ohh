@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Application' => $baseDir . '/app/Application.php',
     'App\\Bitwise' => $baseDir . '/app/Bitwise.php',
-    'App\\Container' => $baseDir . '/app/Container.php',
     'App\\Encrypter' => $baseDir . '/app/Encrypter.php',
     'App\\Enum' => $baseDir . '/app/Enum.php',
     'App\\Env' => $baseDir . '/app/Env.php',
