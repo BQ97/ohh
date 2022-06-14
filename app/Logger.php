@@ -34,6 +34,24 @@ namespace App;
  */
 class Logger
 {
+    public static function readLog(string $fileName)
+    {
+        $fileName = LOG_PATH . $fileName;
+
+        if (!file_exists($fileName)) return false;
+
+        $date = date('Y-m-d', strtotime(pathinfo($fileName, PATHINFO_FILENAME)));
+
+        $content = file_get_contents($fileName);
+
+        return array_map(fn ($item) => explode('|', $item), explode($date, $content));
+    }
+
+    public static function exportLog(string $fileName)
+    {
+        return \App\File\Excel::write([['title' => '日志', 'data' => static::readLog($fileName)]]);
+    }
+
     public function __call($name, $arguments)
     {
         return static::__callStatic($name, $arguments);
