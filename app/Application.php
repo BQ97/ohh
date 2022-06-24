@@ -22,6 +22,7 @@ use Psr\Container\ContainerInterface;
  * @property \Medoo\Medoo           $db
  * @property \League\Plates\Engine  $templates
  * @property \App\Router\Router     $router
+ * @property \Faker\Generator       $faker
  */
 class Application implements ContainerInterface
 {
