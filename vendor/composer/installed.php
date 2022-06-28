@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6bf5d419bb09deba41d0b27c4db041f48135608f',
+        'reference' => '71d0e80453aacd343a7fc1a506204d8076638e2b',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6bf5d419bb09deba41d0b27c4db041f48135608f',
+            'reference' => '71d0e80453aacd343a7fc1a506204d8076638e2b',
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
@@ -317,12 +317,12 @@
             'dev_requirement' => false,
         ),
         'overtrue/socialite' => array(
-            'pretty_version' => '4.2.1',
-            'version' => '4.2.1.0',
+            'pretty_version' => '4.3.0',
+            'version' => '4.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../overtrue/socialite',
             'aliases' => array(),
-            'reference' => '9d71cbd56dcb6c97da41d3483b198d853434a63c',
+            'reference' => 'd25d62d87b61c570f59d3f653dc3c46dcc5593d3',
             'dev_requirement' => false,
         ),
         'paragonie/random_compat' => array(
