@@ -12,6 +12,7 @@
 namespace Symfony\Contracts\Service;
 
 use Psr\Container\ContainerInterface;
+use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
 /**
@@ -30,6 +31,12 @@ trait ServiceSubscriberTrait
      */
     public static function getSubscribedServices(): array
     {
+        static $services;
+
+        if (null !== $services) {
+            return $services;
+        }
+
         $services = method_exists(get_parent_class(self::class) ?: '', __FUNCTION__) ? parent::getSubscribedServices() : [];
 
         foreach ((new \ReflectionClass(self::class))->getMethods() as $method) {
@@ -61,9 +68,7 @@ trait ServiceSubscriberTrait
         return $services;
     }
 
-    /**
-     * @required
-     */
+    #[Required]
     public function setContainer(ContainerInterface $container): ?ContainerInterface
     {
         $this->container = $container;

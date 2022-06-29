@@ -42,6 +42,7 @@ return array(
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
+    'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'League\\Uri\\' => array($vendorDir . '/league/uri/src', $vendorDir . '/league/uri-interfaces/src'),
     'League\\Tactician\\' => array($vendorDir . '/league/tactician/src'),
     'League\\Route\\' => array($vendorDir . '/league/route/src'),
