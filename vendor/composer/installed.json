@@ -760,17 +760,17 @@
         },
         {
             "name": "laminas/laminas-diactoros",
-            "version": "2.11.0",
-            "version_normalized": "2.11.0.0",
+            "version": "2.11.2",
+            "version_normalized": "2.11.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "d1bc565b23c2040fafde398a8a5db083c47928c0"
+                "reference": "78846cbce0550ec174508a646f46fd6dee76099b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/d1bc565b23c2040fafde398a8a5db083c47928c0",
-                "reference": "d1bc565b23c2040fafde398a8a5db083c47928c0",
+                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/78846cbce0550ec174508a646f46fd6dee76099b",
+                "reference": "78846cbce0550ec174508a646f46fd6dee76099b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -805,7 +805,7 @@
                 "psalm/plugin-phpunit": "^0.14.0",
                 "vimeo/psalm": "^4.3"
             },
-            "time": "2022-05-17T10:57:52+00:00",
+            "time": "2022-06-29T14:15:02+00:00",
             "type": "library",
             "extra": {
                 "laminas": {
@@ -1106,17 +1106,17 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.0.21",
-            "version_normalized": "3.0.21.0",
+            "version": "3.1.0",
+            "version_normalized": "3.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "8f1fcf9d2304ff77a006aa36dd2cb5f236999b12"
+                "reference": "34a68067b7ae3b836ea5e57e1fc432478372a4f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f1fcf9d2304ff77a006aa36dd2cb5f236999b12",
-                "reference": "8f1fcf9d2304ff77a006aa36dd2cb5f236999b12",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/34a68067b7ae3b836ea5e57e1fc432478372a4f5",
+                "reference": "34a68067b7ae3b836ea5e57e1fc432478372a4f5",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1151,7 +1151,7 @@
                 "phpunit/phpunit": "^9.5.11",
                 "sabre/dav": "^4.3.1"
             },
-            "time": "2022-06-12T17:54:28+00:00",
+            "time": "2022-06-29T17:29:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1185,7 +1185,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.0.21"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.1.0"
             },
             "funding": [
                 {
@@ -1505,17 +1505,17 @@
         },
         {
             "name": "league/uri",
-            "version": "6.6.0",
-            "version_normalized": "6.6.0.0",
+            "version": "6.7.1",
+            "version_normalized": "6.7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri.git",
-                "reference": "4147f19b9de3b5af6a258f35d7a0efbbf9963298"
+                "reference": "2d7c87a0860f3126a39f44a8a9bf2fed402dcfea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri/zipball/4147f19b9de3b5af6a258f35d7a0efbbf9963298",
-                "reference": "4147f19b9de3b5af6a258f35d7a0efbbf9963298",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/2d7c87a0860f3126a39f44a8a9bf2fed402dcfea",
+                "reference": "2d7c87a0860f3126a39f44a8a9bf2fed402dcfea",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1535,6 +1535,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^v3.3.2",
+                "nyholm/psr7": "^1.5",
                 "php-http/psr7-integration-tests": "^1.1",
                 "phpstan/phpstan": "^1.2.0",
                 "phpstan/phpstan-deprecation-rules": "^1.0",
@@ -1549,7 +1550,7 @@
                 "league/uri-components": "Needed to easily manipulate URI objects",
                 "psr/http-factory": "Needed to use the URI factory"
             },
-            "time": "2022-05-28T05:44:35+00:00",
+            "time": "2022-06-29T09:48:18+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1600,7 +1601,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri/issues",
-                "source": "https://github.com/thephpleague/uri/tree/6.6.0"
+                "source": "https://github.com/thephpleague/uri/tree/6.7.1"
             },
             "funding": [
                 {
