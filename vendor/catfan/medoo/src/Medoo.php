@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * The Lightweight PHP Database Framework to Accelerate Development.
  *
- * @version 2.1.6
+ * @version 2.1.7
  * @author Angel Lai
  * @package Medoo
  * @copyright Copyright 2022 Medoo Project, Angel Lai.
@@ -234,9 +234,7 @@ class Medoo
         }
 
         $option = $options['option'] ?? [];
-        $commands = (isset($options['command']) && is_array($options['command'])) ?
-            $options['command'] :
-            [];
+        $commands = [];
 
         switch ($this->type) {
 
@@ -467,6 +465,10 @@ class Medoo
                     $options['error'] :
                     PDO::ERRMODE_SILENT
                 );
+            }
+
+            if (isset($options['command']) && is_array($options['command'])) {
+                $commands = array_merge($commands, $options['command']);
             }
 
             foreach ($commands as $value) {
@@ -2223,7 +2225,11 @@ class Medoo
         ];
 
         foreach ($output as $key => $value) {
-            $output[$key] = @$this->pdo->getAttribute(constant('PDO::ATTR_' . $value));
+            try {
+                $output[$key] = $this->pdo->getAttribute(constant('PDO::ATTR_' . $value));
+            } catch (PDOException $e) {
+                $output[$key] = $e->getMessage();
+            }
         }
 
         $output['dsn'] = $this->dsn;
