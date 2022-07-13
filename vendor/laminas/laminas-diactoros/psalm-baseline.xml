@@ -243,9 +243,8 @@
   </file>
   <file src="src/ServerRequestFactory.php">
     <LessSpecificReturnStatement occurrences="1"/>
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="1">
       <code>$headers['cookie']</code>
-      <code>$host</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$headers</code>
@@ -1164,54 +1163,10 @@
     </MissingReturnType>
   </file>
   <file src="test/UploadedFileTest.php">
-    <MissingParamType occurrences="6">
+    <MixedArgument occurrences="2">
       <code>$path</code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$streamOrFile</code>
-    </MissingParamType>
-    <MissingPropertyType occurrences="1">
-      <code>$tmpFile</code>
-    </MissingPropertyType>
-    <MissingReturnType occurrences="24">
-      <code>errorConstantsAndMessages</code>
-      <code>invalidErrorStatuses</code>
-      <code>invalidMovePaths</code>
-      <code>invalidStreams</code>
-      <code>nonOkErrorStatus</code>
-      <code>testCannotRetrieveStreamAfterMove</code>
-      <code>testConstructorDoesNotRaiseExceptionForInvalidStreamWhenErrorStatusPresent</code>
-      <code>testGetStreamRaisesExceptionWhenErrorStatusPresent</code>
-      <code>testGetStreamRaisesExceptionWithAppropriateMessageWhenUploadErrorDetected</code>
-      <code>testGetStreamReturnsOriginalStreamObject</code>
-      <code>testGetStreamReturnsStreamForFile</code>
-      <code>testGetStreamReturnsWrappedPhpStream</code>
-      <code>testMoveCannotBeCalledMoreThanOnce</code>
-      <code>testMoveRaisesExceptionForInvalidPath</code>
-      <code>testMoveToCreatesStreamIfOnlyAFilenameWasProvided</code>
-      <code>testMoveToRaisesExceptionWhenErrorStatusPresent</code>
-      <code>testMoveToRaisesExceptionWithAppropriateMessageWhenUploadErrorDetected</code>
-      <code>testMovesFileToDesignatedPath</code>
-      <code>testRaisesExceptionOnInvalidErrorStatus</code>
-      <code>testRaisesExceptionOnInvalidStreamOrFile</code>
-      <code>testValidClientFilename</code>
-      <code>testValidClientMediaType</code>
-      <code>testValidNullClientFilename</code>
-      <code>testValidSize</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="6">
-      <code>$path</code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$status</code>
       <code>$streamOrFile</code>
     </MixedArgument>
-    <UndefinedThisPropertyAssignment occurrences="1">
-      <code>$this-&gt;tmpfile</code>
-    </UndefinedThisPropertyAssignment>
   </file>
   <file src="test/UriTest.php">
     <InvalidScalarArgument occurrences="2">

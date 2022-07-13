@@ -739,16 +739,16 @@
         },
         {
             "name": "laminas/laminas-diactoros",
-            "version": "2.11.2",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "78846cbce0550ec174508a646f46fd6dee76099b"
+                "reference": "54d4682ac51c005db15c50543e76796a86606fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/78846cbce0550ec174508a646f46fd6dee76099b",
-                "reference": "78846cbce0550ec174508a646f46fd6dee76099b",
+                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/54d4682ac51c005db15c50543e76796a86606fe9",
+                "reference": "54d4682ac51c005db15c50543e76796a86606fe9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -840,20 +840,20 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-06-29T14:15:02+00:00"
+            "time": "2022-07-06T11:42:36+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-escaper.git",
-                "reference": "891ad70986729e20ed2e86355fcf93c9dc238a5f"
+                "reference": "58af67282db37d24e584a837a94ee55b9c7552be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/891ad70986729e20ed2e86355fcf93c9dc238a5f",
-                "reference": "891ad70986729e20ed2e86355fcf93c9dc238a5f",
+                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/58af67282db37d24e584a837a94ee55b9c7552be",
+                "reference": "58af67282db37d24e584a837a94ee55b9c7552be",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -863,20 +863,20 @@
                 ]
             },
             "require": {
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "ext-ctype": "*",
+                "ext-mbstring": "*",
+                "php": "^7.4 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
                 "zendframework/zend-escaper": "*"
             },
             "require-dev": {
+                "infection/infection": "^0.26.6",
                 "laminas/laminas-coding-standard": "~2.3.0",
-                "phpunit/phpunit": "^9.3",
-                "psalm/plugin-phpunit": "^0.12.2",
-                "vimeo/psalm": "^3.16"
-            },
-            "suggest": {
-                "ext-iconv": "*",
-                "ext-mbstring": "*"
+                "maglnet/composer-require-checker": "^3.8.0",
+                "phpunit/phpunit": "^9.5.18",
+                "psalm/plugin-phpunit": "^0.16.1",
+                "vimeo/psalm": "^4.22.0"
             },
             "type": "library",
             "autoload": {
@@ -908,7 +908,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-02T17:10:53+00:00"
+            "time": "2022-03-08T20:15:36+00:00"
         },
         {
             "name": "laminas/laminas-httphandlerrunner",
@@ -2451,16 +2451,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.3.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "d25d62d87b61c570f59d3f653dc3c46dcc5593d3"
+                "reference": "7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/d25d62d87b61c570f59d3f653dc3c46dcc5593d3",
-                "reference": "d25d62d87b61c570f59d3f653dc3c46dcc5593d3",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1",
+                "reference": "7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2513,7 +2513,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.3.0"
+                "source": "https://github.com/overtrue/socialite/tree/4.5.0"
             },
             "funding": [
                 {
@@ -2521,7 +2521,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-27T15:45:31+00:00"
+            "time": "2022-07-08T14:28:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
