@@ -59,6 +59,20 @@ class Logger
 
     public static function __callStatic($name, $arguments)
     {
-        return call_user_func_array(['SeasLog', $name], $arguments);
+        if (extension_loaded('seaslog')) {
+            return call_user_func_array(['SeasLog', $name], $arguments);
+        }
+
+        $level = strtoupper($name);
+
+        $logFile = date('Ymd') . '.log';
+
+        $dateTime = date('Y-m-d H:i:s');
+
+        if (in_array($level, ['DEBUG', 'INFO', 'NOTICE', 'WARNING', 'ERROR', 'ALERT', 'EMERGENCY'], true)) {
+
+            $debug = debug_backtrace()[0];
+            return error_log($dateTime . ' | ' . $level . ' | ' . $debug['file'] . ' : ' . $debug['line'] . ' | ' . $arguments[0] . PHP_EOL, 3, LOG_PATH . 'default/' . $logFile);
+        }
     }
 }
