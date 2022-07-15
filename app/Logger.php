@@ -65,14 +65,18 @@ class Logger
 
         $level = strtoupper($name);
 
-        $logFile = date('Ymd') . '.log';
-
-        $dateTime = date('Y-m-d H:i:s');
-
         if (in_array($level, ['DEBUG', 'INFO', 'NOTICE', 'WARNING', 'ERROR', 'ALERT', 'EMERGENCY'], true)) {
 
             $debug = debug_backtrace()[0];
-            return error_log($dateTime . ' | ' . $level . ' | ' . $debug['file'] . ' : ' . $debug['line'] . ' | ' . $arguments[0] . PHP_EOL, 3, LOG_PATH . 'default/' . $logFile);
+
+            $message = [
+                date('Y-m-d H:i:s'),
+                $level,
+                $debug['file'] . ' : ' . $debug['line'],
+                $arguments[0] . PHP_EOL
+            ];
+
+            return error_log(implode(' | ', $message), 3, LOG_PATH . 'default/' . date('Ymd') . '.log');
         }
     }
 }
