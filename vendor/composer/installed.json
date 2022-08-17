@@ -1978,17 +1978,17 @@
         },
         {
             "name": "mpdf/mpdf",
-            "version": "v8.1.1",
-            "version_normalized": "8.1.1.0",
+            "version": "v8.1.2",
+            "version_normalized": "8.1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "e511e89a66bdb066e3fbf352f00f4734d5064cbf"
+                "reference": "a8a22f4874157e490d41b486053a20bec42e182c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/e511e89a66bdb066e3fbf352f00f4734d5064cbf",
-                "reference": "e511e89a66bdb066e3fbf352f00f4734d5064cbf",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/a8a22f4874157e490d41b486053a20bec42e182c",
+                "reference": "a8a22f4874157e490d41b486053a20bec42e182c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2020,7 +2020,7 @@
                 "ext-xml": "Needed mainly for SVG manipulation",
                 "ext-zlib": "Needed for compression of embedded resources, such as fonts"
             },
-            "time": "2022-04-18T11:50:28+00:00",
+            "time": "2022-08-15T08:15:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
