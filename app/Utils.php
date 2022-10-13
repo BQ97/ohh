@@ -182,8 +182,8 @@ class Utils
         return $path;
     }
 
-    public static function jsonFormat(string $json): string
+    public static function jsonFormat(string | array | object $json): string
     {
-        return json_encode(json_decode($json, true), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        return json_encode(is_string($json) ? json_decode($json, true) : $json, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
 }
