@@ -65,11 +65,6 @@ class Application implements ContainerInterface
         static::$instance = $this;
     }
 
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
     /**
      * Create a new template and render it.
      * @param  string $name
