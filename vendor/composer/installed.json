@@ -3771,17 +3771,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.1.5",
-            "version_normalized": "6.1.5.0",
+            "version": "v6.1.7",
+            "version_normalized": "6.1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "17524a64ebcfab68d237bbed247e9a9917747096"
+                "reference": "a1282bd0c096e0bdb8800b104177e2ce404d8815"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/17524a64ebcfab68d237bbed247e9a9917747096",
-                "reference": "17524a64ebcfab68d237bbed247e9a9917747096",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a1282bd0c096e0bdb8800b104177e2ce404d8815",
+                "reference": "a1282bd0c096e0bdb8800b104177e2ce404d8815",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3822,7 +3822,7 @@
                 "symfony/lock": "",
                 "symfony/process": ""
             },
-            "time": "2022-09-03T14:24:42+00:00",
+            "time": "2022-10-26T21:42:49+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3856,7 +3856,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.1.5"
+                "source": "https://github.com/symfony/console/tree/v6.1.7"
             },
             "funding": [
                 {
@@ -3952,17 +3952,17 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v6.1.3",
-            "version_normalized": "6.1.3.0",
+            "version": "v6.1.7",
+            "version_normalized": "6.1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "58eb9858d8752ac3586fffb37421441fc18f793c"
+                "reference": "66be2a0ccc90105b90b9393c984cfc3ea0e320df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/58eb9858d8752ac3586fffb37421441fc18f793c",
-                "reference": "58eb9858d8752ac3586fffb37421441fc18f793c",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/66be2a0ccc90105b90b9393c984cfc3ea0e320df",
+                "reference": "66be2a0ccc90105b90b9393c984cfc3ea0e320df",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3983,7 +3983,7 @@
             "suggest": {
                 "symfony/css-selector": ""
             },
-            "time": "2022-06-27T17:24:16+00:00",
+            "time": "2022-10-28T16:23:08+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -4011,7 +4011,7 @@
             "description": "Eases DOM navigation for HTML and XML documents",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dom-crawler/tree/v6.1.3"
+                "source": "https://github.com/symfony/dom-crawler/tree/v6.1.7"
             },
             "funding": [
                 {
@@ -4211,17 +4211,17 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v6.1.4",
-            "version_normalized": "6.1.4.0",
+            "version": "v6.1.7",
+            "version_normalized": "6.1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "18e0f106a32887bcebef757e5b39c88e39a08f20"
+                "reference": "792a1856d2b95273f0e1c3435785f1d01a60ecc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/18e0f106a32887bcebef757e5b39c88e39a08f20",
-                "reference": "18e0f106a32887bcebef757e5b39c88e39a08f20",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/792a1856d2b95273f0e1c3435785f1d01a60ecc6",
+                "reference": "792a1856d2b95273f0e1c3435785f1d01a60ecc6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4247,7 +4247,7 @@
             "suggest": {
                 "symfony/mime": "To use the file extension guesser"
             },
-            "time": "2022-08-19T14:27:04+00:00",
+            "time": "2022-10-12T09:44:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -4275,7 +4275,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v6.1.4"
+                "source": "https://github.com/symfony/http-foundation/tree/v6.1.7"
             },
             "funding": [
                 {
@@ -4852,17 +4852,17 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.1.4",
-            "version_normalized": "6.1.4.0",
+            "version": "v6.1.7",
+            "version_normalized": "6.1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "290972cad7b364e3befaa74ba0ec729800fb161c"
+                "reference": "823f143370880efcbdfa2dbca946b3358c4707e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/290972cad7b364e3befaa74ba0ec729800fb161c",
-                "reference": "290972cad7b364e3befaa74ba0ec729800fb161c",
+                "url": "https://api.github.com/repos/symfony/string/zipball/823f143370880efcbdfa2dbca946b3358c4707e5",
+                "reference": "823f143370880efcbdfa2dbca946b3358c4707e5",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4887,7 +4887,7 @@
                 "symfony/translation-contracts": "^2.0|^3.0",
                 "symfony/var-exporter": "^5.4|^6.0"
             },
-            "time": "2022-08-12T18:05:43+00:00",
+            "time": "2022-10-10T09:34:31+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -4926,7 +4926,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.1.4"
+                "source": "https://github.com/symfony/string/tree/v6.1.7"
             },
             "funding": [
                 {
