@@ -301,17 +301,17 @@
         },
         {
             "name": "godruoyi/php-snowflake",
-            "version": "2.0.1",
-            "version_normalized": "2.0.1.0",
+            "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godruoyi/php-snowflake.git",
-                "reference": "f654628643af9c8301e3e0cef4732b823db66245"
+                "reference": "e1e8450029597b639648e1704c36717353c93060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/f654628643af9c8301e3e0cef4732b823db66245",
-                "reference": "f654628643af9c8301e3e0cef4732b823db66245",
+                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/e1e8450029597b639648e1704c36717353c93060",
+                "reference": "e1e8450029597b639648e1704c36717353c93060",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -323,7 +323,7 @@
             "require-dev": {
                 "phpunit/phpunit": "~7|^8|^9"
             },
-            "time": "2021-12-13T04:44:42+00:00",
+            "time": "2022-09-26T03:46:30+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -354,7 +354,7 @@
             ],
             "support": {
                 "issues": "https://github.com/godruoyi/php-snowflake/issues",
-                "source": "https://github.com/godruoyi/php-snowflake/tree/2.0.1"
+                "source": "https://github.com/godruoyi/php-snowflake/tree/2.1.0"
             },
             "funding": [
                 {
@@ -2559,17 +2559,17 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.5.0",
-            "version_normalized": "4.5.0.0",
+            "version": "4.6.2",
+            "version_normalized": "4.6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1"
+                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1",
-                "reference": "7bbaabf4c29df3c71814f2cb3d2c2e8ab54515a1",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
+                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2587,13 +2587,13 @@
                 "symfony/psr-http-message-bridge": "^2.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.0",
                 "jetbrains/phpstorm-attributes": "^1.0",
+                "laravel/pint": "^1.2",
                 "mockery/mockery": "^1.3",
                 "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0"
             },
-            "time": "2022-07-08T14:28:06+00:00",
+            "time": "2022-11-01T02:24:40+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2624,7 +2624,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.5.0"
+                "source": "https://github.com/overtrue/socialite/tree/4.6.2"
             },
             "funding": [
                 {

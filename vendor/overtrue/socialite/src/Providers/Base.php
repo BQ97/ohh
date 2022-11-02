@@ -4,28 +4,42 @@ namespace Overtrue\Socialite\Providers;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Utils;
-use Psr\Http\Message\MessageInterface;
-use Psr\Http\Message\StreamInterface;
 use JetBrains\PhpStorm\ArrayShape;
 use Overtrue\Socialite\Config;
 use Overtrue\Socialite\Contracts;
 use Overtrue\Socialite\Exceptions;
+use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\StreamInterface;
+
+class_exists(Contracts\FactoryInterface::class);
+class_exists(Contracts\UserInterface::class);
 
 abstract class Base implements Contracts\ProviderInterface
 {
     public const NAME = null;
 
     protected ?string      $state = null;
+
     protected Config       $config;
+
     protected ?string      $redirectUrl;
+
     protected array        $parameters = [];
+
     protected array        $scopes = [];
+
     protected string       $scopeSeparator = ',';
+
     protected GuzzleClient $httpClient;
+
     protected array        $guzzleOptions = [];
+
     protected int          $encodingType = PHP_QUERY_RFC1738;
+
     protected string       $expiresInKey = Contracts\RFC6749_ABNF_EXPIRES_IN;
+
     protected string       $accessTokenKey = Contracts\RFC6749_ABNF_ACCESS_TOKEN;
+
     protected string       $refreshTokenKey = Contracts\RFC6749_ABNF_REFRESH_TOKEN;
 
     public function __construct(array $config)
@@ -36,11 +50,11 @@ abstract class Base implements Contracts\ProviderInterface
         if ($this->config->has('scopes') && is_array($this->config->get('scopes'))) {
             $this->scopes = $this->getConfig()->get('scopes');
         } elseif ($this->config->has(Contracts\RFC6749_ABNF_SCOPE) && is_string($this->getConfig()->get(Contracts\RFC6749_ABNF_SCOPE))) {
-            $this->scopes = array($this->getConfig()->get(Contracts\RFC6749_ABNF_SCOPE));
+            $this->scopes = [$this->getConfig()->get(Contracts\RFC6749_ABNF_SCOPE)];
         }
 
         // normalize Contracts\RFC6749_ABNF_CLIENT_ID
-        if (!$this->config->has(Contracts\RFC6749_ABNF_CLIENT_ID)) {
+        if (! $this->config->has(Contracts\RFC6749_ABNF_CLIENT_ID)) {
             $id = $this->config->get(Contracts\ABNF_APP_ID);
             if (null != $id) {
                 $this->config->set(Contracts\RFC6749_ABNF_CLIENT_ID, $id);
@@ -48,7 +62,7 @@ abstract class Base implements Contracts\ProviderInterface
         }
 
         // normalize Contracts\RFC6749_ABNF_CLIENT_SECRET
-        if (!$this->config->has(Contracts\RFC6749_ABNF_CLIENT_SECRET)) {
+        if (! $this->config->has(Contracts\RFC6749_ABNF_CLIENT_SECRET)) {
             $secret = $this->config->get(Contracts\ABNF_APP_SECRET);
             if (null != $secret) {
                 $this->config->set(Contracts\RFC6749_ABNF_CLIENT_SECRET, $secret);
@@ -56,7 +70,7 @@ abstract class Base implements Contracts\ProviderInterface
         }
 
         // normalize 'redirect_url'
-        if (!$this->config->has('redirect_url')) {
+        if (! $this->config->has('redirect_url')) {
             $this->config->set('redirect_url', $this->config->get('redirect'));
         }
         $this->redirectUrl = $this->config->get('redirect_url');
@@ -72,7 +86,7 @@ abstract class Base implements Contracts\ProviderInterface
 
     public function redirect(?string $redirectUrl = null): string
     {
-        if (!empty($redirectUrl)) {
+        if (! empty($redirectUrl)) {
             $this->withRedirectUrl($redirectUrl);
         }
 
@@ -108,7 +122,7 @@ abstract class Base implements Contracts\ProviderInterface
             ]
         );
 
-        return $this->normalizeAccessTokenResponse($response->getBody()->getContents());
+        return $this->normalizeAccessTokenResponse((string) $response->getBody());
     }
 
     /**
@@ -195,7 +209,7 @@ abstract class Base implements Contracts\ProviderInterface
         Contracts\RFC6749_ABNF_CLIENT_ID => 'null|string',
         Contracts\RFC6749_ABNF_CLIENT_SECRET => 'null|string',
         Contracts\RFC6749_ABNF_CODE => 'string',
-        Contracts\RFC6749_ABNF_REDIRECT_URI => 'null|string'
+        Contracts\RFC6749_ABNF_REDIRECT_URI => 'null|string',
     ])]
     protected function getTokenFields(string $code): array
     {
@@ -211,12 +225,12 @@ abstract class Base implements Contracts\ProviderInterface
     {
         $query = $this->getCodeFields() + ($this->state ? [Contracts\RFC6749_ABNF_STATE => $this->state] : []);
 
-        return $url . '?' . \http_build_query($query, '', '&', $this->encodingType);
+        return $url.'?'.\http_build_query($query, '', '&', $this->encodingType);
     }
 
     protected function getCodeFields(): array
     {
-        $fields = array_merge(
+        $fields = \array_merge(
             [
                 Contracts\RFC6749_ABNF_CLIENT_ID => $this->getClientId(),
                 Contracts\RFC6749_ABNF_REDIRECT_URI => $this->redirectUrl,
@@ -244,15 +258,15 @@ abstract class Base implements Contracts\ProviderInterface
         }
 
         if (\is_string($response)) {
-            $response = json_decode($response, true) ?? [];
+            $response = Utils::jsonDecode($response, true);
         }
 
-        if (!\is_array($response)) {
+        if (! \is_array($response)) {
             throw new Exceptions\AuthorizeFailedException('Invalid token response', [$response]);
         }
 
         if (empty($response[$this->accessTokenKey])) {
-            throw new Exceptions\AuthorizeFailedException('Authorize Failed: ' . json_encode($response, JSON_UNESCAPED_UNICODE), $response);
+            throw new Exceptions\AuthorizeFailedException('Authorize Failed: '.Utils::jsonEncode($response, \JSON_UNESCAPED_UNICODE), $response);
         }
 
         return $response + [

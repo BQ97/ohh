@@ -2,9 +2,11 @@
 
 namespace Overtrue\Socialite\Providers;
 
+use GuzzleHttp\Exception\GuzzleException;
 use JetBrains\PhpStorm\Pure;
 use Overtrue\Socialite\Contracts;
 use Overtrue\Socialite\Exceptions;
+use Overtrue\Socialite\Exceptions\AuthorizeFailedException;
 use Overtrue\Socialite\User;
 
 /**
@@ -15,9 +17,19 @@ class OpenWeWork extends Base
     public const NAME = 'open-wework';
 
     protected bool $detailed = false;
+
+    protected bool $asQrcode = false;
+
+    protected string $userType = 'member';
+
+    protected string $lang = 'zh';
+
     protected ?string $suiteTicket = null;
+
     protected ?int $agentId = null;
+
     protected ?string $suiteAccessToken = null;
+
     protected string $baseUrl = 'https://qyapi.weixin.qq.com';
 
     public function __construct(array $config)
@@ -36,6 +48,38 @@ class OpenWeWork extends Base
         return $this;
     }
 
+    public function detailed(): self
+    {
+        $this->detailed = true;
+
+        return $this;
+    }
+
+    public function asQrcode(): self
+    {
+        $this->asQrcode = true;
+
+        return $this;
+    }
+
+    public function withUserType(string $userType): self
+    {
+        $this->userType = $userType;
+
+        return $this;
+    }
+
+    public function withLang(string $lang): self
+    {
+        $this->lang = $lang;
+
+        return $this;
+    }
+
+    /**
+     * @throws GuzzleException
+     * @throws AuthorizeFailedException
+     */
     public function userFromCode(string $code): Contracts\UserInterface
     {
         $user = $this->getUser($this->getSuiteAccessToken(), $code);
@@ -75,8 +119,16 @@ class OpenWeWork extends Base
             'agentid' => $this->agentId,
         ]);
 
-        if ((\in_array('snsapi_userinfo', $this->scopes) || \in_array('snsapi_privateinfo', $this->scopes)) && empty($this->agentId)) {
-            throw new Exceptions\InvalidArgumentException('agentid is required when scopes is snsapi_userinfo or snsapi_privateinfo.');
+        if ($this->asQrcode) {
+            $queries = array_filter([
+                'appid' => $queries['appid'] ?? $this->getClientId(),
+                'redirect_uri' => $queries['redirect_uri'] ?? $this->redirectUrl,
+                'usertype' => $this->userType,
+                'lang' => $this->lang,
+                'state' => $this->state,
+            ]);
+
+            return \sprintf('https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect?%s', http_build_query($queries));
         }
 
         return \sprintf('https://open.weixin.qq.com/connect/oauth2/authorize?%s#wechat_redirect', \http_build_query($queries));
@@ -96,12 +148,12 @@ class OpenWeWork extends Base
     }
 
     /**
-     * @throws Exceptions\AuthorizeFailedException
+     * @throws Exceptions\AuthorizeFailedException|GuzzleException
      */
     protected function getUser(string $token, string $code): array
     {
         $responseInstance = $this->getHttpClient()->get(
-            $this->baseUrl . '/cgi-bin/service/getuserinfo3rd',
+            $this->baseUrl.'/cgi-bin/service/getuserinfo3rd',
             [
                 'query' => \array_filter(
                     [
@@ -114,8 +166,10 @@ class OpenWeWork extends Base
 
         $response = $this->fromJsonBody($responseInstance);
 
-        if (($response['errcode'] ?? 1) > 0 || (empty($response['UserId']) && empty($response['open_userid']))) {
-            throw new Exceptions\AuthorizeFailedException((string)$responseInstance->getBody(), $response);
+        if (($response['errcode'] ?? 1) > 0 || (empty($response['UserId']) && empty($response['openid']))) {
+            throw new Exceptions\AuthorizeFailedException((string) $responseInstance->getBody(), $response);
+        } elseif (empty($response['user_ticket'])) {
+            $this->detailed = false;
         }
 
         return $response;
@@ -123,23 +177,26 @@ class OpenWeWork extends Base
 
     /**
      * @throws Exceptions\AuthorizeFailedException
+     * @throws GuzzleException
      */
     protected function getUserByTicket(string $userTicket): array
     {
         $responseInstance = $this->getHttpClient()->post(
-            $this->baseUrl . '/cgi-bin/user/get',
+            $this->baseUrl.'/cgi-bin/service/auth/getuserdetail3rd',
             [
                 'query' => [
                     'suite_access_token' => $this->getSuiteAccessToken(),
+                ],
+                'json' => [
                     'user_ticket' => $userTicket,
                 ],
-            ]
+            ],
         );
 
         $response = $this->fromJsonBody($responseInstance);
 
         if (($response['errcode'] ?? 1) > 0 || empty($response['userid'])) {
-            throw new Exceptions\AuthorizeFailedException((string)$responseInstance->getBody(), $response);
+            throw new Exceptions\AuthorizeFailedException((string) $responseInstance->getBody(), $response);
         }
 
         return $response;
@@ -149,36 +206,41 @@ class OpenWeWork extends Base
     protected function mapUserToObject(array $user): Contracts\UserInterface
     {
         return new User($this->detailed ? [
-            Contracts\ABNF_ID => $user['userid'] ?? null,
+            Contracts\ABNF_ID => $user['userid'] ?? $user['UserId'] ?? null,
             Contracts\ABNF_NAME => $user[Contracts\ABNF_NAME] ?? null,
             Contracts\ABNF_AVATAR => $user[Contracts\ABNF_AVATAR] ?? null,
-            Contracts\ABNF_EMAIL => $user[Contracts\ABNF_EMAIL] ?? null,
+            'gender' => $user['gender'] ?? null,
+            'corpid' => $user['corpid'] ?? $user['CorpId'] ?? null,
+            'open_userid' => $user['open_userid'] ?? null,
+            'qr_code' => $user['qr_code'] ?? null,
         ] : [
-            Contracts\ABNF_ID => $user['UserId'] ?? null ?: $user['OpenId'] ?? null,
+            Contracts\ABNF_ID => $user['userid'] ?? $user['UserId'] ?? $user['OpenId'] ?? $user['openid'] ?? null,
+            'corpid' => $user['CorpId'] ?? null,
+            'open_userid' => $user['open_userid'] ?? null,
         ]);
     }
 
     /**
      * @throws Exceptions\AuthorizeFailedException
+     * @throws GuzzleException
      */
     protected function requestSuiteAccessToken(): string
     {
         $responseInstance = $this->getHttpClient()->post(
-            $this->baseUrl . '/cgi-bin/service/get_suite_token',
+            $this->baseUrl.'/cgi-bin/service/get_suite_token',
             [
-                'json' =>
-                    [
-                        'suite_id' => $this->config->get('suite_id') ?? $this->config->get('client_id'),
-                        'suite_secret' => $this->config->get('suite_secret') ?? $this->config->get('client_secret'),
-                        'suite_ticket' => $this->suiteTicket,
-                    ]
+                'json' => [
+                    'suite_id' => $this->config->get('suite_id') ?? $this->config->get('client_id'),
+                    'suite_secret' => $this->config->get('suite_secret') ?? $this->config->get('client_secret'),
+                    'suite_ticket' => $this->suiteTicket,
+                ],
             ]
         );
 
         $response = $this->fromJsonBody($responseInstance);
 
         if (isset($response['errcode']) && $response['errcode'] > 0) {
-            throw new Exceptions\AuthorizeFailedException((string)$responseInstance->getBody(), $response);
+            throw new Exceptions\AuthorizeFailedException((string) $responseInstance->getBody(), $response);
         }
 
         return $response['suite_access_token'];

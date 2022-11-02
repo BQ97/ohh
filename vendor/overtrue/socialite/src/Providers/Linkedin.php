@@ -45,16 +45,13 @@ class Linkedin extends Base
         return \array_merge($basicProfile, $emailAddress);
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     protected function getBasicProfile(string $token): array
     {
         $url = 'https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))';
 
         $response = $this->getHttpClient()->get($url, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $token,
+                'Authorization' => 'Bearer '.$token,
                 'X-RestLi-Protocol-Version' => '2.0.0',
             ],
         ]);
@@ -68,7 +65,7 @@ class Linkedin extends Base
 
         $response = $this->getHttpClient()->get($url, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $token,
+                'Authorization' => 'Bearer '.$token,
                 'X-RestLi-Protocol-Version' => '2.0.0',
             ],
         ]);
@@ -84,7 +81,7 @@ class Linkedin extends Base
         $name = $firstName.' '.$lastName;
 
         $images = $user['profilePicture.displayImage~.elements'] ?? [];
-        $avatars = \array_filter($images, static fn ($image)  => ($image['data']['com.linkedin.digitalmedia.mediaartifact.StillImage']['storageSize']['width'] ?? 0) === 100);
+        $avatars = \array_filter($images, static fn ($image) => ($image['data']['com.linkedin.digitalmedia.mediaartifact.StillImage']['storageSize']['width'] ?? 0) === 100);
         $avatar = \array_shift($avatars);
         $originalAvatars = \array_filter($images, static fn ($image) => ($image['data']['com.linkedin.digitalmedia.mediaartifact.StillImage']['storageSize']['width'] ?? 0) === 800);
         $originalAvatar = \array_shift($originalAvatars);
