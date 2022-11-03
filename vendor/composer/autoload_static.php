@@ -1938,7 +1938,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Overtrue\\Socialite\\Exceptions\\AuthorizeFailedException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/AuthorizeFailedException.php',
         'Overtrue\\Socialite\\Exceptions\\BadRequestException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/BadRequestException.php',
         'Overtrue\\Socialite\\Exceptions\\Exception' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/Exception.php',
-        'Overtrue\\Socialite\\Exceptions\\FeiShu\\InvalidTicketException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/FeiShu/InvalidTicketException.php',
         'Overtrue\\Socialite\\Exceptions\\InvalidArgumentException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/InvalidArgumentException.php',
         'Overtrue\\Socialite\\Exceptions\\InvalidTokenException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/InvalidTokenException.php',
         'Overtrue\\Socialite\\Exceptions\\MethodDoesNotSupportException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/MethodDoesNotSupportException.php',
