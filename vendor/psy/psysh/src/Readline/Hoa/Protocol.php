@@ -87,7 +87,7 @@ class Protocol extends ProtocolNode
     protected function initialize()
     {
         $root = \dirname(__DIR__, 3);
-        $argv0 = \realpath($_SERVER['argv'][0]);
+        $argv0 = \realpath($_SERVER['argv'][0] ?? '');
 
         $cwd =
             'cli' === \PHP_SAPI
