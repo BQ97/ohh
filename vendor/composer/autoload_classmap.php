@@ -27,6 +27,7 @@ return array(
     'App\\Providers\\DbProvider' => $baseDir . '/app/Providers/DbProvider.php',
     'App\\Providers\\FakerProvider' => $baseDir . '/app/Providers/FakerProvider.php',
     'App\\Providers\\RouterProvider' => $baseDir . '/app/Providers/RouterProvider.php',
+    'App\\Providers\\SnowFlakeProvider' => $baseDir . '/app/Providers/SnowFlakeProvider.php',
     'App\\Request' => $baseDir . '/app/Request.php',
     'App\\Response\\DownloadResponse' => $baseDir . '/app/Response/DownloadResponse.php',
     'App\\Response\\FileResponse' => $baseDir . '/app/Response/FileResponse.php',

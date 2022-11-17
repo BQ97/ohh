@@ -8,21 +8,23 @@ use App\Providers\CommonProvider;
 use App\Providers\DbProvider;
 use App\Providers\FakerProvider;
 use App\Providers\RouterProvider;
+use App\Providers\SnowFlakeProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
 
 /**
  * @name 容器
- * @property \App\File\Zip          $zip
- * @property \Mpdf\Mpdf             $mpdf
- * @property \App\Env               $env
- * @property \Psy\Shell             $shell
- * @property \GuzzleHttp\Client     $httpClient
- * @property \Medoo\Medoo           $db
- * @property \League\Plates\Engine  $templates
- * @property \App\Router\Router     $router
- * @property \Faker\Generator       $faker
+ * @property \App\File\Zip                      $zip
+ * @property \Mpdf\Mpdf                         $mpdf
+ * @property \App\Env                           $env
+ * @property \Psy\Shell                         $shell
+ * @property \GuzzleHttp\Client                 $httpClient
+ * @property \Medoo\Medoo                       $db
+ * @property \League\Plates\Engine              $templates
+ * @property \App\Router\Router                 $router
+ * @property \Faker\Generator                   $faker
+ * @property \Godruoyi\Snowflake\Snowflake      $snowflake
  */
 class Application implements ContainerInterface
 {
@@ -32,7 +34,8 @@ class Application implements ContainerInterface
         DbProvider::class,
         CommonProvider::class,
         FakerProvider::class,
-        RouterProvider::class
+        RouterProvider::class,
+        SnowFlakeProvider::class
     ];
 
     private static $instance;

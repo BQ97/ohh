@@ -93,18 +93,6 @@ class Utils
     }
 
     /**
-     * 雪花算法
-     *
-     * @param int $datacenter
-     * @param int $workerid
-     * @return \Godruoyi\Snowflake\Snowflake
-     */
-    public static function snow(Int $datacenter = null, Int $workerid = null): Snowflake
-    {
-        return new Snowflake(...func_get_args());
-    }
-
-    /**
      * @param string $key
      * @return \App\Encrypter
      */
