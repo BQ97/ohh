@@ -2468,16 +2468,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.6.2",
+            "version": "4.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071"
+                "reference": "52033511df3795c568528fe70fbe41459135911b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
-                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/52033511df3795c568528fe70fbe41459135911b",
+                "reference": "52033511df3795c568528fe70fbe41459135911b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2503,6 +2503,11 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/Contracts/FactoryInterface.php",
+                    "src/Contracts/UserInterface.php",
+                    "src/Contracts/ProviderInterface.php"
+                ],
                 "psr-4": {
                     "Overtrue\\Socialite\\": "src/"
                 }
@@ -2530,7 +2535,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.6.2"
+                "source": "https://github.com/overtrue/socialite/tree/4.6.3"
             },
             "funding": [
                 {
@@ -2538,7 +2543,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-01T02:24:40+00:00"
+            "time": "2022-11-01T06:56:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4765,16 +4770,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.1.5",
+            "version": "v6.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "d0833493fb2413a86f522fb54a1896a7718e98ec"
+                "reference": "0f0adde127f24548e23cbde83bcaeadc491c551f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/d0833493fb2413a86f522fb54a1896a7718e98ec",
-                "reference": "d0833493fb2413a86f522fb54a1896a7718e98ec",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/0f0adde127f24548e23cbde83bcaeadc491c551f",
+                "reference": "0f0adde127f24548e23cbde83bcaeadc491c551f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4839,7 +4844,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.1.5"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.1.6"
             },
             "funding": [
                 {
@@ -4855,7 +4860,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-08T09:34:40+00:00"
+            "time": "2022-10-07T08:04:03+00:00"
         },
         {
             "name": "webpatser/laravel-uuid",

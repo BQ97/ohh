@@ -39,6 +39,9 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         '786bf90caabc9e09b6ad4cc5ca8f0e30' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.legacy.php',
         '751a5a3f463e4be759be31748b61737c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.legacy.php',
         'dc1275c308c5b416beb314b6317daca2' => __DIR__ . '/..' . '/overtrue/pinyin/src/const.php',
+        'c5521cebe610a9bf42c44b3a5163adfd' => __DIR__ . '/..' . '/overtrue/socialite/src/Contracts/FactoryInterface.php',
+        'ccd11c8e7dd9b33638b248681bdfba27' => __DIR__ . '/..' . '/overtrue/socialite/src/Contracts/UserInterface.php',
+        '5649552725dea6ec47381627600e3ac1' => __DIR__ . '/..' . '/overtrue/socialite/src/Contracts/ProviderInterface.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b4546c0f2c36e376009e1ef09f264d2d' => __DIR__ . '/../..' . '/helper.php',
     );
@@ -1949,6 +1952,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Overtrue\\Socialite\\Exceptions\\AuthorizeFailedException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/AuthorizeFailedException.php',
         'Overtrue\\Socialite\\Exceptions\\BadRequestException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/BadRequestException.php',
         'Overtrue\\Socialite\\Exceptions\\Exception' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/Exception.php',
+        'Overtrue\\Socialite\\Exceptions\\FeiShu\\InvalidTicketException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/FeiShu/InvalidTicketException.php',
         'Overtrue\\Socialite\\Exceptions\\InvalidArgumentException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/InvalidArgumentException.php',
         'Overtrue\\Socialite\\Exceptions\\InvalidTokenException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/InvalidTokenException.php',
         'Overtrue\\Socialite\\Exceptions\\MethodDoesNotSupportException' => __DIR__ . '/..' . '/overtrue/socialite/src/Exceptions/MethodDoesNotSupportException.php',

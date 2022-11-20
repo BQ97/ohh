@@ -2558,17 +2558,17 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.6.2",
-            "version_normalized": "4.6.2.0",
+            "version": "4.6.3",
+            "version_normalized": "4.6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071"
+                "reference": "52033511df3795c568528fe70fbe41459135911b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
-                "reference": "81a8ef6e2aae3d59f930bc4a658b3062a8e76071",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/52033511df3795c568528fe70fbe41459135911b",
+                "reference": "52033511df3795c568528fe70fbe41459135911b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2592,10 +2592,15 @@
                 "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0"
             },
-            "time": "2022-11-01T02:24:40+00:00",
+            "time": "2022-11-01T06:56:55+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
+                "files": [
+                    "src/Contracts/FactoryInterface.php",
+                    "src/Contracts/UserInterface.php",
+                    "src/Contracts/ProviderInterface.php"
+                ],
                 "psr-4": {
                     "Overtrue\\Socialite\\": "src/"
                 }
@@ -2623,7 +2628,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.6.2"
+                "source": "https://github.com/overtrue/socialite/tree/4.6.3"
             },
             "funding": [
                 {
@@ -4945,17 +4950,17 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.1.5",
-            "version_normalized": "6.1.5.0",
+            "version": "v6.1.6",
+            "version_normalized": "6.1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "d0833493fb2413a86f522fb54a1896a7718e98ec"
+                "reference": "0f0adde127f24548e23cbde83bcaeadc491c551f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/d0833493fb2413a86f522fb54a1896a7718e98ec",
-                "reference": "d0833493fb2413a86f522fb54a1896a7718e98ec",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/0f0adde127f24548e23cbde83bcaeadc491c551f",
+                "reference": "0f0adde127f24548e23cbde83bcaeadc491c551f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4984,7 +4989,7 @@
                 "ext-intl": "To show region name in time zone dump",
                 "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
             },
-            "time": "2022-09-08T09:34:40+00:00",
+            "time": "2022-10-07T08:04:03+00:00",
             "bin": [
                 "Resources/bin/var-dump-server"
             ],
@@ -5022,7 +5027,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.1.5"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.1.6"
             },
             "funding": [
                 {

@@ -38,6 +38,9 @@ return array(
     '786bf90caabc9e09b6ad4cc5ca8f0e30' => $vendorDir . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.legacy.php',
     '751a5a3f463e4be759be31748b61737c' => $vendorDir . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.legacy.php',
     'dc1275c308c5b416beb314b6317daca2' => $vendorDir . '/overtrue/pinyin/src/const.php',
+    'c5521cebe610a9bf42c44b3a5163adfd' => $vendorDir . '/overtrue/socialite/src/Contracts/FactoryInterface.php',
+    'ccd11c8e7dd9b33638b248681bdfba27' => $vendorDir . '/overtrue/socialite/src/Contracts/UserInterface.php',
+    '5649552725dea6ec47381627600e3ac1' => $vendorDir . '/overtrue/socialite/src/Contracts/ProviderInterface.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
     'b4546c0f2c36e376009e1ef09f264d2d' => $baseDir . '/helper.php',
 );
