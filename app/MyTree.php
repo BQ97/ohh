@@ -9,32 +9,32 @@ class MyTree
     /**
      * @var string
      */
-    private string $_parentId = 'pid';
+    private string $parentId = 'pid';
 
     /**
      * @var string
      */
-    private string $_id = 'id';
+    private string $id = 'id';
 
     /**
      * @var string
      */
-    private string $_name = 'name';
+    private string $name = 'name';
 
     /**
      * @var array
      */
-    private string $_child = 'child';
+    private string $child = 'child';
 
     /**
-     * @param array config
+     * @param array $config
      */
     public function __construct(array $config = [])
     {
-        $this->_parentId = $config['parentId'] ?? 'pid';
-        $this->_id = $config['id'] ?? 'id';
-        $this->_name = $config['name'] ?? 'name';
-        $this->_child = $config['child'] ?? 'child';
+        $this->id = $config['id'] ?? 'id';
+        $this->name = $config['name'] ?? 'name';
+        $this->pid = $config['pid'] ?? 'pid';
+        $this->child = $config['child'] ?? 'child';
     }
 
     /**
@@ -48,32 +48,32 @@ class MyTree
 
     public function getTree(array $data, int|string $parentId = 0)
     {
-        if (!$data || !is_array($data)) {
+        if (!$data) {
             return '';
         }
         $data = $this->formatArray($data);
 
         foreach ($data as $item) {
-            $data[$item[$this->_parentId]][$this->_child][] = &$data[$item[$this->_id]];
+            $data[$item[$this->parentId]][$this->child][] = &$data[$item[$this->id]];
         }
         $result = $data[$parentId];
         return $result;
     }
 
-    public function getListByTree(array $tree, int|string $parentId = '')
+    public function getListByTree(array $tree, int|string $parentId = ''): array
     {
         return array_reduce($tree, function ($carry, $item) use ($parentId) {
-            if ($item[$this->_parentId] == $parentId) {
+            if ($item[$this->parentId] == $parentId) {
 
-                $children = $item[$this->_child] ?? [];
+                $children = $item[$this->child] ?? [];
 
-                unset($item[$this->_child]);
+                unset($item[$this->child]);
 
                 $carry[] = $item;
 
                 if ($children) {
 
-                    $carry = array_merge($carry, $this->getListByTree($children, $item[$this->_id]));
+                    $carry = array_merge($carry, $this->getListByTree($children, $item[$this->id]));
                 }
             }
 
@@ -81,25 +81,25 @@ class MyTree
         }, []);
     }
 
-    public function getChild(array $data, int|string $id, bool $include = false)
+    public function getChild(array $data, int|string $id, bool $include = false): string
     {
-        if (!$data || !is_array($data)) {
-            return array();
+        if (!$data) {
+            return '';
         }
 
         $tempArray = $this->getTree($data, $id);
         $w = '';
         if ($tempArray) {
             if ($include && $id != 0) {
-                $w .= $tempArray[$this->_id] . ',';
+                $w .= $tempArray[$this->id] . ',';
             }
 
-            if (isset($tempArray[$this->_child])) {
-                foreach ($tempArray[$this->_child] as $e) {
-                    if (isset($e[$this->_child])) {
-                        $w .= $e[$this->_id] . ',' . $this->getChild($data, $e[$this->_id]) . ',';
+            if (isset($tempArray[$this->child])) {
+                foreach ($tempArray[$this->child] as $e) {
+                    if (isset($e[$this->child])) {
+                        $w .= $e[$this->id] . ',' . $this->getChild($data, $e[$this->id]) . ',';
                     } else {
-                        $w .= $e[$this->_id] . ',';
+                        $w .= $e[$this->id] . ',';
                     }
                 }
             }
@@ -108,13 +108,13 @@ class MyTree
         return $r;
     }
 
-    public function getParent(array $data, int|string $id)
+    public function getParent(array $data, int|string $id): array
     {
-        if (!$data || !is_array($data)) {
-            return array();
+        if (!$data) {
+            return [];
         }
         $data = $this->formatArray($data);
-        $parentId = $data[$id][$this->_parentId];
+        $parentId = $data[$id][$this->parentId];
         if ($parentId) {
             return $data[$parentId];
         } else {
@@ -122,9 +122,9 @@ class MyTree
         }
     }
 
-    public function getBreadCrumb(array $data, int|string $id)
+    public function getBreadCrumb(array $data, int|string $id): array
     {
-        if (!$data || !is_array($data)) {
+        if (!$data) {
             return [];
         }
 
@@ -132,18 +132,14 @@ class MyTree
         $breadcrumb = [];
         while ($id != 0) {
             $breadcrumb[] = $data[$id];
-            $id = $data[$id][$this->_parentId];
+            $id = $data[$id][$this->parentId];
         }
 
         return $breadcrumb;
     }
 
-    private function formatArray(array $data)
+    private function formatArray(array $data): array
     {
-        $index = [];
-        foreach ($data as $value) {
-            $index[$value[$this->_id]] = $value;
-        }
-        return $index;
+        return array_column($data, null, $this->id);
     }
 }

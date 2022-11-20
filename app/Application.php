@@ -16,7 +16,6 @@ use Psr\Container\ContainerInterface;
 /**
  * @name 容器
  * @property \App\File\Zip                      $zip
- * @property \Mpdf\Mpdf                         $mpdf
  * @property \App\Env                           $env
  * @property \Psy\Shell                         $shell
  * @property \GuzzleHttp\Client                 $httpClient

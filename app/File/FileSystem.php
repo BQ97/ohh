@@ -47,7 +47,7 @@ class FileSystem
                     ],
                     'dir' => [
                         'public' => 0740,
-                        'private' => 7604,
+                        'private' => 0700,
                     ],
                 ]),
 
