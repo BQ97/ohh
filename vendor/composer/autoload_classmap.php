@@ -1552,7 +1552,6 @@ return array(
     'Overtrue\\Socialite\\Exceptions\\AuthorizeFailedException' => $vendorDir . '/overtrue/socialite/src/Exceptions/AuthorizeFailedException.php',
     'Overtrue\\Socialite\\Exceptions\\BadRequestException' => $vendorDir . '/overtrue/socialite/src/Exceptions/BadRequestException.php',
     'Overtrue\\Socialite\\Exceptions\\Exception' => $vendorDir . '/overtrue/socialite/src/Exceptions/Exception.php',
-    'Overtrue\\Socialite\\Exceptions\\FeiShu\\InvalidTicketException' => $vendorDir . '/overtrue/socialite/src/Exceptions/FeiShu/InvalidTicketException.php',
     'Overtrue\\Socialite\\Exceptions\\InvalidArgumentException' => $vendorDir . '/overtrue/socialite/src/Exceptions/InvalidArgumentException.php',
     'Overtrue\\Socialite\\Exceptions\\InvalidTokenException' => $vendorDir . '/overtrue/socialite/src/Exceptions/InvalidTokenException.php',
     'Overtrue\\Socialite\\Exceptions\\MethodDoesNotSupportException' => $vendorDir . '/overtrue/socialite/src/Exceptions/MethodDoesNotSupportException.php',
