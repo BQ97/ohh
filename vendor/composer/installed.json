@@ -2558,17 +2558,17 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.6.3",
-            "version_normalized": "4.6.3.0",
+            "version": "4.6.4",
+            "version_normalized": "4.6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "52033511df3795c568528fe70fbe41459135911b"
+                "reference": "f20bfad712abef0a27c179c869edc10409a17d41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/52033511df3795c568528fe70fbe41459135911b",
-                "reference": "52033511df3795c568528fe70fbe41459135911b",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/f20bfad712abef0a27c179c869edc10409a17d41",
+                "reference": "f20bfad712abef0a27c179c869edc10409a17d41",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2592,7 +2592,7 @@
                 "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0"
             },
-            "time": "2022-11-01T06:56:55+00:00",
+            "time": "2022-11-23T09:30:12+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2628,7 +2628,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.6.3"
+                "source": "https://github.com/overtrue/socialite/tree/4.6.4"
             },
             "funding": [
                 {
