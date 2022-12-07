@@ -9,4 +9,7 @@ return [
     [
         'GET', '/test', '\\modules\\Index::test'
     ],
+    [
+        '*', '/html2pdf', '\\modules\\orders\\Index::html2Pdf'
+    ],
 ];
