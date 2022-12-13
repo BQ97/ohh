@@ -25,7 +25,6 @@
         "league/route": "^5.1",
         "laminas/laminas-diactoros": "^2.9",
         "laminas/laminas-httphandlerrunner": "^2.1",
-        "league/tactician": "^1.1",
         "league/container": "^4.2"
     },
     "autoload": {

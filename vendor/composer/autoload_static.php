@@ -111,7 +111,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'L' => 
         array (
             'League\\Uri\\' => 11,
-            'League\\Tactician\\' => 17,
             'League\\Route\\' => 13,
             'League\\Plates\\' => 14,
             'League\\MimeTypeDetection\\' => 25,
@@ -308,10 +307,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             0 => __DIR__ . '/..' . '/league/uri/src',
             1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-        ),
-        'League\\Tactician\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/league/tactician/src',
         ),
         'League\\Route\\' => 
         array (
@@ -1608,30 +1603,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'League\\Route\\Strategy\\StrategyAwareInterface' => __DIR__ . '/..' . '/league/route/src/Strategy/StrategyAwareInterface.php',
         'League\\Route\\Strategy\\StrategyAwareTrait' => __DIR__ . '/..' . '/league/route/src/Strategy/StrategyAwareTrait.php',
         'League\\Route\\Strategy\\StrategyInterface' => __DIR__ . '/..' . '/league/route/src/Strategy/StrategyInterface.php',
-        'League\\Tactician\\CommandBus' => __DIR__ . '/..' . '/league/tactician/src/CommandBus.php',
-        'League\\Tactician\\Exception\\CanNotDetermineCommandNameException' => __DIR__ . '/..' . '/league/tactician/src/Exception/CanNotDetermineCommandNameException.php',
-        'League\\Tactician\\Exception\\CanNotInvokeHandlerException' => __DIR__ . '/..' . '/league/tactician/src/Exception/CanNotInvokeHandlerException.php',
-        'League\\Tactician\\Exception\\Exception' => __DIR__ . '/..' . '/league/tactician/src/Exception/Exception.php',
-        'League\\Tactician\\Exception\\InvalidCommandException' => __DIR__ . '/..' . '/league/tactician/src/Exception/InvalidCommandException.php',
-        'League\\Tactician\\Exception\\InvalidMiddlewareException' => __DIR__ . '/..' . '/league/tactician/src/Exception/InvalidMiddlewareException.php',
-        'League\\Tactician\\Exception\\MissingHandlerException' => __DIR__ . '/..' . '/league/tactician/src/Exception/MissingHandlerException.php',
-        'League\\Tactician\\Handler\\CommandHandlerMiddleware' => __DIR__ . '/..' . '/league/tactician/src/Handler/CommandHandlerMiddleware.php',
-        'League\\Tactician\\Handler\\CommandNameExtractor\\ClassNameExtractor' => __DIR__ . '/..' . '/league/tactician/src/Handler/CommandNameExtractor/ClassNameExtractor.php',
-        'League\\Tactician\\Handler\\CommandNameExtractor\\CommandNameExtractor' => __DIR__ . '/..' . '/league/tactician/src/Handler/CommandNameExtractor/CommandNameExtractor.php',
-        'League\\Tactician\\Handler\\Locator\\CallableLocator' => __DIR__ . '/..' . '/league/tactician/src/Handler/Locator/CallableLocator.php',
-        'League\\Tactician\\Handler\\Locator\\HandlerLocator' => __DIR__ . '/..' . '/league/tactician/src/Handler/Locator/HandlerLocator.php',
-        'League\\Tactician\\Handler\\Locator\\InMemoryLocator' => __DIR__ . '/..' . '/league/tactician/src/Handler/Locator/InMemoryLocator.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\ClassNameInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/ClassNameInflector.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\HandleClassNameInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/HandleClassNameInflector.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\HandleClassNameWithoutSuffixInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/HandleClassNameWithoutSuffixInflector.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\HandleInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/HandleInflector.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\InvokeInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/InvokeInflector.php',
-        'League\\Tactician\\Handler\\MethodNameInflector\\MethodNameInflector' => __DIR__ . '/..' . '/league/tactician/src/Handler/MethodNameInflector/MethodNameInflector.php',
-        'League\\Tactician\\Middleware' => __DIR__ . '/..' . '/league/tactician/src/Middleware.php',
-        'League\\Tactician\\Plugins\\LockingMiddleware' => __DIR__ . '/..' . '/league/tactician/src/Plugins/LockingMiddleware.php',
-        'League\\Tactician\\Plugins\\NamedCommand\\NamedCommand' => __DIR__ . '/..' . '/league/tactician/src/Plugins/NamedCommand/NamedCommand.php',
-        'League\\Tactician\\Plugins\\NamedCommand\\NamedCommandExtractor' => __DIR__ . '/..' . '/league/tactician/src/Plugins/NamedCommand/NamedCommandExtractor.php',
-        'League\\Tactician\\Setup\\QuickStart' => __DIR__ . '/..' . '/league/tactician/src/Setup/QuickStart.php',
         'League\\Uri\\Contracts\\AuthorityInterface' => __DIR__ . '/..' . '/league/uri-interfaces/src/Contracts/AuthorityInterface.php',
         'League\\Uri\\Contracts\\DataPathInterface' => __DIR__ . '/..' . '/league/uri-interfaces/src/Contracts/DataPathInterface.php',
         'League\\Uri\\Contracts\\DomainHostInterface' => __DIR__ . '/..' . '/league/uri-interfaces/src/Contracts/DomainHostInterface.php',
