@@ -10,7 +10,7 @@ use Faker\Test\TestCase;
  */
 final class PhoneNumberTest extends TestCase
 {
-    public function testPhoneNumber()
+    public function testPhoneNumber(): void
     {
         for ($i = 0; $i < 100; ++$i) {
             $number = $this->faker->phoneNumber;
@@ -18,6 +18,14 @@ final class PhoneNumberTest extends TestCase
             $digits = array_values(array_filter(str_split($baseNumber), 'ctype_digit'));
 
             self::assertGreaterThan(10, count($digits));
+        }
+    }
+
+    public function testE164PhoneNumberFormat(): void
+    {
+        for ($i = 0; $i < 10; ++$i) {
+            $number = $this->faker->e164PhoneNumber();
+            self::assertMatchesRegularExpression('/^\+90\d{10}$/', $number);
         }
     }
 

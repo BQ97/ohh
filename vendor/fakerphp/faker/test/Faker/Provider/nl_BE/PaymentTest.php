@@ -10,7 +10,7 @@ use Faker\Test\TestCase;
  */
 final class PaymentTest extends TestCase
 {
-    public function testVatIsValid()
+    public function testVatIsValid(): void
     {
         $vat = $this->faker->vat();
         $unspacedVat = $this->faker->vat(false);
@@ -21,7 +21,7 @@ final class PaymentTest extends TestCase
         $this->validateChecksum($unspacedVat);
     }
 
-    private function validateChecksum($vat)
+    private function validateChecksum($vat): void
     {
         // Remove the "BE " part from the beginning
         $numbers = trim(substr($vat, 2));
@@ -33,6 +33,8 @@ final class PaymentTest extends TestCase
 
         // Mod97 check on first 8 digits
         $checksum = 97 - fmod(substr($numbers, 0, 8), 97);
+        // Make sure checksum is 2 characters long
+        $checksum = sprintf('%02d', $checksum);
 
         self::assertEquals((string) $checksum, substr($numbers, 8, 10));
     }
