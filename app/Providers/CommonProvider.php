@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Plates\Engine;
 use Psy\Shell;
+use League\CLImate\CLImate;
 
 class CommonProvider extends AbstractServiceProvider
 {
@@ -23,6 +24,7 @@ class CommonProvider extends AbstractServiceProvider
         'templates' => Engine::class,
         'shell' => Shell::class,
         'zip' => Zip::class,
+        'cli' => CLImate::class,
     ];
 
     public function provides(string $id): bool

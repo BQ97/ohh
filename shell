@@ -5,10 +5,4 @@ declare(strict_types=1);
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'main.php';
 
-const DESKTOP_PATH = 'C:\\Users\\Administrator\\Desktop\\';
-
-$app->shell->setScopeVariables([
-    'app' => $app,
-]);
-
-$app->shell->run();
+$app->runCmd();

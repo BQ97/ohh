@@ -18,6 +18,11 @@ const APP_PATH = __DIR__ . DS;
 const VIEW_PATH = APP_PATH . 'views' . DS;
 
 /**
+ * @var string MODULE_PATH 各个模块目录
+ */
+const MODULE_PATH = APP_PATH . 'modules' . DS;
+
+/**
  * @var string ENV_PATH ENV配置目录
  */
 const ENV_PATH = APP_PATH . '.env';

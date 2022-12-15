@@ -12,6 +12,7 @@ use App\Providers\SnowFlakeProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
+use App\File\Loader;
 
 /**
  * @name 容器
@@ -24,10 +25,18 @@ use Psr\Container\ContainerInterface;
  * @property \App\Router\Router                 $router
  * @property \Faker\Generator                   $faker
  * @property \Godruoyi\Snowflake\Snowflake      $snowflake
+ * @property \League\CLImate\CLImate             $cli
  */
 class Application implements ContainerInterface
 {
     private Container $container;
+
+    private array $commands = [
+        'list' => \modules\Consoles\ListConsole::class,
+        'create-manager-db' => \modules\Consoles\CreateManagerDb::class,
+        'create-member-db' => \modules\Consoles\CreateMemberDb::class,
+        'create-shell' => \modules\Consoles\CreateShell::class,
+    ];
 
     private array $providers = [
         DbProvider::class,
@@ -67,6 +76,38 @@ class Application implements ContainerInterface
         static::$instance = $this;
     }
 
+    public function getCommands()
+    {
+        return $this->commands;
+    }
+
+    public function runCmd()
+    {
+        if (preg_match("/cli/i", php_sapi_name())) {
+            $args = $_SERVER['argv'];
+
+            if (count($args) < 2) {
+                $this->cli->error('[ERROR]请输入您要执行的命令');
+                return false;
+            }
+
+            $command = $args[1];
+
+            if (empty($this->commands[$command])) {
+                $this->cli->error('[ERROR]该命令不存在');
+                return false;
+            }
+
+            $class = $this->commands[$command];
+
+            $consoleObject = new $class($this);
+
+            return call_user_func([$consoleObject, 'run']);
+        }
+
+        throw new \Exception('this method must be cli mode');
+    }
+
     /**
      * Create a new template and render it.
      * @param  string $name
@@ -81,6 +122,17 @@ class Application implements ContainerInterface
         }
 
         return $this->templates->render('not-found', ['name' => $name]);
+    }
+
+    public function getConfig(string $filename)
+    {
+        $filename = CONFIG_PATH . $filename . '.php';
+
+        if (file_exists($filename)) {
+            return Loader::loadFile($filename);
+        }
+
+        return null;
     }
 
     private function registerProviders()
