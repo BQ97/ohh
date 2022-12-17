@@ -25,7 +25,7 @@ use App\File\Loader;
  * @property \App\Router\Router                 $router
  * @property \Faker\Generator                   $faker
  * @property \Godruoyi\Snowflake\Snowflake      $snowflake
- * @property \League\CLImate\CLImate             $cli
+ * @property \League\CLImate\CLImate            $cli
  */
 class Application implements ContainerInterface
 {
