@@ -19,7 +19,7 @@ class DbProvider extends AbstractServiceProvider
     {
         $env = $this->getContainer()->get('env');
 
-        $instance = new Medoo([
+        $this->getContainer()->add(Medoo::class)->addArgument([
             'type'      => $env->get('DB_CONNECTION', 'mysql'),
             'database'  => $env->get('DB_DATABASE', ''),
             'host'      => $env->get('DB_HOST', 'localhost'),
@@ -34,10 +34,6 @@ class DbProvider extends AbstractServiceProvider
                 PDO::ATTR_EMULATE_PREPARES => false
             ],
             'logging' => true
-        ]);
-
-        $this->getContainer()->add(Medoo::class, $instance);
-
-        $this->getContainer()->add('db', $instance);
+        ])->setAlias('db');
     }
 }

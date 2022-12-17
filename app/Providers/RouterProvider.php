@@ -16,10 +16,8 @@ class RouterProvider extends AbstractServiceProvider
 
     public function register(): void
     {
-        $instance = new Router($this->getContainer());
+        $container = $this->getContainer();
 
-        $this->getContainer()->add(Router::class, $instance);
-
-        $this->getContainer()->add('router', $instance);
+        $container->add(Router::class)->addArgument($container)->setAlias('router');
     }
 }
