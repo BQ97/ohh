@@ -9,6 +9,7 @@ use App\Providers\DbProvider;
 use App\Providers\FakerProvider;
 use App\Providers\RouterProvider;
 use App\Providers\SnowFlakeProvider;
+use App\Providers\TemplateProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
@@ -43,7 +44,8 @@ class Application implements ContainerInterface
         CommonProvider::class,
         FakerProvider::class,
         RouterProvider::class,
-        SnowFlakeProvider::class
+        SnowFlakeProvider::class,
+        TemplateProvider::class,
     ];
 
     private static $instance;
@@ -69,9 +71,6 @@ class Application implements ContainerInterface
         $this->container->defaultToShared();
 
         $this->registerProviders();
-
-        // 启动模板引擎
-        $this->templates->setDirectory(VIEW_PATH)->setFileExtension('phtml');
 
         static::$instance = $this;
     }
