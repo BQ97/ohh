@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Env;
+use App\View;
 use App\File\Zip;
 use GuzzleHttp\Client;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -23,6 +24,7 @@ class CommonProvider extends AbstractServiceProvider
         'shell' => Shell::class,
         'zip' => Zip::class,
         'cli' => CLImate::class,
+        'view' => View::class
     ];
 
     public function provides(string $id): bool

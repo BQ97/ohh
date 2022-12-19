@@ -15,6 +15,14 @@ use League\Flysystem\{
 
 use Exception;
 
+/**
+ * @method bool fileExists(string $location)
+ * @method bool directoryExists(string $location)
+ * @method bool has(string $location)
+ * @method string read(string $location)
+ * @method resource readStream(string $location)
+ * @method int lastModified(string $path)
+ */
 class FileSystem
 {
     private array $instances;

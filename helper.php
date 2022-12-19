@@ -51,6 +51,6 @@ if (!function_exists('view')) {
      */
     function view(string $name, array $data = [], int $status = 200, array $headers = []): HtmlResponse
     {
-        return new HtmlResponse(app()->render($name, $data), $status, $headers);
+        return app('view')->display($name, $data, $status, $headers);
     }
 }

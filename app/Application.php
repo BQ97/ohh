@@ -9,7 +9,6 @@ use App\Providers\DbProvider;
 use App\Providers\FakerProvider;
 use App\Providers\RouterProvider;
 use App\Providers\SnowFlakeProvider;
-use App\Providers\TemplateProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
@@ -22,7 +21,7 @@ use App\File\Loader;
  * @property \Psy\Shell                         $shell
  * @property \GuzzleHttp\Client                 $httpClient
  * @property \Medoo\Medoo                       $db
- * @property \League\Plates\Engine              $templates
+ * @property \App\View                          $view
  * @property \App\Router\Router                 $router
  * @property \Faker\Generator                   $faker
  * @property \Godruoyi\Snowflake\Snowflake      $snowflake
@@ -44,8 +43,7 @@ class Application implements ContainerInterface
         CommonProvider::class,
         FakerProvider::class,
         RouterProvider::class,
-        SnowFlakeProvider::class,
-        TemplateProvider::class,
+        SnowFlakeProvider::class
     ];
 
     private static $instance;
@@ -105,22 +103,6 @@ class Application implements ContainerInterface
         }
 
         throw new \Exception('this method must be cli mode');
-    }
-
-    /**
-     * Create a new template and render it.
-     * @param  string $name
-     * @param  array  $data
-     * @param  bool  $return
-     * @return string
-     */
-    public function render(string $name, array $data = []): string
-    {
-        if ($this->templates->exists($name)) {
-            return $this->templates->render($name, $data);
-        }
-
-        return $this->templates->render('not-found', ['name' => $name]);
     }
 
     public function getConfig(string $filename)
