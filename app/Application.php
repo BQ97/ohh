@@ -9,6 +9,7 @@ use App\Providers\DbProvider;
 use App\Providers\FakerProvider;
 use App\Providers\RouterProvider;
 use App\Providers\SnowFlakeProvider;
+use App\Providers\ConsoleProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
@@ -26,24 +27,19 @@ use App\File\Loader;
  * @property \Faker\Generator                   $faker
  * @property \Godruoyi\Snowflake\Snowflake      $snowflake
  * @property \League\CLImate\CLImate            $cli
+ * @property \App\Console                       $console
  */
 class Application implements ContainerInterface
 {
     private Container $container;
-
-    private array $commands = [
-        'list' => \modules\Consoles\ListConsole::class,
-        'create-manager-db' => \modules\Consoles\CreateManagerDb::class,
-        'create-member-db' => \modules\Consoles\CreateMemberDb::class,
-        'create-shell' => \modules\Consoles\CreateShell::class,
-    ];
 
     private array $providers = [
         DbProvider::class,
         CommonProvider::class,
         FakerProvider::class,
         RouterProvider::class,
-        SnowFlakeProvider::class
+        SnowFlakeProvider::class,
+        ConsoleProvider::class
     ];
 
     private static $instance;
@@ -71,38 +67,6 @@ class Application implements ContainerInterface
         $this->registerProviders();
 
         static::$instance = $this;
-    }
-
-    public function getCommands()
-    {
-        return $this->commands;
-    }
-
-    public function runCmd()
-    {
-        if (preg_match("/cli/i", php_sapi_name())) {
-            $args = $_SERVER['argv'];
-
-            if (count($args) < 2) {
-                $this->cli->error('[ERROR]请输入您要执行的命令');
-                return false;
-            }
-
-            $command = $args[1];
-
-            if (empty($this->commands[$command])) {
-                $this->cli->error('[ERROR]该命令不存在');
-                return false;
-            }
-
-            $class = $this->commands[$command];
-
-            $consoleObject = new $class($this);
-
-            return call_user_func([$consoleObject, 'run']);
-        }
-
-        throw new \Exception('this method must be cli mode');
     }
 
     public function getConfig(string $filename)
