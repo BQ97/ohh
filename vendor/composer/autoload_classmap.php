@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Application' => $baseDir . '/app/Application.php',
     'App\\Bitwise' => $baseDir . '/app/Bitwise.php',
+    'App\\Console' => $baseDir . '/app/Console.php',
     'App\\Encrypter' => $baseDir . '/app/Encrypter.php',
     'App\\Enum' => $baseDir . '/app/Enum.php',
     'App\\Env' => $baseDir . '/app/Env.php',
@@ -24,6 +25,7 @@ return array(
     'App\\MyTree' => $baseDir . '/app/MyTree.php',
     'App\\Pipeline' => $baseDir . '/app/Pipeline.php',
     'App\\Providers\\CommonProvider' => $baseDir . '/app/Providers/CommonProvider.php',
+    'App\\Providers\\ConsoleProvider' => $baseDir . '/app/Providers/ConsoleProvider.php',
     'App\\Providers\\DbProvider' => $baseDir . '/app/Providers/DbProvider.php',
     'App\\Providers\\FakerProvider' => $baseDir . '/app/Providers/FakerProvider.php',
     'App\\Providers\\RouterProvider' => $baseDir . '/app/Providers/RouterProvider.php',

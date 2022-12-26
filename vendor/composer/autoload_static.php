@@ -363,6 +363,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
     public static $classMap = array (
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
         'App\\Bitwise' => __DIR__ . '/../..' . '/app/Bitwise.php',
+        'App\\Console' => __DIR__ . '/../..' . '/app/Console.php',
         'App\\Encrypter' => __DIR__ . '/../..' . '/app/Encrypter.php',
         'App\\Enum' => __DIR__ . '/../..' . '/app/Enum.php',
         'App\\Env' => __DIR__ . '/../..' . '/app/Env.php',
@@ -379,6 +380,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
         'App\\Pipeline' => __DIR__ . '/../..' . '/app/Pipeline.php',
         'App\\Providers\\CommonProvider' => __DIR__ . '/../..' . '/app/Providers/CommonProvider.php',
+        'App\\Providers\\ConsoleProvider' => __DIR__ . '/../..' . '/app/Providers/ConsoleProvider.php',
         'App\\Providers\\DbProvider' => __DIR__ . '/../..' . '/app/Providers/DbProvider.php',
         'App\\Providers\\FakerProvider' => __DIR__ . '/../..' . '/app/Providers/FakerProvider.php',
         'App\\Providers\\RouterProvider' => __DIR__ . '/../..' . '/app/Providers/RouterProvider.php',
