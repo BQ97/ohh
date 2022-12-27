@@ -12,9 +12,10 @@ class Console
 
     private array $commands = [
         'list' => \modules\Consoles\ListConsole::class,
-        'create-manager-db' => \modules\Consoles\CreateManagerDb::class,
-        'create-member-db' => \modules\Consoles\CreateMemberDb::class,
-        'create-shell' => \modules\Consoles\CreateShell::class,
+        'create-manager-db' => \modules\Consoles\CreateManagerDbConsole::class,
+        'create-member-db' => \modules\Consoles\CreateMemberDbConsole::class,
+        'create-shell' => \modules\Consoles\CreateShellConsole::class,
+        'create-do-project' => \modules\Consoles\CreateDoProjectConsole::class
     ];
 
     public function __construct(ContainerInterface $container)
