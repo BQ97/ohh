@@ -3091,6 +3091,7 @@ return array(
     'modules\\Consoles\\CreateManagerDbConsole' => $baseDir . '/modules/Consoles/CreateManagerDbConsole.php',
     'modules\\Consoles\\CreateMemberDbConsole' => $baseDir . '/modules/Consoles/CreateMemberDbConsole.php',
     'modules\\Consoles\\CreateShellConsole' => $baseDir . '/modules/Consoles/CreateShellConsole.php',
+    'modules\\Consoles\\FanYiConsole' => $baseDir . '/modules/Consoles/FanYiConsole.php',
     'modules\\Consoles\\ListConsole' => $baseDir . '/modules/Consoles/ListConsole.php',
     'modules\\Html2Pdf' => $baseDir . '/modules/Html2Pdf.php',
     'modules\\Index' => $baseDir . '/modules/Index.php',

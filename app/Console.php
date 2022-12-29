@@ -15,7 +15,8 @@ class Console
         'create-manager-db' => \modules\Consoles\CreateManagerDbConsole::class,
         'create-member-db' => \modules\Consoles\CreateMemberDbConsole::class,
         'create-shell' => \modules\Consoles\CreateShellConsole::class,
-        'create-do-project' => \modules\Consoles\CreateDoProjectConsole::class
+        'create-do-project' => \modules\Consoles\CreateDoProjectConsole::class,
+        'fanyi' => \modules\Consoles\FanYiConsole::class
     ];
 
     public function __construct(ContainerInterface $container)
@@ -64,6 +65,11 @@ class Console
             if (count($args) < 2) {
                 $this->error('请输入您要执行的命令');
                 return false;
+            }
+
+            if (count($args) > 2) {
+                $result = call_user_func_array([$this->container->get($args[1]), $args[2]], array_slice($args, 3));
+                return dump($result);
             }
 
             $command = $this->getCommand($args[1]);

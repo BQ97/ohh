@@ -3446,6 +3446,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\Consoles\\CreateManagerDbConsole' => __DIR__ . '/../..' . '/modules/Consoles/CreateManagerDbConsole.php',
         'modules\\Consoles\\CreateMemberDbConsole' => __DIR__ . '/../..' . '/modules/Consoles/CreateMemberDbConsole.php',
         'modules\\Consoles\\CreateShellConsole' => __DIR__ . '/../..' . '/modules/Consoles/CreateShellConsole.php',
+        'modules\\Consoles\\FanYiConsole' => __DIR__ . '/../..' . '/modules/Consoles/FanYiConsole.php',
         'modules\\Consoles\\ListConsole' => __DIR__ . '/../..' . '/modules/Consoles/ListConsole.php',
         'modules\\Html2Pdf' => __DIR__ . '/../..' . '/modules/Html2Pdf.php',
         'modules\\Index' => __DIR__ . '/../..' . '/modules/Index.php',
