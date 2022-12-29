@@ -54,3 +54,13 @@ if (!function_exists('view')) {
         return app('view')->display($name, $data, $status, $headers);
     }
 }
+
+if (!function_exists('atom_next_id')) {
+    /**
+     * 全局唯一ID
+     */
+    function atom_next_id() : string
+    {
+        return app('snowflake')->id();
+    }
+}

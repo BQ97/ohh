@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use App\Utils;
 use PhpOffice\PhpSpreadsheet\{IOFactory, Spreadsheet};
 
 /**
@@ -89,7 +88,7 @@ class Excel
             }
         }
 
-        $fileName = $fileName ?: Utils::Uuid();
+        $fileName = $fileName ?: atom_next_id();
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 

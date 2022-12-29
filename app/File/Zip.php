@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\File;
 
 use ZipArchive;
-use App\Utils;
 
 class Zip
 {
@@ -78,7 +77,7 @@ class Zip
     {
         $files = FileSystem::getInstance($sourceDir)->ls('/', true, FileSystem::LS_FILE_OPTION);
 
-        $file = $this->exportPath . Utils::Uuid() . '.zip';
+        $file = $this->exportPath . atom_next_id() . '.zip';
 
         array_reduce($files, function (ZipArchive $zip, string $path) use ($sourceDir) {
 
@@ -98,7 +97,7 @@ class Zip
      */
     public function unPack(string $zip)
     {
-        $this->open($zip)->getHandler()->extractTo($path = $this->exportPath . Utils::Uuid() . DS);
+        $this->open($zip)->getHandler()->extractTo($path = $this->exportPath . atom_next_id() . DS);
 
         return $path;
     }
