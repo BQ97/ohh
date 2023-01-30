@@ -4,8 +4,8 @@
   </p>
   <p align="center">An ID Generator for PHP based on Snowflake Algorithm (Twitter announced).</p>
   <p align="center">
-    <a href="https://github.com/godruoyi/php-snowflake/actions/workflows/php.yml">
-      <image src="https://github.com/godruoyi/php-snowflake/actions/workflows/php.yml/badge.svg" alt="build passed"></image>
+    <a href="https://github.com/godruoyi/php-snowflake/actions/workflows/test.yml">
+      <image src="https://github.com/godruoyi/php-snowflake/actions/workflows/test.yml/badge.svg" alt="build passed"></image>
     </a>
     <a href="https://codecov.io/gh/godruoyi/php-snowflake">
       <img src="https://codecov.io/gh/godruoyi/php-snowflake/branch/master/graph/badge.svg?token=7AAOYCJK97" alt=""/>
@@ -47,6 +47,7 @@ Based on this, we created this package and integrated multiple sequence-number p
 * RedisSequenceResolver (based on redis psetex and incrby)
 * LaravelSequenceResolver (based on redis psetex and incrby)
 * SwooleSequenceResolver (based on swoole_lock)
+* FileLockResolver（PHP file lock `fopen/flock`）
 
 Each provider only needs to ensure that the serial number generated in the same millisecond is different. You can get a unique ID.
 
