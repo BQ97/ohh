@@ -25,7 +25,7 @@ use App\File\Loader;
  * @property \App\View                          $view
  * @property \App\Router\Router                 $router
  * @property \Faker\Generator                   $faker
- * @property \Godruoyi\Snowflake\Snowflake      $snowflake
+ * @property \Godruoyi\Snowflake\Snowflake      $snow
  * @property \League\CLImate\CLImate            $cli
  * @property \App\Console                       $console
  */

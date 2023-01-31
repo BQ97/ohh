@@ -12,7 +12,7 @@ class SnowFlakeProvider extends AbstractServiceProvider
 {
     public function provides(string $id): bool
     {
-        return in_array($id, ['snowflake', Snowflake::class]);
+        return in_array($id, ['snow', Snowflake::class]);
     }
 
     public function register(): void
@@ -21,6 +21,6 @@ class SnowFlakeProvider extends AbstractServiceProvider
         $SnowFlake->setStartTimeStamp(strtotime('2020-01-01 08:00:00'));
         $SnowFlake->setSequenceResolver(new RandomSequenceResolver());
 
-        $this->getContainer()->add(Snowflake::class, $SnowFlake)->setAlias('snowflake');
+        $this->getContainer()->add(Snowflake::class, $SnowFlake)->setAlias('snow');
     }
 }
