@@ -16,7 +16,8 @@ class Console
         'create-member-db' => \modules\Consoles\CreateMemberDbConsole::class,
         'create-shell' => \modules\Consoles\CreateShellConsole::class,
         'create-do-project' => \modules\Consoles\CreateDoProjectConsole::class,
-        'fanyi' => \modules\Consoles\FanYiConsole::class
+        'fanyi' => \modules\Consoles\FanYiConsole::class,
+        'keep-alive-ams-cookie' => \modules\Consoles\KeepAliveAmsCookieConsole::class
     ];
 
     public function __construct(ContainerInterface $container)
