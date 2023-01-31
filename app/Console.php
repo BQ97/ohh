@@ -3,12 +3,15 @@
 namespace App;
 
 use Psr\Container\ContainerInterface;
+use League\CLImate\CLImate;
 
 class Console
 {
     private const HANDLE_METHOD = 'run';
 
     private ContainerInterface $container;
+
+    private CLImate $cli;
 
     private array $commands = [
         'list' => \modules\Consoles\ListConsole::class,
@@ -23,6 +26,28 @@ class Console
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->cli = $container->get('cli');
+        $this->cli->arguments->add([
+            'action' => [
+                'prefix'       => 'a',
+                'longPrefix'   => 'action',
+                'description'  => "如果传入 application 则执行对应的类方法，例如 \\test\\test::start; \n \t\t如果没有传入，则执行预定义命令",
+                'required'     => true,
+                'castTo'       => 'string'
+            ],
+            'args' => [
+                'longPrefix'   => 'args',
+                'description'  => '执行action的参数,多个参数用“,”分割',
+                'required'     => false,
+            ],
+            'application' => [
+                'prefix'       => 'app',
+                'longPrefix'   => 'application',
+                'description'  => '执行应用下的类方法',
+                'required'     => false,
+                'noValue'      => true,
+            ],
+        ]);
     }
 
     public function getCommand(string $alias = null)
@@ -40,22 +65,22 @@ class Console
 
     public function info(string $msg)
     {
-        return $this->container->get('cli')->info("[INFO]{$msg}");
+        return $this->cli->info("[INFO]{$msg}");
     }
 
     public function error(string $msg)
     {
-        return $this->container->get('cli')->error("[ERROR]{$msg}");
+        return $this->cli->error("[ERROR]{$msg}");
     }
 
     public function success(string $msg)
     {
-        return $this->container->get('cli')->green("[SUCCESS]{$msg}");
+        return $this->cli->green("[SUCCESS]{$msg}");
     }
 
     public function log(string $msg)
     {
-        return $this->container->get('cli')->out($msg);
+        return $this->cli->out($msg);
     }
 
     public function run()
@@ -64,23 +89,38 @@ class Console
             $args = $_SERVER['argv'];
 
             if (count($args) < 2) {
-                $this->error('请输入您要执行的命令');
-                return false;
+                return $this->cli->usage();
             }
 
-            if (count($args) > 2) {
-                $result = call_user_func_array([$this->container->get($args[1]), $args[2]], array_slice($args, 3));
+            if (!$this->cli->arguments->defined('action')) {
+                return $this->cli->usage();
+            }
+
+            $this->cli->arguments->parse();
+
+            $action = $this->cli->arguments->get('action');
+
+            $arguments = explode(',', $this->cli->arguments->get('args'));
+
+            if ($this->cli->arguments->get('application')) {
+
+                $func = explode('::', $action);
+
+                if (count($func) < 2) {
+                    return $this->error('请输入正确的类方法，例如：\\test\\test::start');
+                }
+
+                $result = call_user_func_array([$this->container->get($func[0]), $func[1]], $arguments);
                 return dump($result);
             }
 
-            $command = $this->getCommand($args[1]);
+            $command = $this->getCommand($action);
 
             if (!$command) {
-                $this->error('该命令不存在');
-                return false;
+                return $this->error('该命令不存在');
             }
 
-            return call_user_func([new $command($this->container), static::HANDLE_METHOD]);
+            return call_user_func_array([new $command($this->container), static::HANDLE_METHOD], $arguments);
         }
 
         throw new \Exception('this method must be cli mode');
