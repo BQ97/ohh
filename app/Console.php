@@ -111,6 +111,14 @@ class Console
                 }
 
                 $result = call_user_func_array([$this->container->get($func[0]), $func[1]], $arguments);
+
+                if (is_object($result)) {
+                    $this->container->get('shell')->setScopeVariables([
+                        'result' => $result
+                    ]);
+            
+                    return $this->container->get('shell')->run();
+                }
                 return dump($result);
             }
 

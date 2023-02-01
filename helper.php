@@ -61,6 +61,6 @@ if (!function_exists('atom_next_id')) {
      */
     function atom_next_id() : string
     {
-        return app('snowflake')->id();
+        return app('snow')->id();
     }
 }
