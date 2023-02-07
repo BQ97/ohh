@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use Exception;
+
 /**
  * @desc：php aes加密解密类
  */
@@ -12,24 +14,40 @@ class Encrypter
     /**
      * @var string 加密方式
      */
-    protected string $cipher = 'aes-128-ecb';
+    private string $cipher;
 
     /**
      * @var string 加密KEY
      */
-    protected string $key;
+    private string $key;
 
     /**
-     * @param string $key Configuration parameter
+     * @param string $key 
+     * @param string $cipher
      */
-    public function __construct(String $key)
+    public function __construct(string $key, string $cipher = 'aes-128-ecb')
     {
-        $this->key = $key;
+        $this->setKey($key)->setCipher($cipher);
     }
 
-    public static function getInstance(String $key)
+    public function setKey(string $key)
     {
-        return new static($key);
+        $this->key = $key;
+        return $this;
+    }
+
+    /**
+     * @return static
+     * @throws Exception
+     */
+    public function setCipher(string $cipher)
+    {
+        if (in_array($cipher, openssl_get_cipher_methods())) {
+            $this->cipher = $cipher;
+            return $this;
+        }
+
+        throw new Exception('openssl_encrypt(): Unknown cipher algorithm');
     }
 
     /**
@@ -51,12 +69,5 @@ class Encrypter
     public function decrypt(String $data)
     {
         return openssl_decrypt(base64_decode($data, true), $this->cipher, $this->key, OPENSSL_RAW_DATA);
-    }
-
-    public function __debugInfo()
-    {
-        $data = get_object_vars($this);
-        unset($data['key']);
-        return $data;
     }
 }

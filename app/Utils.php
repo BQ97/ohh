@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App;
 
 use App\File\FileSystem;
-use Godruoyi\Snowflake\Snowflake;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
@@ -96,9 +95,9 @@ class Utils
      * @param string $key
      * @return \App\Encrypter
      */
-    public static function aes(String $key): \App\Encrypter
+    public static function aes(string $key, string $cipher = 'aes-128-ecb'): \App\Encrypter
     {
-        return Encrypter::getInstance($key);
+        return new Encrypter($key, $cipher);
     }
 
     /**

@@ -33,7 +33,7 @@ class MyTree
     {
         $this->id = $config['id'] ?? 'id';
         $this->name = $config['name'] ?? 'name';
-        $this->pid = $config['pid'] ?? 'pid';
+        $this->parentId = $config['pid'] ?? 'pid';
         $this->child = $config['child'] ?? 'child';
     }
 
