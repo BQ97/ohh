@@ -319,18 +319,14 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 
     public function setMultiple($values, $ttl = 0)
     {
-        foreach ($values as $key => $value) {
-            $this->set($key, $value, $ttl);
-        }
+        foreach ($values as $key => $value) $this->set($key, $value, $ttl);
 
         return true;
     }
 
     public function deleteMultiple($keys)
     {
-        foreach ($keys as $key) {
-            $this->delete($key);
-        }
+        foreach ($keys as $key) $this->delete($key);
 
         return true;
     }
