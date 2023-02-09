@@ -28,35 +28,26 @@ class FileSystem
     /**
      * @var array<File>
      */
-    private static array $instances;
+    private static array $handlers;
 
     const LS_DIR_OPTION = 'd';
 
     const LS_FILE_OPTION = 'f';
 
-    /**
-     * @var File
-     */
-    private File $handler;
-
-    public function __construct(string $path = CACHE_PATH)
+    public function __construct(private string $path = CACHE_PATH)
     {
         if (!is_dir($path)) {
             throw new Exception('目录不存在');
         }
 
-        if (empty($this->instances[$path])) {
+        if (empty(static::$handlers[$path])) {
             $adapter = new LocalFilesystemAdapter($path, PortableVisibilityConverter::fromArray([
                 'file' => ['public' => 0640, 'private' => 0604],
                 'dir' => ['public' => 0740, 'private' => 0700]
             ]));
 
-            static::$instances[$path] = new File($adapter);
+            static::$handlers[$path] = new File($adapter);
         }
-
-        $this->handler = static::$instances[$path];
-
-        return true;
     }
 
     /**
@@ -68,6 +59,11 @@ class FileSystem
         return new static($path);
     }
 
+    private function getHandle() : File
+    {
+        return static::$handlers[$this->path];
+    }
+
     /**
      * @access public
      *
@@ -77,7 +73,7 @@ class FileSystem
      */
     public function mkDir(string $dirPath)
     {
-        $this->handler->createDirectory($dirPath);
+        $this->getHandle()->createDirectory($dirPath);
 
         return true;
     }
@@ -94,7 +90,7 @@ class FileSystem
      */
     public function ls(string $dirPath, bool $recursive = false, string $option = null)
     {
-        $listing = $this->handler->listContents($dirPath, $recursive);
+        $listing = $this->getHandle()->listContents($dirPath, $recursive);
 
         $files  = [];
         $dirs = [];
@@ -141,7 +137,7 @@ class FileSystem
      */
     public function cp(string $source, string $dest)
     {
-        $this->handler->copy($source, $dest);
+        $this->getHandle()->copy($source, $dest);
 
         return true;
     }
@@ -158,7 +154,7 @@ class FileSystem
      */
     public function mv(string $source, string $dest)
     {
-        $this->handler->move($source, $dest);
+        $this->getHandle()->move($source, $dest);
 
         return true;
     }
@@ -179,7 +175,7 @@ class FileSystem
             return false;
         }
 
-        $this->handler->deleteDirectory($dirPath);
+        $this->getHandle()->deleteDirectory($dirPath);
 
         return true;
     }
@@ -195,7 +191,7 @@ class FileSystem
      */
     public function rmRf(string $dirPath)
     {
-        $this->handler->deleteDirectory($dirPath);
+        $this->getHandle()->deleteDirectory($dirPath);
 
         return true;
     }
@@ -212,7 +208,7 @@ class FileSystem
      */
     public function write(string $filePath, string $content)
     {
-        $this->handler->write($filePath, $content);
+        $this->getHandle()->write($filePath, $content);
 
         return true;
     }
@@ -228,7 +224,7 @@ class FileSystem
      */
     public function rm(string $filePath)
     {
-        $this->handler->delete($filePath);
+        $this->getHandle()->delete($filePath);
 
         return true;
     }
@@ -275,6 +271,6 @@ class FileSystem
 
     public function __call($name, $arguments)
     {
-        return call_user_func_array([$this->handler, $name], $arguments);
+        return call_user_func_array([$this->getHandle(), $name], $arguments);
     }
 }
