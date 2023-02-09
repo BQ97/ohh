@@ -25,7 +25,10 @@ use Exception;
  */
 class FileSystem
 {
-    private array $instances;
+    /**
+     * @var array<File>
+     */
+    private static array $instances;
 
     const LS_DIR_OPTION = 'd';
 
@@ -43,34 +46,15 @@ class FileSystem
         }
 
         if (empty($this->instances[$path])) {
-            // The internal adapter
-            $adapter = new LocalFilesystemAdapter(
-                // Determine the root directory
-                $path,
-                // Customize how visibility is converted to unix permissions
-                PortableVisibilityConverter::fromArray([
-                    'file' => [
-                        'public' => 0640,
-                        'private' => 0604,
-                    ],
-                    'dir' => [
-                        'public' => 0740,
-                        'private' => 0700,
-                    ],
-                ]),
+            $adapter = new LocalFilesystemAdapter($path, PortableVisibilityConverter::fromArray([
+                'file' => ['public' => 0640, 'private' => 0604],
+                'dir' => ['public' => 0740, 'private' => 0700]
+            ]));
 
-                // Write flags
-                LOCK_EX,
-                // How to deal with links, either DISALLOW_LINKS or SKIP_LINKS
-                // Disallowing them causes exceptions when encountered
-                LocalFilesystemAdapter::DISALLOW_LINKS
-            );
-
-            // The FilesystemOperator
-            $this->instances[$path] = new File($adapter);
+            static::$instances[$path] = new File($adapter);
         }
 
-        $this->handler = $this->instances[$path];
+        $this->handler = static::$instances[$path];
 
         return true;
     }
