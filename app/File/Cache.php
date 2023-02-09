@@ -6,39 +6,27 @@ namespace App\File;
 
 use ArrayAccess;
 use ArrayIterator;
+use Exception;
 use IteratorAggregate;
 use Psr\SimpleCache\CacheInterface;
 
 class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
 {
     /**
-     * @var static $instance 缓存实例
+     * @var static[]
      */
     private static array $instances = [];
-
-    /**
-     * 缓存目录
-     * @var string
-     */
-    private string $prefix;
 
     /**
      * @var \App\File\FileSystem
      */
     private FileSystem $fileSystem;
 
-    public function __construct(string $prefix = 'BoQing')
+    private function __construct(private string $prefix)
     {
         $this->fileSystem = FileSystem::getInstance(CACHE_PATH);
 
-        $this->prefix = $prefix;
-
-        if (empty(static::$instances[$prefix])) {
-
-            static::$instances[$prefix] = $this;
-
-            $this->fileSystem->mkDir($prefix);
-        }
+        $this->fileSystem->mkDir($prefix);
     }
 
     /**
@@ -47,6 +35,10 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      */
     public static function getInstance(string $prefix = 'BoQing'): Cache
     {
+        if (empty($prefix)) {
+            throw new Exception('缓存目录不能为空');
+        }
+
         if (empty(static::$instances[$prefix])) {
 
             static::$instances[$prefix] = new static($prefix);
