@@ -295,16 +295,16 @@
         },
         {
             "name": "godruoyi/php-snowflake",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godruoyi/php-snowflake.git",
-                "reference": "53f94acfaed5a20fd4d4f39c5534cef5d6fe171f"
+                "reference": "18ceb8365b5fbdcae3304b94b787172d881f41f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/53f94acfaed5a20fd4d4f39c5534cef5d6fe171f",
-                "reference": "53f94acfaed5a20fd4d4f39c5534cef5d6fe171f",
+                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/18ceb8365b5fbdcae3304b94b787172d881f41f0",
+                "reference": "18ceb8365b5fbdcae3304b94b787172d881f41f0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -348,7 +348,7 @@
             ],
             "support": {
                 "issues": "https://github.com/godruoyi/php-snowflake/issues",
-                "source": "https://github.com/godruoyi/php-snowflake/tree/2.2.1"
+                "source": "https://github.com/godruoyi/php-snowflake/tree/2.2.2"
             },
             "funding": [
                 {
@@ -356,7 +356,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-01-19T12:38:27+00:00"
+            "time": "2023-02-08T10:29:17+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
