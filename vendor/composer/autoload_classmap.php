@@ -28,6 +28,7 @@ return array(
     'App\\Providers\\ConsoleProvider' => $baseDir . '/app/Providers/ConsoleProvider.php',
     'App\\Providers\\DbProvider' => $baseDir . '/app/Providers/DbProvider.php',
     'App\\Providers\\FakerProvider' => $baseDir . '/app/Providers/FakerProvider.php',
+    'App\\Providers\\OpenAiProvider' => $baseDir . '/app/Providers/OpenAiProvider.php',
     'App\\Providers\\RouterProvider' => $baseDir . '/app/Providers/RouterProvider.php',
     'App\\Providers\\SnowFlakeProvider' => $baseDir . '/app/Providers/SnowFlakeProvider.php',
     'App\\Request' => $baseDir . '/app/Request.php',

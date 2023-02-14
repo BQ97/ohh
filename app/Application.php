@@ -14,6 +14,7 @@ use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
 use App\File\Loader;
+use App\Providers\OpenAiProvider;
 
 /**
  * @name 容器
@@ -28,6 +29,7 @@ use App\File\Loader;
  * @property \Godruoyi\Snowflake\Snowflake      $snow
  * @property \League\CLImate\CLImate            $cli
  * @property \App\Console                       $console
+ * @property \Orhanerday\OpenAi\OpenAi          $openai
  */
 class Application implements ContainerInterface
 {
@@ -39,7 +41,8 @@ class Application implements ContainerInterface
         FakerProvider::class,
         RouterProvider::class,
         SnowFlakeProvider::class,
-        ConsoleProvider::class
+        ConsoleProvider::class,
+        OpenAiProvider::class
     ];
 
     private static $instance;

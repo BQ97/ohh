@@ -388,6 +388,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\Providers\\ConsoleProvider' => __DIR__ . '/../..' . '/app/Providers/ConsoleProvider.php',
         'App\\Providers\\DbProvider' => __DIR__ . '/../..' . '/app/Providers/DbProvider.php',
         'App\\Providers\\FakerProvider' => __DIR__ . '/../..' . '/app/Providers/FakerProvider.php',
+        'App\\Providers\\OpenAiProvider' => __DIR__ . '/../..' . '/app/Providers/OpenAiProvider.php',
         'App\\Providers\\RouterProvider' => __DIR__ . '/../..' . '/app/Providers/RouterProvider.php',
         'App\\Providers\\SnowFlakeProvider' => __DIR__ . '/../..' . '/app/Providers/SnowFlakeProvider.php',
         'App\\Request' => __DIR__ . '/../..' . '/app/Request.php',
