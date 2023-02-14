@@ -87,6 +87,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         ),
         'O' => 
         array (
+            'Orhanerday\\OpenAi\\' => 18,
             'Opis\\Closure\\' => 13,
         ),
         'M' => 
@@ -239,6 +240,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'Orhanerday\\OpenAi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/orhanerday/open-ai/src',
         ),
         'Opis\\Closure\\' => 
         array (
@@ -1942,6 +1947,8 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'Orhanerday\\OpenAi\\OpenAi' => __DIR__ . '/..' . '/orhanerday/open-ai/src/OpenAi.php',
+        'Orhanerday\\OpenAi\\Url' => __DIR__ . '/..' . '/orhanerday/open-ai/src/Url.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\ArrayEnabled' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/ArrayEnabled.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\BinaryComparison' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/BinaryComparison.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Calculation' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Calculation.php',

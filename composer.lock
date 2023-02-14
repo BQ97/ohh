@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cd31a9c20be0110a37c4305ad9e90b7",
+    "content-hash": "c0c8ac8cf7c4d86f3938d8c9bbc0dca3",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -2165,6 +2165,71 @@
                 "source": "https://github.com/opis/closure/tree/3.6.3"
             },
             "time": "2022-01-27T09:35:39+00:00"
+        },
+        {
+            "name": "orhanerday/open-ai",
+            "version": "3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orhanerday/open-ai.git",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orhanerday/open-ai/zipball/04abf7a4b651556a6af900475de7bfeab75ec1d5",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "pestphp/pest": "^1.20",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Orhanerday\\OpenAi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Orhan Erday",
+                    "email": "orhanerday@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OpenAI GPT-3 Api Client in PHP",
+            "homepage": "https://github.com/orhanerday/open-ai",
+            "keywords": [
+                "open-ai",
+                "orhanerday"
+            ],
+            "support": {
+                "issues": "https://github.com/orhanerday/open-ai/issues",
+                "source": "https://github.com/orhanerday/open-ai/tree/3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/orhanerday",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-10T09:15:29+00:00"
         },
         {
             "name": "paragonie/random_compat",

@@ -1587,6 +1587,8 @@ return array(
     'Opis\\Closure\\SecurityProvider' => $vendorDir . '/opis/closure/src/SecurityProvider.php',
     'Opis\\Closure\\SelfReference' => $vendorDir . '/opis/closure/src/SelfReference.php',
     'Opis\\Closure\\SerializableClosure' => $vendorDir . '/opis/closure/src/SerializableClosure.php',
+    'Orhanerday\\OpenAi\\OpenAi' => $vendorDir . '/orhanerday/open-ai/src/OpenAi.php',
+    'Orhanerday\\OpenAi\\Url' => $vendorDir . '/orhanerday/open-ai/src/Url.php',
     'PhpOffice\\PhpSpreadsheet\\Calculation\\ArrayEnabled' => $vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/ArrayEnabled.php',
     'PhpOffice\\PhpSpreadsheet\\Calculation\\BinaryComparison' => $vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/BinaryComparison.php',
     'PhpOffice\\PhpSpreadsheet\\Calculation\\Calculation' => $vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Calculation.php',
