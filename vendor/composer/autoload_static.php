@@ -87,7 +87,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         ),
         'O' => 
         array (
-            'Orhanerday\\OpenAi\\' => 18,
             'Opis\\Closure\\' => 13,
         ),
         'M' => 
@@ -241,10 +240,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
-        'Orhanerday\\OpenAi\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/orhanerday/open-ai/src',
-        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -383,6 +378,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\Logger' => __DIR__ . '/../..' . '/app/Logger.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
+        'App\\OpenAi' => __DIR__ . '/../..' . '/app/OpenAi.php',
         'App\\Pipeline' => __DIR__ . '/../..' . '/app/Pipeline.php',
         'App\\Providers\\CommonProvider' => __DIR__ . '/../..' . '/app/Providers/CommonProvider.php',
         'App\\Providers\\ConsoleProvider' => __DIR__ . '/../..' . '/app/Providers/ConsoleProvider.php',
@@ -1948,8 +1944,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
-        'Orhanerday\\OpenAi\\OpenAi' => __DIR__ . '/..' . '/orhanerday/open-ai/src/OpenAi.php',
-        'Orhanerday\\OpenAi\\Url' => __DIR__ . '/..' . '/orhanerday/open-ai/src/Url.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\ArrayEnabled' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/ArrayEnabled.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\BinaryComparison' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/BinaryComparison.php',
         'PhpOffice\\PhpSpreadsheet\\Calculation\\Calculation' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Calculation.php',

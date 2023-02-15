@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Orhanerday\OpenAi\OpenAi;
 use League\Container\ServiceProvider\AbstractServiceProvider;
+use App\OpenAi;
 
 class OpenAiProvider extends AbstractServiceProvider
 {

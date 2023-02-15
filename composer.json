@@ -21,8 +21,7 @@
         "laminas/laminas-diactoros": "^2.9",
         "laminas/laminas-httphandlerrunner": "^2.1",
         "league/container": "^4.2",
-        "league/climate": "^3.8",
-        "orhanerday/open-ai": "^3.5"
+        "league/climate": "^3.8"
     },
     "autoload": {
         "psr-4": {
