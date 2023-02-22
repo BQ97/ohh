@@ -17,10 +17,11 @@ class SnowFlakeProvider extends AbstractServiceProvider
 
     public function register(): void
     {
-        $SnowFlake = new Snowflake();
-        $SnowFlake->setStartTimeStamp(strtotime('2020-02-20 02:20:02') * 1000);
-        $SnowFlake->setSequenceResolver(new RandomSequenceResolver());
-
-        $this->getContainer()->add(Snowflake::class, $SnowFlake)->setAlias('snow');
+        $this->getContainer()->add(
+            Snowflake::class,
+            fn () => (new Snowflake())
+                ->setStartTimeStamp(strtotime('2020-02-20 02:20:02') * 1000)
+                ->setSequenceResolver(new RandomSequenceResolver())
+        )->setAlias('snow');
     }
 }
