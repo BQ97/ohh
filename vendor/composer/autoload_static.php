@@ -3447,7 +3447,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\Ams\\CalculationModel' => __DIR__ . '/../..' . '/modules/Ams/CalculationModel.php',
         'modules\\Ams\\EntrustModel' => __DIR__ . '/../..' . '/modules/Ams/EntrustModel.php',
         'modules\\Ams\\LesseeModel' => __DIR__ . '/../..' . '/modules/Ams/LesseeModel.php',
-        'modules\\Ams\\Login' => __DIR__ . '/../..' . '/modules/Ams/Login.php',
         'modules\\CityMap\\AgainstStoresModel' => __DIR__ . '/../..' . '/modules/CityMap/AgainstStoresModel.php',
         'modules\\CityMap\\BuildingsAreaModel' => __DIR__ . '/../..' . '/modules/CityMap/BuildingsAreaModel.php',
         'modules\\CityMap\\BuildingsModel' => __DIR__ . '/../..' . '/modules/CityMap/BuildingsModel.php',

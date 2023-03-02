@@ -3092,7 +3092,6 @@ return array(
     'modules\\Ams\\CalculationModel' => $baseDir . '/modules/Ams/CalculationModel.php',
     'modules\\Ams\\EntrustModel' => $baseDir . '/modules/Ams/EntrustModel.php',
     'modules\\Ams\\LesseeModel' => $baseDir . '/modules/Ams/LesseeModel.php',
-    'modules\\Ams\\Login' => $baseDir . '/modules/Ams/Login.php',
     'modules\\CityMap\\AgainstStoresModel' => $baseDir . '/modules/CityMap/AgainstStoresModel.php',
     'modules\\CityMap\\BuildingsAreaModel' => $baseDir . '/modules/CityMap/BuildingsAreaModel.php',
     'modules\\CityMap\\BuildingsModel' => $baseDir . '/modules/CityMap/BuildingsModel.php',
