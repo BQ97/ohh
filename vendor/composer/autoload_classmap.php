@@ -1437,6 +1437,7 @@ return array(
     'Mpdf\\Otl' => $vendorDir . '/mpdf/mpdf/src/Otl.php',
     'Mpdf\\OtlDump' => $vendorDir . '/mpdf/mpdf/src/OtlDump.php',
     'Mpdf\\Output\\Destination' => $vendorDir . '/mpdf/mpdf/src/Output/Destination.php',
+    'Mpdf\\PageBox' => $vendorDir . '/mpdf/mpdf/src/PageBox.php',
     'Mpdf\\PageFormat' => $vendorDir . '/mpdf/mpdf/src/PageFormat.php',
     'Mpdf\\Pdf\\Protection' => $vendorDir . '/mpdf/mpdf/src/Pdf/Protection.php',
     'Mpdf\\Pdf\\Protection\\UniqidGenerator' => $vendorDir . '/mpdf/mpdf/src/Pdf/Protection/UniqidGenerator.php',

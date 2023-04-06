@@ -1792,6 +1792,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Mpdf\\Otl' => __DIR__ . '/..' . '/mpdf/mpdf/src/Otl.php',
         'Mpdf\\OtlDump' => __DIR__ . '/..' . '/mpdf/mpdf/src/OtlDump.php',
         'Mpdf\\Output\\Destination' => __DIR__ . '/..' . '/mpdf/mpdf/src/Output/Destination.php',
+        'Mpdf\\PageBox' => __DIR__ . '/..' . '/mpdf/mpdf/src/PageBox.php',
         'Mpdf\\PageFormat' => __DIR__ . '/..' . '/mpdf/mpdf/src/PageFormat.php',
         'Mpdf\\Pdf\\Protection' => __DIR__ . '/..' . '/mpdf/mpdf/src/Pdf/Protection.php',
         'Mpdf\\Pdf\\Protection\\UniqidGenerator' => __DIR__ . '/..' . '/mpdf/mpdf/src/Pdf/Protection/UniqidGenerator.php',
