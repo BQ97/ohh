@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App\File;
 
-use PhpOffice\PhpSpreadsheet\{IOFactory, Spreadsheet};
+use PhpOffice\PhpSpreadsheet\{
+    IOFactory,
+    Spreadsheet,
+    Cell\Coordinate,
+    Worksheet\Drawing
+};
+
 
 /**
  * PHPExcel
@@ -57,7 +63,37 @@ class Excel
             $worksheet = $spreadsheet->getSheetByName($sheet);
         }
 
-        return $worksheet->toArray($nullValue, $calculateFormulas, $formatData, $returnCellRef);
+        $data = $worksheet->toArray($nullValue, $calculateFormulas, $formatData, $returnCellRef);
+
+        $drawingCollection = $worksheet->getDrawingCollection();
+
+        $fileSystem = FileSystem::getInstance(UPLOAD_PATH);
+        $fileSystem->mkDir(date('Ymd'));
+
+        foreach ($drawingCollection as $drawing) {
+            [$column, $row] = Coordinate::indexesFromString($drawing->getCoordinates());
+            $index = $column - 1;
+
+            if ($drawing instanceof Drawing) {
+                $path = UPLOAD_PATH . date('Ymd') . DS . atom_next_id() . '.' . $drawing->getExtension();
+
+                switch ($drawing->getExtension()) {
+                    case 'jpg':
+                    case 'jpeg':
+                        imagejpeg(imagecreatefromjpeg($drawing->getPath()), $path);
+                        break;
+                    case 'gif':
+                        imagegif(imagecreatefromgif($drawing->getPath()), $path);
+                        break;
+                    case 'png':
+                        imagepng(imagecreatefrompng($drawing->getPath()), $path);
+                        break;
+                }
+                $data[$row][$index] = $path;
+            }
+        }
+
+        return $data;
     }
 
     /**
