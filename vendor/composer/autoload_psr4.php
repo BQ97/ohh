@@ -40,6 +40,7 @@ return array(
     'League\\Route\\' => array($vendorDir . '/league/route/src'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
+    'League\\Flysystem\\Local\\' => array($vendorDir . '/league/flysystem-local'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'League\\Container\\' => array($vendorDir . '/league/container/src'),
     'League\\CLImate\\' => array($vendorDir . '/league/climate/src'),
