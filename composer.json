@@ -21,7 +21,8 @@
         "laminas/laminas-diactoros": "^2.9",
         "laminas/laminas-httphandlerrunner": "^2.1",
         "league/container": "^4.2",
-        "league/climate": "^3.8"
+        "league/climate": "^3.8",
+        "openai-php/client": "^0.4.1"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +32,10 @@
         "files": [
             "helper.php"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }
