@@ -29,7 +29,7 @@ use App\Providers\OpenAiProvider;
  * @property \Godruoyi\Snowflake\Snowflake      $snow
  * @property \League\CLImate\CLImate            $cli
  * @property \App\Console                       $console
- * @property \App\OpenAi                        $openai
+ * @property \OpenAI\Client                     $openai
  */
 class Application implements ContainerInterface
 {
