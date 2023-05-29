@@ -399,7 +399,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\Logger' => __DIR__ . '/../..' . '/app/Logger.php',
         'App\\Model' => __DIR__ . '/../..' . '/app/Model.php',
         'App\\MyTree' => __DIR__ . '/../..' . '/app/MyTree.php',
-        'App\\OpenAi' => __DIR__ . '/../..' . '/app/OpenAi.php',
         'App\\Pipeline' => __DIR__ . '/../..' . '/app/Pipeline.php',
         'App\\Providers\\CommonProvider' => __DIR__ . '/../..' . '/app/Providers/CommonProvider.php',
         'App\\Providers\\ConsoleProvider' => __DIR__ . '/../..' . '/app/Providers/ConsoleProvider.php',

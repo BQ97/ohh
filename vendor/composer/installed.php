@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5a3d22812675a2409c433b27494bac051133e3ed',
+        'reference' => '32f23ccc1e6a284e6a50c1c2c2257795ca384a7d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5a3d22812675a2409c433b27494bac051133e3ed',
+            'reference' => '32f23ccc1e6a284e6a50c1c2c2257795ca384a7d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -400,8 +400,8 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -515,9 +515,9 @@
             'dev_requirement' => false,
         ),
         'symfony/console' => array(
-            'pretty_version' => 'v6.2.10',
-            'version' => '6.2.10.0',
-            'reference' => '12288d9f4500f84a4d02254d4aa968b15488476f',
+            'pretty_version' => 'v6.2.11',
+            'version' => '6.2.11.0',
+            'reference' => '5aa03db8ef0a5457c316ec580e69562d97734c77',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -596,9 +596,9 @@
             'dev_requirement' => false,
         ),
         'symfony/var-dumper' => array(
-            'pretty_version' => 'v6.2.10',
-            'version' => '6.2.10.0',
-            'reference' => '41a750a23412ca76fdbbf5096943b4134272c1ab',
+            'pretty_version' => 'v6.2.11',
+            'version' => '6.2.11.0',
+            'reference' => '7d10f2a5a452bda385692fc7d38cd6eccfebe756',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),

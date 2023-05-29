@@ -23,7 +23,6 @@ return array(
     'App\\Logger' => $baseDir . '/app/Logger.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\MyTree' => $baseDir . '/app/MyTree.php',
-    'App\\OpenAi' => $baseDir . '/app/OpenAi.php',
     'App\\Pipeline' => $baseDir . '/app/Pipeline.php',
     'App\\Providers\\CommonProvider' => $baseDir . '/app/Providers/CommonProvider.php',
     'App\\Providers\\ConsoleProvider' => $baseDir . '/app/Providers/ConsoleProvider.php',
