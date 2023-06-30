@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
 use App\File\Cache;
+use Phar;
 
 class Utils
 {
@@ -169,5 +170,18 @@ class Utils
     public static function jsonFormat(string | array | object $json): string
     {
         return json_encode(is_string($json) ? json_decode($json, true) : $json, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    }
+
+    public static function pharPack(string $filename, string $packDir, string $index)
+    {
+        $phar = new Phar($filename);
+
+        $phar->buildFromDirectory($packDir);
+
+        $phar->compressFiles(Phar::GZ);
+
+        $phar->stopBuffering();
+
+        return $phar->setStub($phar->createDefaultStub($index));
     }
 }
