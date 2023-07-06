@@ -301,17 +301,17 @@
         },
         {
             "name": "godruoyi/php-snowflake",
-            "version": "2.2.3",
-            "version_normalized": "2.2.3.0",
+            "version": "2.2.4",
+            "version_normalized": "2.2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/godruoyi/php-snowflake.git",
-                "reference": "dde1e160d0c4634c11f7fa6cc736b9998abe17fb"
+                "reference": "833ce5a542034c847ae9d74c4d89c9592cf77a4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/dde1e160d0c4634c11f7fa6cc736b9998abe17fb",
-                "reference": "dde1e160d0c4634c11f7fa6cc736b9998abe17fb",
+                "url": "https://api.github.com/repos/godruoyi/php-snowflake/zipball/833ce5a542034c847ae9d74c4d89c9592cf77a4e",
+                "reference": "833ce5a542034c847ae9d74c4d89c9592cf77a4e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -326,7 +326,7 @@
             "require-dev": {
                 "phpunit/phpunit": "~7|^8|^9"
             },
-            "time": "2023-04-11T04:13:46+00:00",
+            "time": "2023-07-05T13:35:47+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -357,7 +357,7 @@
             ],
             "support": {
                 "issues": "https://github.com/godruoyi/php-snowflake/issues",
-                "source": "https://github.com/godruoyi/php-snowflake/tree/2.2.3"
+                "source": "https://github.com/godruoyi/php-snowflake/tree/2.2.4"
             },
             "funding": [
                 {
