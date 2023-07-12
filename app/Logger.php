@@ -78,5 +78,7 @@ class Logger
 
             return error_log(implode(' | ', $message), 3, LOG_PATH . 'default/' . date('Ymd') . '.log');
         }
+
+        throw new \Exception("Call to undefined method {$name}");
     }
 }
