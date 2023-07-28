@@ -3466,16 +3466,16 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "c9cadc8196ac05e9a256c6e0a540e6910f4360ff"
+                "reference": "f4ba73e5bc053ccc90b81717c5df1cb2ea7bae7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/c9cadc8196ac05e9a256c6e0a540e6910f4360ff",
-                "reference": "c9cadc8196ac05e9a256c6e0a540e6910f4360ff",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/f4ba73e5bc053ccc90b81717c5df1cb2ea7bae7b",
+                "reference": "f4ba73e5bc053ccc90b81717c5df1cb2ea7bae7b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3532,7 +3532,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.4.0"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.4.1"
             },
             "funding": [
                 {
@@ -3540,7 +3540,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-26T14:36:24+00:00"
+            "time": "2023-07-27T08:12:09+00:00"
         },
         {
             "name": "symfony/console",
