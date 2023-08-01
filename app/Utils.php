@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\File\Cache;
 use App\File\FileSystem;
+use Cake\Chronos\Chronos;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
-use App\File\Cache;
 use Phar;
 
 class Utils
@@ -62,6 +63,35 @@ class Utils
         $days = $days + $week2[$after];
 
         return date('Y-m-d', $startTimeStamp + 86400 * $days);
+    }
+
+    public static function computeDistanceDay(int $start, int $end, bool $abs = true)
+    {
+        return Chronos::createFromTimestamp($start)->diffInDays(Chronos::createFromTimestamp($end)->addDay(1), $abs);
+    }
+
+    /**
+     * 计算两个日期之间的间隔
+     * @param int $start 开始时间时间戳
+     * @param int $end  结束时间时间戳
+     */
+    public static function computeDistanceDate(int $start, int $end)
+    {
+        if ($start > $end) [$start, $end] = [$end, $start];
+
+        $startObj = Chronos::createFromTimestamp($start);
+
+        $day = $totalDays = $startObj->diffInDays(Chronos::createFromTimestamp($end)->addDay(1));
+
+        $month = 0;
+
+        while ($day >= ($t = $startObj->endOfMonth()->day)) {
+            $day -= $t;
+            $month += 1;
+            $startObj = $startObj->addMonth(1);
+        }
+
+        return ['month' => $month, 'day' => $day, 'totalDays' => $totalDays];
     }
 
     /**
