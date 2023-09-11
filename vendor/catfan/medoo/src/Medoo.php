@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * The Lightweight PHP Database Framework to Accelerate Development.
  *
- * @version 2.1.9
+ * @version 2.1.10
  * @author Angel Lai
  * @package Medoo
  * @copyright Copyright 2023 Medoo Project, Angel Lai.
@@ -1348,14 +1348,14 @@ class Medoo
 
                 $stack[$value] = isset($keyMatch['type']) ?
                     [$columnKey, $keyMatch['type']] :
-                    [$columnKey, 'String'];
+                    [$columnKey];
             } elseif ($this->isRaw($value)) {
                 preg_match('/([\p{L}_][\p{L}\p{N}@$#\-_]*\.)?(?<column>[\p{L}_][\p{L}\p{N}@$#\-_]*)(\s*\[(?<type>(String|Bool|Int|Number))\])?/u', $key, $keyMatch);
                 $columnKey = $keyMatch['column'];
 
                 $stack[$key] = isset($keyMatch['type']) ?
                     [$columnKey, $keyMatch['type']] :
-                    [$columnKey, 'String'];
+                    [$columnKey];
             } elseif (!is_int($key) && is_array($value)) {
                 if ($root && count(array_keys($columns)) === 1) {
                     $stack[$key] = [$key, 'String'];
