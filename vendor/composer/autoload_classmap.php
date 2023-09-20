@@ -2852,6 +2852,7 @@ return array(
     'Psy\\CodeCleaner\\ValidFunctionNamePass' => $vendorDir . '/psy/psysh/src/CodeCleaner/ValidFunctionNamePass.php',
     'Psy\\Command\\BufferCommand' => $vendorDir . '/psy/psysh/src/Command/BufferCommand.php',
     'Psy\\Command\\ClearCommand' => $vendorDir . '/psy/psysh/src/Command/ClearCommand.php',
+    'Psy\\Command\\CodeArgumentParser' => $vendorDir . '/psy/psysh/src/Command/CodeArgumentParser.php',
     'Psy\\Command\\Command' => $vendorDir . '/psy/psysh/src/Command/Command.php',
     'Psy\\Command\\DocCommand' => $vendorDir . '/psy/psysh/src/Command/DocCommand.php',
     'Psy\\Command\\DumpCommand' => $vendorDir . '/psy/psysh/src/Command/DumpCommand.php',

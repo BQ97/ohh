@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '2a9294328b8a5e3924afe941ce5b411298161902',
+        'reference' => '1c5a83451729b63a350b821b3df42b7e98ccaf26',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,16 +13,16 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2a9294328b8a5e3924afe941ce5b411298161902',
+            'reference' => '1c5a83451729b63a350b821b3df42b7e98ccaf26',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'cakephp/chronos' => array(
-            'pretty_version' => '2.4.0',
-            'version' => '2.4.0.0',
-            'reference' => '9c7e438cba4eed1796ec19ad3874defa9eb9aeac',
+            'pretty_version' => '2.4.1',
+            'version' => '2.4.1.0',
+            'reference' => 'dd583900b26971e84d56c482d6c5fc16961bd103',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cakephp/chronos',
             'aliases' => array(),
@@ -400,8 +400,8 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -479,9 +479,9 @@
             'dev_requirement' => false,
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.11.20',
-            'version' => '0.11.20.0',
-            'reference' => '0fa27040553d1d280a67a4393194df5228afea5b',
+            'pretty_version' => 'v0.11.21',
+            'version' => '0.11.21.0',
+            'reference' => 'bcb22101107f3bf770523b65630c9d547f60c540',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
