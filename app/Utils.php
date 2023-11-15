@@ -214,4 +214,9 @@ class Utils
 
         return $phar->setStub($phar->createDefaultStub($index));
     }
+
+    public static function makePwdByMobile(string $mobile)
+    {
+        return md5('8888' . substr($mobile, -6) . '8888');
+    }
 }
