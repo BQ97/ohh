@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'fcb5bee4c809590bdae26e9951c98e028b194fd0',
+        'reference' => 'c3274d79123dd197b5aeb16f09400fffc2ae3511',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'fcb5bee4c809590bdae26e9951c98e028b194fd0',
+            'reference' => 'c3274d79123dd197b5aeb16f09400fffc2ae3511',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -155,9 +155,9 @@
             'dev_requirement' => false,
         ),
         'league/flysystem-local' => array(
-            'pretty_version' => '3.21.0',
-            'version' => '3.21.0.0',
-            'reference' => '470eb1c09eaabd49ebd908ae06f23983ba3ecfe7',
+            'pretty_version' => '3.23.0',
+            'version' => '3.23.0.0',
+            'reference' => '5cf046ba5f059460e86a997c504dd781a39a109b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/flysystem-local',
             'aliases' => array(),
@@ -400,8 +400,8 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
