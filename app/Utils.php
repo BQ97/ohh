@@ -219,4 +219,23 @@ class Utils
     {
         return md5('8888' . substr($mobile, -6) . '8888');
     }
+
+    public static function generatePgsqlAutoIncrPk(string $table, int $current = 1, string $PK = 'id')
+    {
+        $sql = <<<PGSQL
+        CREATE SEQUENCE "public"."{$table}_{$PK}_seq" 
+        INCREMENT 1
+        MINVALUE  1
+        MAXVALUE 9223372036854775807
+        START 1
+        CACHE 1;
+        SELECT setval('"public"."{$table}_{$PK}_seq"', {$current}, false);
+        ALTER SEQUENCE "public"."{$table}_{$PK}_seq"
+        OWNED BY "public"."{$table}"."{$PK}";
+        ALTER SEQUENCE "public"."{$table}_{$PK}_seq" OWNER TO "root";
+        ALTER TABLE "public"."{$table}" 
+        ALTER COLUMN "{$PK}" SET DEFAULT nextval('{$table}_{$PK}_seq'::regclass);
+        PGSQL;
+        return $sql;
+    }
 }
