@@ -19,12 +19,10 @@ class DbProvider extends AbstractServiceProvider
     {
         $env = $this->getContainer()->get('env');
 
-        $this->getContainer()->add(Medoo::class)->addArgument([
+        $config = [
             'type'      => $env->get('DB_CONNECTION', 'mysql'),
             'database'  => $env->get('DB_DATABASE', ''),
             'host'      => $env->get('DB_HOST', 'localhost'),
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_general_ci',
             'port'      => $env->get('DB_PORT', 3306),
             'prefix'    => $env->get('DB_PRIFIX', ''),
             'username'  => $env->get('DB_USERNAME', 'root'),
@@ -34,6 +32,15 @@ class DbProvider extends AbstractServiceProvider
                 PDO::ATTR_EMULATE_PREPARES => false
             ],
             'logging' => true
-        ])->setAlias('db');
+        ];
+
+        if ($config['type'] === 'mysql') {
+            $config['charset'] = 'utf8mb4';
+            $config['collation'] = 'utf8mb4_general_ci';
+        } else {
+            $config['charset'] = 'utf8';
+        }
+
+        $this->getContainer()->add(Medoo::class)->addArgument($config)->setAlias('db');
     }
 }
