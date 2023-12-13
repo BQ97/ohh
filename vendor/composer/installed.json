@@ -4587,17 +4587,17 @@
         },
         {
             "name": "webpatser/laravel-uuid",
-            "version": "4.0.1",
-            "version_normalized": "4.0.1.0",
+            "version": "4.0.2",
+            "version_normalized": "4.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webpatser/laravel-uuid.git",
-                "reference": "df92ebbc5ea71ee9e0d6e2861178be42ef7eb330"
+                "reference": "f82715c6bc6a4fcc61bb020cb4fddeb8cc73bbea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/df92ebbc5ea71ee9e0d6e2861178be42ef7eb330",
-                "reference": "df92ebbc5ea71ee9e0d6e2861178be42ef7eb330",
+                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/f82715c6bc6a4fcc61bb020cb4fddeb8cc73bbea",
+                "reference": "f82715c6bc6a4fcc61bb020cb4fddeb8cc73bbea",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4613,7 +4613,7 @@
                 "fakerphp/faker": "^1.9.1",
                 "phpunit/phpunit": "^9.3.3"
             },
-            "time": "2021-03-09T07:19:24+00:00",
+            "time": "2023-05-19T08:56:59+00:00",
             "type": "library",
             "extra": {
                 "laravel": {
