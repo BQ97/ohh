@@ -220,9 +220,9 @@ class Utils
         return app('zip')->setPassword($password)->pack($sourceDir);
     }
 
-    public static function unPack(string $zip, string $password = '')
+    public static function zipUnPack(string $zip, string $password = '')
     {
-        return app('zip')->setPassword($password)->pack($zip);
+        return app('zip')->setPassword($password)->unPack($zip);
     }
 
     public static function makePwdByMobile(string $mobile)
