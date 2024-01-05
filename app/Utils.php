@@ -7,6 +7,7 @@ namespace App;
 use App\File\Cache;
 use App\File\FileSystem;
 use Cake\Chronos\Chronos;
+use Cake\Chronos\ChronosInterface;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Webpatser\Uuid\Uuid;
@@ -65,9 +66,18 @@ class Utils
         return date('Y-m-d', $startTimeStamp + 86400 * $days);
     }
 
-    public static function computeDistanceDay(int $start, int $end, bool $abs = true)
+    /**
+     * @param int|ChronosInterface $start
+     * @param int|ChronosInterface $end
+     * @param bool $abs
+     * @return int
+     */
+    public static function computeDistanceDay($start, $end, bool $abs = true)
     {
-        return Chronos::createFromTimestamp($start)->diffInDays(Chronos::createFromTimestamp($end)->addDay(1), $abs);
+        $startObj = $start instanceof ChronosInterface ? $start : Chronos::createFromTimestamp($start);
+        $endObj = $end instanceof ChronosInterface ? $end : Chronos::createFromTimestamp($end);
+
+        return $startObj->diffInDays($endObj->addDays(1), $abs);
     }
 
     /**
@@ -81,14 +91,14 @@ class Utils
 
         $startObj = Chronos::createFromTimestamp($start);
 
-        $day = $totalDays = $startObj->diffInDays(Chronos::createFromTimestamp($end)->addDay(1));
+        $day = $totalDays = static::computeDistanceDay($startObj, $end);
 
         $month = 0;
 
         while ($day >= ($t = $startObj->endOfMonth()->day)) {
             $day -= $t;
             $month += 1;
-            $startObj = $startObj->addMonth(1);
+            $startObj = $startObj->addMonths(1);
         }
 
         return ['month' => $month, 'day' => $day, 'totalDays' => $totalDays];
