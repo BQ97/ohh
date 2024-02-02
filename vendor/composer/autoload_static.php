@@ -73,6 +73,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
             'Symfony\\Component\\Console\\' => 26,
             'Seld\\CliPrompt\\' => 15,
         ),
+        'R' => 
+        array (
+            'Revolt\\' => 7,
+        ),
         'P' => 
         array (
             'Psy\\' => 4,
@@ -202,6 +206,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Seld\\CliPrompt\\' => 
         array (
             0 => __DIR__ . '/..' . '/seld/cli-prompt/src',
+        ),
+        'Revolt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/revolt/event-loop/src',
         ),
         'Psy\\' => 
         array (
@@ -3405,6 +3413,31 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Psy\\VersionUpdater\\SelfUpdate' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/SelfUpdate.php',
+        'Revolt\\EventLoop' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop.php',
+        'Revolt\\EventLoop\\CallbackType' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/CallbackType.php',
+        'Revolt\\EventLoop\\Driver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver.php',
+        'Revolt\\EventLoop\\DriverFactory' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/DriverFactory.php',
+        'Revolt\\EventLoop\\Driver\\EvDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver/EvDriver.php',
+        'Revolt\\EventLoop\\Driver\\EventDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver/EventDriver.php',
+        'Revolt\\EventLoop\\Driver\\StreamSelectDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver/StreamSelectDriver.php',
+        'Revolt\\EventLoop\\Driver\\TracingDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver/TracingDriver.php',
+        'Revolt\\EventLoop\\Driver\\UvDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Driver/UvDriver.php',
+        'Revolt\\EventLoop\\FiberLocal' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/FiberLocal.php',
+        'Revolt\\EventLoop\\Internal\\AbstractDriver' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/AbstractDriver.php',
+        'Revolt\\EventLoop\\Internal\\ClosureHelper' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/ClosureHelper.php',
+        'Revolt\\EventLoop\\Internal\\DeferCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/DeferCallback.php',
+        'Revolt\\EventLoop\\Internal\\DriverCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/DriverCallback.php',
+        'Revolt\\EventLoop\\Internal\\DriverSuspension' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/DriverSuspension.php',
+        'Revolt\\EventLoop\\Internal\\SignalCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/SignalCallback.php',
+        'Revolt\\EventLoop\\Internal\\StreamCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/StreamCallback.php',
+        'Revolt\\EventLoop\\Internal\\StreamReadableCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/StreamReadableCallback.php',
+        'Revolt\\EventLoop\\Internal\\StreamWritableCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/StreamWritableCallback.php',
+        'Revolt\\EventLoop\\Internal\\TimerCallback' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/TimerCallback.php',
+        'Revolt\\EventLoop\\Internal\\TimerQueue' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Internal/TimerQueue.php',
+        'Revolt\\EventLoop\\InvalidCallbackError' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/InvalidCallbackError.php',
+        'Revolt\\EventLoop\\Suspension' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/Suspension.php',
+        'Revolt\\EventLoop\\UncaughtThrowable' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/UncaughtThrowable.php',
+        'Revolt\\EventLoop\\UnsupportedFeatureException' => __DIR__ . '/..' . '/revolt/event-loop/src/EventLoop/UnsupportedFeatureException.php',
         'Seld\\CliPrompt\\CliPrompt' => __DIR__ . '/..' . '/seld/cli-prompt/src/CliPrompt.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

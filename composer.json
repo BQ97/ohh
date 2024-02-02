@@ -22,7 +22,8 @@
         "laminas/laminas-httphandlerrunner": "^2.1",
         "league/container": "^4.2",
         "league/climate": "^3.8",
-        "openai-php/client": "^0.4.1"
+        "openai-php/client": "^0.4.1",
+        "revolt/event-loop": "^1.0"
     },
     "autoload": {
         "psr-4": {
