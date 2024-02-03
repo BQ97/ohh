@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\{File\Cache, File\FileSystem, Application};
 use Laminas\Diactoros\Response\HtmlResponse;
+use Revolt\EventLoop;
+use Closure;
 
 if (!function_exists('app')) {
 
@@ -59,8 +61,70 @@ if (!function_exists('atom_next_id')) {
     /**
      * 全局唯一ID
      */
-    function atom_next_id() : string
+    function atom_next_id(): string
     {
         return app('snow')->id();
+    }
+}
+
+if (!function_exists('setInterval')) {
+    /**
+     * 类似 `javascript` 的 setInterval
+     * @param callable $callback
+     * @param float $time
+     * @return string for use with clearInterval
+     */
+    function setInterval(callable $callback, float $time): string
+    {
+        $intervalId = EventLoop::repeat($time, Closure::fromCallable($callback));
+
+        if (!EventLoop::getDriver()->isRunning()) {
+            EventLoop::run();
+        }
+
+        return $intervalId;
+    }
+}
+
+if (!function_exists('clearInterval')) {
+    /**
+     * 类似 `javascript` 的 clearInterval
+     * @param string $interval
+     * @return void
+     */
+    function clearInterval(string $interval): void
+    {
+        EventLoop::cancel($interval);
+    }
+}
+
+if (!function_exists('setTimeout')) {
+    /**
+     * 类似 `javascript` 的 setTimeout
+     * @param callable $callback(string) :void
+     * @param float $time
+     * @return string
+     */
+    function setTimeout(callable $callback, float $time): string
+    {
+        $timeoutId = EventLoop::delay($time, Closure::fromCallable($callback));
+
+        if (!EventLoop::getDriver()->isRunning()) {
+            EventLoop::run();
+        }
+
+        return $timeoutId;
+    }
+}
+
+if (!function_exists('clearTimeout')) {
+    /**
+     * 类似 `javascript` 的 clearTimeout
+     * @param string $timeout
+     * @return void
+     */
+    function clearTimeout(string $timeout): void
+    {
+        EventLoop::cancel($timeout);
     }
 }
