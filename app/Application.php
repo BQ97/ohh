@@ -33,6 +33,8 @@ use App\Providers\OpenAiProvider;
  */
 class Application implements ContainerInterface
 {
+    public const VERSION = '2.1.0';
+
     private Container $container;
 
     private array $providers = [
@@ -116,7 +118,7 @@ class Application implements ContainerInterface
     {
         return [
             'app_name' => $this->env->get('APP_NAME'),
-            'version' => '2.0.1',
+            'version' => self::VERSION,
             'PHP_VERSION_ID' => PHP_VERSION_ID,
             'date' => date('Y-m-d H:i:s'),
         ];

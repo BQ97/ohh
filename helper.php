@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\{File\Cache, File\FileSystem, Application};
 use Laminas\Diactoros\Response\HtmlResponse;
 use Revolt\EventLoop;
-use Closure;
 
 if (!function_exists('app')) {
 
@@ -76,11 +75,9 @@ if (!function_exists('setInterval')) {
      */
     function setInterval(callable $callback, float $time): string
     {
-        $intervalId = EventLoop::repeat($time, Closure::fromCallable($callback));
+        $intervalId = EventLoop::repeat($time, \Closure::fromCallable($callback));
 
-        if (!EventLoop::getDriver()->isRunning()) {
-            EventLoop::run();
-        }
+        EventLoop::getDriver()->isRunning() || EventLoop::run();
 
         return $intervalId;
     }
@@ -107,11 +104,9 @@ if (!function_exists('setTimeout')) {
      */
     function setTimeout(callable $callback, float $time): string
     {
-        $timeoutId = EventLoop::delay($time, Closure::fromCallable($callback));
+        $timeoutId = EventLoop::delay($time, \Closure::fromCallable($callback));
 
-        if (!EventLoop::getDriver()->isRunning()) {
-            EventLoop::run();
-        }
+        EventLoop::getDriver()->isRunning() || EventLoop::run();
 
         return $timeoutId;
     }
