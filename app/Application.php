@@ -33,7 +33,7 @@ use App\Providers\OpenAiProvider;
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.1.0';
+    public const VERSION = '2.10.0';
 
     private Container $container;
 
