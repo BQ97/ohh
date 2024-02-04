@@ -60,9 +60,9 @@ if (!function_exists('atom_next_id')) {
     /**
      * 全局唯一ID
      */
-    function atom_next_id(): string
+    function atom_next_id(): int
     {
-        return app('snow')->id();
+        return (int)app('snow')->id();
     }
 }
 

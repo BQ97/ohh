@@ -20,7 +20,7 @@ class SnowFlakeProvider extends AbstractServiceProvider
         $this->getContainer()->add(
             Snowflake::class,
             fn () => (new Snowflake())
-                ->setStartTimeStamp(strtotime('2020-02-20 02:20:02') * 1000)
+                ->setStartTimeStamp(strtotime('2024-02-04 09:00:00') * 1000)
                 ->setSequenceResolver(new RandomSequenceResolver())
         )->setAlias('snow');
     }
