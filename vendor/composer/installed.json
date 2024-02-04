@@ -69,17 +69,17 @@
         },
         {
             "name": "catfan/medoo",
-            "version": "v2.1.11",
-            "version_normalized": "2.1.11.0",
+            "version": "v2.1.12",
+            "version_normalized": "2.1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "55f2e2368e069f5dbba07670e142cd1febfcd382"
+                "reference": "d1ff4e0e873a3e032e3d8804031dd6be4e013b22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/55f2e2368e069f5dbba07670e142cd1febfcd382",
-                "reference": "55f2e2368e069f5dbba07670e142cd1febfcd382",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/d1ff4e0e873a3e032e3d8804031dd6be4e013b22",
+                "reference": "d1ff4e0e873a3e032e3d8804031dd6be4e013b22",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -103,7 +103,7 @@
                 "ext-pdo_sqlite": "For SQLite database",
                 "ext-pdo_sqlsrv": "For MSSQL database on both Window/Liunx platform"
             },
-            "time": "2024-01-29T06:47:27+00:00",
+            "time": "2024-02-03T11:28:59+00:00",
             "type": "framework",
             "installation-source": "dist",
             "autoload": {
