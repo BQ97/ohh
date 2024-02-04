@@ -10,19 +10,10 @@ use Cake\Chronos\Chronos;
 use Cake\Chronos\ChronosInterface;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
-use Webpatser\Uuid\Uuid;
 use Phar;
 
 class Utils
 {
-    /**
-     * @return Uuid
-     */
-    public static function Uuid()
-    {
-        return Uuid::generate(4)->hex;
-    }
-
     /**
      * 增加工作日，过滤掉周六周日
      * @param string $start  开始日期

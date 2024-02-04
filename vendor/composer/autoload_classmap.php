@@ -3283,8 +3283,6 @@ return array(
     'Symfony\\Polyfill\\Intl\\Grapheme\\Grapheme' => $vendorDir . '/symfony/polyfill-intl-grapheme/Grapheme.php',
     'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Normalizer.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-    'Webpatser\\Uuid\\Uuid' => $vendorDir . '/webpatser/laravel-uuid/src/Webpatser/Uuid/Uuid.php',
-    'Webpatser\\Uuid\\UuidServiceProvider' => $vendorDir . '/webpatser/laravel-uuid/src/Webpatser/Uuid/UuidServiceProvider.php',
     'ZipStream\\CentralDirectoryFileHeader' => $vendorDir . '/maennchen/zipstream-php/src/CentralDirectoryFileHeader.php',
     'ZipStream\\CompressionMethod' => $vendorDir . '/maennchen/zipstream-php/src/CompressionMethod.php',
     'ZipStream\\DataDescriptor' => $vendorDir . '/maennchen/zipstream-php/src/DataDescriptor.php',

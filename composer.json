@@ -10,7 +10,6 @@
         "league/plates": "^3.3",
         "cakephp/chronos": "^2.0",
         "symfony/var-dumper": "^6.0",
-        "webpatser/laravel-uuid": "^4.0",
         "godruoyi/php-snowflake": "^2.0",
         "phpoffice/phpword": "^0.18.1",
         "psy/psysh": "^0.11.1",
