@@ -926,16 +926,16 @@
         },
         {
             "name": "league/container",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/container.git",
-                "reference": "375d13cb828649599ef5d48a339c4af7a26cd0ab"
+                "reference": "56f6f3fb9073129dd0342a8ecc197342efdf91a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/container/zipball/375d13cb828649599ef5d48a339c4af7a26cd0ab",
-                "reference": "375d13cb828649599ef5d48a339c4af7a26cd0ab",
+                "url": "https://api.github.com/repos/thephpleague/container/zipball/56f6f3fb9073129dd0342a8ecc197342efdf91a0",
+                "reference": "56f6f3fb9073129dd0342a8ecc197342efdf91a0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1002,7 +1002,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/container/issues",
-                "source": "https://github.com/thephpleague/container/tree/4.2.0"
+                "source": "https://github.com/thephpleague/container/tree/4.2.1"
             },
             "funding": [
                 {
@@ -1010,7 +1010,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-16T10:29:06+00:00"
+            "time": "2024-03-13T11:04:59+00:00"
         },
         {
             "name": "league/flysystem",
