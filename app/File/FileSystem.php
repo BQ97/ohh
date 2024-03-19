@@ -26,7 +26,7 @@ use Exception;
 class FileSystem
 {
     /**
-     * @var array<File>
+     * @var array<string,File>
      */
     private static array $handlers;
 
@@ -59,7 +59,7 @@ class FileSystem
         return new static($path);
     }
 
-    private function getHandle() : File
+    public function getHandle() : File
     {
         return static::$handlers[$this->path];
     }
