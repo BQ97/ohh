@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd666dc43a104dddd222dfa405cb91656d2db22da',
+        'reference' => '7b6fe9d3bc90eac207aa49b94d86f55f91e1fe45',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd666dc43a104dddd222dfa405cb91656d2db22da',
+            'reference' => '7b6fe9d3bc90eac207aa49b94d86f55f91e1fe45',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -209,9 +209,9 @@
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
-            'pretty_version' => 'v8.2.2',
-            'version' => '8.2.2.0',
-            'reference' => '596a87b876d7793be7be060a8ac13424de120dd5',
+            'pretty_version' => 'v8.2.3',
+            'version' => '8.2.3.0',
+            'reference' => '6f723a96becf989a831e38caf758d28364a69939',
             'type' => 'library',
             'install_path' => __DIR__ . '/../mpdf/mpdf',
             'aliases' => array(),
@@ -408,8 +408,8 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
-                1 => '*',
-                2 => '^1.1 || ^2.0',
+                1 => '^1.1 || ^2.0',
+                2 => '*',
             ),
         ),
         'psr/http-message' => array(
@@ -425,8 +425,8 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
-                1 => '*',
-                2 => '^1.1 || ^2.0',
+                1 => '^1.1 || ^2.0',
+                2 => '*',
             ),
         ),
         'psr/http-server-handler' => array(
