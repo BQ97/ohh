@@ -32,5 +32,6 @@ return array(
     'db356362850385d08a5381de2638b5fd' => $vendorDir . '/mpdf/mpdf/src/functions.php',
     '61ba3e92ef91a7a0f1cc260ebd9290e4' => $vendorDir . '/openai-php/client/src/OpenAI.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
+    '7dd996d98a91d095f100c75e0b9e2391' => $vendorDir . '/spatie/async/src/helpers.php',
     'b4546c0f2c36e376009e1ef09f264d2d' => $baseDir . '/helper.php',
 );
