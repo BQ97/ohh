@@ -1987,6 +1987,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'OpenAI\\Responses\\Audio\\SpeechStreamResponse' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/SpeechStreamResponse.php',
         'OpenAI\\Responses\\Audio\\TranscriptionResponse' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/TranscriptionResponse.php',
         'OpenAI\\Responses\\Audio\\TranscriptionResponseSegment' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/TranscriptionResponseSegment.php',
+        'OpenAI\\Responses\\Audio\\TranscriptionResponseWord' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/TranscriptionResponseWord.php',
         'OpenAI\\Responses\\Audio\\TranslationResponse' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/TranslationResponse.php',
         'OpenAI\\Responses\\Audio\\TranslationResponseSegment' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Audio/TranslationResponseSegment.php',
         'OpenAI\\Responses\\Chat\\CreateResponse' => __DIR__ . '/..' . '/openai-php/client/src/Responses/Chat/CreateResponse.php',

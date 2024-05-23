@@ -1575,6 +1575,7 @@ return array(
     'OpenAI\\Responses\\Audio\\SpeechStreamResponse' => $vendorDir . '/openai-php/client/src/Responses/Audio/SpeechStreamResponse.php',
     'OpenAI\\Responses\\Audio\\TranscriptionResponse' => $vendorDir . '/openai-php/client/src/Responses/Audio/TranscriptionResponse.php',
     'OpenAI\\Responses\\Audio\\TranscriptionResponseSegment' => $vendorDir . '/openai-php/client/src/Responses/Audio/TranscriptionResponseSegment.php',
+    'OpenAI\\Responses\\Audio\\TranscriptionResponseWord' => $vendorDir . '/openai-php/client/src/Responses/Audio/TranscriptionResponseWord.php',
     'OpenAI\\Responses\\Audio\\TranslationResponse' => $vendorDir . '/openai-php/client/src/Responses/Audio/TranslationResponse.php',
     'OpenAI\\Responses\\Audio\\TranslationResponseSegment' => $vendorDir . '/openai-php/client/src/Responses/Audio/TranslationResponseSegment.php',
     'OpenAI\\Responses\\Chat\\CreateResponse' => $vendorDir . '/openai-php/client/src/Responses/Chat/CreateResponse.php',
