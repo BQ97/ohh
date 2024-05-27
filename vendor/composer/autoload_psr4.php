@@ -10,6 +10,7 @@ return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku', $vendorDir . '/voku/portable-utf8/src/voku'),
     'setasign\\Fpdi\\' => array($vendorDir . '/setasign/fpdi/src'),
     'modules\\' => array($baseDir . '/modules'),
+    'ddn\\sapp\\' => array($vendorDir . '/ddn/sapp/src'),
     'ZipStream\\' => array($vendorDir . '/maennchen/zipstream-php/src'),
     'Tests\\PhpOffice\\Math\\' => array($vendorDir . '/phpoffice/math/tests/Math'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fea0102b2d36ab4974a1eebe811b128",
+    "content-hash": "603f543c106ebbc4493faa160cb94231",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -151,6 +151,58 @@
                 }
             ],
             "time": "2024-02-03T11:28:59+00:00"
+        },
+        {
+            "name": "ddn/sapp",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dealfonso/sapp.git",
+                "reference": "f56caf638d5c298dd05f4731c656d2b9e6abffbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dealfonso/sapp/zipball/f56caf638d5c298dd05f4731c656d2b9e6abffbb",
+                "reference": "f56caf638d5c298dd05f4731c656d2b9e6abffbb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ddn\\sapp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos A.",
+                    "email": "caralla@upv.es"
+                }
+            ],
+            "description": "Simple and Agnostic PDF Parser (SAPP): Edit, manipulate and sign PDF documents usign PHP",
+            "support": {
+                "issues": "https://github.com/dealfonso/sapp/issues",
+                "source": "https://github.com/dealfonso/sapp/tree/1.4.2"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/caralla",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-03-20T10:41:09+00:00"
         },
         {
             "name": "fakerphp/faker",

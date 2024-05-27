@@ -51,6 +51,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             'modules\\' => 8,
         ),
+        'd' => 
+        array (
+            'ddn\\sapp\\' => 9,
+        ),
         'Z' => 
         array (
             'ZipStream\\' => 10,
@@ -172,6 +176,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'modules\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules',
+        ),
+        'ddn\\sapp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ddn/sapp/src',
         ),
         'ZipStream\\' => 
         array (
@@ -3796,6 +3804,25 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'ZipStream\\Zip64\\ExtendedInformationExtraField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/ExtendedInformationExtraField.php',
         'ZipStream\\ZipStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/ZipStream.php',
         'ZipStream\\Zs\\ExtendedInformationExtraField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zs/ExtendedInformationExtraField.php',
+        'ddn\\sapp\\PDFDoc' => __DIR__ . '/..' . '/ddn/sapp/src/PDFDoc.php',
+        'ddn\\sapp\\PDFDocWithContents' => __DIR__ . '/..' . '/ddn/sapp/src/PDFDocWithContents.php',
+        'ddn\\sapp\\PDFObject' => __DIR__ . '/..' . '/ddn/sapp/src/PDFObject.php',
+        'ddn\\sapp\\PDFObjectParser' => __DIR__ . '/..' . '/ddn/sapp/src/PDFObjectParser.php',
+        'ddn\\sapp\\PDFSignatureObject' => __DIR__ . '/..' . '/ddn/sapp/src/PDFSignatureObject.php',
+        'ddn\\sapp\\PDFUtilFnc' => __DIR__ . '/..' . '/ddn/sapp/src/PDFUtilFnc.php',
+        'ddn\\sapp\\helpers\\Buffer' => __DIR__ . '/..' . '/ddn/sapp/src/helpers/Buffer.php',
+        'ddn\\sapp\\helpers\\DependencyTreeObject' => __DIR__ . '/..' . '/ddn/sapp/src/helpers/DependencyTreeObject.php',
+        'ddn\\sapp\\helpers\\LoadHelpers' => __DIR__ . '/..' . '/ddn/sapp/src/helpers/LoadHelpers.php',
+        'ddn\\sapp\\helpers\\StreamReader' => __DIR__ . '/..' . '/ddn/sapp/src/helpers/StreamReader.php',
+        'ddn\\sapp\\helpers\\UUID' => __DIR__ . '/..' . '/ddn/sapp/src/helpers/UUID.php',
+        'ddn\\sapp\\pdfvalue\\PDFValue' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValue.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueHexString' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueHexString.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueList' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueList.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueObject' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueObject.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueReference' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueReference.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueSimple' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueSimple.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueString' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueString.php',
+        'ddn\\sapp\\pdfvalue\\PDFValueType' => __DIR__ . '/..' . '/ddn/sapp/src/pdfvalue/PDFValueType.php',
         'modules\\Ams\\BaseModel' => __DIR__ . '/../..' . '/modules/Ams/BaseModel.php',
         'modules\\Ams\\CalculationModel' => __DIR__ . '/../..' . '/modules/Ams/CalculationModel.php',
         'modules\\Ams\\EntrustModel' => __DIR__ . '/../..' . '/modules/Ams/EntrustModel.php',
