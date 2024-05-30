@@ -18,18 +18,23 @@ class Csv
             return false;
         }
 
-        return array_map(function ($string) {
+        $handle = fopen($fileName, 'r');
 
-            $from_encoding = mb_detect_encoding($string, mb_detect_order(), true);
-
-            if ($from_encoding === false) {
-                $string = iconv('GB18030', 'UTF-8', $string);
-            } else {
-                $string = mb_convert_encoding($string, 'UTF-8', $from_encoding);
+        $output  = [];
+        $row = 0;
+        while ($lineData = fgetcsv($handle)) {
+            $num = count($lineData);
+            for ($i = 0; $i < $num; $i++) {
+                $from_encoding = mb_detect_encoding($lineData[$i], mb_detect_order(), true);
+                if ($from_encoding !== 'UTF-8') {
+                    $lineData[$i] = iconv('GBK', 'UTF-8', $lineData[$i]);
+                }
+                $output[$row][$i] = $lineData[$i];
             }
-
-            return str_getcsv($string);
-        }, file($fileName, FILE_USE_INCLUDE_PATH | FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES));
+            $row++;
+        }
+        fclose($handle);
+        return $output;
     }
 
     /**
