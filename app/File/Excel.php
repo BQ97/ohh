@@ -137,24 +137,25 @@ class Excel
 
     /**
      * @param array data 必须是干干净净的 二维数组
-     * @param string index_key
-     * @param string|array|callable column_key = '*'
-     * @param callable $where = null
-     * @param int $start_row = null
+     * @param ?string|array|callable column_key
+     * @param ?string index_key
+     * @param ?callable $where
+     * @param ?int $start_row
      * @return array
      */
     public static function column(
         array $data,
-        string $index_key,
-        string | array | callable $column_key = '*',
-        callable $where = null,
-        int $start_row = null
+        string|array|callable $column_key = null,
+        ?string $index_key = null,
+        ?callable $where = null,
+        ?int $start_row = null
     ) {
         if (is_callable($column_key)) {
             $column_key = Closure::fromCallable($column_key);
         } else if (is_array($column_key)) {
             $column_key = array_map([static::class, 'columnIndexFromString'], $column_key);
         } else {
+            if (!$column_key) $column_key = '*';
             if ($column_key === '*') {
                 $column_key = array_keys($data[0]);
             } else {
@@ -164,23 +165,31 @@ class Excel
 
         $result = [];
 
-        $index_key = static::columnIndexFromString($index_key);
+        if ($index_key) $index_key = static::columnIndexFromString($index_key);
 
         foreach ($data as $key => $value) {
             if ($start_row && $key < $start_row) {
                 continue;
             }
 
-            if ($where && !call_user_func($where, $key, $value)) {
+            if ($where && !call_user_func($where, $value, $key)) {
                 continue;
             }
 
+            $resultItem = [];
+
             if ($column_key instanceof Closure) {
-                $result[$value[$index_key]][] = call_user_func($column_key, $key, $value);
+                $resultItem = call_user_func($column_key, $value, $key);
             } elseif (is_array($column_key)) {
-                $result[$value[$index_key]][] = array_map(fn ($c) => $value[$c], $column_key);
+                $resultItem = array_map(fn ($c) => $value[$c], $column_key);
             } else {
-                $result[$value[$index_key]][] = $value[$column_key];
+                $resultItem = $value[$column_key];
+            }
+
+            if ($index_key) {
+                $result[$value[$index_key]][] = $resultItem;
+            } else {
+                $result[] = $resultItem;
             }
         }
 
