@@ -186,7 +186,7 @@ class Excel
                 $resultItem = $value[$column_key];
             }
 
-            if ($index_key) {
+            if (is_int($index_key)) {
                 $result[$value[$index_key]][] = $resultItem;
             } else {
                 $result[] = $resultItem;
