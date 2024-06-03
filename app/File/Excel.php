@@ -196,48 +196,12 @@ class Excel
         return $result;
     }
 
+    /**
+     * @param string $columnAddress
+     * @return int — Column index (A = 0)
+     */
     public static function columnIndexFromString(string $columnAddress): int
     {
-        //    Using a lookup cache adds a slight memory overhead, but boosts speed
-        //    caching using a static within the method is faster than a class static,
-        //        though it's additional memory overhead
-        static $indexCache = [];
-        $columnAddress = $columnAddress ?? '';
-
-        if (isset($indexCache[$columnAddress])) {
-            return $indexCache[$columnAddress];
-        }
-        //    It's surprising how costly the strtoupper() and ord() calls actually are, so we use a lookup array
-        //        rather than use ord() and make it case insensitive to get rid of the strtoupper() as well.
-        //        Because it's a static, there's no significant memory overhead either.
-        static $columnLookup = [
-            'A' => 0, 'B' => 1, 'C' => 2, 'D' => 3, 'E' => 4, 'F' => 5, 'G' => 6, 'H' => 7, 'I' => 8, 'J' => 9,
-            'K' => 10, 'L' => 11, 'M' => 12, 'N' => 13, 'O' => 14, 'P' => 15, 'Q' => 16, 'R' => 17, 'S' => 18,
-            'T' => 19, 'U' => 20, 'V' => 21, 'W' => 22, 'X' => 23, 'Y' => 24, 'Z' => 25,
-            'a' => 0, 'b' => 1, 'c' => 2, 'd' => 3, 'e' => 4, 'f' => 5, 'g' => 6, 'h' => 7, 'i' => 8, 'j' => 9,
-            'k' => 10, 'l' => 11, 'm' => 12, 'n' => 13, 'o' => 14, 'p' => 15, 'q' => 16, 'r' => 17, 's' => 18,
-            't' => 19, 'u' => 20, 'v' => 21, 'w' => 22, 'x' => 23, 'y' => 24, 'z' => 25,
-        ];
-
-        //    We also use the language construct isset() rather than the more costly strlen() function to match the
-        //       length of $columnAddress for improved performance
-        if (isset($columnAddress[0])) {
-            if (!isset($columnAddress[1])) {
-                $indexCache[$columnAddress] = $columnLookup[$columnAddress];
-
-                return $indexCache[$columnAddress];
-            } elseif (!isset($columnAddress[2])) {
-                $indexCache[$columnAddress] = $columnLookup[$columnAddress[0]] * 26
-                    + $columnLookup[$columnAddress[1]];
-
-                return $indexCache[$columnAddress];
-            } elseif (!isset($columnAddress[3])) {
-                $indexCache[$columnAddress] = $columnLookup[$columnAddress[0]] * 676
-                    + $columnLookup[$columnAddress[1]] * 26
-                    + $columnLookup[$columnAddress[2]];
-
-                return $indexCache[$columnAddress];
-            }
-        }
+        return Coordinate::columnIndexFromString($columnAddress) - 1;
     }
 }
