@@ -7,16 +7,13 @@ namespace Composer\Autoload;
 class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'b46ad4fe52f4d1899a2951c7e6ea56b0' => __DIR__ . '/..' . '/voku/portable-utf8/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -38,11 +35,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
     );
 
     public static $prefixLengthsPsr4 = array (
-        'v' => 
-        array (
-            'voku\\helper\\' => 12,
-            'voku\\' => 5,
-        ),
         's' => 
         array (
             'setasign\\Fpdi\\' => 14,
@@ -65,11 +57,9 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
-            'Symfony\\Polyfill\\Iconv\\' => 23,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
@@ -160,15 +150,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\helper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/anti-xss/src/voku/helper',
-        ),
-        'voku\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
-            1 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
-        ),
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
@@ -189,10 +170,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             0 => __DIR__ . '/..' . '/phpoffice/math/tests/Math',
         ),
-        'Symfony\\Polyfill\\Php72\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
-        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -204,10 +181,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Symfony\\Polyfill\\Intl\\Grapheme\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme',
-        ),
-        'Symfony\\Polyfill\\Iconv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-iconv',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
@@ -1038,6 +1011,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'FastRoute\\RouteParser\\Std' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser/Std.php',
         'Godruoyi\\Snowflake\\FileLockResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/FileLockResolver.php',
         'Godruoyi\\Snowflake\\LaravelSequenceResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/LaravelSequenceResolver.php',
+        'Godruoyi\\Snowflake\\PredisSequenceResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/PredisSequenceResolver.php',
         'Godruoyi\\Snowflake\\RandomSequenceResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/RandomSequenceResolver.php',
         'Godruoyi\\Snowflake\\RedisSequenceResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/RedisSequenceResolver.php',
         'Godruoyi\\Snowflake\\SequenceResolver' => __DIR__ . '/..' . '/godruoyi/php-snowflake/src/SequenceResolver.php',
@@ -2624,6 +2598,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\PageMargins' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/PageMargins.php',
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\PageSetup' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/PageSetup.php',
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\Pane' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Pane.php',
+        'PhpOffice\\PhpSpreadsheet\\Worksheet\\ProtectedRange' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/ProtectedRange.php',
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\Protection' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Protection.php',
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\Row' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Row.php',
         'PhpOffice\\PhpSpreadsheet\\Worksheet\\RowCellIterator' => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/RowCellIterator.php',
@@ -3755,16 +3730,16 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Symfony\\Contracts\\Service\\Attribute\\Required' => __DIR__ . '/..' . '/symfony/service-contracts/Attribute/Required.php',
         'Symfony\\Contracts\\Service\\Attribute\\SubscribedService' => __DIR__ . '/..' . '/symfony/service-contracts/Attribute/SubscribedService.php',
         'Symfony\\Contracts\\Service\\ResetInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ResetInterface.php',
+        'Symfony\\Contracts\\Service\\ServiceCollectionInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceCollectionInterface.php',
         'Symfony\\Contracts\\Service\\ServiceLocatorTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceLocatorTrait.php',
+        'Symfony\\Contracts\\Service\\ServiceMethodsSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceMethodsSubscriberTrait.php',
         'Symfony\\Contracts\\Service\\ServiceProviderInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceProviderInterface.php',
         'Symfony\\Contracts\\Service\\ServiceSubscriberInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberInterface.php',
         'Symfony\\Contracts\\Service\\ServiceSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberTrait.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
-        'Symfony\\Polyfill\\Iconv\\Iconv' => __DIR__ . '/..' . '/symfony/polyfill-iconv/Iconv.php',
         'Symfony\\Polyfill\\Intl\\Grapheme\\Grapheme' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/Grapheme.php',
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Tests\\PhpOffice\\Math\\Element\\AbstractGroupElementTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/AbstractGroupElementTest.php',
         'Tests\\PhpOffice\\Math\\Element\\FractionTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/FractionTest.php',
         'Tests\\PhpOffice\\Math\\Element\\IdentifierTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/IdentifierTest.php',
@@ -3911,10 +3886,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'setasign\\Fpdi\\Tcpdf\\Fpdi' => __DIR__ . '/..' . '/setasign/fpdi/src/Tcpdf/Fpdi.php',
         'setasign\\Fpdi\\Tfpdf\\FpdfTpl' => __DIR__ . '/..' . '/setasign/fpdi/src/Tfpdf/FpdfTpl.php',
         'setasign\\Fpdi\\Tfpdf\\Fpdi' => __DIR__ . '/..' . '/setasign/fpdi/src/Tfpdf/Fpdi.php',
-        'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
-        'voku\\helper\\AntiXSS' => __DIR__ . '/..' . '/voku/anti-xss/src/voku/helper/AntiXSS.php',
-        'voku\\helper\\Bootup' => __DIR__ . '/..' . '/voku/portable-utf8/src/voku/helper/Bootup.php',
-        'voku\\helper\\UTF8' => __DIR__ . '/..' . '/voku/portable-utf8/src/voku/helper/UTF8.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
