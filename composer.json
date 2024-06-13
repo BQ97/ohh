@@ -25,7 +25,8 @@
         "revolt/event-loop": "^1.0",
         "spatie/async": "^1.6",
         "monolog/monolog": "^3.5",
-        "ddn/sapp": "^1.4"
+        "ddn/sapp": "^1.4",
+        "smalot/pdfparser": "^2.10"
     },
     "autoload": {
         "psr-4": {
