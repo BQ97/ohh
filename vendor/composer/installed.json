@@ -1937,24 +1937,18 @@
         },
         {
             "name": "mpdf/mpdf",
-            "version": "v8.2.3",
-            "version_normalized": "8.2.3.0",
+            "version": "v8.2.4",
+            "version_normalized": "8.2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "6f723a96becf989a831e38caf758d28364a69939"
+                "reference": "9e3ff91606fed11cd58a130eabaaf60e56fdda88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/6f723a96becf989a831e38caf758d28364a69939",
-                "reference": "6f723a96becf989a831e38caf758d28364a69939",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/9e3ff91606fed11cd58a130eabaaf60e56fdda88",
+                "reference": "9e3ff91606fed11cd58a130eabaaf60e56fdda88",
+                "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
@@ -1980,7 +1974,7 @@
                 "ext-xml": "Needed mainly for SVG manipulation",
                 "ext-zlib": "Needed for compression of embedded resources, such as fonts"
             },
-            "time": "2024-03-11T12:55:53+00:00",
+            "time": "2024-06-14T16:06:41+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
