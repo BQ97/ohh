@@ -152,6 +152,7 @@ if (!function_exists('send_mail')) {
                 if (is_string($to)) {
                     $mail->addAddress($to);
                 } else {
+                    $to['name'] = iconv('UTF-8', 'GB2312', $to['name']);
                     $mail->addAddress(...$to);
                 }
             }
