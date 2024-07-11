@@ -141,8 +141,8 @@ if (!function_exists('send_mail')) {
         }
 
         $mail->isHTML($body !== strip_tags($body));
-        $mail->Subject = $subject;
-        $mail->Body = iconv('UTF-8', 'GB2312', $body);
+        $mail->Subject = iconv('UTF-8', 'GB2312', $subject);
+        $mail->Body = $body;
         $mail->AltBody = $altBody;
 
         if (is_string($tos)) {
