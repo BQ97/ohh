@@ -14,6 +14,7 @@ use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
 use App\File\Loader;
+use App\Providers\MailProvider;
 use App\Providers\OpenAiProvider;
 
 /**
@@ -30,6 +31,7 @@ use App\Providers\OpenAiProvider;
  * @property \League\CLImate\CLImate            $cli
  * @property \App\Console                       $console
  * @property \OpenAI\Client                     $openai
+ * @property \PHPMailer\PHPMailer\PHPMailer     $mail
  */
 class Application implements ContainerInterface
 {
@@ -44,7 +46,8 @@ class Application implements ContainerInterface
         RouterProvider::class,
         SnowFlakeProvider::class,
         ConsoleProvider::class,
-        OpenAiProvider::class
+        OpenAiProvider::class,
+        MailProvider::class
     ];
 
     private static $instance;

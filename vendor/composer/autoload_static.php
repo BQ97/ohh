@@ -87,6 +87,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
             'PhpOffice\\PhpWord\\' => 18,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PhpOffice\\Math\\' => 15,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -268,6 +269,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             0 => __DIR__ . '/..' . '/phpoffice/math/src/Math',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -431,6 +436,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'App\\Providers\\ConsoleProvider' => __DIR__ . '/../..' . '/app/Providers/ConsoleProvider.php',
         'App\\Providers\\DbProvider' => __DIR__ . '/../..' . '/app/Providers/DbProvider.php',
         'App\\Providers\\FakerProvider' => __DIR__ . '/../..' . '/app/Providers/FakerProvider.php',
+        'App\\Providers\\MailProvider' => __DIR__ . '/../..' . '/app/Providers/MailProvider.php',
         'App\\Providers\\OpenAiProvider' => __DIR__ . '/../..' . '/app/Providers/OpenAiProvider.php',
         'App\\Providers\\RouterProvider' => __DIR__ . '/../..' . '/app/Providers/RouterProvider.php',
         'App\\Providers\\SnowFlakeProvider' => __DIR__ . '/../..' . '/app/Providers/SnowFlakeProvider.php',
@@ -2162,6 +2168,13 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPMailer\\PHPMailer\\DSNConfigurator' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/DSNConfigurator.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\OAuthTokenProvider' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PhpOffice\\Math\\Element\\AbstractElement' => __DIR__ . '/..' . '/phpoffice/math/src/Math/Element/AbstractElement.php',
         'PhpOffice\\Math\\Element\\AbstractGroupElement' => __DIR__ . '/..' . '/phpoffice/math/src/Math/Element/AbstractGroupElement.php',
         'PhpOffice\\Math\\Element\\Fraction' => __DIR__ . '/..' . '/phpoffice/math/src/Math/Element/Fraction.php',

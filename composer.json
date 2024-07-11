@@ -26,7 +26,8 @@
         "spatie/async": "^1.6",
         "monolog/monolog": "^3.5",
         "ddn/sapp": "^1.4",
-        "smalot/pdfparser": "^2.10"
+        "smalot/pdfparser": "^2.10",
+        "phpmailer/phpmailer": "^6.9"
     },
     "autoload": {
         "psr-4": {
