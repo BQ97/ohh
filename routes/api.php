@@ -13,6 +13,9 @@ return [
         'GET', '/test', '\\modules\Index::testAction'
     ],
     [
+        'POST', '/mail', '\\modules\Index::mailAction'
+    ],
+    [
         '*', '/{module}/{class}/{action}', function ($request, $args) {
             $module = $args['module'];
             $class = ucfirst($args['class']);
