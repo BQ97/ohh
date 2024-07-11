@@ -141,7 +141,7 @@ if (!function_exists('send_mail')) {
         }
 
         $mail->isHTML($body !== strip_tags($body));
-        $mail->Subject = iconv('UTF-8', 'GB2312', $subject);
+        $mail->Subject = $subject;
         $mail->Body = $body;
         $mail->AltBody = $altBody;
 
@@ -152,7 +152,6 @@ if (!function_exists('send_mail')) {
                 if (is_string($to)) {
                     $mail->addAddress($to);
                 } else {
-                    $to['name'] = iconv('UTF-8', 'GB2312', $to['name']);
                     $mail->addAddress(...$to);
                 }
             }
