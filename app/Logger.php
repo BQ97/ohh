@@ -79,6 +79,10 @@ class Logger
             return error_log(implode(' | ', $message), 3, LOG_PATH . 'default/' . date('Ymd') . '.log');
         }
 
+        if ($level === 'SETBASEPATH') {
+            return true;
+        }
+
         throw new \Exception("Call to undefined method {$name}");
     }
 }
