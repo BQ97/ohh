@@ -123,3 +123,52 @@ if (!function_exists('clearTimeout')) {
         EventLoop::cancel($timeout);
     }
 }
+
+if (!function_exists('send_mail')) {
+    /**
+     * @param array $param
+     * @return bool
+     */
+    function send_mail(array|string $tos, string $subject, string $body, array|string $attachments = [], string $altBody = '')
+    {
+        /**
+         * @var \PHPMailer\PHPMailer\PHPMailer $mail
+         */
+        $mail = app('mail');
+
+        if (!$tos || !$subject || !$body) {
+            return false;
+        }
+
+        $mail->isHTML($body !== strip_tags($body));
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+        $mail->AltBody = $altBody;
+
+        if (is_string($tos)) {
+            $mail->addAddress($tos);
+        } else {
+            foreach ($tos as $to) {
+                if (is_string($to)) {
+                    $mail->addAddress($to);
+                } else {
+                    $mail->addAddress(...$to);
+                }
+            }
+        }
+
+        if (is_string($attachments)) {
+            $mail->addAttachment($attachments);
+        } else {
+            foreach ($attachments as $value) {
+                if (is_string($to)) {
+                    $mail->addAttachment($value);
+                } else {
+                    $mail->addAttachment(...$value);
+                }
+            }
+        }
+
+        return $mail->send();
+    }
+}

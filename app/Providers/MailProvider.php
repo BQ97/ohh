@@ -20,7 +20,7 @@ class MailProvider extends AbstractServiceProvider
             $env = $this->getContainer()->get('env');
 
             $mail = new PHPMailer();
-
+            $mail->setLanguage('zh_cn');
             //Server settings
             call_user_func([$mail, 'is' . $env->get('MAIL_MAILER', 'smtp')]);
             $mail->Host       = $env->get('MAIL_HOST', 'smtp.mailtrap.io');                 //Set the SMTP server to send through
