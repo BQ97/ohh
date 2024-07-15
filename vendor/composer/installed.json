@@ -154,23 +154,23 @@
         },
         {
             "name": "ddn/sapp",
-            "version": "1.4.3",
-            "version_normalized": "1.4.3.0",
+            "version": "1.5.0",
+            "version_normalized": "1.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dealfonso/sapp.git",
-                "reference": "5690e90ad1e753b980ce41fa84a36a1349da6ff6"
+                "reference": "37ff2659d88dc1f9a8c6a2cf22f6319c437c7934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dealfonso/sapp/zipball/5690e90ad1e753b980ce41fa84a36a1349da6ff6",
-                "reference": "5690e90ad1e753b980ce41fa84a36a1349da6ff6",
+                "url": "https://api.github.com/repos/dealfonso/sapp/zipball/37ff2659d88dc1f9a8c6a2cf22f6319c437c7934",
+                "reference": "37ff2659d88dc1f9a8c6a2cf22f6319c437c7934",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4"
             },
-            "time": "2024-05-02T13:47:24+00:00",
+            "time": "2024-07-13T11:37:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -198,7 +198,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dealfonso/sapp/issues",
-                "source": "https://github.com/dealfonso/sapp/tree/1.4.3"
+                "source": "https://github.com/dealfonso/sapp/tree/1.5.0"
             },
             "funding": [
                 {
