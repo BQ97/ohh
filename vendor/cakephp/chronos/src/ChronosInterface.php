@@ -1245,7 +1245,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function next(?int $dayOfWeek = null);
 
@@ -1256,7 +1256,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function previous(?int $dayOfWeek = null);
 
@@ -1267,7 +1267,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function firstOfMonth(?int $dayOfWeek = null);
 
@@ -1278,7 +1278,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function lastOfMonth(?int $dayOfWeek = null);
 
@@ -1290,7 +1290,7 @@ interface ChronosInterface extends DateTimeInterface
      *
      * @param int $nth The offset to use.
      * @param int $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static|false
      */
     public function nthOfMonth(int $nth, int $dayOfWeek);
 
@@ -1301,7 +1301,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function firstOfQuarter(?int $dayOfWeek = null);
 
@@ -1312,7 +1312,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function lastOfQuarter(?int $dayOfWeek = null);
 
@@ -1324,7 +1324,7 @@ interface ChronosInterface extends DateTimeInterface
      *
      * @param int $nth The offset to use.
      * @param int $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static|false
      */
     public function nthOfQuarter(int $nth, int $dayOfWeek);
 
@@ -1335,7 +1335,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function firstOfYear(?int $dayOfWeek = null);
 
@@ -1346,7 +1346,7 @@ interface ChronosInterface extends DateTimeInterface
      * to indicate the desired dayOfWeek, ex. static::MONDAY.
      *
      * @param int|null $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static
      */
     public function lastOfYear(?int $dayOfWeek = null);
 
@@ -1358,7 +1358,7 @@ interface ChronosInterface extends DateTimeInterface
      *
      * @param int $nth The offset to use.
      * @param int $dayOfWeek The day of the week to move to.
-     * @return mixed
+     * @return static|false
      */
     public function nthOfYear(int $nth, int $dayOfWeek);
 

@@ -2,24 +2,18 @@
     "packages": [
         {
             "name": "cakephp/chronos",
-            "version": "2.4.4",
-            "version_normalized": "2.4.4.0",
+            "version": "2.4.5",
+            "version_normalized": "2.4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "03208c18eb3267490662e68671bb9c22aa804492"
+                "reference": "b0321ab7658af9e7abcb3dd876f226e6f3dbb81f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/03208c18eb3267490662e68671bb9c22aa804492",
-                "reference": "03208c18eb3267490662e68671bb9c22aa804492",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/b0321ab7658af9e7abcb3dd876f226e6f3dbb81f",
+                "reference": "b0321ab7658af9e7abcb3dd876f226e6f3dbb81f",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
@@ -28,7 +22,7 @@
                 "cakephp/cakephp-codesniffer": "^4.5",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
-            "time": "2023-11-03T05:26:08+00:00",
+            "time": "2024-07-30T22:26:11+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -352,17 +346,17 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.9.1",
-            "version_normalized": "7.9.1.0",
+            "version": "7.9.2",
+            "version_normalized": "7.9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "a629e5b69db96eb4939c1b34114130077dd4c6fc"
+                "reference": "d281ed313b989f213357e3be1a179f02196ac99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a629e5b69db96eb4939c1b34114130077dd4c6fc",
-                "reference": "a629e5b69db96eb4939c1b34114130077dd4c6fc",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d281ed313b989f213357e3be1a179f02196ac99b",
+                "reference": "d281ed313b989f213357e3be1a179f02196ac99b",
                 "shasum": ""
             },
             "require": {
@@ -389,7 +383,7 @@
                 "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
-            "time": "2024-07-19T16:19:57+00:00",
+            "time": "2024-07-24T11:22:20+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -461,7 +455,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.9.1"
+                "source": "https://github.com/guzzle/guzzle/tree/7.9.2"
             },
             "funding": [
                 {
@@ -910,35 +904,30 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.3.3",
-            "version_normalized": "1.3.3.0",
+            "version": "v1.3.4",
+            "version_normalized": "1.3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "3dbf8a8e914634c48d389c1234552666b3d43754"
+                "reference": "61b87392d986dc49ad5ef64e75b1ff5fee24ef81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/3dbf8a8e914634c48d389c1234552666b3d43754",
-                "reference": "3dbf8a8e914634c48d389c1234552666b3d43754",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/61b87392d986dc49ad5ef64e75b1ff5fee24ef81",
+                "reference": "61b87392d986dc49ad5ef64e75b1ff5fee24ef81",
+                "shasum": ""
             },
             "require": {
                 "php": "^7.3|^8.0"
             },
             "require-dev": {
-                "nesbot/carbon": "^2.61",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "nesbot/carbon": "^2.61|^3.0",
                 "pestphp/pest": "^1.21.3",
                 "phpstan/phpstan": "^1.8.2",
-                "symfony/var-dumper": "^5.4.11"
+                "symfony/var-dumper": "^5.4.11|^6.2.0|^7.0.0"
             },
-            "time": "2023-11-08T14:08:06+00:00",
+            "time": "2024-08-02T07:48:17+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2823,17 +2812,17 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "2.1.0",
-            "version_normalized": "2.1.0.0",
+            "version": "2.2.1",
+            "version_normalized": "2.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "dbed77bd3a0f68f96c0dd68ad4499d5674fecc3e"
+                "reference": "a3c5c9e7ce3a2a8577bfa9e69960fbccbd2d4a9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/dbed77bd3a0f68f96c0dd68ad4499d5674fecc3e",
-                "reference": "dbed77bd3a0f68f96c0dd68ad4499d5674fecc3e",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/a3c5c9e7ce3a2a8577bfa9e69960fbccbd2d4a9e",
+                "reference": "a3c5c9e7ce3a2a8577bfa9e69960fbccbd2d4a9e",
                 "shasum": ""
             },
             "require": {
@@ -2853,21 +2842,21 @@
                 "maennchen/zipstream-php": "^2.1 || ^3.0",
                 "markbaker/complex": "^3.0",
                 "markbaker/matrix": "^3.0",
-                "php": "^8.0",
+                "php": "^8.1",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "dev-main",
-                "dompdf/dompdf": "^2.0",
+                "dompdf/dompdf": "^2.0 || ^3.0",
                 "friendsofphp/php-cs-fixer": "^3.2",
                 "mitoteam/jpgraph": "^10.3",
                 "mpdf/mpdf": "^8.1.1",
                 "phpcompatibility/php-compatibility": "^9.3",
                 "phpstan/phpstan": "^1.1",
                 "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.6",
+                "phpunit/phpunit": "^9.6 || ^10.5",
                 "squizlabs/php_codesniffer": "^3.7",
                 "tecnickcom/tcpdf": "^6.5"
             },
@@ -2878,7 +2867,7 @@
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
                 "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
-            "time": "2024-05-11T04:17:56+00:00",
+            "time": "2024-07-29T07:56:06+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2924,7 +2913,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.1.0"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.2.1"
             },
             "install-path": "../phpoffice/phpspreadsheet"
         },
@@ -4038,17 +4027,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.4.9",
-            "version_normalized": "6.4.9.0",
+            "version": "v6.4.10",
+            "version_normalized": "6.4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6edb5363ec0c78ad4d48c5128ebf4d083d89d3a9"
+                "reference": "504974cbe43d05f83b201d6498c206f16fc0cdbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6edb5363ec0c78ad4d48c5128ebf4d083d89d3a9",
-                "reference": "6edb5363ec0c78ad4d48c5128ebf4d083d89d3a9",
+                "url": "https://api.github.com/repos/symfony/console/zipball/504974cbe43d05f83b201d6498c206f16fc0cdbc",
+                "reference": "504974cbe43d05f83b201d6498c206f16fc0cdbc",
                 "shasum": ""
             },
             "require": {
@@ -4081,7 +4070,7 @@
                 "symfony/stopwatch": "^5.4|^6.0|^7.0",
                 "symfony/var-dumper": "^5.4|^6.0|^7.0"
             },
-            "time": "2024-06-28T09:49:33+00:00",
+            "time": "2024-07-26T12:30:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -4115,7 +4104,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.4.9"
+                "source": "https://github.com/symfony/console/tree/v6.4.10"
             },
             "funding": [
                 {
@@ -4767,17 +4756,17 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.4.9",
-            "version_normalized": "6.4.9.0",
+            "version": "v6.4.10",
+            "version_normalized": "6.4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "76792dbd99690a5ebef8050d9206c60c59e681d7"
+                "reference": "ccf9b30251719567bfd46494138327522b9a9446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/76792dbd99690a5ebef8050d9206c60c59e681d7",
-                "reference": "76792dbd99690a5ebef8050d9206c60c59e681d7",
+                "url": "https://api.github.com/repos/symfony/string/zipball/ccf9b30251719567bfd46494138327522b9a9446",
+                "reference": "ccf9b30251719567bfd46494138327522b9a9446",
                 "shasum": ""
             },
             "require": {
@@ -4797,7 +4786,7 @@
                 "symfony/translation-contracts": "^2.5|^3.0",
                 "symfony/var-exporter": "^5.4|^6.0|^7.0"
             },
-            "time": "2024-06-28T09:25:38+00:00",
+            "time": "2024-07-22T10:21:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -4836,7 +4825,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.4.9"
+                "source": "https://github.com/symfony/string/tree/v6.4.10"
             },
             "funding": [
                 {
@@ -4856,17 +4845,17 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.4.9",
-            "version_normalized": "6.4.9.0",
+            "version": "v6.4.10",
+            "version_normalized": "6.4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "c31566e4ca944271cc8d8ac6887cbf31b8c6a172"
+                "reference": "a71cc3374f5fb9759da1961d28c452373b343dd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c31566e4ca944271cc8d8ac6887cbf31b8c6a172",
-                "reference": "c31566e4ca944271cc8d8ac6887cbf31b8c6a172",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/a71cc3374f5fb9759da1961d28c452373b343dd4",
+                "reference": "a71cc3374f5fb9759da1961d28c452373b343dd4",
                 "shasum": ""
             },
             "require": {
@@ -4886,7 +4875,7 @@
                 "symfony/uid": "^5.4|^6.0|^7.0",
                 "twig/twig": "^2.13|^3.0.4"
             },
-            "time": "2024-06-27T13:23:14+00:00",
+            "time": "2024-07-26T12:30:32+00:00",
             "bin": [
                 "Resources/bin/var-dump-server"
             ],
@@ -4924,7 +4913,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.4.9"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.4.10"
             },
             "funding": [
                 {
