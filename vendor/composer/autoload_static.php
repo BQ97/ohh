@@ -51,10 +51,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         array (
             'ZipStream\\' => 10,
         ),
-        'T' => 
-        array (
-            'Tests\\PhpOffice\\Math\\' => 21,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -166,10 +162,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
-        ),
-        'Tests\\PhpOffice\\Math\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpoffice/math/tests/Math',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -3804,18 +3796,6 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Symfony\\Polyfill\\Intl\\Grapheme\\Grapheme' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/Grapheme.php',
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'Tests\\PhpOffice\\Math\\Element\\AbstractGroupElementTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/AbstractGroupElementTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\FractionTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/FractionTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\IdentifierTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/IdentifierTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\NumericTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/NumericTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\OperatorTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/OperatorTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\SemanticsTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/SemanticsTest.php',
-        'Tests\\PhpOffice\\Math\\Element\\SuperscriptTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Element/SuperscriptTest.php',
-        'Tests\\PhpOffice\\Math\\Reader\\MathMLTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Reader/MathMLTest.php',
-        'Tests\\PhpOffice\\Math\\Reader\\OfficeMathMLTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Reader/OfficeMathMLTest.php',
-        'Tests\\PhpOffice\\Math\\Writer\\MathMLTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Writer/MathMLTest.php',
-        'Tests\\PhpOffice\\Math\\Writer\\OfficeMathMLTest' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Writer/OfficeMathMLTest.php',
-        'Tests\\PhpOffice\\Math\\Writer\\WriterTestCase' => __DIR__ . '/..' . '/phpoffice/math/tests/Math/Writer/WriterTestCase.php',
         'ZipStream\\CentralDirectoryFileHeader' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/CentralDirectoryFileHeader.php',
         'ZipStream\\CompressionMethod' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/CompressionMethod.php',
         'ZipStream\\DataDescriptor' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DataDescriptor.php',
