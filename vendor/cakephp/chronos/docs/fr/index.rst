@@ -4,7 +4,7 @@ Chronos
 Chronos fournit une collection d'extensions sans aucune dépendance pour l'objet
 ``DateTime``. En plus de méthodes pratiques, Chronos fournit:
 
-* Des objets ``ChronosDate`` pour représenter les dates du calendrier.
+* Des objets ``Date`` pour représenter les dates du calendrier.
 * Des objets immutables pour les dates et les datetimes.
 * Un système de traduction intégrable. Seules les traductions anglaises sont
   incluses dans la librairie. Cependant, ``cakephp/i18n`` peut être utilisé
@@ -30,10 +30,8 @@ immutables de date/time et les extensions de ``DateInterval``.
 * ``Cake\Chronos\ChronosDate`` est un objet de *date* immutable.
 * ``Cake\Chronos\MutableDateTime`` est un objet de *date et heure* mutable.
 * ``Cake\Chronos\MutableDate`` est un objet de *date* mutable.
-
-Enfin si vous voulez typer selon les objets date/time fournis par Chronos,
-vous devez utiliser ``Cake\Chronos\ChronosInterface``. Tous les objets date et
-time implémentent cette interface.
+* ``Cake\Chronos\ChronosInterval`` est une extension pour l'objet
+  ``DateInterval``.
 
 Créer des Instances
 -------------------
@@ -98,7 +96,7 @@ Objets Date
 PHP fournit seulement un unique objet DateTime. Représenter les dates de
 calendrier peut être un peu gênant avec cette classe puisqu'elle inclut les
 timezones, et les composants de time qui n'appartiennent pas vraiment
-au concept d'un 'jour'. Chronos fournit un objet ``ChronosDate`` qui vous permet
+au concept d'un 'jour'. Chronos fournit un objet ``Date`` qui vous permet
 de représenter les dates. Les time et timezone pour ces objets sont toujours
 fixés à ``00:00:00 UTC`` et toutes les méthodes de formatage/différence
 fonctionnent au niveau du jour::
@@ -113,11 +111,11 @@ fonctionnent au niveau du jour::
     // Affiche '2015-12-20'
     echo $today;
 
-Bien que ``ChronosDate`` utilise en interne un fuseau horaire fixe, vous pouvez
+Bien que ``Date`` utilise en interne un fuseau horaire fixe, vous pouvez
 spécifier le fuseau à utiliser pour l'heure courante telle que ``now()`` ou
 ``today()``::
 
-    use Cake\Chronos\ChronosDate;
+    use Cake\Chronos\ChronosDate:
 
     // Prend l'heure courante pour le fuseau horaire de Tokyo
     $today = ChronosDate::today('Asia/Tokyo');
@@ -161,8 +159,8 @@ temps::
 
 Ou de sauter à un jour spécifique de la semaine::
 
-    $time->next(ChronosInterface::TUESDAY);
-    $time->previous(ChronosInterface::MONDAY);
+    $time->next(Chronos::TUESDAY);
+    $time->previous(Chronos::MONDAY);
 
 Quand vous modifiez des dates/heures au-delà d'un passage à l'heure d'été ou à
 l'heure d'hiver, vous opérations peuvent gagner/perdre une heure de plus, de
@@ -300,6 +298,7 @@ Les autres propriétés accessibles sont:
 - daysInMonth
 - timestamp
 - quarter
+- half
 
 Aides aux Tests
 ---------------
@@ -311,7 +310,7 @@ vous pouvez inclure ce qui suit::
 
     Chronos::setTestNow(Chronos::now());
     MutableDateTime::setTestNow(MutableDateTime::now());
-    ChronosDate::setTestNow(ChronosDate::now());
+    ChronosDate::setTestNow(ChronosDate::parse(Chronos::now()));
     MutableDate::setTestNow(MutableDate::now());
 
 Ceci va fixer le time courant de tous les objets selon le moment où la suite de

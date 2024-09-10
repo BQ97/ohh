@@ -12,41 +12,43 @@ declare(strict_types=1);
  * @link          https://cakephp.org CakePHP(tm) Project
  * @license       https://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Cake\Chronos\Traits;
+namespace Cake\Chronos;
 
-use Cake\Chronos\ChronosInterface;
 use DateTime;
 
 /**
  * Provides string formatting methods for datetime instances.
  *
  * Expects implementing classes to define static::$toStringFormat
+ *
+ * @internal
  */
 trait FormattingTrait
 {
     /**
-     * Reset the format used to the default when type juggling a ChronosInterface instance to a string
+     * Resets the __toString() format to ``DEFAULT_TO_STRING_FORMAT``.
      *
      * @return void
      */
     public static function resetToStringFormat(): void
     {
-        static::setToStringFormat(ChronosInterface::DEFAULT_TO_STRING_FORMAT);
+        static::setToStringFormat(static::DEFAULT_TO_STRING_FORMAT);
     }
 
     /**
-     * Set the default format used when type juggling a ChronosInterface instance to a string
+     * Sets the __toString() format.
      *
-     * @param string $format The format to use in future __toString() calls.
+     * @param string $format See ``format()`` for accepted specifiers.
      * @return void
      */
-    public static function setToStringFormat($format): void
+    public static function setToStringFormat(string $format): void
     {
         static::$toStringFormat = $format;
     }
 
     /**
-     * Format the instance as a string using the set format
+     * Returns a formatted string specified by ``setToStringFormat()``
+     * or the default ``DEFAULT_TO_STRING_FORMAT`` format.
      *
      * @return string
      */
@@ -235,11 +237,11 @@ trait FormattingTrait
      * Returns the quarter
      *
      * @param bool $range Range.
-     * @return int|array 1, 2, 3, or 4 quarter of year or array if $range true
+     * @return array|int 1, 2, 3, or 4 quarter of year or array if $range true
      */
-    public function toQuarter(bool $range = false)
+    public function toQuarter(bool $range = false): int|array
     {
-        $quarter = (int)ceil($this->format('m') / 3);
+        $quarter = (int)ceil((int)$this->format('m') / 3);
         if ($range === false) {
             return $quarter;
         }
@@ -258,7 +260,9 @@ trait FormattingTrait
     }
 
     /**
-     * @inheritDoc
+     * Returns ISO 8601 week number of year, weeks starting on Monday
+     *
+     * @return int ISO 8601 week number of year
      */
     public function toWeek(): int
     {

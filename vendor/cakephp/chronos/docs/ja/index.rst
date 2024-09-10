@@ -4,7 +4,7 @@ Chronos
 Chronos (クロノス) は、 ``DateTime`` オブジェクトへの拡張の依存関係の無いコレクションを提供します。
 便利なメソッドに加えて、Chronos は以下を提供します。
 
-* カレンダー日付のための ``ChronosDate`` オブジェクト
+* カレンダー日付のための ``Date`` オブジェクト
 * イミュータブルな日付と日時オブジェクト
 * プラグインのような翻訳システム。ライブラリーは英語のみの翻訳を含んでいます。
   しかし、全ての言語サポートのために、 ``cakephp/i18n`` を使うことができます。
@@ -30,10 +30,6 @@ Chronos は ``DateInterval`` の拡張機能および、ミュータブル（変
 * ``Cake\Chronos\MutableDateTime`` はミュータブルな *日付と時刻* オブジェクト。
 * ``Cake\Chronos\MutableDate`` はミュータブルな *日付* オブジェクト。
 * ``Cake\Chronos\ChronosInterval`` は ``DateInterval`` の拡張機能。
-
-最後に、もしあなたが Chronos が提供する 日付/時刻 のオブジェクトに対して型宣言を行ないたい場合、
-``Cake\Chronos\ChronosInterface`` を使用することができます。
-全ての日付と時間のオブジェクトはこのインターフェイスを実装しています。
 
 インスタンスの作成
 ------------------
@@ -96,7 +92,7 @@ Chronos はミュータブルオブジェクトを提供しますが、これは
 PHP は単純な DateTime オブジェクトだけを提供します。このクラスのカレンダー日付の表現で、
 タイムゾーンおよび、本当に「日」の概念に属していないタイムコンポーネントを含むと、
 少し厄介な可能性があります。
-Chronos は日時表現のための ``ChronosDate`` オブジェクトを提供します。
+Chronos は日時表現のための ``Date`` オブジェクトを提供します。
 これらのオブジェクトの時間とタイムゾーンは常に ``00:00:00 UTC`` に固定されており、
 全ての書式/差分のメソッドは一日単位で動作します。 ::
 
@@ -146,8 +142,8 @@ Chronos オブジェクトは細やかに値を変更できるメソッドを提
 
 また、1週間中の特定の日にも飛べます。 ::
 
-    $time->next(ChronosInterface::TUESDAY);
-    $time->previous(ChronosInterface::MONDAY);
+    $time->next(Chronos::TUESDAY);
+    $time->previous(Chronos::MONDAY);
 
 :abbr:`DST (夏時間)` の遷移の前後で日付/時間を変更すると、
 あなたの操作で時間が増減するかもしれませんが、その結果、意図しない時間の値になります。
@@ -276,6 +272,7 @@ Chronos は、出力した日時オブジェクトを表示するための多く
 - daysInMonth
 - timestamp
 - quarter
+- half
 
 テストの支援
 ------------
@@ -286,7 +283,7 @@ Chronos は、出力した日時オブジェクトを表示するための多く
 
     Chronos::setTestNow(Chronos::now());
     MutableDateTime::setTestNow(MutableDateTime::now());
-    ChronosDate::setTestNow(ChronosDate::now());
+    ChronosDate::setTestNow(ChronosDate::parse(Chronos::now()));
     MutableDate::setTestNow(MutableDate::now());
 
 これでテストスイートが開始された時点で全てのオブジェクトの現在時刻を修正します。

@@ -14,11 +14,15 @@ declare(strict_types=1);
  */
 namespace Cake\Chronos;
 
+use DateTimeInterface;
+
 /**
  * Handles formatting differences in text.
  *
  * Provides a swappable component for other libraries to leverage.
  * when localizing or customizing the difference output.
+ *
+ * @internal
  */
 class DifferenceFormatter implements DifferenceFormatterInterface
 {
@@ -27,7 +31,7 @@ class DifferenceFormatter implements DifferenceFormatterInterface
      *
      * @var \Cake\Chronos\Translator
      */
-    protected $translate;
+    protected Translator $translate;
 
     /**
      * Constructor.
@@ -40,24 +44,27 @@ class DifferenceFormatter implements DifferenceFormatterInterface
     }
 
     /**
-     * Get the difference in a human readable format.
-     *
-     * @param \Cake\Chronos\ChronosInterface $date The datetime to start with.
-     * @param \Cake\Chronos\ChronosInterface|null $other The datetime to compare against.
-     * @param bool $absolute removes time difference modifiers ago, after, etc
-     * @return string The difference between the two days in a human readable format
-     * @see \Cake\Chronos\ChronosInterface::diffForHumans
+     * @inheritDoc
      */
     public function diffForHumans(
-        ChronosInterface $date,
-        ?ChronosInterface $other = null,
+        ChronosDate|DateTimeInterface $first,
+        ChronosDate|DateTimeInterface|null $second = null,
         bool $absolute = false
     ): string {
-        $isNow = $other === null;
-        if ($isNow) {
-            $other = $date->now($date->tz);
+        $isNow = $second === null;
+        if ($second === null) {
+            if ($first instanceof ChronosDate) {
+                $second = new ChronosDate(Chronos::now());
+            } else {
+                $second = Chronos::now($first->getTimezone());
+            }
         }
-        $diffInterval = $date->diff($other);
+        assert(
+            ($first instanceof ChronosDate && $second instanceof ChronosDate) ||
+            ($first instanceof DateTimeInterface && $second instanceof DateTimeInterface)
+        );
+
+        $diffInterval = $first->diff($second);
 
         switch (true) {
             case $diffInterval->y > 0:
@@ -68,9 +75,9 @@ class DifferenceFormatter implements DifferenceFormatterInterface
                 $unit = 'month';
                 $count = $diffInterval->m;
                 break;
-            case $diffInterval->days >= ChronosInterface::DAYS_PER_WEEK * 3:
+            case $diffInterval->days >= Chronos::DAYS_PER_WEEK * 3:
                 $unit = 'week';
-                $count = (int)($diffInterval->days / ChronosInterface::DAYS_PER_WEEK);
+                $count = (int)($diffInterval->days / Chronos::DAYS_PER_WEEK);
                 break;
             case $diffInterval->d > 0:
                 $unit = 'day';

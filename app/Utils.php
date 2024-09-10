@@ -7,7 +7,6 @@ namespace App;
 use App\File\Cache;
 use App\File\FileSystem;
 use Cake\Chronos\Chronos;
-use Cake\Chronos\ChronosInterface;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Phar;
@@ -58,15 +57,15 @@ class Utils
     }
 
     /**
-     * @param int|ChronosInterface $start
-     * @param int|ChronosInterface $end
+     * @param int|Chronos $start
+     * @param int|Chronos $end
      * @param bool $abs
      * @return int
      */
     public static function computeDistanceDay($start, $end, bool $abs = true)
     {
-        $startObj = $start instanceof ChronosInterface ? $start : Chronos::createFromTimestamp($start);
-        $endObj = $end instanceof ChronosInterface ? $end : Chronos::createFromTimestamp($end);
+        $startObj = $start instanceof Chronos ? $start : Chronos::createFromTimestamp($start);
+        $endObj = $end instanceof Chronos ? $end : Chronos::createFromTimestamp($end);
 
         return $startObj->diffInDays($endObj->addDays(1), $abs);
     }

@@ -4,7 +4,7 @@ Chronos
 O Chronos oferece uma coleção independente de extensões para lidar com o objeto
 ``DateTime``. Além de métodos de conveniência, o Chronos oferece:
 
-* Objetos ``ChronosDate`` para representar datas de calendário.
+* Objetos ``Date`` para representar datas de calendário.
 * Objetos *date* e *datetime* imutáveis.
 * Um sistema de tradução acoplável. Apenas traduções em inglês estão incluídas
   na biblioteca. Todavia, ``cakephp/i18n`` pode ser usado para suporte completo
@@ -31,10 +31,6 @@ cobrem variantes de data/hora mutáveis e imutáveis e uma extensão do objeto
 * ``Cake\Chronos\MutableDateTime`` é um objeto *date and time* mutável.
 * ``Cake\Chronos\MutableDate`` é um objeto *date* mutável.
 * ``Cake\Chronos\ChronosInterval`` é uma extensão do objeto ``DateInterval``.
-
-Por último, se você quiser usar o *typehint* em objetos do Chronos, será preciso
-usar a interface ``Cake\Chronos\ChronosInterface``. Todos os objetos de data e
-hora implementam essa interface.
 
 Criando instâncias
 ------------------
@@ -97,7 +93,7 @@ Objetos Date
 O PHP disponibiliza um único objeto DateTime. Representar datas de calendário
 pode ser um pouco desconfortável por essa classe, uma vez que ela inclui
 *timezones* e componentes de hora que realmente não se encaixam no conceito de
-'dia'. O Chronos oferece um objeto ``ChronosDate`` para representar datas. A hora e a
+'dia'. O Chronos oferece um objeto ``Date`` para representar datas. A hora e a
 zona desse objeto é sempre fixado em ``00:00:00 UTC`` e todos os métodos de
 formatação/diferença operam sob a resolução de dia::
 
@@ -146,8 +142,8 @@ Também é possível realizar grandes saltos para períodos definidos no tempo::
 
 Ou ainda para dias específicos da semana::
 
-    $time->next(ChronosInterface::TUESDAY);
-    $time->previous(ChronosInterface::MONDAY);
+    $time->next(Chronos::TUESDAY);
+    $time->previous(Chronos::MONDAY);
 
 Métodos de comparação
 ---------------------
@@ -258,6 +254,7 @@ Outras propriedades que podem ser acessadas são:
 - daysInMonth
 - timestamp
 - quarter
+- half
 
 Auxílio para testes
 -------------------
@@ -268,7 +265,7 @@ de testes, você pode incluir o seguinte::
 
     Chronos::setTestNow(Chronos::now());
     MutableDateTime::setTestNow(MutableDateTime::now());
-    ChronosDate::setTestNow(ChronosDate::now());
+    ChronosDate::setTestNow(ChronosDate::parse(Chronos::now()));
     MutableDate::setTestNow(MutableDate::now());
 
 Isso irá corrigir a hora atual de todos os objetos para o momento em que o

@@ -8,7 +8,7 @@
         "mpdf/mpdf": "^8.1",
         "catfan/medoo": "^2.0",
         "league/plates": "^3.3",
-        "cakephp/chronos": "^2.0",
+        "cakephp/chronos": "^3.1",
         "symfony/var-dumper": "^6.0",
         "godruoyi/php-snowflake": "^3.0",
         "phpoffice/phpword": "^1.2",
