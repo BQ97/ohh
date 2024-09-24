@@ -1,90 +1,137 @@
-<p align="center">
-  <a href="https://picocss.com/">
-    <img src="https://picocss.com/img/logo.svg" width="64" height="64">
+<p>
+  <a href="https://picocss.com" target="_blank">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/picocss/pico/HEAD/.github/logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/picocss/pico/HEAD/.github/logo-light.svg">
+      <img alt="Pico CSS" src="https://raw.githubusercontent.com/picocss/pico/HEAD/.github/logo-light.svg" width="auto" height="60">
+    </picture>
   </a>
 </p>
 
-<h3 align="center">Pico.css</h3>
+[![Github release](https://img.shields.io/github/v/release/picocss/pico?color=0172ad&logo=github&logoColor=white)](https://github.com/picocss/pico/releases/latest)
+[![npm version](https://img.shields.io/npm/v/@picocss/pico?color=0172ad)](https://www.npmjs.com/package/@picocss/pico)
+[![License](https://img.shields.io/badge/license-MIT-%230172ad)](https://github.com/picocss/pico/blob/master/LICENSE.md)
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/picocss.svg?style=social&label=Follow%20%40picocss)](https://twitter.com/picocss)
 
-<p align="center">
-  <strong>Minimal CSS Framework for semantic HTML</strong><br>
-  Elegant styles for all native HTML elements without <code>.classes</code> and dark mode automatically enabled.<br><br>
-  <a href="https://picocss.com/#examples">Examples</a> ·
-  <a href="https://picocss.com/docs/">Documentation</a>
-</p>
+## Minimal CSS Framework for Semantic HTML
 
-## Pico.css
-[![CSS Gzipped](https://img.badgesize.io/picocss/pico/master/css/pico.min.css?compression=gzip&color=1095c1&label=CSS%20gzipped)](https://unpkg.com/@picocss/pico@latest/css/pico.min.css)
-[![Github release](https://img.shields.io/github/v/release/picocss/pico?color=1095c1&logo=github&logoColor=white)](https://github.com/picocss/pico/releases/latest)
-[![npm version](https://img.shields.io/npm/v/@picocss/pico?color=1095c1)](https://www.npmjs.com/package/@picocss/pico)
-[![License](https://img.shields.io/badge/license-MIT-%231095c1)](https://github.com/picocss/pico/blob/master/LICENSE.md)
+A minimalist and lightweight starter kit that prioritizes semantic syntax, making every HTML element responsive and elegant by default.
 
-https://user-images.githubusercontent.com/23470684/126863110-94061cf1-36ea-4697-94bd-2e1071a95a2f.mp4
+Write HTML, Add Pico CSS, and Voilà!
 
-**Class-light and semantic**  
-Pico uses simple native HTML tags as much as possible. Less than 10 .classes are used in Pico.
+## What’s new in v2?
 
-**Great styles with just one CSS file**  
-No dependencies, package manager, external files, or JavaScript.
+Pico v2.0 features better accessibility, easier customization with SASS, a complete color palette, a new group component, and 20 precompiled color themes totaling over 100 combinations accessible via CDN.
 
-**Responsive everything**  
-Elegant and consistent adaptive spacings and typography on all devices.
+[Read more](https://picocss.com/docs/v2)
 
-**Light or Dark mode**  
-Shipped with two beautiful color themes, automatically enabled according to the user preference.
+## A Superpowered HTML Reset
+
+With just the right amount of everything, Pico is great starting point for a clean and lightweight design system.
+
+- Class-light and Semantic
+- Great Styles with Just CSS
+- Responsive Everything
+- Light or Dark Mode
+- Easy Customization
+- Optimized Performance
 
 ## Table of contents
 
-- [Usage](#usage)
+- [Quick start](#quick-start)
 - [Class-less version](#class-less-version)
-- [Examples](#examples)
 - [Limitations](#limitations)
 - [Documentation](#documentation)
+- [Browser Support](#browser-support)
 - [Contributing](#contributing)
 - [Copyright and license](#copyright-and-license)
 
-## Usage
+## Quick start
 
-There are 3 ways to get started with pico.css:
+There are 4 ways to get started with pico.css:
 
-**Install manually**
+### Install manually
 
-[Download Pico](https://github.com/picocss/pico/archive/refs/heads/master.zip) and link `/css/pico.min.css` in the `<head>` of your website.
-
-```html
-<link rel="stylesheet" href="css/pico.min.css">
-```
-
-**Install from CDN**
-
-Alternatively, you can use [unpkg CDN](https://unpkg.com/@picocss/pico@latest/) to link pico.css.
+[Download Pico](https://github.com/picocss/pico/archive/refs/heads/main.zip) and link `/css/pico.min.css` in the `<head>` of your website.
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+<link rel="stylesheet" href="css/pico.min.css" />
 ```
 
-**Install with NPM**
+### Usage from CDN
+
+Alternatively, you can use [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@picocss/pico) to link pico.css.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+```
+
+### Install with NPM
 
 ```shell
 npm install @picocss/pico
 ```
 
+Or
+
+```shell
+yarn add @picocss/pico
+```
+
+Then, import Pico into your SCSS file with [@use](https://sass-lang.com/documentation/at-rules/use):
+
+```SCSS
+@use "pico";
+```
+
+### Install with Composer
+
+```shell
+composer require picocss/pico
+```
+
+### Starter HTML template
+
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Hello world!</h1>
+    </main>
+  </body>
+</html>
+```
+
 ## Class-less version
 
-Pico provides a `.classless` version ([example](https://picocss.com/examples/classless)).
+Pico provides a `.classless` version.
 
-In this version, `header`, `main` and `footer` act as containers.
+In this version, `<header>`, `<main>`, and `<footer>` inside `<body>` act as containers to define a centered or a fluid viewport.
 
 Use the default `.classless` version if you need centered viewports:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+/>
 ```
 
 Or use the `.fluid.classless` version if you need a fluid container:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.fluid.classless.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+/>
 ```
 
 Then just write pure HTML, and it should look great:
@@ -93,9 +140,13 @@ Then just write pure HTML, and it should look great:
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
     <title>Hello, world!</title>
   </head>
   <body>
@@ -106,87 +157,82 @@ Then just write pure HTML, and it should look great:
 </html>
 ```
 
-## Examples
-
-Minimalist templates to discover Pico in action:
-
-[![Examples](https://picocss.com/img/examples.jpg?v1.3.3)](https://picocss.com/#examples)
-
-- **[Preview](https://picocss.com/examples/preview/)**  
-  A starter example with all elements and components used in Pico
-
-- **[Class-less](https://picocss.com/examples/classless/)**  
-  Just a pure semantic HTML markup, without `.classes`
-
-- **[Basic template](https://picocss.com/examples/basic-template/)**  
-  A basic custom template for Pico using only CSS custom properties (variables)
-
-- **[Company](https://picocss.com/examples/company/)**  
-  A classic company or blog layout with a sidebar
-
-- **[Google Amp](https://picocss.com/examples/google-amp/)**   
-  A simple layout for Google Amp, with inlined CSS
-
-- **[Sign in](https://picocss.com/examples/sign-in/)**  
-  A minimalist layout for Login pages
-
-- **[Bootstrap grid system](https://picocss.com/examples/bootstrap-grid/)**  
-  Custom CSS build with the Bootstrap grid system to manage complex grid layouts in Pico
-
-All examples are open-sourced in [picocss/examples](https://github.com/picocss/examples).
-
 ## Limitations
 
-Pico can be used without custom CSS for quick or small projects. However, it’s designed as a starting point, like a “reset CSS on steroids”. As Pico does not integrate any helpers or utilities `.classes`, this minimal CSS framework requires SCSS or CSS knowledge to build large projects.
+Pico CSS can be used without custom CSS for quick or small projects. However, it’s designed as a starting point, like a “reset CSS on steroids”. As Pico does not integrate any helpers or utilities `.classes`, this minimal CSS framework requires SCSS or CSS knowledge to build large projects.
+
+[Read more](https://picocss.com/docs/usage-scenarios)
 
 ## Documentation
 
 **Getting started**
-- [Usage](https://picocss.com/docs/)
-- [Themes](https://picocss.com/docs/themes.html)
-- [Customization](https://picocss.com/docs/customization.html)
-- [Class-less version](https://picocss.com/docs/classless.html)
-- [RTL](https://picocss.com/docs/rtl.html)
+
+- [Quick start](https://picocss.com/docs)
+- [Version picker `New`](https://picocss.com/docs/version-picker)
+- [Color schemes](https://picocss.com/docs/color-schemes)
+- [Class-less version](https://picocss.com/docs/classless)
+- [Conditional styling `New`](https://picocss.com/docs/conditional)
+- [RTL](https://picocss.com/docs/rtl)
+
+**Customization**
+
+- [CSS Variables](https://picocss.com/docs/css-variables)
+- [Sass](https://picocss.com/docs/sass)
+- [Colors `New`](https://picocss.com/docs/colors)
 
 **Layout**
-- [Containers](https://picocss.com/docs/containers.html)
-- [Grids](https://picocss.com/docs/grid.html)
-- [Horizontal scroller](https://picocss.com/docs/scroller.html)
 
-**Elements**
-- [Typography](https://picocss.com/docs/typography.html)
-- [Buttons](https://picocss.com/docs/buttons.html)
-- [Forms](https://picocss.com/docs/forms.html)
-- [Tables](https://picocss.com/docs/tables.html)
+- [Container](https://picocss.com/docs/container)
+- [Landmarks & section](https://picocss.com/docs/landmarks-section)
+- [Grid](https://picocss.com/docs/grid)
+- [Overflow auto `New`](https://picocss.com/docs/overflow-auto)
+
+**Content**
+
+- [Typography](https://picocss.com/docs/typography)
+- [Link](https://picocss.com/docs/link)
+- [Button](https://picocss.com/docs/button)
+- [Table](https://picocss.com/docs/table)
+
+**Forms**
+
+- [Overview](https://picocss.com/docs/forms)
+- [Input](https://picocss.com/docs/forms/input)
+- [Textarea](https://picocss.com/docs/forms/textarea)
+- [Select](https://picocss.com/docs/forms/select)
+- [Checkboxes](https://picocss.com/docs/forms/checkboxes)
+- [Radios](https://picocss.com/docs/forms/radios)
+- [Switch](https://picocss.com/docs/forms/switch)
+- [Range](https://picocss.com/docs/forms/range)
 
 **Components**
-- [Accordions](https://picocss.com/docs/accordions.html)
-- [Cards](https://picocss.com/docs/cards.html)
-- [Modal](https://picocss.com/docs/modal.html)
-- [Navs](https://picocss.com/docs/navs.html)
-- [Progress](https://picocss.com/docs/progress.html)
 
-**Utilities**
-- [Loading](https://picocss.com/docs/loading.html)
-- [Tooltips](https://picocss.com/docs/tooltips.html)
+- [Accordion](https://picocss.com/docs/accordion)
+- [Card](https://picocss.com/docs/card)
+- [Dropdown](https://picocss.com/docs/dropdown)
+- [Group `New`](https://picocss.com/docs/group)
+- [Loading](https://picocss.com/docs/loading)
+- [Modal](https://picocss.com/docs/modal)
+- [Nav](https://picocss.com/docs/nav)
+- [Progress](https://picocss.com/docs/progress)
+- [Tooltip](https://picocss.com/docs/tooltip)
+
+**About**
+
+- [What’s new in v2?](https://picocss.com/docs/v2)
+- [Mission](https://picocss.com/docs/mission)
+- [Usage scenarios](https://picocss.com/docs/usage-scenarios)
+- [Brand](https://picocss.com/docs/brand)
+- [Built With](https://picocss.com/docs/built-with)
+
+## Browser Support
+
+Pico CSS is designed and tested for the latest stable Chrome, Firefox, Edge, and Safari releases. It does not support any version of IE, including IE 11.
 
 ## Contributing
 
-- [`dev`](https://github.com/picocss/pico/tree/dev) branch is open to pull requests.
-- Do not edit [`/css`](https://github.com/picocss/pico/tree/master/css) files directly. Edit the source files in [`/scss`](https://github.com/picocss/pico/tree/master/scss), then recompile the [`/css`](https://github.com/picocss/pico/tree/master/css) files with `npm run build`.
-- Do not edit [`/docs/*.html`](https://github.com/picocss/pico/tree/master/docs) files directly. Edit the source files in [`/docs/src`](https://github.com/picocss/pico/tree/master/docs/src), then recompile the docs files with `npm run build`.
+If you are interested in contributing to Pico CSS, please read our [contributing guidelines](https://github.com/picocss/pico/blob/master/.github/CONTRIBUTING.md).
 
 ## Copyright and license
 
 Licensed under the [MIT License](https://github.com/picocss/pico/blob/master/LICENSE.md).
-
-**Relevant third-party tools and resources we depend on:**
-
-Website and docs:
-- [TypeIt](https://typeitjs.com/): JavaScript animated typing utility (Licensed [GPL-3.0](https://github.com/alexmacarthur/typeit/blob/master/LICENSE))
-- [Font Awesome](https://fontawesome.com/): Icons (Licensed [CC BY 4.0](https://fontawesome.com/license/free))
-
-Pico Library:
-- [Feather](https://feathericons.com/) Icons (Licensed [MIT](https://github.com/feathericons/feather/blob/master/LICENSE))
-- [Normalize.css](https://necolas.github.io/normalize.css/): CSS reset (Licensed [MIT](https://github.com/necolas/normalize.css/blob/master/LICENSE.md))
-- [Sanitize.css](https://csstools.github.io/sanitize.css/): Cross-browser default styling (Licensed [CC0 1.0 Universal](https://github.com/csstools/sanitize.css/blob/main/LICENSE.md))

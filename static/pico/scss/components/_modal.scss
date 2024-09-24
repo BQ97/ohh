@@ -1,175 +1,176 @@
-/**
- * Modal (<dialog>)
- */
+@use "sass:map";
+@use "../settings" as *;
 
-:root {
-  --scrollbar-width: 0px;
-}
+@if map.get($modules, "components/modal") {
+  /**
+   * Modal (<dialog>)
+   */
 
-dialog {
-  display: flex;
-  z-index: 999;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  width: inherit;
-  min-width: 100%;
-  height: inherit;
-  min-height: 100%;
-  padding: var(--spacing);
-  border: none;
-  background-color: var(--modal-overlay-background-color);
+  :root {
+    #{$css-var-prefix}scrollbar-width: 0px;
+  }
 
-  // Content
-  article {
-    max-height: calc(100vh - var(--spacing) * 2);
-    overflow: auto;
+  #{$parent-selector} dialog {
+    display: flex;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    min-width: 100%;
+    height: inherit;
+    min-height: 100%;
+    padding: 0;
+    border: 0;
+    backdrop-filter: var(#{$css-var-prefix}modal-overlay-backdrop-filter);
+    background-color: var(#{$css-var-prefix}modal-overlay-background-color);
+    color: var(#{$css-var-prefix}color);
 
-    @if map-get($breakpoints, 'sm') {
-      @media (min-width: map-get($breakpoints, 'sm')) {
-        max-width: map-get($viewports, 'sm');
-      }
-    }
+    // Content
+    article {
+      $close-selector: if(
+        $enable-classes,
+        ".close, :is(a, button)[rel=prev]",
+        ":is(a, button)[rel=prev]"
+      );
+      width: 100%;
+      max-height: calc(100vh - var(#{$css-var-prefix}spacing) * 2);
+      margin: var(#{$css-var-prefix}spacing);
+      overflow: auto;
 
-    @if map-get($breakpoints, 'md') {
-      @media (min-width: map-get($breakpoints, 'md')) {
-        max-width: map-get($viewports, 'md');
-      }
-    }
-
-    > header,
-    > footer {
-      padding: calc(var(--block-spacing-vertical) * 0.5)
-        var(--block-spacing-horizontal);
-    }
-
-    > header {
-      .close {
-        margin: 0;
-        margin-left: var(--spacing);
-        float: right;
-      }
-    }
-
-    > footer {
-      text-align: right;
-
-      [role='button'] {
-        margin-bottom: 0;
-
-        &:not(:first-of-type) {
-          margin-left: calc(var(--spacing) * 0.5);
+      @if map.get($breakpoints, "sm") {
+        @media (min-width: map.get(map.get($breakpoints, "sm"), "breakpoint")) {
+          max-width: map.get(map.get($breakpoints, "sm"), "viewport");
         }
       }
-    }
 
-    p {
-      &:last-of-type {
-        margin: 0;
+      @if map.get($breakpoints, "md") {
+        @media (min-width: map.get(map.get($breakpoints, "md"), "breakpoint")) {
+          max-width: map.get(map.get($breakpoints, "md"), "viewport");
+        }
       }
-    }
 
-    // Close icon
-    @if $enable-classes {
-      .close {
+      > header {
+        > * {
+          margin-bottom: 0;
+        }
+
+        #{$close-selector} {
+          margin: 0;
+          margin-left: var(#{$css-var-prefix}spacing);
+          padding: 0;
+          float: right;
+        }
+      }
+
+      > footer {
+        text-align: right;
+
+        button,
+        [role="button"] {
+          margin-bottom: 0;
+
+          &:not(:first-of-type) {
+            margin-left: calc(var(#{$css-var-prefix}spacing) * 0.5);
+          }
+        }
+      }
+
+      // Close icon
+      #{$close-selector} {
         display: block;
         width: 1rem;
         height: 1rem;
-        margin-top: calc(var(--block-spacing-vertical) * -0.5);
-        margin-bottom: var(--typography-spacing-vertical);
+        margin-top: calc(var(#{$css-var-prefix}spacing) * -1);
+        margin-bottom: var(#{$css-var-prefix}spacing);
         margin-left: auto;
-        background-image: var(--icon-close);
+        border: none;
+        background-image: var(#{$css-var-prefix}icon-close);
         background-position: center;
         background-size: auto 1rem;
         background-repeat: no-repeat;
+        background-color: transparent;
         opacity: 0.5;
 
         @if $enable-transitions {
-          transition: opacity var(--transition);
+          transition: opacity var(#{$css-var-prefix}transition);
         }
 
-        &:hover,
-        &:active,
-        &:focus {
+        &:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
           opacity: 1;
         }
       }
     }
-  }
 
-  // Closed state
-  &:not([open]),
-  &[open='false'] {
-    display: none;
-  }
-}
-
-// Utilities
-@if $enable-classes {
-  .modal-is-open {
-    padding-right: var(--scrollbar-width, 0px);
-    overflow: hidden;
-    pointer-events: none;
-
-    dialog {
-      pointer-events: auto;
+    // Closed state
+    &:not([open]),
+    &[open="false"] {
+      display: none;
     }
   }
-}
 
-// Animations
-@if ($enable-classes and $enable-transitions) {
-  $animation-duration: 0.2s;
+  // Utilities
+  @if $enable-classes {
+    .modal-is-open {
+      padding-right: var(#{$css-var-prefix}scrollbar-width, 0px);
+      overflow: hidden;
+      pointer-events: none;
+      touch-action: none;
 
-  .modal-is-opening,
-  .modal-is-closing {
-    dialog,
-    dialog > article {
-      animation-duration: $animation-duration;
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: both;
-    }
-
-    dialog {
-      animation-duration: ($animation-duration * 4);
-      animation-name: fadeIn;
-
-      > article {
-        animation-delay: $animation-duration;
-        animation-name: slideInDown;
+      dialog {
+        pointer-events: auto;
+        touch-action: auto;
       }
     }
   }
 
-  .modal-is-closing {
-    dialog,
-    dialog > article {
-      animation-delay: 0s;
-      animation-direction: reverse;
-    }
-  }
+  // Animations
+  @if $enable-classes and $enable-transitions {
+    $animation-duration: 0.2s;
 
-  @keyframes fadeIn {
-    from {
-      background-color: transparent;
-    }
-    to {
-      background-color: var(--modal-overlay-background-color);
-    }
-  }
+    :where(.modal-is-opening, .modal-is-closing) {
+      dialog,
+      dialog > article {
+        animation-duration: $animation-duration;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+      }
 
-  @keyframes slideInDown {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
+      dialog {
+        animation-duration: ($animation-duration * 4);
+        animation-name: modal-overlay;
+
+        > article {
+          animation-delay: $animation-duration;
+          animation-name: modal;
+        }
+      }
     }
-    to {
-      transform: translateY(0);
-      opacity: 1;
+
+    .modal-is-closing {
+      dialog,
+      dialog > article {
+        animation-delay: 0s;
+        animation-direction: reverse;
+      }
+    }
+
+    @keyframes modal-overlay {
+      from {
+        backdrop-filter: none;
+        background-color: transparent;
+      }
+    }
+
+    @keyframes modal {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
     }
   }
 }
