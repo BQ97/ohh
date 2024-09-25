@@ -27,7 +27,9 @@
         "monolog/monolog": "^3.5",
         "ddn/sapp": "^1.4",
         "smalot/pdfparser": "^2.10",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "picocss/pico": "^2.0",
+        "scssphp/scssphp": "^1.13"
     },
     "autoload": {
         "psr-4": {
@@ -42,5 +44,10 @@
         "allow-plugins": {
             "php-http/discovery": true
         }
+    },
+    "scripts": {
+        "build": [
+            "vendor/bin/pscss --style=compressed vendor/picocss/pico/css/pico.min.css static/css/pico.min.css"
+        ]
     }
 }

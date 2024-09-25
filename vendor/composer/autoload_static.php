@@ -64,6 +64,7 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
             'Symfony\\Component\\Console\\' => 26,
             'Spatie\\Async\\' => 13,
             'Seld\\CliPrompt\\' => 15,
+            'ScssPhp\\ScssPhp\\' => 16,
         ),
         'R' => 
         array (
@@ -210,6 +211,10 @@ class ComposerStaticInit55ea5d3908558f51600f3aa8914d742c
         'Seld\\CliPrompt\\' => 
         array (
             0 => __DIR__ . '/..' . '/seld/cli-prompt/src',
+        ),
+        'ScssPhp\\ScssPhp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/scssphp/scssphp/src',
         ),
         'Revolt\\' => 
         array (
