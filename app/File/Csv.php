@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\File;
 
 use App\Response\DownloadResponse;
+use ZipArchive;
 
 class Csv
 {
@@ -37,6 +38,21 @@ class Csv
         return $output;
     }
 
+    public static function arr2csv(array $data, string $to_encoding = 'UTF-8')
+    {
+        return array_reduce($data, function ($current, $items) use ($to_encoding) {
+
+            $lines = array_map(function ($string) use ($to_encoding) {
+                if (is_string($string)) {
+                    return '"' . mb_convert_encoding($string, $to_encoding) . '"';
+                }
+                return $string;
+            }, $items);
+
+            return $current . implode(',', $lines) . "\r\n";
+        }, '');
+    }
+
     /**
      * @param  string	$fileName
      * @param  array	$data
@@ -44,27 +60,52 @@ class Csv
      * 
      * @return string|DownloadResponse
      */
-    public static function write(string $fileName, array $data, bool $download = true)
+    public static function write(string $fileName, array $data, string $to_encoding = 'UTF-8')
     {
         $fileName = pathinfo($fileName, PATHINFO_FILENAME) . '.csv';
 
-        $content = array_reduce($data, function ($current, $items) {
+        $fileName = date('Ymd') . DS . $fileName;
 
-            $lines = array_map(fn ($string) => '"' . $string . '"', $items);
+        FileSystem::getInstance(UPLOAD_PATH)->write($fileName, static::arr2csv($data, $to_encoding));
 
-            return $current . implode(',', $lines) . PHP_EOL;
-        }, '');
+        return UPLOAD_PATH . $fileName;
+    }
 
-        if ($download) {
-
-            return new DownloadResponse($content, $fileName);
+    public static function multiWrite(array $options, ?string $fileName = null)
+    {
+        if ($fileName) {
+            $fileName = pathinfo($fileName, PATHINFO_FILENAME) . '.zip';
         } else {
-
-            $fileName = date('Ymd') . DS . $fileName;
-
-            FileSystem::getInstance(UPLOAD_PATH)->write($fileName, $content);
-
-            return UPLOAD_PATH . $fileName;
+            $fileName = atom_next_id() . '.zip';
         }
+
+        $Ymd = date('Ymd');
+
+        FileSystem::getInstance(UPLOAD_PATH)->mkDir($Ymd);
+
+        $dir = UPLOAD_PATH . $Ymd . DS;
+
+        $filePath = $dir . $fileName;
+
+        $zip = new ZipArchive;
+
+        if ($zip->open($filePath, ZipArchive::CREATE) !== true) {
+            return false;
+        }
+
+        foreach ($options as $value) {
+            if (empty($value['data'])) {
+                continue;
+            }
+            if (empty($value['name'])) {
+                $value['name'] = atom_next_id();
+            }
+
+            $zip->addFromString(pathinfo($value['name'], PATHINFO_FILENAME) . '.csv', static::arr2csv($value['data'], $value['to_encoding'] ?? 'UTF-8'));
+        }
+
+        $zip->close();
+
+        return $filePath;
     }
 }
