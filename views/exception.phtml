@@ -1,0 +1,57 @@
+<?php $this->layout('layout', [
+    'title' =>
+    <<<MESSAGE
+        [Message]：{$severity}  {$message}；
+    MESSAGE
+]); ?>
+
+<style>
+    li {
+        list-style: none;
+    }
+</style>
+
+<h5>
+    [File]： <?= $file . ' in line' . $line ?>；
+</h5>
+
+<?php if (!empty($source)) : ?>
+    <pre>
+        <ol start="<?= $source['first']; ?>">
+            <?php foreach ((array) $source['source'] as $key => $value) { ?>
+                <li><code><?= $key + $source['first'], htmlentities($value); ?></code></li>
+            <?php } ?>
+        </ol>
+    </pre>
+<?php endif ?>
+
+<?php if (!empty($trace)) : ?>
+    <article>
+        <section>
+            <h5>
+                [Traces]：
+            </h5>
+        </section>
+
+        <ul>
+            <?php foreach ($trace as $t) : ?>
+                <details open>
+                    <summary>[File]：<?= "{$t['file']} in line {$t['line']}" ?></summary>
+                    <ul>
+                        <li>
+                            <p>[Function]：<?= $t['class'], $t['type'], $t['function']; ?></p>
+
+                        </li>
+                        <li>
+                            <p>[Args]：</p>
+                            <p>
+                                <?php dump($t['args']); ?>
+                            </p>
+                        </li>
+                    </ul>
+                </details>
+
+            <?php endforeach ?>
+        </ul>
+    </article>
+<?php endif ?>

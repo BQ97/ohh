@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title ?: 'Document' ?></title>
+
+    <link rel="stylesheet" href="/static/css/pico.min.css">
+</head>
+
+<body>
+
+    <article>
+        <header>
+            <?php $this->insert('header', ['title' => $title ?: 'Document']); ?>
+        </header>
+
+        <section>
+            <?= $this->section('content') ?>
+        </section>
+
+        <footer>
+            <?php $this->insert('footer'); ?>
+        </footer>
+    </article>
+</body>
+
+<script type="module">
+    import model from '/static/model.js';
+
+    console.log(model)
+</script>
+
+
+</html>

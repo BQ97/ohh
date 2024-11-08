@@ -1,0 +1,10 @@
+.env
+cache
+config
+uploads
+modules
+public/static
+logs
+tpl
+vendor
+composer.lock
