@@ -9,6 +9,8 @@ use App\File\FileSystem;
 use Cake\Chronos\Chronos;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use Grafika\Grafika;
+use Grafika\Gd\Image;
 use Phar;
 
 class Utils
@@ -275,5 +277,43 @@ class Utils
         }
 
         return $startObj->diff($endObj->addDays(1), $abs);
+    }
+
+    public static function resizeImage(string $image, $newWidth = 800, $newHeight = 800)
+    {
+        if (!file_exists($image)) {
+            return false;
+        }
+
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+
+        if (!in_array($ext, ['jpg', 'png', 'jpeg'], true)) {
+            return false;
+        }
+
+        $editor = Grafika::createEditor();
+        $imageObj = Image::createFromFile($image);
+
+        $width  = $imageObj->getWidth();
+        $height = $imageObj->getHeight();
+        $ratio  = $width / $height;
+
+        // Try basing it on width first
+        $resizeWidth  = $newWidth;
+        $resizeHeight = round($newWidth / $ratio);
+
+        if (($resizeWidth > $newWidth) or ($resizeHeight > $newHeight)) { // Oops, either with or height does not fit
+            // So base on height instead
+            $resizeHeight = $newHeight;
+            $resizeWidth  = round($newHeight * $ratio);
+        }
+
+        $editor->resizeExact($imageObj, $resizeWidth, $resizeHeight);
+
+		$editor->save($imageObj, $image);
+
+        $editor->free($imageObj);
+
+        return true;
     }
 }
