@@ -172,3 +172,13 @@ if (!function_exists('send_mail')) {
         return $mail->send();
     }
 }
+
+if (!function_exists('console_log')) {
+    /**
+     * 类似 `javascript` 的 console.log
+     */
+    function console_log(mixed ...$vars): mixed
+    {
+        return dump(...$vars);
+    }
+}
