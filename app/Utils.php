@@ -100,7 +100,7 @@ class Utils
      * @param \DOMNodeList|\DOMNode|\DOMNode[]|string|null $node A Node to use as the base for the crawling
      * @return \Symfony\Component\DomCrawler\Crawler
      */
-    public static function crawler($node = null, string $uri = null, string $baseHref = null): Crawler
+    public static function crawler($node = null, ?string $uri = null, ?string $baseHref = null): Crawler
     {
         return new Crawler(...func_get_args());
     }

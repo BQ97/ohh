@@ -48,7 +48,7 @@ class Excel
      *
      * @return array
      */
-    public static function read(string $fileName, string $sheet = null, $nullValue = null, $calculateFormulas = true, $formatData = true, $returnCellRef = false)
+    public static function read(string $fileName, ?string $sheet = null, $nullValue = null, $calculateFormulas = true, $formatData = true, $returnCellRef = false)
     {
         $spreadsheet = IOFactory::load($fileName);
 
@@ -103,7 +103,7 @@ class Excel
      *
      * @return string
      */
-    public static function write(array $options, string $fileName = null)
+    public static function write(array $options, ?string $fileName = null)
     {
         $spreadsheet = new Spreadsheet();
 
@@ -145,7 +145,7 @@ class Excel
      */
     public static function column(
         array $data,
-        string|array|callable $column_key = null,
+        string|array|callable|null $column_key = null,
         ?string $index_key = null,
         ?callable $where = null,
         ?int $start_row = null

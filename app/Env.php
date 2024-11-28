@@ -25,7 +25,7 @@ class Env
      * @param  mixed     $default  默认值
      * @return mixed
      */
-    public function get(string $name = null, $default = null, bool $php_prefix = true)
+    public function get(?string $name = null, mixed $default = null, bool $php_prefix = true)
     {
         if (is_null($name)) {
             return $this->data;
@@ -40,7 +40,7 @@ class Env
         return $this->getEnv($name, $default, $php_prefix);
     }
 
-    protected function getEnv(string $name, $default = null, bool $php_prefix = true)
+    protected function getEnv(?string $name, mixed $default = null, bool $php_prefix = true)
     {
         if ($php_prefix) {
             $name = 'PHP_' . $name;
@@ -72,7 +72,7 @@ class Env
      * @param  mixed         $value  值
      * @return void
      */
-    public function set(string|array $env, $value = null)
+    public function set(string|array $env, mixed $value = null)
     {
         if (is_array($env)) {
             $env = array_change_key_case($env, CASE_UPPER);

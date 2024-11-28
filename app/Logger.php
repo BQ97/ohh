@@ -68,7 +68,7 @@ class Logger
         // 匹配日志中的日期，确保日志格式一致
         preg_match_all($datePattern, $content, $dates);
 
-        return array_map(function($item) {
+        return array_map(function ($item) {
             // 将每一行按照日志格式进行分割
             $data = explode('|', $item);
             return [
@@ -93,7 +93,7 @@ class Logger
         return true;
     }
 
-    public static function setLogger(string $logger = null)
+    public static function setLogger(?string $logger = null)
     {
         // 需要去除空格，特殊字符，并限制长度（如50个字符以内）
         $logger = preg_replace('/\s+|[\/\\?%*:|"<>]/u', '', $logger ?? static::$logger);
@@ -111,63 +111,63 @@ class Logger
         return true;
     }
 
-    public static function alert(string $message, array $content = [], string $logger = null)
+    public static function alert(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->alert($message, $content);
     }
 
-    public static function critical(string $message, array $content = [], string $logger = null)
+    public static function critical(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->critical($message, $content);
     }
 
-    public static function debug(string $message, array $content = [], string $logger = null)
+    public static function debug(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->debug($message, $content);
     }
 
-    public static function emergency(string $message, array $content = [], string $logger = null)
+    public static function emergency(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->emergency($message, $content);
     }
 
-    public static function error(string $message, array $content = [], string $logger = null)
+    public static function error(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->error($message, $content);
     }
 
-    public static function info(string $message, array $content = [], string $logger = null)
+    public static function info(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->info($message, $content);
     }
 
-    public static function notice(string $message, array $content = [], string $logger = null)
+    public static function notice(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->notice($message, $content);
     }
 
-    public static function warning(string $message, array $content = [], string $logger = null)
+    public static function warning(string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 
         static::handler()->warning($message, $content);
     }
 
-    public static function log(string $level, string $message, array $content = [], string $logger = null)
+    public static function log(string $level, string $message, array $content = [], ?string $logger = null)
     {
         static::setLogger($logger);
 

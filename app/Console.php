@@ -50,7 +50,7 @@ class Console
         ]);
     }
 
-    public function getCommand(string $alias = null)
+    public function getCommand(?string $alias = null)
     {
         if (!$alias) {
             return $this->commands;
@@ -86,6 +86,10 @@ class Console
     public function run()
     {
         if (preg_match("/cli/i", php_sapi_name())) {
+            
+            /**
+             * @var string[]
+             */
             $args = $_SERVER['argv'];
 
             if (count($args) < 2) {

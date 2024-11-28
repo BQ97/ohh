@@ -88,7 +88,7 @@ class FileSystem
      *
      * @return array
      */
-    public function ls(string $dirPath, bool $recursive = false, string $option = null)
+    public function ls(string $dirPath, bool $recursive = false, ?string $option = null)
     {
         $listing = $this->getHandle()->listContents($dirPath, $recursive);
 

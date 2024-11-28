@@ -31,7 +31,7 @@ class MineType
      * @param  string  $extension
      * @return string|array
      */
-    public static function get(string $extension = null)
+    public static function get(?string $extension = null)
     {
         return isset($extension) ? static::getMimeTypeFromExtension($extension) : GeneratedExtensionToMimeTypeMap::MIME_TYPES_FOR_EXTENSIONS;
     }

@@ -58,7 +58,7 @@ class Zip
      *
      * @return Zip
      */
-    public function open(string $filename, int $flags = null)
+    public function open(string $filename, ?int $flags = null)
     {
         if (call_user_func_array([$this->handler, 'open'], func_get_args()) === true) {
             $this->password && $this->handler->setPassword($this->password);

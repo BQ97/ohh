@@ -45,7 +45,7 @@ class Pipeline
      * @param  \App\Application|null  $app
      * @return void
      */
-    public function __construct(Application $app = null)
+    public function __construct(?Application $app = null)
     {
         $this->app = $app;
     }
@@ -156,7 +156,7 @@ class Pipeline
                         // If the pipe is a string we will parse the string and resolve the class out
                         // of the dependency injection container. We can then build a callable and
                         // execute the pipe function giving in the parameters that are required.
-                        $pipe = $this->getContainer()->make($name);
+                        $pipe = $this->getContainer()->get($name);
 
                         $parameters = array_merge([$passable, $stack], $parameters);
                     } else {
