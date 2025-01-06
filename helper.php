@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\FileSystem, Application};
+use App\{File\Cache, File\FileSystem, Application, Utils};
 use Laminas\Diactoros\Response\HtmlResponse;
 use Revolt\EventLoop;
 
@@ -180,5 +180,17 @@ if (!function_exists('console_log')) {
     function console_log(mixed ...$vars): mixed
     {
         return dump(...$vars);
+    }
+}
+
+
+if (!function_exists('jsonFormat')) {
+    /**
+     * @param string | array | object $json
+     * @return string
+     */
+    function jsonFormat(string | array | object $json): string
+    {
+        return Utils::jsonFormat($json);
     }
 }
