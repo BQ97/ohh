@@ -310,9 +310,41 @@ class Utils
 
         $editor->resizeExact($imageObj, $resizeWidth, $resizeHeight);
 
-		$editor->save($imageObj, $image);
+        $editor->save($imageObj, $image);
 
         $editor->free($imageObj);
+
+        return true;
+    }
+
+    public static function pdf2Image(string $path, string $imageExt = 'png')
+    {
+        $outputPath = UPLOAD_PATH . date('Ymd') . DS;
+        is_dir($outputPath) || mkdir($outputPath, 0755, true);
+
+        // 创建 Imagick 对象
+        $im = new \Imagick();
+        $im->readImageBlob(file_get_contents($path));
+
+        // 获取页数
+        $numberOfPages = $im->getNumberImages();
+
+        $zip = new \ZipArchive;
+
+        $zip->open($outputPath . pathinfo($path, PATHINFO_FILENAME) . '.zip', \ZipArchive::CREATE);
+
+        // 将每一页的 PDF 转为图片
+        for ($i = 0; $i < $numberOfPages; $i++) {
+            $im->setIteratorIndex($i);
+            $page = $im->getImage();
+            $page->setImageFormat($imageExt); // 图像格式可以根据需要更改
+            $zip->addFromString("{$i}.{$imageExt}", $page->getImageBlob());
+            $page->clear();
+        }
+
+        $zip->close();
+        // 释放 Imagick 对象
+        $im->clear();
 
         return true;
     }

@@ -194,3 +194,10 @@ if (!function_exists('jsonFormat')) {
         return Utils::jsonFormat($json);
     }
 }
+
+if (!function_exists('pdf2Image')) {
+    function pdf2Image(string $path, string $imageExt = 'png'): bool
+    {
+        return Utils::pdf2Image($path, $imageExt);
+    }
+}

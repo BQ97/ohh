@@ -9,7 +9,6 @@ use League\Flysystem\{
     DirectoryAttributes,
     StorageAttributes,
     Local\LocalFilesystemAdapter,
-    UnixVisibility\PortableVisibilityConverter,
     Filesystem as File
 };
 
@@ -41,12 +40,7 @@ class FileSystem
         }
 
         if (empty(static::$handlers[$path])) {
-            $adapter = new LocalFilesystemAdapter($path, PortableVisibilityConverter::fromArray([
-                'file' => ['public' => 0640, 'private' => 0604],
-                'dir' => ['public' => 0740, 'private' => 0700]
-            ]));
-
-            static::$handlers[$path] = new File($adapter);
+            static::$handlers[$path] = new File(new LocalFilesystemAdapter($path));
         }
     }
 
