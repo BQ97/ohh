@@ -10,7 +10,8 @@ use Cake\Chronos\Chronos;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Grafika\Grafika;
-use Grafika\Gd\Image;
+use Grafika\Color;
+use Grafika\Imagick\Image;
 use Phar;
 
 class Utils
@@ -292,7 +293,7 @@ class Utils
         }
 
         $editor = Grafika::createEditor();
-        $imageObj = Image::createFromFile($image);
+        $imageObj = Grafika::createImage($image);
 
         $width  = $imageObj->getWidth();
         $height = $imageObj->getHeight();
@@ -319,8 +320,9 @@ class Utils
 
     public static function pdf2Image(string $path, string $imageExt = 'png')
     {
-        $outputPath = UPLOAD_PATH . date('Ymd') . DS;
-        is_dir($outputPath) || mkdir($outputPath, 0755, true);
+        $date = date('Ymd');
+        $outputDir = UPLOAD_PATH . $date . DS;
+        is_dir($outputDir) || mkdir($outputDir, 0755, true);
 
         // 创建 Imagick 对象
         $im = new \Imagick();
@@ -329,23 +331,47 @@ class Utils
         // 获取页数
         $numberOfPages = $im->getNumberImages();
 
+        $width = $im->getImageWidth();
+        $height = $im->getImageHeight();
+
+        $blankImage = Grafika::createBlankImage($width, $height * $numberOfPages);
+
+        $editor = Grafika::createEditor();
+
+        $editor->fill($blankImage, new Color('#fff'));
+
         $zip = new \ZipArchive;
 
-        $zip->open($outputPath . pathinfo($path, PATHINFO_FILENAME) . '.zip', \ZipArchive::CREATE);
+        $uri = $date . DS . pathinfo($path, PATHINFO_FILENAME) . '.zip';
+
+        $zip->open(UPLOAD_PATH . $uri, \ZipArchive::CREATE);
 
         // 将每一页的 PDF 转为图片
         for ($i = 0; $i < $numberOfPages; $i++) {
             $im->setIteratorIndex($i);
             $page = $im->getImage();
             $page->setImageFormat($imageExt); // 图像格式可以根据需要更改
+
+            $editor->blend($blankImage, Image::createFromCore($im), 'normal', 1, 'top-left', 0, $height * $i);
+
             $zip->addFromString("{$i}.{$imageExt}", $page->getImageBlob());
             $page->clear();
         }
+
+        $blankImageUrl = $outputDir . 'x.png';
+
+        $editor->save($blankImage, $blankImageUrl);
+
+        $editor->free($blankImage);
+
+        $zip->addFile($blankImageUrl, 'x.png');
 
         $zip->close();
         // 释放 Imagick 对象
         $im->clear();
 
-        return true;
+        unlink($blankImageUrl);
+
+        return $uri;
     }
 }

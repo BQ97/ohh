@@ -196,7 +196,7 @@ if (!function_exists('jsonFormat')) {
 }
 
 if (!function_exists('pdf2Image')) {
-    function pdf2Image(string $path, string $imageExt = 'png'): bool
+    function pdf2Image(string $path, string $imageExt = 'png')
     {
         return Utils::pdf2Image($path, $imageExt);
     }

@@ -36,9 +36,7 @@ class Logger
 
             // 检查并创建日志目录（如果不存在）
             $logDir = dirname($logFilePath);
-            if (!is_dir($logDir)) {
-                mkdir($logDir, 0755, true);
-            }
+            is_dir($logDir) || mkdir($logDir, 0755, true);
 
             // 创建 StreamHandler，并设置 formatter
             $stream = new StreamHandler($logFilePath, Level::Debug);
