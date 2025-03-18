@@ -358,19 +358,15 @@ class Utils
             $page->clear();
         }
 
-        $blankImageUrl = $outputDir . 'x.png';
+        $blankImage->getCore()->setImageFormat($imageExt);
 
-        $editor->save($blankImage, $blankImageUrl);
-
-        $editor->free($blankImage);
-
-        $zip->addFile($blankImageUrl, 'x.png');
+        $zip->addFromString("x.{$imageExt}", $blankImage->getCore()->getImageBlob());
 
         $zip->close();
         // 释放 Imagick 对象
         $im->clear();
 
-        unlink($blankImageUrl);
+        $editor->free($blankImage);
 
         return $uri;
     }
