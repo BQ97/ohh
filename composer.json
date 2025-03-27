@@ -36,7 +36,8 @@
             "modules\\": "modules"
         },
         "files": [
-            "helper.php"
+            "helper.php",
+            "SnowDrift.php"
         ]
     },
     "config": {
