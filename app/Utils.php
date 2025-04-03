@@ -370,4 +370,42 @@ class Utils
 
         return $uri;
     }
+
+    public static function chunkWeMiniPages(array $pages)
+    {
+        $subPackages = [];
+
+        foreach ($pages as $page) {
+            $path = $page['path'];
+            $index = strpos($path, '/', 6);
+            $root = substr($path, 0, $index);
+            $p = trim(substr($path, $index), '/');
+
+            if (empty($subPackages[$root])) {
+                $subPackages[$root] = [
+                    'root' => $root,
+                    'pages' => [],
+                ];
+            }
+
+            $item = $page;
+            $item['path'] = $p;
+
+            $subPackages[$root]['pages'][] = $item;
+        }
+
+        $pkg = array_keys($subPackages);
+
+        $subPackages = array_values($subPackages);
+
+        return [
+            'subPackages' => $subPackages,
+            'preloadRule' => [
+                'pages/index' => [
+                    'network' => 'all',
+                    'packages' => $pkg
+                ]
+            ]
+        ];
+    }
 }

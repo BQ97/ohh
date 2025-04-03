@@ -201,3 +201,10 @@ if (!function_exists('pdf2Image')) {
         return Utils::pdf2Image($path, $imageExt);
     }
 }
+
+if (!function_exists('chunkWeMiniPages')) {
+    function chunkWeMiniPages(array $pages): array
+    {
+        return Utils::chunkWeMiniPages($pages);
+    }
+}
