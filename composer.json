@@ -18,7 +18,7 @@
         "league/route": "^6.2",
         "laminas/laminas-diactoros": "^3.0",
         "laminas/laminas-httphandlerrunner": "^2.1",
-        "league/container": "^4.2",
+        "league/container": "^5.0",
         "league/climate": "^3.8",
         "openai-php/client": "^0.8",
         "revolt/event-loop": "^1.0",
