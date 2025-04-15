@@ -6,6 +6,7 @@ namespace App;
 
 use App\File\Cache;
 use App\File\FileSystem;
+use App\File\Zip;
 use Cake\Chronos\Chronos;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
@@ -218,14 +219,14 @@ class Utils
         return $phar->setStub($phar->createDefaultStub($index));
     }
 
-    public static function zipPack(string $sourceDir, string $password = '')
+    public static function zip(string $path, ?string $pwd = null)
     {
-        return app('zip')->setPassword($password)->pack($sourceDir);
+        return Zip::pack($path, $pwd);
     }
 
-    public static function zipUnPack(string $zip, string $password = '')
+    public static function unzip(string $path, ?string $pwd = null)
     {
-        return app('zip')->setPassword($password)->unPack($zip);
+        return Zip::unPack($path, $pwd);
     }
 
     public static function makePwdByMobile(string $mobile)

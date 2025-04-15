@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\FileSystem, Application, Utils};
+use App\{File\Cache, File\FileSystem, File\Zip, Application, Utils};
 use Laminas\Diactoros\Response\HtmlResponse;
 use Revolt\EventLoop;
 
@@ -206,5 +206,19 @@ if (!function_exists('chunkWeMiniPages')) {
     function chunkWeMiniPages(array $pages): array
     {
         return Utils::chunkWeMiniPages($pages);
+    }
+}
+
+if (!function_exists('zip')) {
+    function zip(string $path, ?string $pwd = null)
+    {
+        return Zip::pack($path, $pwd);
+    }
+}
+
+if (!function_exists('unzip')) {
+    function unzip(string $path, ?string $pwd = null)
+    {
+        return Zip::unPack($path, $pwd);
     }
 }

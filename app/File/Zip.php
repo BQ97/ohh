@@ -8,135 +8,97 @@ use ZipArchive;
 
 class Zip
 {
-    /**
-     * @var ZipArchive
-     */
-    private ZipArchive $handler;
-
-    /**
-     * @var string
-     */
-    private string $password = '12345678';
-
-    /**
-     * @var string
-     */
-    private string $exportPath;
-
-    public function __construct()
+    public static function pack(string $path, ?string $pwd = null)
     {
-        $this->handler = new ZipArchive;
+        $fileName = pathinfo($path, PATHINFO_FILENAME);
 
-        $date = date('Ymd');
+        $zipDir = UPLOAD_PATH . date('Ymd') . DS;
 
-        $this->exportPath = UPLOAD_PATH . $date . DS;
+        is_dir($zipDir) || mkdir($zipDir);
 
-        FileSystem::getInstance(UPLOAD_PATH)->mkDir($date);
-    }
+        $zipPath = $zipDir . $fileName . '.zip';
 
-    /**
-     * @param string $password
-     * @return Zip
-     */
-    public function setPassword(string $password)
-    {
-        $this->password = $password;
-        return $this;
-    }
+        $handler = new ZipArchive;
 
-    /**
-     * @return ZipArchive
-     */
-    public function getHandler()
-    {
-        return $this->handler;
-    }
-
-    /**
-     * @param string $filename
-     * @param int $flags
-     *
-     * @return Zip
-     */
-    public function open(string $filename, ?int $flags = null)
-    {
-        if (call_user_func_array([$this->handler, 'open'], func_get_args()) === true) {
-            $this->password && $this->handler->setPassword($this->password);
-            return $this;
+        if ($handler->open($zipPath, ZipArchive::CREATE) !== true) {
+            return false;
         }
 
-        return false;
+        if ($pwd) $handler->setPassword($pwd);
+
+        if (is_dir($path)) {
+            $files = fileSystem($path)->ls('/', true, FileSystem::LS_FILE_OPTION);
+            foreach ($files as $f) {
+                $handler->addFile($path . DS . $f, $fileName . DS . $f);
+                if ($pwd) $handler->setEncryptionName($fileName . DS . $f, ZipArchive::EM_AES_256, $pwd);
+            }
+        } else {
+            if (!file_exists($path)) {
+                return false;
+            }
+
+            $f = pathinfo($path, PATHINFO_BASENAME);
+            $handler->addFile($path, $f);
+            if ($pwd) $handler->setEncryptionName($f, ZipArchive::EM_AES_256, $pwd);
+        }
+
+        $handler->close();
+
+        return $zipPath;
     }
 
-    /**
-     * @param string $sourceDir
-     *
-     * @return string
-     */
-    public function pack(string $sourceDir)
+    public static function unPack(string $path, ?string $pwd = null)
     {
-        $files = FileSystem::getInstance($sourceDir)->ls('/', true, FileSystem::LS_FILE_OPTION);
+        $handler = new ZipArchive;
 
-        $file = $this->exportPath . atom_next_id() . '.zip';
+        if ($handler->open($path) !== true) {
+            return false;
+        }
 
-        array_reduce($files, function (ZipArchive $zip, string $path) use ($sourceDir) {
+        $extractDir = UPLOAD_PATH . date('Ymd');
 
-            file_exists($sourceDir . DS . $path) &&  $zip->addFile($sourceDir . DS . $path, $path);
-            $this->password && $zip->setEncryptionName($path, ZipArchive::EM_AES_256, $this->password);
+        is_dir($extractDir) || mkdir($extractDir);
 
-            return $zip;
-        }, $this->open($file, ZipArchive::CREATE)->getHandler());
+        if ($pwd) $handler->setPassword($pwd);
 
-        return $file;
+        $handler->extractTo($extractDir);
+
+        $handler->close();
+
+        return $extractDir;
     }
 
-    /**
-     * @param string $zip
-     *
-     * @return string
-     */
-    public function unPack(string $zip)
+    public static function getFiles(string $zip, ?string $pwd = null)
     {
-        $this->open($zip)->getHandler()->extractTo($path = $this->exportPath . atom_next_id() . DS);
+        $handler = new ZipArchive;
 
-        return $path;
-    }
+        if ($handler->open($zip) !== true) {
+            return false;
+        }
 
-    /**
-     * @param string $zip
-     *
-     * @return \Generator
-     */
-    public function getFiles(string $zip)
-    {
-        $this->open($zip);
+        if ($pwd) $handler->setPassword($pwd);
 
-        for ($i = 0; $i < $this->handler->count(); $i++) {
-            yield $i => $this->handler->getNameIndex($i);
+        for ($i = 0; $i < $handler->count(); $i++) {
+            yield $i => $handler->getNameIndex($i);
         }
     }
 
-    /**
-     * @param string $zip
-     * @param string $name
-     *
-     * @return string
-     */
-    public function getContent(string $zip, string $name)
+    public static function getContent(string $zip, string $name, ?string $pwd = null)
     {
-        return $this->open($zip)->getHandler()->getFromName($name);
+        $handler = new ZipArchive;
+
+        if ($handler->open($zip) !== true) {
+            return false;
+        }
+
+        if ($pwd) $handler->setPassword($pwd);
+
+        return $handler->getFromName($name);
     }
 
-    /**
-     * @param string $zip
-     * @param string $name
-     * @param string $password
-     *
-     * @return string
-     */
-    public function saveFileToLocal(string $zip, string $name)
+    public static function saveFileToLocal(string $zip, string $name, ?string $pwd = null)
     {
-        $contents = $this->getContent($zip, $name);
+        $contents = static::getContent($zip, $name, $pwd);
 
         if (!$contents) {
             return false;
@@ -144,13 +106,14 @@ class Zip
 
         $md5File = md5($contents) . '.' . pathinfo($name, PATHINFO_EXTENSION);
 
-        FileSystem::getInstance($this->exportPath)->write($md5File, $contents);
+        $Ymd = date('Ymd');
 
-        return $this->exportPath . $md5File;
-    }
+        $exportPath = UPLOAD_PATH . $Ymd;
 
-    public function __destruct()
-    {
-        $this->handler->filename && $this->handler->close();
+        is_dir($exportPath) || mkdir($exportPath);
+
+        file_put_contents($exportPath . DS . $md5File, $contents, LOCK_EX);
+
+        return $exportPath . DS . $md5File;
     }
 }
