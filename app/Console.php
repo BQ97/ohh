@@ -20,7 +20,8 @@ class Console
         'create-shell' => \modules\Consoles\CreateShellConsole::class,
         'create-do-project' => \modules\Consoles\CreateDoProjectConsole::class,
         'fanyi' => \modules\Consoles\FanYiConsole::class,
-        'keep-alive-ams-cookie' => \modules\Consoles\KeepAliveAmsCookieConsole::class
+        'keep-alive-ams-cookie' => \modules\Consoles\KeepAliveAmsCookieConsole::class,
+        'deploy-php' => \modules\Consoles\DeployPhpConsole::class
     ];
 
     public function __construct(ContainerInterface $container)
