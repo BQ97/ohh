@@ -27,10 +27,13 @@ class Zip
         if ($pwd) $handler->setPassword($pwd);
 
         if (is_dir($path)) {
+            $handler->addEmptyDir($fileName);
             $files = fileSystem($path)->ls('/', true, FileSystem::LS_FILE_OPTION);
             foreach ($files as $f) {
-                $handler->addFile($path . DS . $f, $fileName . DS . $f);
-                if ($pwd) $handler->setEncryptionName($fileName . DS . $f, ZipArchive::EM_AES_256, $pwd);
+                // 这里的 目录分隔符 不能使用 DS ，windows 和 linux 会有差异， 现在统一使用 /
+                $entryname = $fileName . '/' . $f;
+                $handler->addFile($path . DS . $f, $entryname);
+                if ($pwd) $handler->setEncryptionName($entryname, ZipArchive::EM_AES_256, $pwd);
             }
         } else {
             if (!file_exists($path)) {
