@@ -8,6 +8,7 @@ use App\File\Cache;
 use App\File\FileSystem;
 use App\File\Zip;
 use Cake\Chronos\Chronos;
+use chillerlan\QRCode\QRCode;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Grafika\Grafika;
@@ -408,5 +409,10 @@ class Utils
                 ]
             ]
         ];
+    }
+
+    public static function readQrCode(string $path)
+    {
+        return (new QRCode())->readFromBlob(file_get_contents($path))->__toString();
     }
 }
