@@ -320,7 +320,7 @@ class Utils
         return true;
     }
 
-    public static function pdf2Image(string $path, string $imageExt = 'png')
+    public static function pdf2Image(string $path, string $imageExt = 'png', string $sourceType = 'path')
     {
         $date = date('Ymd');
         $outputDir = UPLOAD_PATH . $date . DS;
@@ -328,7 +328,14 @@ class Utils
 
         // 创建 Imagick 对象
         $im = new \Imagick();
-        $im->readImageBlob(file_get_contents($path));
+
+        if ($sourceType === 'blob') {
+            $im->readImageBlob($path);
+            $uri = $date . DS . atom_next_id() . '.zip';
+        } else {
+            $im->readImageBlob(file_get_contents($path));
+            $uri = $date . DS . pathinfo($path, PATHINFO_FILENAME) . '.zip';
+        }
 
         // 获取页数
         $numberOfPages = $im->getNumberImages();
@@ -343,8 +350,6 @@ class Utils
         $editor->fill($blankImage, new Color('#fff'));
 
         $zip = new \ZipArchive;
-
-        $uri = $date . DS . pathinfo($path, PATHINFO_FILENAME) . '.zip';
 
         $zip->open(UPLOAD_PATH . $uri, \ZipArchive::CREATE);
 
@@ -411,7 +416,7 @@ class Utils
         ];
     }
 
-    public static function readQrCode(string $path)
+    public static function parseQrCode(string $path)
     {
         return (new QRCode())->readFromBlob(file_get_contents($path))->__toString();
     }

@@ -196,9 +196,9 @@ if (!function_exists('jsonFormat')) {
 }
 
 if (!function_exists('pdf2Image')) {
-    function pdf2Image(string $path, string $imageExt = 'png')
+    function pdf2Image(string $path, string $imageExt = 'png', string $sourceType = 'path')
     {
-        return Utils::pdf2Image($path, $imageExt);
+        return Utils::pdf2Image($path, $imageExt, $sourceType);
     }
 }
 
@@ -220,5 +220,12 @@ if (!function_exists('unzip')) {
     function unzip(string $path, ?string $pwd = null)
     {
         return Zip::unPack($path, $pwd);
+    }
+}
+
+if (!function_exists('parseQrCode')) {
+    function parseQrCode(string $path)
+    {
+        return Utils::parseQrCode($path);
     }
 }
