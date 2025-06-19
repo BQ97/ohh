@@ -27,7 +27,7 @@
         "psy/psysh": "^0.12",
         "revolt/event-loop": "^1.0",
         "scssphp/scssphp": "^2.0",
-        "smalot/pdfparser": "^2.11",
+        "smalot/pdfparser": "^2.12",
         "symfony/dom-crawler": "^7.0",
         "symfony/var-dumper": "^7.0"
     },
