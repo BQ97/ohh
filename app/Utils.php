@@ -329,6 +329,8 @@ class Utils
         // 创建 Imagick 对象
         $im = new \Imagick();
 
+        $im->setResolution(150, 150);
+
         if ($sourceType === 'blob') {
             $im->readImageBlob($path);
             $uri = $date . DS . atom_next_id() . '.zip';
