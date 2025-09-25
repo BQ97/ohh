@@ -97,7 +97,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      * @param string|array|mixed $default
      * @return string|array|mixed
      */
-    public function get($key, $default = null)
+    public function get($key, $default = null): mixed
     {
         if ($this->has($key)) {
             $data = $this->getConfig($key);
@@ -178,7 +178,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      * @param int $expire 过期时间 0 永久储存
      * @return int|bool
      */
-    public function set($key, $value, $expire = 0)
+    public function set($key, $value, $expire = 0): bool
     {
         return $this->write($key, $value, $expire);
     }
@@ -189,7 +189,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
      * @param  string $name 缓存变量名
      * @return bool
      */
-    public function has($name)
+    public function has($name): bool
     {
         return false === $this->getExpire($name) ? false : true;
     }
@@ -298,7 +298,7 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
         return new ArrayIterator($this->all());
     }
 
-    public function getMultiple($keys, $default = null)
+    public function getMultiple($keys, $default = null): iterable
     {
         $values = [];
 
@@ -309,14 +309,14 @@ class Cache implements ArrayAccess, CacheInterface, IteratorAggregate
         return $values;
     }
 
-    public function setMultiple($values, $ttl = 0)
+    public function setMultiple($values, $ttl = 0): bool
     {
         foreach ($values as $key => $value) $this->set($key, $value, $ttl);
 
         return true;
     }
 
-    public function deleteMultiple($keys)
+    public function deleteMultiple($keys): bool
     {
         foreach ($keys as $key) $this->delete($key);
 
