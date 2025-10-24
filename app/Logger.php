@@ -93,6 +93,10 @@ class Logger
 
     public static function setLogger(?string $logger = null)
     {
+        if ($logger === static::$logger) {
+            return true;
+        }
+
         // 需要去除空格，特殊字符，并限制长度（如50个字符以内）
         $logger = preg_replace('/\s+|[\/\\?%*:|"<>]/u', '', $logger ?? static::$logger);
 
