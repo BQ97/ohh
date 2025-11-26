@@ -17,10 +17,6 @@ return [
     ],
 
     [
-        'POST', '/finance/create-excel', '\\modules\\Finance::createExcel'
-    ],
-
-    [
         '*', '/{module}/{class}/{action}', function ($request, $args) {
             $module = $args['module'];
             $class = ucfirst($args['class']);
