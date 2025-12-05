@@ -10,7 +10,6 @@
         "gregwar/captcha": "^1.2",
         "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^3.11",
-        "intervention/image-driver-vips": "^1.0",
         "kosinix/grafika": "^2.0",
         "laminas/laminas-diactoros": "^3.0",
         "laminas/laminas-httphandlerrunner": "^2.1",

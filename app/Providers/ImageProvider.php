@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Vips\Driver;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class ImageProvider extends AbstractServiceProvider
@@ -24,10 +23,6 @@ class ImageProvider extends AbstractServiceProvider
                 'blendingColor' => 'ffffff',
                 'strip' => false,
             ];
-
-            if (extension_loaded('ffi')) {
-                return ImageManager::withDriver(new Driver($options));
-            }
 
             if (extension_loaded('imagick')) {
                 return ImageManager::imagick($options);

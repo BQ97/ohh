@@ -16,6 +16,8 @@ use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
 use App\Providers\MailProvider;
 use App\Providers\OpenAiProvider;
+use App\Providers\QrCodeProvider;
+use App\Providers\PdfParserProvider;
 
 /**
  * @name 容器
@@ -33,10 +35,12 @@ use App\Providers\OpenAiProvider;
  * @property \OpenAI\Client                     $openai
  * @property \PHPMailer\PHPMailer\PHPMailer     $mail
  * @property \Intervention\Image\ImageManager   $image
+ * @property \chillerlan\QRCode\QRCode          $qrcode
+ * @property \Smalot\PdfParser\Parser           $pdfparser
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.12.0';
+    public const VERSION = '2.14.0';
 
     private Container $container;
 
@@ -49,7 +53,9 @@ class Application implements ContainerInterface
         ConsoleProvider::class,
         OpenAiProvider::class,
         MailProvider::class,
-        ImageProvider::class
+        ImageProvider::class,
+        QrCodeProvider::class,
+        PdfParserProvider::class,
     ];
 
     private static $instance;
