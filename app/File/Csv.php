@@ -64,9 +64,9 @@ class Csv
     {
         $fileName = pathinfo($fileName, PATHINFO_FILENAME) . '.csv';
 
-        $fileName = date('Ymd') . DS . $fileName;
+        $fileName = FileSystem::makeUploadYmdDir() . DS . $fileName;
 
-        FileSystem::getInstance(UPLOAD_PATH)->write($fileName, static::arr2csv($data, $to_encoding));
+        file_put_contents(UPLOAD_PATH . $fileName, static::arr2csv($data, $to_encoding));
 
         return UPLOAD_PATH . $fileName;
     }
@@ -79,13 +79,7 @@ class Csv
             $fileName = atom_next_id() . '.zip';
         }
 
-        $Ymd = date('Ymd');
-
-        FileSystem::getInstance(UPLOAD_PATH)->mkDir($Ymd);
-
-        $dir = UPLOAD_PATH . $Ymd . DS;
-
-        $filePath = $dir . $fileName;
+        $filePath = FileSystem::makeUploadYmdDir() . DS . $fileName;
 
         $zip = new ZipArchive;
 

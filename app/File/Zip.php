@@ -12,11 +12,7 @@ class Zip
     {
         $fileName = pathinfo($path, PATHINFO_FILENAME);
 
-        $zipDir = UPLOAD_PATH . date('Ymd') . DS;
-
-        is_dir($zipDir) || mkdir($zipDir);
-
-        $zipPath = $zipDir . $fileName . '.zip';
+        $zipPath = FileSystem::makeUploadYmdDir() . $fileName . '.zip';
 
         $handler = new ZipArchive;
 
@@ -58,13 +54,9 @@ class Zip
             return false;
         }
 
-        $extractDir = UPLOAD_PATH . date('Ymd');
-
-        is_dir($extractDir) || mkdir($extractDir);
-
         if ($pwd) $handler->setPassword($pwd);
 
-        $handler->extractTo($extractDir);
+        $handler->extractTo($extractDir = FileSystem::makeUploadYmdDir());
 
         $handler->close();
 
@@ -109,11 +101,7 @@ class Zip
 
         $md5File = md5($contents) . '.' . pathinfo($name, PATHINFO_EXTENSION);
 
-        $Ymd = date('Ymd');
-
-        $exportPath = UPLOAD_PATH . $Ymd;
-
-        is_dir($exportPath) || mkdir($exportPath);
+        $exportPath = FileSystem::makeUploadYmdDir();
 
         file_put_contents($exportPath . DS . $md5File, $contents, LOCK_EX);
 

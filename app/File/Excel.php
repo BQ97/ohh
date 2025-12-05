@@ -67,15 +67,14 @@ class Excel
 
         $drawingCollection = $worksheet->getDrawingCollection();
 
-        $fileSystem = FileSystem::getInstance(UPLOAD_PATH);
-        $fileSystem->mkDir(date('Ymd'));
+        $dir = FileSystem::makeUploadYmdDir();
 
         foreach ($drawingCollection as $drawing) {
             [$column, $row] = Coordinate::indexesFromString($drawing->getCoordinates());
             $index = $column - 1;
 
             if ($drawing instanceof Drawing) {
-                $path = UPLOAD_PATH . date('Ymd') . DS . atom_next_id() . '.' . $drawing->getExtension();
+                $path = $dir . DS . atom_next_id() . '.' . $drawing->getExtension();
 
                 switch ($drawing->getExtension()) {
                     case 'jpg':
@@ -128,9 +127,7 @@ class Excel
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
-        FileSystem::getInstance(UPLOAD_PATH)->mkDir(date('Ymd'));
-
-        $writer->save($path = UPLOAD_PATH . date('Ymd') . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx');
+        $writer->save($path = FileSystem::makeUploadYmdDir() . DS . pathinfo($fileName, PATHINFO_FILENAME) . '.xlsx');
 
         return $path;
     }

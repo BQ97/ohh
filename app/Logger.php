@@ -18,8 +18,10 @@ class Logger
 
     private static string $logger = 'default';
 
-    private static function handler()
+    public static function handler(?string $logger = null)
     {
+        static::setLogger($logger);
+
         // 使用 logger 名称 + 日期 作为缓存 key，确保每个 logger 每天生成一个新的日志文件
         $currentDate = date('Ymd');
         $loggerKey = static::$logger . '_' . $currentDate;
@@ -115,72 +117,46 @@ class Logger
 
     public static function alert(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->alert($message, $content);
+        static::handler($logger)->alert($message, $content);
     }
 
     public static function critical(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->critical($message, $content);
+        static::handler($logger)->critical($message, $content);
     }
 
     public static function debug(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->debug($message, $content);
+        static::handler($logger)->debug($message, $content);
     }
 
     public static function emergency(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->emergency($message, $content);
+        static::handler($logger)->emergency($message, $content);
     }
 
     public static function error(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->error($message, $content);
+        static::handler($logger)->error($message, $content);
     }
 
     public static function info(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->info($message, $content);
+        static::handler($logger)->info($message, $content);
     }
 
     public static function notice(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->notice($message, $content);
+        static::handler($logger)->notice($message, $content);
     }
 
     public static function warning(string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->warning($message, $content);
+        static::handler($logger)->warning($message, $content);
     }
 
     public static function log(string $level, string $message, array $content = [], ?string $logger = null)
     {
-        static::setLogger($logger);
-
-        static::handler()->log($level, $message, $content);
-    }
-
-    public function __debugInfo()
-    {
-        return [
-            'base_path' => static::$base_path,
-            'logger' => static::$logger,
-        ];
+        static::handler($logger)->log($level, $message, $content);
     }
 }

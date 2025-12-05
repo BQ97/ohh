@@ -53,7 +53,7 @@ class FileSystem
         return new static($path);
     }
 
-    public function getHandle() : File
+    public function getHandle(): File
     {
         return static::$handlers[$this->path];
     }
@@ -70,6 +70,17 @@ class FileSystem
         $this->getHandle()->createDirectory($dirPath);
 
         return true;
+    }
+
+    public static function makeUploadYmdDir()
+    {
+        $Ymd = date('Ymd');
+
+        $dir = UPLOAD_PATH . $Ymd;
+
+        is_dir($dir) || mkdir($dir, 0755, true);
+
+        return $dir;
     }
 
     /**
