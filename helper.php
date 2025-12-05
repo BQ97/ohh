@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-use App\{File\Cache, File\FileSystem, File\Zip, Application, Utils};
+use App\{File\FileSystem, File\Zip, Application, Utils};
 use Laminas\Diactoros\Response\HtmlResponse;
 use Revolt\EventLoop;
+use Symfony\Component\Cache\Psr16Cache;
 
 if (!function_exists('app')) {
 
@@ -19,14 +20,9 @@ if (!function_exists('app')) {
 }
 
 if (!function_exists('cache')) {
-    /**
-     * 文件缓存
-     * @param string $prefix 缓存空间 默认 app
-     * @return \App\File\Cache
-     */
-    function cache(string $prefix = 'BoQing'): Cache
+    function cache(): Psr16Cache
     {
-        return Cache::getInstance($prefix);
+        return app('cache');
     }
 }
 

@@ -17,11 +17,11 @@ class QrCodeProvider extends AbstractServiceProvider
 
     public function register(): void
     {
-        $this->getContainer()->add(QRCode::class, new QRCode(new QROptions([
+        $this->getContainer()->add(QRCode::class)->addArgument(new QROptions([
             'quietzoneSize' => 1,
             'outputType' => 'png',
             'outputBase64' => false,
             'readerUseImagickIfAvailable' => extension_loaded('imagick'),
-        ])))->setAlias('qrcode');
+        ]))->setAlias('qrcode');
     }
 }

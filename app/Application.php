@@ -18,7 +18,8 @@ use App\Providers\{
     RouterProvider,
     SnowFlakeProvider,
     ConsoleProvider,
-    ImageProvider
+    ImageProvider,
+    CacheProvider
 };
 
 /**
@@ -39,10 +40,11 @@ use App\Providers\{
  * @property \Intervention\Image\ImageManager   $image
  * @property \chillerlan\QRCode\QRCode          $qrcode
  * @property \Smalot\PdfParser\Parser           $pdfparser
+ * @property \Symfony\Component\Cache\Psr16Cache    $cache
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.18.0';
+    public const VERSION = '2.19.0';
 
     private Container $container;
 
@@ -58,6 +60,7 @@ class Application implements ContainerInterface
         ImageProvider::class,
         QrCodeProvider::class,
         PdfParserProvider::class,
+        CacheProvider::class
     ];
 
     private static $instance;
