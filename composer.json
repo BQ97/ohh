@@ -25,12 +25,12 @@
         "phpmailer/phpmailer": "^7.0",
         "phpoffice/phpspreadsheet": "^5.0",
         "picocss/pico": "^2.0",
-        "psy/psysh": "^0.12",
+        "psy/psysh": "dev-main",
         "revolt/event-loop": "^1.0",
         "scssphp/scssphp": "^2.0",
         "smalot/pdfparser": "^2.12",
         "symfony/dom-crawler": "^8.0",
-        "symfony/var-dumper": "^7.0"
+        "symfony/var-dumper": "^8.0"
     },
     "autoload": {
         "psr-4": {
