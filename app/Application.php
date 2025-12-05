@@ -42,7 +42,7 @@ use App\Providers\{
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.17.0';
+    public const VERSION = '2.18.0';
 
     private Container $container;
 
@@ -60,9 +60,9 @@ class Application implements ContainerInterface
         PdfParserProvider::class,
     ];
 
-    private static Application $instance;
+    private static $instance;
 
-    public static function getInstance()
+    public static function getInstance(): static
     {
         if (!(static::$instance instanceof static)) {
             static::$instance = new static();
