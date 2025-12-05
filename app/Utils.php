@@ -9,7 +9,6 @@ use App\File\FileSystem;
 use App\File\Loader;
 use App\File\Zip;
 use Cake\Chronos\Chronos;
-use chillerlan\QRCode\QRCode;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Grafika\Grafika;
@@ -169,11 +168,9 @@ class Utils
 
         $sqlArr = array_filter(explode(';', file_get_contents($source)), fn($item) => strpos($item, "`{$table}`") !== false, ARRAY_FILTER_USE_BOTH);
 
-        $tableSql = join(';', $sqlArr) . ';';
+        file_put_contents($fileName = FileSystem::makeUploadYmdDir() . DS . "{$table}.sql", join(';', $sqlArr) . ';');
 
-        static::fileSystem(UPLOAD_PATH)->write($fileName = date('Ymd') . DS . "{$table}.sql", $tableSql);
-
-        return UPLOAD_PATH . $fileName;
+        return $fileName;
     }
 
     /**
@@ -203,11 +200,7 @@ class Utils
 
     public static function downloadResource(string $url)
     {
-        $date = date('Ymd');
-
-        static::fileSystem(UPLOAD_PATH)->mkDir($date);
-
-        $path = UPLOAD_PATH . $date . DS .  pathinfo($url, PATHINFO_BASENAME);
+        $path = FileSystem::makeUploadYmdDir() . DS .  pathinfo($url, PATHINFO_BASENAME);
 
         static::httpClient()->get($url, [
             'sink' => $path
@@ -434,6 +427,6 @@ class Utils
 
     public static function parseQrCode(string $path)
     {
-        return (new QRCode())->readFromBlob(file_get_contents($path))->__toString();
+        return app('qrcode')->readFromBlob(file_get_contents($path))->__toString();
     }
 }
