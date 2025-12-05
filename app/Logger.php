@@ -14,8 +14,6 @@ class Logger
      */
     private static array $loggers = [];
 
-    private static string $base_path = __DIR__ . DS . 'log' . DS;
-
     private static string $logger = 'default';
 
     public static function handler(?string $logger = null)
@@ -34,7 +32,7 @@ class Logger
             $formatter = new LineFormatter($output, $dateFormat);
 
             // 日志文件路径
-            $logFilePath = static::$base_path . DS . static::$logger . DS . $currentDate . '.log';
+            $logFilePath = LOG_PATH . static::$logger . DS . $currentDate . '.log';
 
             // 检查并创建日志目录（如果不存在）
             $logDir = dirname($logFilePath);
@@ -79,18 +77,6 @@ class Logger
                 'extra' => $data[4] ?? ''
             ];
         }, explode($dates[0][0], $content));
-    }
-
-    public static function getBasePath()
-    {
-        return static::$base_path;
-    }
-
-    public static function setBasePath(string $base_path)
-    {
-        static::$base_path = $base_path;
-
-        return true;
     }
 
     public static function setLogger(?string $logger = null)

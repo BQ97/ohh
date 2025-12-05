@@ -13,7 +13,6 @@ use App\Providers\ConsoleProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
-use App\File\Loader;
 use App\Providers\MailProvider;
 use App\Providers\OpenAiProvider;
 
@@ -35,7 +34,7 @@ use App\Providers\OpenAiProvider;
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.10.0';
+    public const VERSION = '2.11.0';
 
     private Container $container;
 
@@ -63,9 +62,6 @@ class Application implements ContainerInterface
 
     public function __construct()
     {
-        // 启动 Logger
-        Logger::setBasePath(LOG_PATH);
-
         $this->container = new Container();
 
         $this->container->delegate(new ReflectionContainer(true));
@@ -75,17 +71,6 @@ class Application implements ContainerInterface
         $this->registerProviders();
 
         static::$instance = $this;
-    }
-
-    public function getConfig(string $filename)
-    {
-        $filename = CONFIG_PATH . $filename . '.php';
-
-        if (file_exists($filename)) {
-            return Loader::loadFile($filename);
-        }
-
-        return null;
     }
 
     private function registerProviders()

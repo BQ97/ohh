@@ -23,11 +23,11 @@ class Loader
     public static function loadFile(string $filePath)
     {
         if (!file_exists($filePath)) {
-            return [];
+            return null;
         }
 
         if (!array_filter(static::$folders, fn ($path) => strpos($filePath, $path) !== false, ARRAY_FILTER_USE_BOTH)) {
-            return [];
+            return null;
         }
 
         if (empty(static::$files[$filePath])) {

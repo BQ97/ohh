@@ -6,6 +6,7 @@ namespace App;
 
 use App\File\Cache;
 use App\File\FileSystem;
+use App\File\Loader;
 use App\File\Zip;
 use Cake\Chronos\Chronos;
 use chillerlan\QRCode\QRCode;
@@ -185,6 +186,19 @@ class Utils
     public static function getData(array $data, string $name, $default = null)
     {
         return $name ? array_reduce(explode('.', $name), fn($data, $key) => $data[$key] ?? $default, $data) : $data;
+    }
+
+    public static function getConfig(string $filename, $default = null)
+    {
+        $paths = explode('.', $filename);
+
+        $filename = CONFIG_PATH . array_shift($paths) . '.php';
+
+        if (file_exists($filename)) {
+            return static::getData(Loader::loadFile($filename), implode('.', $paths), $default);
+        }
+
+        return null;
     }
 
     public static function downloadResource(string $url)
