@@ -10,6 +10,7 @@ use App\Providers\FakerProvider;
 use App\Providers\RouterProvider;
 use App\Providers\SnowFlakeProvider;
 use App\Providers\ConsoleProvider;
+use App\Providers\ImageProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
@@ -31,10 +32,11 @@ use App\Providers\OpenAiProvider;
  * @property \App\Console                       $console
  * @property \OpenAI\Client                     $openai
  * @property \PHPMailer\PHPMailer\PHPMailer     $mail
+ * @property \Intervention\Image\ImageManager   $image
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.11.0';
+    public const VERSION = '2.12.0';
 
     private Container $container;
 
@@ -46,7 +48,8 @@ class Application implements ContainerInterface
         SnowFlakeProvider::class,
         ConsoleProvider::class,
         OpenAiProvider::class,
-        MailProvider::class
+        MailProvider::class,
+        ImageProvider::class
     ];
 
     private static $instance;
