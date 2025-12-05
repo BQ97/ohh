@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Providers\CommonProvider;
-use App\Providers\DbProvider;
-use App\Providers\FakerProvider;
-use App\Providers\RouterProvider;
-use App\Providers\SnowFlakeProvider;
-use App\Providers\ConsoleProvider;
-use App\Providers\ImageProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Psr\Container\ContainerInterface;
-use App\Providers\MailProvider;
-use App\Providers\OpenAiProvider;
-use App\Providers\QrCodeProvider;
-use App\Providers\PdfParserProvider;
+use App\Providers\{
+    MailProvider,
+    OpenAiProvider,
+    QrCodeProvider,
+    PdfParserProvider,
+    CommonProvider,
+    DbProvider,
+    FakerProvider,
+    RouterProvider,
+    SnowFlakeProvider,
+    ConsoleProvider,
+    ImageProvider
+};
 
 /**
  * @name 容器
@@ -40,7 +42,7 @@ use App\Providers\PdfParserProvider;
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.15.0';
+    public const VERSION = '2.17.0';
 
     private Container $container;
 
@@ -58,7 +60,7 @@ class Application implements ContainerInterface
         PdfParserProvider::class,
     ];
 
-    private static $instance;
+    private static Application $instance;
 
     public static function getInstance()
     {
@@ -84,7 +86,7 @@ class Application implements ContainerInterface
 
     private function registerProviders()
     {
-        return array_reduce($this->providers, fn (Container $container, string $class) => $container->addServiceProvider(new $class), $this->container);
+        return array_reduce($this->providers, fn(Container $container, string $class) => $container->addServiceProvider(new $class), $this->container);
     }
 
     public function has(string $id): bool
