@@ -8,3 +8,4 @@ logs
 tpl
 vendor
 composer.lock
+orm-idehelper.php

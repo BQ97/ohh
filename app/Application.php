@@ -19,7 +19,8 @@ use App\Providers\{
     SnowFlakeProvider,
     ConsoleProvider,
     ImageProvider,
-    CacheProvider
+    CacheProvider,
+    OrmProvider
 };
 
 /**
@@ -41,10 +42,11 @@ use App\Providers\{
  * @property \chillerlan\QRCode\QRCode          $qrcode
  * @property \Smalot\PdfParser\Parser           $pdfparser
  * @property \Symfony\Component\Cache\Psr16Cache    $cache
+ * @property \think\DbManager                  $orm
  */
 class Application implements ContainerInterface
 {
-    public const VERSION = '2.19.0';
+    public const VERSION = '2.20.0';
 
     private Container $container;
 
@@ -60,7 +62,8 @@ class Application implements ContainerInterface
         ImageProvider::class,
         QrCodeProvider::class,
         PdfParserProvider::class,
-        CacheProvider::class
+        CacheProvider::class,
+        OrmProvider::class
     ];
 
     private static $instance;
