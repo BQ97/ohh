@@ -31,7 +31,7 @@ if (!function_exists('fileSystem')) {
      * @param string $path  目录  默认 缓存目录
      * @return \App\File\FileSystem
      */
-    function fileSystem(string $path = CACHE_PATH): FileSystem
+    function fileSystem(string $path = UPLOAD_PATH): FileSystem
     {
         return FileSystem::getInstance($path);
     }

@@ -33,7 +33,7 @@ class FileSystem
 
     const LS_FILE_OPTION = 'f';
 
-    public function __construct(private string $path = CACHE_PATH)
+    public function __construct(private string $path = UPLOAD_PATH)
     {
         if (!is_dir($path)) {
             throw new Exception('目录不存在');
@@ -48,7 +48,7 @@ class FileSystem
      * @param string $path
      * @return self
      */
-    public static function getInstance(string $path = CACHE_PATH): FileSystem
+    public static function getInstance(string $path = UPLOAD_PATH): FileSystem
     {
         return new static($path);
     }

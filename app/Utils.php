@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\File\Cache;
 use App\File\FileSystem;
 use App\File\Loader;
 use App\File\Zip;
@@ -115,16 +114,6 @@ class Utils
     public static function httpClient(array $config = [])
     {
         return new Client($config);
-    }
-
-    /**
-     * 文件缓存
-     * @param string $prefix 缓存空间 默认 app
-     * @return Cache
-     */
-    public static function cache(string $prefix = 'BoQing'): Cache
-    {
-        return Cache::getInstance($prefix);
     }
 
     /**
