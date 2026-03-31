@@ -21,6 +21,8 @@ class PdfParserProvider extends AbstractServiceProvider
             $pdfConf = new Config();
             $pdfConf->setDataTmFontInfoHasToBeIncluded(true);
             return new Parser([], $pdfConf);
-        })->setAlias('pdfparser');
+        });
+
+        $this->getContainer()->add('pdfparser', fn () => $this->getContainer()->get(Parser::class));
     }
 }

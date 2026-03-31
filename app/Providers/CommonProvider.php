@@ -35,7 +35,8 @@ class CommonProvider extends AbstractServiceProvider
     public function register(): void
     {
         foreach (static::SERVICE_CLASS as $alias => $class) {
-            $this->getContainer()->add($class)->setAlias($alias);
+            $this->getContainer()->add($class, $class);
+            $this->getContainer()->add($alias, fn () => $this->getContainer()->get($class));
         }
     }
 }

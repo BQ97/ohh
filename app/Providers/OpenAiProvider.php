@@ -30,6 +30,7 @@ class OpenAiProvider extends AbstractServiceProvider
             ]
         ]);
 
-        $this->getContainer()->add(Client::class, fn () => OpenAI::factory()->withApiKey($apiKey)->withHttpClient($client)->make())->setAlias('openai');
+        $this->getContainer()->add(Client::class, fn () => OpenAI::factory()->withApiKey($apiKey)->withHttpClient($client)->make());
+        $this->getContainer()->add('openai', fn () => $this->getContainer()->get(Client::class));
     }
 }

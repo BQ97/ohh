@@ -22,6 +22,8 @@ class QrCodeProvider extends AbstractServiceProvider
             'outputType' => 'png',
             'outputBase64' => false,
             'readerUseImagickIfAvailable' => extension_loaded('imagick'),
-        ]))->setAlias('qrcode');
+        ]));
+
+        $this->getContainer()->add('qrcode', fn () => $this->getContainer()->get(QRCode::class));
     }
 }

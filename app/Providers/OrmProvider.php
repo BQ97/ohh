@@ -93,6 +93,8 @@ class OrmProvider extends AbstractServiceProvider
             $orm = new DbManager();
             $orm->setConfig($config);
             return $orm;
-        })->setAlias('orm');
+        });
+
+        $this->getContainer()->add('orm', fn () => $this->getContainer()->get(DbManager::class));
     }
 }

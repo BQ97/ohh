@@ -22,6 +22,8 @@ class SnowFlakeProvider extends AbstractServiceProvider
             fn () => (new Snowflake())
                 ->setStartTimeStamp(strtotime('2024-02-04 09:00:00') * 1000)
                 ->setSequenceResolver(new RandomSequenceResolver())
-        )->setAlias('snow');
+        );
+
+        $this->getContainer()->add('snow', fn () => $this->getContainer()->get(Snowflake::class));
     }
 }

@@ -41,6 +41,7 @@ class DbProvider extends AbstractServiceProvider
             $config['charset'] = 'utf8';
         }
 
-        $this->getContainer()->add(Medoo::class)->addArgument($config)->setAlias('db');
+        $this->getContainer()->add(Medoo::class)->addArgument($config);
+        $this->getContainer()->add('db', fn () => $this->getContainer()->get(Medoo::class));
     }
 }

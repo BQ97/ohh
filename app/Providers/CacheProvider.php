@@ -40,6 +40,7 @@ class CacheProvider extends AbstractServiceProvider
             ),
         };
 
-        $this->getContainer()->add(Psr16Cache::class)->addArgument($cacheAdapter)->setAlias('cache');
+        $this->getContainer()->add(Psr16Cache::class)->addArgument($cacheAdapter);
+        $this->getContainer()->add('cache', fn () => $this->getContainer()->get(Psr16Cache::class));
     }
 }

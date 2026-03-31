@@ -32,6 +32,8 @@ class MailProvider extends AbstractServiceProvider
             //Recipients
             $mail->setFrom($env->get('MAIL_FROM_ADDRESS'), $env->get('MAIL_FROM_NAME'));
             return $mail;
-        })->setAlias('mail');
+        });
+
+        $this->getContainer()->add('mail', fn () => $this->getContainer()->get(PHPMailer::class));
     }
 }

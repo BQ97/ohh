@@ -29,6 +29,8 @@ class ImageProvider extends AbstractServiceProvider
             }
 
             return ImageManager::gd($options);
-        })->setAlias('image');
+        });
+
+        $this->getContainer()->add('image', fn () => $this->getContainer()->get(ImageManager::class));
     }
 }

@@ -16,6 +16,7 @@ class ConsoleProvider extends AbstractServiceProvider
 
     public function register(): void
     {
-        $this->getContainer()->add(Console::class)->setAlias('console')->addArgument(app());
+        $this->getContainer()->add(Console::class)->addArgument(app());
+        $this->getContainer()->add('console', fn () => $this->getContainer()->get(Console::class));
     }
 }

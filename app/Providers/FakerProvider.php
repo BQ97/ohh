@@ -17,6 +17,7 @@ class FakerProvider extends AbstractServiceProvider
 
     public function register(): void
     {
-        $this->getContainer()->add(Generator::class, Factory::create('zh_CN'))->setAlias('faker');
+        $this->getContainer()->add(Generator::class, Factory::create('zh_CN'));
+        $this->getContainer()->add('faker', fn () => $this->getContainer()->get(Generator::class));
     }
 }
